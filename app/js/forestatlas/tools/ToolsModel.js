@@ -18,10 +18,12 @@ define(
                     function(Events, MainModel, topic) {
                         var mainmodel = MainModel.getVM();
                         var AGOL_CONFIG = app && app.config;
-                        var title = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[language].title : resource.appLanguages[language].title);
-                        var flagTitle = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[language].flagTitle : resource.appLanguages[language].flagTitle);
-
                         var currentLanguage = mainmodel.currentLanguage();
+
+                        
+                        var title = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[currentLanguage].title : resource.appLanguages[currentLanguage].title);
+                        var flagTitle = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[currentLanguage].flagTitle : resource.appLanguages[currentLanguage].flagTitle);
+
                         var translation = languages[currentLanguage];
                         var toolsevents = Events.getEvents();
 

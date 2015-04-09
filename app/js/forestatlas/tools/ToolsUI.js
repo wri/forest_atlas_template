@@ -118,7 +118,6 @@ define(
 
                 //mapLayerLangId == current language layer
                 arrayUtil.forEach(map.layerIds, function(layerId) {
-                    // alert(layerId)
 
                     // Exit for Extra Layers, code below is for webmap layers and will break on these layers
                     if (layerId === 'landCover' || layerId === 'activeFires' || layerId === 'legendLayer' ||
@@ -160,8 +159,6 @@ define(
 
 
                 mapLanguageLayerIds = dynamicLayersArray;
-                // alert(mapLayerLangId);
-                console.log(mapLanguageLayerIds);
                 var subLayersList = [];
                 subLayersList = map.getLayer(mapLayerLangId).layerInfos;
 
@@ -460,8 +457,7 @@ define(
                                         mapLayerLangId = layerId;
                                         return (layerIdlower.indexOf("_" + english) > -1);
                                     });
-                                    //alert(this.layerValue);
-                                    //alert(layerArray[this.layerValue]);
+
                                     topic.publish(toolsevents.dataDownload, layerArray[this.layerValue], this.layerValue);
 
                                     //fire event
@@ -565,7 +561,7 @@ define(
                     customTextElements: [{
                         "subtitle": ""
                     }]
-                }
+                };
 
 
                 var layouts = [{
@@ -729,13 +725,8 @@ define(
                     console.log(msg);
                 });
 
-
-
-
-
                 on(o._basemapGallery, "load", function() {
 
-                    // registry.byId("basemapGallery").domNode.setAttribute("data-bind", "{with:basemapTitles}");
 
                     query(".esriBasemapGalleryLabelContainer span").forEach(function(node, index, arr) {
 
@@ -745,18 +736,13 @@ define(
                         node.setAttribute("data-bind", "{html:basemapTitles()." + title + "}");
 
                         node.innerHTML = "";
-                        // console.log(arr.length);
 
                     });
 
-                    topic.publish(toolsevents.UIcreationComplete);
-
                 });
-                /*End Basemap Gallery ---------------------------------*/
 
-
-                //topic.publish(toolsevents.UIcreationComplete);
-                //topic.publish(toolsevents.mapZoomEnd);
+                topic.publish(toolsevents.UIcreationComplete);
+                
 
             } //constructor   
 

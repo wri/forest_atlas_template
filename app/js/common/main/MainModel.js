@@ -87,7 +87,7 @@ define(
         };
 
         o.initialize = function(domID, appType, langType) {
-            if (null === o._instance) {
+            if (null == o._instance) {
                 o._instance = new o(domID, appType, langType);
             }
             return o._instance;

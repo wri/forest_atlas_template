@@ -85,18 +85,10 @@ define(
                         navigationMode: "css-transforms"
                     }
                 }).then(function(response) {
-                    console.log("MAP RESPONSE");
-                    console.log(response);
                     var sources = response.itemInfo.itemData.operationalLayers;
                     for (var i = 0; i < sources.length; i++) {
                         vm.sourcesArray.push(sources[i]);
                     }
-                    // var extents = response.itemInfo.item.extent;
-                    // var minx=parseFloat(extents[0][0]);
-                    // var miny=parseFloat(extents[0][1]);
-                    // var maxx=parseFloat(extents[1][0]);
-                    // var maxy=parseFloat(extents[1][1]);          
-                    //var initExtent = new Extent(minx,miny,maxx,maxy,new SpatialReference({ wkid:4326 }));
 
                     o._map = response.map;
 

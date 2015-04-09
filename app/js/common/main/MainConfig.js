@@ -6,6 +6,9 @@ define(
             constructor: function() {
 
                 var AGOL_CONFIG = app && app.config;
+                var flagLinkPath = (AGOL_CONFIG ? AGOL_CONFIG.flagLinkPath : resource.flagLinkPath);
+                var flagPath = (AGOL_CONFIG ? AGOL_CONFIG.flagPath : resource.flagPath);
+                var countryTextWidth = (AGOL_CONFIG ? AGOL_CONFIG.countryTextWidth : resource.countryTextWidth);
 
                 o._config = {
 
@@ -47,7 +50,7 @@ define(
                             id: "mobileFlagContainer"
                         },
                         props: {
-                            href: (AGOL_CONFIG ? AGOL_CONFIG.flagLinkPath : resource.flagLinkPath),
+                            href: flagLinkPath,
                             id: "mobileFlagContainerLink",
                             target: "_blank"
                         }
@@ -58,7 +61,7 @@ define(
                             id: "mobileCountryFlag"
                         },
                         props: {
-                            src: (AGOL_CONFIG ? AGOL_CONFIG.flagPath : resource.flagPath),
+                            src: flagPath,
                             id: "mobileCountryFlag"
                         }
                     },{
@@ -68,7 +71,7 @@ define(
                             id: "countryFlagContainer"
                         },
                         props: {
-                            href: (AGOL_CONFIG ? AGOL_CONFIG.flagLinkPath : resource.flagLinkPath),
+                            href: flagLinkPath,
                             id: "countryFlagLink",
                             target: "_blank"
                         }
@@ -79,7 +82,7 @@ define(
                             id: "countryFlag"
                         },
                         props: {
-                            src: (AGOL_CONFIG ? AGOL_CONFIG.flagPath : resource.flagPath),
+                            src: flagPath,
                             id: "countryFlag"
                         }
                     }, {
@@ -88,8 +91,8 @@ define(
                         props: {
                             id: "flagTitle",
                             target: "_blank",
-                            href: (AGOL_CONFIG ? AGOL_CONFIG.flagLinkPath : resource.flagLinkPath),
-                            style: "width:" + (AGOL_CONFIG ? AGOL_CONFIG.countryTextWidth : resource.countryTextWidth) + "!important;"
+                            href: flagLinkPath,
+                            style: "width:" + countryTextWidth + "!important;"
                         },
                         attrs: [{
                             attr: "data-bind",
@@ -106,7 +109,7 @@ define(
         };
 
         o.initialize = function() {
-            if (null === o._instance) {
+            if (null == o._instance) {
                 o._instance = new o();
             }
             return o._instance;

@@ -32,9 +32,9 @@ define(
                 });
                 topic.publish(mainevents.UIcreationComplete, appType, langType);
 
-                var languages = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages : resource.appLanguages);
+                var configuredLanguages = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages : resource.appLanguages);
 
-                for (var lang in languages) {
+                for (var lang in configuredLanguages) {
                     var languageButton = domConstruct.create("a", languages[lang].languageButtonProps, "languageToggle");
                     on(languageButton, "click", function() {
                         topic.publish(mainevents.changeLanguage, this.value);
