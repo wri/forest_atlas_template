@@ -1,0 +1,1367 @@
+/*============ These Classes Contain the Annoying Blue/Orange Highlight Attached to All the Dijits, Override Here =============*/
+/** For Buttons **/
+.dijitButtonContents {
+	outline: none;
+}
+/** For Tabs in tab Container **/
+.dijitTab .tabLabel {
+	outline: none;
+}
+/** For Accordion Title's **/
+.dijitAccordionTitleFocus {
+	outline: none;
+}
+/** For Title Pane's **/
+.dijitTitlePaneTitle * {
+	outline: none;
+}
+
+/*============ These Classes Contain the Annoying Blue/Orange Highlight Attached to All the Dijits, Override Here =============*/
+/* basemaps */
+.esriBasemapGalleryNode{
+	height:120px;
+}
+.esriBasemapGalleryLabelContainer{
+	height: auto;
+}
+.full-width {
+	width:100%;
+}
+.dijitTitlePane .dijitArrowNodeInner {
+	display: inline-block;
+}
+
+#sidebar .sliderContainer input[type="range"] {
+    margin-bottom: 4px;
+}
+input[type="range"], .range-slider {
+    background: none repeat scroll 0% 0% rgb(112, 112, 112);
+    border: 0px none;
+    display: block;
+    height: 7px;
+    position: relative;
+    width: 100%;
+}
+body,html{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+    overflow:hidden;
+    font-family:  "Arial Narrow", arial, sans-serif;
+    /*font-family: "proxima-nova-condensed",sans-serif;*/
+    font-size: 14px;
+	font-weight: 400;
+    color:rgb(0,0,0);
+    background-color: rgb(255,255,255);
+    line-height: 1.5em;
+    word-break: normal;
+	word-wrap: normal;
+	
+}
+
+
+
+
+#wriLogo{
+	background:url('../images/WRI_logo_4c.PNG') no-repeat;
+	width:160px;
+	height:55px;
+	position:absolute;
+	left:10px;
+	top:5px;
+}
+/* .esriPrint .dijitStretch{
+	background:url('../images/icon-print.PNG') no-repeat;
+	border:0px solid white;
+	color:rgba(255,255,255,0);
+	width:34px;
+	height:20px;
+	
+}
+.tundra .dijitButtonNode, .dijitButtonNode, .tundra .dijitButtonNode:hover, .dijitButtonNode:hover, .tundra .dijitButtonNode:focused, .dijitButtonNode:focused{
+	border: 0px solid white !important;
+	background-image: url() !important;
+	border-bottom:0px solid white !important;
+} 
+dijit_form_ComboButton_0_label, .tundra .dijitComboButton .dijitButtonContentsHover{
+	display:none !important;
+	background: rgba(255,255,255,0);
+	background-image: url();
+	border:0px solid white;
+	height:0px;
+	width:0px;
+}
+
+
+#dijit_form_ComboButton_1_button{
+	display:none;
+}
+#dijit_form_ComboButton_0_arrow{
+	
+	width:5px;
+	height:20px;
+} */
+#headerView{
+	overflow: hidden;
+	height:58px;
+	background-color: rgb(255,255,255);	
+	
+	/*background-color: rgb(35,31,32);	*/
+
+}
+/* nav menu ----------------------------------------------*/
+#navMenu ul li a, #languageToggle a{
+	font-size: 18px !important;
+	padding-left: 10px;
+}
+/*fixes for firefox*/
+#flagTitle:focus{
+	color: #000;
+	text-decoration: none;	
+}
+/* tools container----------------------------------------*/
+
+#layersCP{
+	/*border-top: 1px solid #b3b3b3;*/
+	/*height: auto !important;*/
+	/*width: 290px !important;*/
+	/*position: absolute;*/
+	padding: 15px 0;
+	/*bottom: 0px;
+	top: 50px;	*/
+}
+#layerLabel {
+	background-color: #CCC;
+	line-height: 50px;
+	font-size: 18px;
+	padding: 0 20px;
+	height: 70px;
+}
+.close-layers-button,
+.open-layers-button {
+	position: absolute;
+	cursor: pointer;
+	font-size: 18px;
+	color: #f0ab00;
+}
+.open-layers-button:hover {
+	background-color: white;
+}
+.open-layers-button {
+	background: #3d3d3d;
+	line-height: 28px;
+	padding: 0 20px;
+	display: none;
+	z-index: 500;
+	left: 20px;
+	top: 20px;	
+}
+.close-layers-button {
+	background: url('../images/close_x.png') no-repeat center;
+	height: 50px;
+	width: 50px;
+	right: 0;
+	top: 0;
+}
+.dijitTabPaneWrapper{
+	overflow:hidden !important;
+}
+.sliderText{
+	margin-left:30px;
+	margin-top:3px;
+	color: #666;
+	margin-right:30px;
+	font-size: 11px;
+	/*width:70%;*/
+	
+	padding: 0 0 10px 0;
+}
+
+.esriSimpleSliderTL {
+	left: auto;
+	right: 20px;
+}
+
+#toolsContainer .hzline{
+	border-bottom: 1px dashed grey;
+	margin: 0 20px 0 20px;
+	clear:both;
+}
+.sliderText .left{
+	color: #666;
+	float:left;
+	display: inline-block;
+	/*width:28.33%;*/
+}
+.sliderText .middle{
+	color: #999;
+	margin-left: 100px;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	left: -100px;	
+}
+
+.sliderText .right{
+	color: #666;
+	float:right !important;	
+	display: inline-block;
+	
+}
+.tundra .dijitTab{
+	background: rgba(255,255,255,0);
+	border: 0px solid white;
+}
+.tundra .dijitTab span{
+	margin: 5px 10px 0px 10px;
+	font-size: 18px;
+}
+#mainBorderContainer{
+	width:100%;
+	height:100%;
+}
+#toolsContainer .dijitTabListWrapper{
+	background: #ddd;
+	border-bottom: 1px solid #b3b3b3 !important;
+	height: 40px;
+	left: 0;
+	padding: 9px 12px 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	white-space: nowrap;
+}
+
+.dijitTabChecked{
+	background-color: rgba(255,255,255,1) !important;
+	border-color: #b3b3b3 !important;
+	border-top: 6px solid #eeab02 !important;
+	height: 33px;
+	margin-bottom: -1px;
+}
+#toolsContainer .dijitReset{
+	padding: .25px;
+}
+.tundra .dijitSliderRemainingBarH{
+	border-color: #707070;
+	background: url();
+}
+.tundra .dijitSliderProgressBarH {
+	border-color: #707070;
+	background: url();
+}
+.tundra .dijitSliderProgressBarH{
+	border-color: #707070;
+	background: url();
+}
+.tundra .dijitSliderFocused .dijitSliderImageHandleH {
+	background-image: url();
+}
+
+.tundra .dijitSliderFocused .dijitSliderLeftBumper {
+	background-image: url();
+}
+.tundra .dijitSliderDecrementIconH, .tundra dijitSliderButtonContainerH, .dijitSliderIncrementIconH ,.tundra .dijitSliderLeftBumper , .tundra .dijitSliderRightBumper  {
+display:none;
+}
+
+.dijitTab{
+	height:33px;
+}
+.toggleContainer{
+	margin: 10px 20px !important;
+	position: relative;
+	clear: both;
+}
+.tundra .dijitSliderImageHandleH{
+	background: url();
+	background-color: #eeab02;
+	border: 1px solid #eeab02;
+	border-radius: 8px;
+}
+.sliderContainer{
+	/*width:70%;*/
+	margin-right:30px;
+	margin-left:30px;
+}
+.tundra .dijitCheckBox, .tundra .dijitCheckBoxIcon {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background: #fff no-repeat center;
+	border: 1px solid #ccc;
+	cursor: pointer;
+	height: 21px;
+	margin-right:20px;
+	float:left;
+}
+.tundra .dijitCheckBox, .tundra .dijitCheckBoxIcon{
+	background-image: url(../images/ico-checkmark.png);
+}
+.dijitSliderH{
+	clear:both;
+}
+.tundra .dijitSliderFocused .dijitSliderProgressBarH{
+	background-image:url() !important;
+	background-color: rgba(255,255,255,0);
+}
+#toolsContainer .title{
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 22px;
+	margin: 0 0 7px;
+	float:left;
+	width: 75%;
+}
+
+.nowrapTabStrip, .dijitTabContainerTop-tabs{
+	width:300px;
+	margin-top:15px;
+}
+#toolsContainer td.dijitReset div.dijitReset{
+	-webkit-appearance: none;
+	-moz-apperance: none;
+	appearance: none;
+	background: #707070;
+	border: 0;
+	display: block;
+	height: 7px;
+	position: relative;
+	width: 100%;
+}
+/*---------------------------- tools container end*/
+#loading{
+	position:absolute;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	top: 0px;
+	background-color: #EEEEEE;
+	z-index: 100;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    -khtml-opacity: 0.5;
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+
+#loadingMsg{
+	z-index: 101;
+	position:absolute;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	top: 300px;
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+	background: none;
+	}
+
+#errorMsg{
+	z-index: 101;
+	position:absolute;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	top: 300px;
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+	color:red;
+	background: none;
+	}
+
+#stackContainer{
+	/*background-color: orange;*/
+	top:100px !important;
+	right: 0;
+	left: 0;
+}
+
+#mapView{
+	/*background-color: #ccc;*/
+	z-index:40;
+	overflow:hidden;
+}
+.scalebar_bottom-left {
+	bottom: 10px;
+}
+#wriMapLogoContainer{
+	position: absolute;
+	left: 5px;
+	bottom: 5px;
+	z-index: 999;
+}
+
+#wriMapLogo{
+	display:inline-block;
+	vertical-align: bottom;
+	z-Index:999;
+	background: url("../images/wri-logo.png") no-repeat;
+	height:30px;
+	width:320px;
+	bottom:10px;
+	
+}
+
+#toolsContainer {
+	width: 400px;
+	overflow:visible;
+	z-index:50;
+	top: 100px !important;
+	overflow: hidden;
+}
+
+#navView{
+	z-index:1000;
+	width:100%;
+	poisition: absolute !important;
+	top:58px !important;
+	background: none repeat scroll 0% 0% rgb(240, 171, 0);
+	height: 24px;
+	padding: 9px 12px;
+	overflow:hidden;
+	-webkit-box-shadow: 0px 5px 10px 2px rgba(0,0,0,.5);
+	-moz-box-shadow:0px 5px 10px 2px rgba(0,0,0,.5);
+	box-shadow: 0px 5px 10px 2px rgba(0,0,0,.5);
+}
+
+#dataContainer{
+	height:250px;
+/*	transition: all 1s ease-in-out 0.3s;
+	-webkit-transition: all 1s ease-in-out 0.3s;
+	-moz-transition: all 1s ease-in-out 0.3s;*/
+ 
+}
+
+.selectedLegendItem{
+	/*background-color: red;*/
+	border: 2px solid rgb(204, 204, 204);
+	color:#000000 !important;
+	
+}
+.legendItem
+{
+	padding: 5px;
+	position: relative;
+	color:#CCCCCC;
+}
+.legendItem:hover{
+	color:#000000 !important;
+}
+
+.clickable{
+	cursor: pointer;
+}
+
+.appLink{
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+/*.app .dijitDialog{
+	overflow:auto;
+}*/
+
+.app #editorContentNode{
+	width:380px !important;
+	height:350px !important;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.app .dijitTabPaneWrapper{
+	/*width:auto !important;
+	height:auto !important;
+	bottom:25px;*/
+
+}
+
+.app .dijitTabContainer{
+
+	width:auto !important;
+	height:auto !important;
+	bottom:70px !important;
+}
+
+.app .dijitTextBox{
+	width:150px;
+	height:23px;
+	margin:-2px 0 0 2px;
+	}
+#navView .dijitInputContainer input{
+	height: 23px !important;
+	top: 10px;
+	left: 0;
+}
+.editorFormRow{
+	margin:2px;
+	/*clear:both;*/
+	display: inline-block;
+	text-align: right;
+	width:100%;
+}
+
+
+.editorSessionButton{
+position:absolute;
+height:25px;
+left:0px;
+bottom:0px;
+
+/*right:0px;*/
+}
+
+.editorNotifyLink{
+position:absolute;
+height:25px;
+right:0px;
+bottom:0px;
+}
+.app .dijitTextBox{
+		width:289px;
+	}
+.tundra .dijitComboBox .dijitButtonNode {
+	display: none !important;
+}
+.appButton.editorFormButton{
+	width:100%;
+	height:50px;
+	font-size: 16px;
+	font-weight: bold;
+	text-align:center;
+
+}
+
+.appButton.editorFormButton .dijitButtonNode{
+	background: none;
+	width:300px;
+	height:40px;
+	background: #fceabb; /* Old browsers */
+	background: -moz-linear-gradient(top,  #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fceabb), color-stop(50%,#fccd4d), color-stop(51%,#f8b500), color-stop(100%,#fbdf93)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=0 ); /* IE6-9 */
+	-webkit-transition:all 0.5s ease-in-out;
+	-moz-transition:all 0.5s ease-in-out;
+	-ms-transition:all 0.5s ease-in-out;
+	-o-transition:all 0.5s ease-in-out;
+	transition:all 0.5s ease-in-out;
+
+}
+
+.appButton.editorFormButton.dijitButtonHover .dijitButtonNode{
+	background: none;
+	width:300px;
+	height:40px;
+	background: #f1e767; /* Old browsers */
+	background: -moz-linear-gradient(top,  #f1e767 0%, #feb645 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1e767), color-stop(100%,#feb645)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #f1e767 0%,#feb645 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #f1e767 0%,#feb645 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #f1e767 0%,#feb645 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #f1e767 0%,#feb645 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', endColorstr='#feb645',GradientType=0 ); /* IE6-9 */
+	-webkit-transition:all 0.5s ease-in-out;
+	-moz-transition:all 0.5s ease-in-out;
+	-ms-transition:all 0.5s ease-in-out;
+	-o-transition:all 0.5s ease-in-out;
+	transition:all 0.5s ease-in-out;
+
+
+}
+
+.appButton.editorFormButton .dijitButtonContents{
+	line-height: 40px;
+}
+
+.appButton.editorFormButton.editorFormDelete .dijitButtonNode{
+	line-height: 40px;
+	color:#FFF;	
+	background: #ffbfbf; /* Old browsers */
+background: -moz-linear-gradient(top,  #ffbfbf 0%, #f24b4b 50%, #e20000 52%, #b2696a 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffbfbf), color-stop(50%,#f24b4b), color-stop(52%,#e20000), color-stop(100%,#b2696a)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ffbfbf 0%,#f24b4b 50%,#e20000 52%,#b2696a 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ffbfbf 0%,#f24b4b 50%,#e20000 52%,#b2696a 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ffbfbf 0%,#f24b4b 50%,#e20000 52%,#b2696a 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ffbfbf 0%,#f24b4b 50%,#e20000 52%,#b2696a 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffbfbf', endColorstr='#b2696a',GradientType=0 ); /* IE6-9 */
+
+}
+
+.appButton.editorFormButton.editorFormDelete.dijitButtonHover .dijitButtonNode{
+background: #c95658; /* Old browsers */
+background: -moz-linear-gradient(top,  #c95658 0%, #91282a 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c95658), color-stop(100%,#91282a)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #c95658 0%,#91282a 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #c95658 0%,#91282a 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #c95658 0%,#91282a 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #c95658 0%,#91282a 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c95658', endColorstr='#91282a',GradientType=0 ); /* IE6-9 */
+
+}
+
+
+
+
+
+.app .editorSessionButton.editEnabled .dijitButtonNode{
+color:#FFF;
+background: #a90329; /* Old browsers */
+background: -moz-linear-gradient(top,  #a90329 0%, #8f0222 44%, #6d0019 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a90329), color-stop(44%,#8f0222), color-stop(100%,#6d0019)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+
+}
+.app .editorSessionButton .dijitButtonNode
+{
+color:#FFF;
+background: #006e2e; /* Old browsers */
+background: -moz-linear-gradient(top,  #006e2e 0%, #006e2e 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#006e2e), color-stop(100%,#006e2e)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #006e2e 0%,#006e2e 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #006e2e 0%,#006e2e 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #006e2e 0%,#006e2e 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #006e2e 0%,#006e2e 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006e2e', endColorstr='#006e2e',GradientType=0 ); /* IE6-9 */
+}
+
+.app .editorSessionButton.dijitHover .dijitButtonNode{
+	color:#000;
+	background: #f1e767; /* Old browsers */
+	background: -moz-linear-gradient(top,  #f1e767 0%, #feb645 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1e767), color-stop(100%,#feb645)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #f1e767 0%,#feb645 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #f1e767 0%,#feb645 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #f1e767 0%,#feb645 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #f1e767 0%,#feb645 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', endColorstr='#feb645',GradientType=0 ); /* IE6-9 */
+}
+
+
+
+
+.editorAddButton{
+position:absolute;
+left:2px;
+top:2px;
+}
+
+.editorSaveButton{
+position:absolute;
+left:37px;
+top:2px;
+}
+
+.editorRedoButton{
+position:absolute;
+left:102px;
+top:2px;
+}
+
+.editorUndoButton{
+position:absolute;
+
+left:72px;
+top:2px;
+}
+
+.editorBackLink{
+	position: absolute;
+	right:10px;
+	top:25px;
+}
+
+
+.app .dijitValidationTextBoxError {
+	height:20px;	
+}
+.dijitTabContainerTop-container{
+	overflow:auto;
+	height:50px;
+}
+.esriLegendServiceLabel{
+	display:none;
+}
+#toolsContainer .dijitTabListWrapper{
+	height: 57px !important;
+	left: 0px;
+	top: -15px !important;
+}
+/*------------------------------------------ popup */
+.esriPopupWrapper{
+	width:398px;
+	border-radius:0px;
+}
+.esriPopupWrapper .titlePane,
+.results-header {
+	background: #4b4b4b;
+	height: 40px;
+	left: 0;
+	right: 0;
+	top: 0;
+	border-radius:0px;
+	z-index: 40;
+	position: absolute;
+}
+ .esriPopupWrapper .contentPane{
+	width:380px;
+}
+
+.esriPopupWrapper .contentPane .esriViewPopup, .esriPopupWrapper .contentPane .esriViewPopup div{
+	position:relative !important;
+	top: 0px;
+	left:0px
+}
+.esriPopupWrapper .actionsPane,
+.results-container .actionsPane {
+	/*width:380px;*/
+	border-radius:0px;
+	background: #4b4b4b;
+	bottom: 0;
+	color: #fff;
+	font-size: 14px;
+	height: 28px;
+	left: 0;
+	line-height: 28px;
+	padding: 0 8px;
+	position: absolute;
+	right: 0;
+	text-align: center;
+}
+.esriPopupWrapper .maximize, .esriPopupWrapper .close, .esriPopupWrapper .next, .esriPopupWrapper .prev{
+	margin: 10px 5px 0 0;
+}
+.esriPopupWrapper .sizer{
+	width: 400px;
+}
+.esriPopupWrapper .zoomTo,
+.results-container .zoomTo {
+	float:right;
+	background:url('../images/ico-zoom.png') no-repeat;
+	background-position:left center;
+	width:95px;
+	text-decoration: none;
+	color: #fff;
+	font-style:italic;
+	font-size:14px;
+}
+.esriPopupWrapper .content{
+	margin: 41px 0px 29px 0px !important;
+}
+/*not showing*/
+/*.esriPopupWrapper .header{
+	position:absolute;
+	height:20px;
+	width:270px;
+	top:0px;
+	left:5px;
+	color:white;
+	z-index:100;
+	font-family: "proxima-nova-condensed",sans-serif;
+	font-size:16px;
+	font-weight: 400;
+	
+	
+}*/
+/*.esriPopupWrapper .hzLine{
+	display:none;
+}
+.esriPopupWrapper .title {
+	width: 48px;
+	font-weight:400;
+	position: absolute;
+	left: 275px;
+}*/
+
+.esriViewPopup .mainSection .attrTable  td, .esriPopupWrapper td{
+	line-height: 16px;
+	padding: 10px 8px;
+	display: table-cell;
+	vertical-align: inherit;
+	font-family:inherit;
+	border-right: 1px dotted #b9b9b9;
+	color: #626262 !important;
+	width:50%;
+	font-size:14px;
+	font-weight:400;
+}
+.esriViewPopup .mainSection .attrTable  tr:nth-child(2n), .esriPopupWrapper tr:nth-child(2n){
+	background: #f3f3f3;
+}
+
+.esriViewPopup .mainSection .attrTable  table, .esriPopupWrapper table{
+	order-collapse: collapse;
+	border-spacing: 2px;
+	font-size: 14px;
+	font-weight: 400;
+	font-family:inherit;
+	width:100%;
+}
+.esriPopupWrapper .title,
+.results-header .title {
+	color: #fff;
+	font-size: 16px;
+	line-height: 40px;
+	margin: 0;
+	padding: 0 8px;
+	font-family:  "Arial Narrow", arial, sans-serif;
+	/*font-family: "proxima-nova-condensed",sans-serif;*/
+	text-overflow: ellipsis;
+	padding-right: 80px;
+	overflow: hidden;	
+	white-space: nowrap;
+}
+
+#printReport{
+	float: right;
+}
+#legislative{
+	float:left;
+	display:none;
+}
+#printReport, #legislative{
+	
+	padding: 0 10px 0 0;
+	width: 130px !important;
+	font-size: 14px;
+	color: rgb(240, 171, 0);
+}
+#printReport:hover, #legislative:hover{
+	text-decoration:underline;
+	color:white;
+	cursor:pointer;
+}
+.actionList{
+	width: 100px;
+	float:right;
+}
+/*-------------------------------------------  download data content pane*/
+.tundra .dijitDialogTitleBar{
+	background-image:url("") !important;
+	background: #4b4b4b;
+	color: #fff;
+	width:390px;
+	height: 40px;
+	border-radius:0px;
+	font-family:inherit;
+}
+.dijitDialog{
+	width:300px;
+}
+
+#data #dataContent li .dijitContentPane{
+	display:inline;
+}
+
+#dataContent .dijitContentPane,#kmz, #downloadAllLink{
+	color:rgb(61, 61, 61);
+	text-decoration: none;
+	cursor:pointer;
+	overflow:hidden;
+	font-family: inherit;
+	font-weight:400;
+	height:22px;
+}
+#dataContentList, #kmzList, #listItemAll{
+	list-style-type:disc;
+	
+}
+#dataContent .dijitContentPane:hover,#kmz:hover, #downloadAllLink:hover{
+	color:rgb(240, 171, 0);
+	text-decoration:underline;
+	
+}
+#kmz{
+	font-weight:400;
+	font-size:14px;
+}
+.links{
+	margin: 0 0 0 25px;
+}
+#dataContentList .links, #kmzList .links, #allList .links, #listItemAll .links{
+	margin: 0 0 0 0;
+	font-size:14px;
+}
+
+.header{
+	font-weight:800;
+	margin:10px 0 0 0;
+}
+.dijitDialogTitle{
+	font-size: 16px;
+	margin: 0 0 0;
+	position: absolute;
+	top: 13px;
+}
+.tundra .dijitDialogCloseIcon {
+background: url("../images/close_x.png") no-repeat;
+vertical-align: middle;
+right: 6px;
+top: 18px;
+height: 15px;
+width: 15px;
+}
+/*---------------------- legend */
+.legendContainer{
+	bottom:0px;
+	
+	right: 10px !important;
+}
+#legendTitlePane .dijitTitlePaneTitle{
+	background-Image:url("");
+	font-size: 18px !important;
+	font-family:  "Arial Narrow", arial, sans-serif;
+	/*font-family: proxima-nova-condensed,sans-serif;*/
+	background: #3d3d3d;
+	/*-webkit-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;*/
+	-webkit-box-shadow: 1px 1px 5px rgba(0,0,0,.25);
+	-moz-box-shadow: 1px 1px 5px rgba(0,0,0,.25);
+	box-shadow: 1px 1px 5px rgba(0,0,0,.25);
+	color: #f0ab00;
+	display: block;
+	font-size: 18px;
+	height: 32px;
+	line-height: 32px;
+	text-decoration: none;
+	padding: 0 24px;
+	border: none;
+}
+.tundra .dijitTitlePaneContentInner {
+	padding: 0px 0px 0 10px;
+}
+#legendDiv{
+	margin:10px 0 0 0;
+}
+
+#legendTitlePane .dijitTitlePaneTitle:hover{
+	background-color: #fff;'	
+}
+.esriControlsBR{
+	right: 150px;
+}
+.dijitArrowNode{
+	display:none !important;
+}
+
+#selectAll, #clearAll{
+	color: rgb(0, 0, 0);
+	font-size: 14px;
+}
+#selectAll:hover, #clearAll:hover{
+	color:rgb(240, 171, 0);
+}
+#selectAll{
+	float:left;
+	margin: 0 0 10px 20px;
+}
+#clearAll{
+	float:right;
+	margin: 0 20px 10px 0;
+	
+}
+.esriPrint a{
+	color: #000;
+}
+.esriPrint a:hover{
+	
+	color:rgb(240, 171, 0);
+	text-decoration: underline;
+}
+dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
+	display:none;
+}
+#printContent{
+	width: 250px !important;
+	height: auto !important;
+	margin: 0 auto;
+	text-align:center;
+}
+
+/*------ zoom buttons */
+.esriSimpleSliderIncrementButton{
+	background: #fff no-repeat center;
+	background-image: url(../images/ico-plus.png);
+	border: 1px solid #b5b5b5;
+	display: block;
+	height: 27px;
+	margin-bottom: -1px;
+	position: relative;
+	width: 27px;
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;	
+}
+.esriSimpleSliderDecrementButton{
+	background: #fff no-repeat center;
+	background-image: url(../images/ico-minus.png);
+	border: 1px solid #b5b5b5;
+	display: block;
+	height: 27px;
+	margin-bottom: -1px;
+	position: relative;
+	width: 27px;
+	-webkit-border-radius: 0px 0px 4px 4px;
+	-moz-border-radius: 0px 0px 4px 4px;
+	border-radius: 0px 0px 4px 4px;
+}
+.esriSimpleSlider div{
+	width: 27px;
+	font-size:0px
+}
+.esriSimpleSlider{
+	border: 0px solid #666666;
+	background-color: #FFFFFF;
+	color: #fff;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;	
+}
+#fullExtentDiv{
+	background: no-repeat center;
+	background-image: url(../images/ico-globe.png);
+	border: 1px solid #b5b5b5;
+	display: block;
+	height: 27px;
+	margin-bottom: -1px;
+	position: relative;
+	width: 27px;
+}
+#fullExtentDiv img{
+	display:none;
+}
+.esriSimpleSliderIncrementButton:hover, .esriSimpleSliderDecrementButton:hover, #fullExtentDiv:hover{
+	z-index:10;
+	border-color:#4d4d4d;
+}
+.esriSimpleSliderVertical .esriSimpleSliderIncrementButton{
+	border-bottom:1px solid #4d4d4d;
+}
+#expand{
+	position: absolute;
+	top: 150px;
+	left: 5px;
+	height: 27px;
+	width: 27px;
+	z-index: 1000;
+}
+#zoomExpand{
+	background-image: url(../images/ico-expand.png);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	margin-top: 4px;
+	height:27px;
+	width:27px;
+	
+}
+#sources .dijitDialogPaneContent{
+	overflow:auto;
+	width: 280px;
+	height: auto;
+	max-height: 500px;
+}
+
+#searchButton {
+	position: relative;
+	top: -2px;
+    background: url("images/ico-search.png") no-repeat scroll center center rgb(77, 77, 77);
+	border: 0px none;
+	display: block;
+	float: left;
+	z-index: 100;
+	height: 24px;
+	padding: 0px;
+	
+	padding-bottom: 1px;
+	left: 304px;
+	
+	
+	overflow: hidden;
+	text-indent: 27px;
+	white-space: nowrap;
+	width: 27px;
+}
+#searchButton:hover{
+	cursor:pointer;
+}
+
+.esriSimpleSliderDecrementButton,
+.esriSimpleSliderIncrementButton {
+	border-radius: 0px !important;
+}
+
+.map-button {
+	border: 1px solid #b5b5b5;
+	box-sizing: border-box;
+	background-color: #fff;
+	position: absolute;
+	/*border-radius: 5px;*/
+	cursor: pointer;
+	height: 30px;
+	width: 30px;
+	z-index: 50;
+	right: 20px;
+}
+
+.map .connector {
+	border: 1px solid #b5b5b5;
+	background-color: #fff;
+	box-sizing: border-box;
+	border-right: none;
+	position: absolute;
+	border-left: none;
+	cursor: pointer;
+	height: 30px;
+	width: 16px;
+	right: 45px;
+	z-index: 51;
+}
+
+.map .analysis-button {
+	background: url('../images/icon_analyze.png') #FFF no-repeat center;
+	text-align: center;
+	line-height: 32px;
+	font-size: 22px;
+}
+
+.map .analysis-button,
+.map .analysis-connector {
+	cursor: pointer;
+	top: 160px;
+}
+
+.map .share-button,
+.map .share-connector {
+	cursor: pointer;
+	top: 200px;
+}
+
+.map .basemap-button,
+.map .basemap-connector {
+	cursor: pointer;
+	top: 120px;
+}
+
+.map .print-button {
+	cursor: pointer;
+	top: 240px;
+}
+
+.map .share-button {
+	background: url('../images/share-icon.png') #FFF no-repeat center;
+	background-position: -4px -1px;
+}
+
+.map .print-button {
+	background: url('../images/icon-print.png') #FFF no-repeat center;
+	background-size: 24px 18px;
+}
+
+.map .basemap-button {
+	background: url('../images/basemap.png') #FFF no-repeat center;
+	background-position: -1px -2px;
+	background-size: 30px;
+}
+
+.map-widget-container {
+	border: 1px solid #b5b5b5;
+	background-color: #FFF;
+	position: absolute;
+	border-radius: 5px;
+	z-index: 50;
+	right: 60px;
+}
+
+.analysis-controls-container {
+	width: 300px;
+	top: 140px;
+}
+
+.share-container {
+	height: 70px;
+	width: 210px;
+	top: 179px;
+}
+
+.sharing_toolbox {
+	margin: 19px 14px;
+}
+
+.basemap-container {
+	overflow-y: auto;
+	height: 400px;
+	width: 390px;
+	top: 20px;
+}
+
+.hideOnLoad {
+	display: none !important;
+}
+
+.upload-tools {
+	margin: 10px;	
+}
+
+#shapefileUpload {
+	border: none;
+}
+
+.upload-tools .dijitTextBox {
+	width: 150px;
+}
+
+.upload-tools .dijitComboBox .dijitButtonNode {
+	display: block !important;
+	height: 22px;
+}
+
+.analyze-tools,
+#activeFiresControls {
+	text-align: center;
+	margin: 15px 0;
+}
+
+.analyze-tool-button {
+	border: 1px solid #3d3d3d;
+	display: inline-block;
+	background: #3d3d3d;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 18px;
+	color: #f0ab00;
+	padding: 10px;
+	margin: 0 5px;
+	width: 100px;
+}
+
+.analyze-tool-button:hover {
+	background-color: white;
+}
+
+.fires-toolbox div {
+	border: 1px solid #b5b5b5;
+	border-radius: 5px;
+	margin: 5px auto;
+	cursor: pointer;
+	width: 150px;
+}
+.fires-toolbox div.active {
+	border-color: #f0ab00;
+	background: #3d3d3d;
+	color: #f0ab00;
+}
+
+.forest-loss-toolbox {
+	margin: 15px 0;
+}
+
+.forest-loss-toolbox table {
+	margin: 0 auto;
+}
+
+.forest-loss-toolbox select {
+	display: inline-block;
+	width: 100px;
+	margin: 8px;
+}
+
+.loss-play-button {
+	/* Play buttonby default */
+	background: url('../images/play_button.png') #FFF no-repeat center;
+	background: url('../images/play_button.svg') #FFF no-repeat center;
+	background-size: 32px;
+	position: relative;
+	cursor: pointer;
+	height: 32px;
+	width: 32px;
+	left: 10px;
+	top: 23px;
+}
+
+.loss-play-button.playing {
+	background: url('../images/stop_button.png') #FFF no-repeat center;
+	background: url('../images/stop_button.svg') #FFF no-repeat center;
+	background-size: 32px;
+}
+
+.analysis-options-select {
+	height: 30px;
+	width: 100%;
+}
+
+.customFeatureNamingDialog {
+	text-align: center;
+}
+
+.customFeatureNamingDialog .customNameForFeature {
+	margin: 0 auto;
+}
+
+.customNameDialogSubmit {
+	margin: 10px;
+}
+
+.delete-custom-feature {
+	color: rgb(240, 171, 0);
+	position: absolute;
+	line-height: 40px;
+	cursor: pointer;
+	right: 10px;
+	top: 0;
+}
+
+.delete-custom-feature:hover {
+	text-decoration: underline;
+	color: white;
+}
+
+.edit-name-icon {
+	background: url('../images/edit_icon.png') no-repeat center;
+	position: absolute;
+	cursor: pointer;
+	height: 16px;
+	width: 16px;
+	left: 10px;
+	top: 12px;
+}
+
+#newTitleInput {
+	margin: 8px 0;
+}
+
+.allContainer {
+	color: rgb(240, 171, 0);
+	margin-top: -25px;
+}
+
+.dijitAccordionTitle {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#accordionContainer .dijitAccordionTitle {
+	background: #fff url('../images/ico-carat-dropdown-open.png') 96% center no-repeat;
+}
+
+#accordionContainer .dijitAccordionTitleSelected {
+	background: #fff url('../images/ico-carat-dropdown-close.png') 96% center no-repeat;
+}
+
+
