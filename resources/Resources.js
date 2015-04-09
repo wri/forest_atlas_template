@@ -20,13 +20,18 @@
 
         downloadAll: "http://data.wri.org/forest_atlas/gab/gis_data/gab_data.zip",
 
-        geometryServiceURL: "http://gis-forestatlas.wri.org/arcgis/rest/services/Utilities/Geometry/GeometryServer",
-
         maskMapUrl: "http://gis-forest-atlas.wri.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer",
 
+        // Not in Configuration Panel
         webMapID: "10db57b5316749478d5287155760fd14",
 
+        // Not in Configuration Panel
         basemap: "national-geographic",
+        //graphics default transparency
+        // Not in Configuration Panel
+        defaultLayerTransparency: 80,
+        // Not in Configuration Panel
+        geometryServiceURL: "http://gis-forestatlas.wri.org/arcgis/rest/services/Utilities/Geometry/GeometryServer",
 
         //flag
         countryFlagRight: "280px",
@@ -44,9 +49,6 @@
 
         //shape file download
         dataDownloadURL: "http://gis-forest-atlas.wri.org/arcgis/rest/services/GAB/GABExtractDataTask/GPServer/Extract%20Data%20Task",
-
-        //graphics default transparency
-        defaultLayerTransparency: 80,
 
         // toolsContainerFlag: "no_ministry_logo_sm.png",
 

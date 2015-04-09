@@ -217,7 +217,7 @@
 		require(["root/template"],function(Template){
 
 			Template.getApplicationInformation().then(function (commonConfig) {
-				// If Config Options are Found, mix them into the main config object
+				// If Config Options are Found, make them into the main config object
 				if (commonConfig) {
 					app.config = commonConfig;
 				}
@@ -233,6 +233,10 @@
 				// We need to inject some config options in Main and app.config needs
 				// to be available before Main is required
 				require(["root/main"], function (Main) {
+
+					// Merge Resources in here and then remove all references of resources from the application
+					// Only merge in options that are undefined
+					
 					var language = "en";
 					var main = new Main(language);
 				});

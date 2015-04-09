@@ -28,6 +28,7 @@
       		"fieldName": "appLanguages",
       		"tooltip": "Choose an alternate language to have available in the application.",
       		"label": "Additional Language:",
+      		"value": "fr",
       		"options": [
       			{ "label": "French", "value": "fr" },
       			{ "label": "Spanish", "value": "es" }

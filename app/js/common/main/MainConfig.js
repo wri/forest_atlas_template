@@ -1,7 +1,7 @@
 define(
     ["declare", "res/Resources"], function(declare, resource) {
 
-        console.log(app);
+        var AGOL_CONFIG = app && app.config;
 
         var o = declare(null, {
 
@@ -47,7 +47,7 @@ define(
                             id: "mobileFlagContainer"
                         },
                         props: {
-                            href: resource.flagLinkPath,
+                            href: (AGOL_CONFIG ? AGOL_CONFIG.flagLinkPath : resource.flagLinkPath),
                             id: "mobileFlagContainerLink",
                             target: "_blank"
                         }
@@ -58,7 +58,7 @@ define(
                             id: "mobileCountryFlag"
                         },
                         props: {
-                            src: resource.flagPath,
+                            src: (AGOL_CONFIG ? AGOL_CONFIG.flagPath : resource.flagPath),
                             id: "mobileCountryFlag"
                         }
                     },{
@@ -68,7 +68,7 @@ define(
                             id: "countryFlagContainer"
                         },
                         props: {
-                            href: resource.flagLinkPath,
+                            href: (AGOL_CONFIG ? AGOL_CONFIG.flagLinkPath : resource.flagLinkPath),
                             id: "countryFlagLink",
                             target: "_blank"
                         }
@@ -79,7 +79,7 @@ define(
                             id: "countryFlag"
                         },
                         props: {
-                            src: resource.flagPath,
+                            src: (AGOL_CONFIG ? AGOL_CONFIG.flagPath : resource.flagPath),
                             id: "countryFlag"
                         }
                     }, {
@@ -88,8 +88,8 @@ define(
                         props: {
                             id: "flagTitle",
                             target: "_blank",
-                            href: resource.flagLinkPath,
-                            style: "width:" + resource.countryTextWidth + "!important;"
+                            href: (AGOL_CONFIG ? AGOL_CONFIG.flagLinkPath : resource.flagLinkPath),
+                            style: "width:" + (AGOL_CONFIG ? AGOL_CONFIG.countryTextWidth : resource.countryTextWidth) + "!important;"
                         },
                         attrs: [{
                             attr: "data-bind",
@@ -106,7 +106,7 @@ define(
         };
 
         o.initialize = function() {
-            if (null == o._instance) {
+            if (null === o._instance) {
                 o._instance = new o();
             }
             return o._instance;

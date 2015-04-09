@@ -70,8 +70,9 @@ define(
 
 
                 var webMapDefaults = mapconfig.webMapDefaults;
-                var webMapID = resource.webMapID;
-                var maskMapUrl = resource.maskMapUrl;
+                var AGOL_CONFIG = app && app.config;
+                var webMapID = (AGOL_CONFIG && AGOL_CONFIG.webMapID) || resource.webMapID;
+                var maskMapUrl = (AGOL_CONFIG ? AGOL_CONFIG.maskMapUrl : resource.maskMapUrl);
                 var vm = MainModel.getVM();
 
                 arcgisUtils.createMap(webMapID, "map", {
@@ -247,7 +248,7 @@ define(
                         visible: false
                     });
 
-                    var maskLayer = new ArcGISTiledMapServiceLayer(resource.maskMapUrl, {
+                    var maskLayer = new ArcGISTiledMapServiceLayer(maskMapUrl, {
                         id: "maskLayer",
                         opacity: 0.5
                     });

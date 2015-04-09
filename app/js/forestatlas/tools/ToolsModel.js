@@ -7,7 +7,6 @@ define(
             constructor: function(domID, response) {
 
                 var toolsconfig = Config.getConfig();
-                //var resource = resources.initialize();
 
                 var id = domID;
                 o._vm = {};
@@ -18,16 +17,13 @@ define(
 
                     function(Events, MainModel, topic) {
                         var mainmodel = MainModel.getVM();
-                        console.log("tools model------------->");
-                        //console.log(mainmodel.currentLanguage);
-                        //console.log(mainmodel);
+                        var AGOL_CONFIG = app && app.config;
+                        var title = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[language].title : resource.appLanguages[language].title);
+                        var flagTitle = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[language].flagTitle : resource.appLanguages[language].flagTitle);
 
                         var currentLanguage = mainmodel.currentLanguage();
                         var translation = languages[currentLanguage];
                         var toolsevents = Events.getEvents();
-                        //console.log(resource[currentLanguage].speciesTitle);
-                        //o._vm.speciesTitle=ko.observable(resource[currentLanguage].speciesTitle);//favoritephotos
-                        //o._vm.buttonTest=ko.observable(resource[currentLanguage].buttonTest);//favoritephotos
 
                         o._vm.tabBasemapTitle = ko.observable(translation.tabBasemapTitle);
                         o._vm.tabLegendTitle = ko.observable(translation.tabLegendTitle);
@@ -35,8 +31,8 @@ define(
                         o._vm.buttonLayersText = ko.observable(translation.buttonLayersText);
                         o._vm.closeButtonText = ko.observable(translation.closeButtonText);
 
-                        o._vm.title = ko.observable(resource.appLanguages[currentLanguage].title);
-                        o._vm.flagTitle = ko.observable(resource.appLanguages[currentLanguage].flagTitle);
+                        o._vm.title = ko.observable(title);
+                        o._vm.flagTitle = ko.observable(flagTitle);
 
                         o._vm.printDialog = ko.observable(translation.printDialog);
 
@@ -76,7 +72,8 @@ define(
                         o._vm.originalEditableGraphic = ko.observable({});
 
                         //about link
-                        o._vm.aboutLink = ko.observable(resource.aboutLinkUrl);
+                        var aboutLinkURL = AGOL_CONFIG ? AGOL_CONFIG.aboutLinkUrl : resource.aboutLinkUrl;
+                        o._vm.aboutLink = ko.observable(aboutLinkURL);
 
                         // Buttons on the Map
                         o._vm.basemapGalleryVisible = ko.observable(false);

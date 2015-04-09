@@ -6,6 +6,10 @@ define(
 
             constructor: function() {
 
+                var AGOL_CONFIG = app && app.config;
+
+                var webMapID = (AGOL_CONFIG && AGOL_CONFIG.webMapID) || resource.webMapID;
+
                 o._config = {
                     // proxy:"/proxy/proxy.php",
                     proxy: "/proxy/proxy.ashx",
@@ -24,7 +28,7 @@ define(
                         'http://gis-potico.wri.org'
                     ],
 
-                    webMapID: resource.webMapID,
+                    webMapID: webMapID,
 
                     portalGenerateFeaturesURL: "http://www.arcgis.com/sharing/rest/content/features/generate",
 

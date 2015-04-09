@@ -8,14 +8,13 @@ define(
             constructor: function(domID, appType, langType) {
 
                 var id = domID;
-                var appType = appType;
-                var langType = langType;
                 o._vm = {};
 
                 require(["ko", "mainconfig", "dom", "topic", "mainevents", "keyscontroller", "res/Resources", "root/languages"],
 
                     function(ko, Config, dom, topic, Events, keyscontroller, resource, languages) {
 
+                        var AGOL_CONFIG = app && app.config;
 
                         var mainconfig = Config.getConfig();
                         var mainevents = Events.getEvents();
@@ -35,11 +34,15 @@ define(
                         o._vm.currentSelectedLayers = ko.observableArray([]);
 
                         //top titles
-                        o._vm.title = ko.observable(resource.appLanguages[language].title);
-                        o._vm.flagTitle = ko.observable(resource.appLanguages[language].flagTitle);
+                        var title = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[language].title : resource.appLanguages[language].title);
+                        var flagTitle = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[language].flagTitle : resource.appLanguages[language].flagTitle);
+                        var flagPath = (AGOL_CONFIG ? AGOL_CONFIG.flagPath : resource.flagPath);
+                        var flagName = (AGOL_CONFIG ? AGOL_CONFIG.flagName : resource.flagName);
 
-                        o._vm.flagPath = ko.observable(resource.flagPath);
-                        o._vm.flagName = ko.observable(resource.flagName);
+                        o._vm.title = ko.observable(title);
+                        o._vm.flagTitle = ko.observable(flagTitle);
+                        o._vm.flagPath = ko.observable(flagPath);
+                        o._vm.flagName = ko.observable(flagName);
 
                         //nav window titles
                         o._vm.about = ko.observable(translation.about);
@@ -64,16 +67,7 @@ define(
 
                         //basemap titles
                         o._vm.basemapTitles = ko.observable(translation.basemapTitles);
-                        /*                        o._vm.basemapTitle0 = ko.observable(translation.basemapTitle0);
-                        o._vm.basemapTitle1 = ko.observable(translation.basemapTitle1);
-                        o._vm.basemapTitle2 = ko.observable(translation.basemapTitle2);
-                        o._vm.basemapTitle3 = ko.observable(translation.basemapTitle3);
-                        o._vm.basemapTitle4 = ko.observable(translation.basemapTitle4);
-                        o._vm.basemapTitle5 = ko.observable(translation.basemapTitle5);
-                        o._vm.basemapTitle6 = ko.observable(translation.basemapTitle6);
-                        o._vm.basemapTitle7 = ko.observable(translation.basemapTitle7);
-                        o._vm.basemapTitle8 = ko.observable(translation.basemapTitle8);
-*/
+
                         // Apply Bindings
                         o._vm.currentActiveLayer = ko.observable();
                         o._vm.sourcesArray = ko.observableArray([]);
@@ -93,14 +87,13 @@ define(
         };
 
         o.initialize = function(domID, appType, langType) {
-            if (null == o._instance) {
+            if (null === o._instance) {
                 o._instance = new o(domID, appType, langType);
             }
             return o._instance;
         };
 
         o.destroy = function() {
-            //  console.log("destroy me");
             delete o._instance;
         };
 

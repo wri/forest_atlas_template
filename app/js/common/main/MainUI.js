@@ -25,13 +25,16 @@ define(
                 var mainconfig = Config.getConfig();
                 var uifactory = UIFactory.initialize();
                 var langType = langType;
+                var AGOL_CONFIG = app && app.config;
 
                 arrayUtil.forEach(mainconfig.ui, function(item) {
                     uifactory.create(item);
                 });
                 topic.publish(mainevents.UIcreationComplete, appType, langType);
 
-                for (var lang in resource.appLanguages) {
+                var languages = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages : resource.appLanguages);
+
+                for (var lang in languages) {
                     var languageButton = domConstruct.create("a", languages[lang].languageButtonProps, "languageToggle");
                     on(languageButton, "click", function() {
                         topic.publish(mainevents.changeLanguage, this.value);

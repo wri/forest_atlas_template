@@ -55,17 +55,16 @@ define(
 
             constructor: function() {
 
+                var AGOL_CONFIG = app && app.config;
                 var toolsevents = Events.getEvents();
                 var toolsconfig = Config.getConfig();
                 var mainmodel = MainModel.getVM();
                 var mapconfig = MapConfig.getConfig();
-                // var resource = resources.initialize();
                 var attributes;
                 var pdfValue;
                 var language = "en";
                 var map = MapUI.getMap();
                 var mapResponse = MapUI.getWebMapResponse();
-                //Model.initialize();
 
                 //create UI through Factory
                 var uifactory = UIFactory.initialize();
@@ -115,7 +114,7 @@ define(
                 var dynamicLayersArray = [];
                 var index = 0;
 
-                var layersToShow = resource.layersToShow;
+                var layersToShow = (AGOL_CONFIG ? AGOL_CONFIG.layersToShow : resource.layersToShow);
 
                 //mapLayerLangId == current language layer
                 arrayUtil.forEach(map.layerIds, function(layerId) {
@@ -414,7 +413,7 @@ define(
 
                     attr.set(dom.byId("data_title"), "data-bind", "{text:downloadData}");
                     var requestHandle = esriRequest({
-                        "url": resource.dataDownloadURL,
+                        "url": (AGOL_CONFIG ? AGOL_CONFIG.dataDownloadURL : resource.dataDownloadURL),
                         "content": {
                             "f": "json"
                         },
@@ -487,7 +486,7 @@ define(
                         var dataTitleDiv = domContruct.create("a", {
                             id: "downloadAllLink",
                             "class": "links",
-                            "href": resource.downloadAll,
+                            "href": (AGOL_CONFIG ? AGOL_CONFIG.downloadAll : resource.downloadAll),
                             "innerHTML": "Download All shapefiles"
                         }, "listItemAll");
 
@@ -559,9 +558,6 @@ define(
 
                 // create an array of objects that will be used to create print templates
 
-                // var resource = resources.initialize();
-
-
                 var options = {
                     //legendLayers: [3,4,5],
                     scalebarUnit: "Kilometers",
@@ -603,8 +599,7 @@ define(
                 var printDijit = new Print({
                     map: map,
                     templates: templates,
-
-                    url: resource.printURL
+                    url: (AGOL_CONFIG ? AGOL_CONFIG.printURL : resource.printURL)
                 }, dom.byId("printContent"));
 
 
@@ -618,13 +613,17 @@ define(
 
                 on(dom.byId("print-button"), "click", function() {
 
+                    var country = (AGOL_CONFIG ? AGOL_CONFIG.country : resource.country); 
+                    var title = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[mainmodel.currentLanguage()].title : resource.appLanguages[mainmodel.currentLanguage()].title);
+                    var subtitle = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[mainmodel.currentLanguage()].flagTitle : resource.appLanguages[mainmodel.currentLanguage()].flagTitle);
+
                     arrayUtil.forEach(printDijit.templates, function(printTemplate) {
                         if (printTemplate.format == "pdf") {
-                            printTemplate.layout = resource.country + "_" + printTemplate.layout.split("_")[1];
+                            printTemplate.layout = country + "_" + printTemplate.layout.split("_")[1];
                         }
 
-                        printTemplate.layoutOptions.titleText = resource.appLanguages[mainmodel.currentLanguage()].title;
-                        printTemplate.layoutOptions.customTextElements[0].subtitle = resource.appLanguages[mainmodel.currentLanguage()].flagTitle;
+                        printTemplate.layoutOptions.titleText = title;
+                        printTemplate.layoutOptions.customTextElements[0].subtitle = subtitle;
 
                     });
 

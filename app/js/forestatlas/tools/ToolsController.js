@@ -497,14 +497,16 @@ define(
 
             dataDownload: function(layer, layerNum) {
 
-                //var resource = resources.initialize();
+                var AGOL_CONFIG = app && app.config;
+                var dataDownloadURL = (AGOL_CONFIG ? AGOL_CONFIG.dataDownloadURL : resource.dataDownloadURL);
+
                 if (layerNum != "All") {
 
                     var write = dom.byId("listItem" + layerNum);
                     write.style.background = "url('../app/images/ajax-loader.gif') no-repeat right";
 
                     require(["dojo/dom", "dojo/_base/array", "esri/tasks/Geoprocessor"], function(dom, arrayUtil, Geoprocessor) {
-                        gp = new Geoprocessor(resource.dataDownloadURL);
+                        gp = new Geoprocessor(dataDownloadURL);
                         gp.setOutSpatialReference({
                             wkid: 102100
                         });
@@ -563,7 +565,7 @@ define(
                     var write = dom.byId("allItem");
                     write.style.background = "url('../app/images/ajax-loader.gif') no-repeat right";
                     require(["dojo/dom", "esri/tasks/Geoprocessor"], function(dom, Geoprocessor) {
-                        gp = new Geoprocessor(resource.dataDownloadURL);
+                        gp = new Geoprocessor(dataDownloadURL);
                         gp.setOutSpatialReference({
                             wkid: 102100
                         });
@@ -1123,7 +1125,6 @@ define(
                 //var extentsLatLon = webMercatorUtils.webMercatorToGeographic(extents);
                 var basemap = registry.byId("basemapGallery").getSelected();
 
-                //var resource = resources.initialize();
                 //alert(basemap.id);
 
                 var basemapID; //"national-geographic";
@@ -1230,7 +1231,6 @@ define(
                 }
 
 
-                //var resource = resources.initialize();
                 var legislative = dom.byId("legislative"),
                     pdfValue,
                     name;
@@ -1238,6 +1238,10 @@ define(
 
                 if (feature !== undefined) {
                     var attributes = feature.attributes;
+                    var AGOL_CONFIG = app && app.config;
+                    var pdfURL = (AGOL_CONFIG ? AGOL_CONFIG.pdfURL : resource.pdfURL);
+
+
                     if (legislative) {
                         legislative.style.display = "none";
                     }
@@ -1254,7 +1258,7 @@ define(
                             } else {
                                 if (legislative) {
                                     legislative.style.display = "block";
-                                    legislative.href = resource.pdfURL + value + ".pdf";
+                                    legislative.href = pdfURL + value + ".pdf";
                                 }
                                 pdfValue = value;
                             }
@@ -1284,7 +1288,7 @@ define(
                             } else {
                                 if (legislative) {
                                     dom.byId("legislative").style.display = "block";
-                                    legislative.href = resource.pdfURL + value + ".pdf";
+                                    legislative.href = pdfURL + value + ".pdf";
                                 }
                             }
                         }

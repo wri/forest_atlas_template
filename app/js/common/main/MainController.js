@@ -22,7 +22,8 @@ define(
         return declare(null, {
 
             changeTitle: function(language) {
-                var title = resource.appLanguages[language].title;
+                var AGOL_CONFIG = app && app.config;
+                var title = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[language].title : resource.appLanguages[language].title);
                 window.document.title = title;
             },
 
@@ -42,14 +43,13 @@ define(
             changeLanguage: function(value) {
 
                 this.changeTitle(value);
+                var AGOL_CONFIG = app && app.config;
 
-                //var resource = resources.initialize();
                 var newLanguage = value;
                 var translation = languages[newLanguage];
                 var mainmodel = Model.getVM();
                 var prevLanguage = mainmodel.currentLanguage();
                 var identifyParams, IdentifyTask;
-                //console.log(resource);
 
                 // Update the Hash in the URL
                 var currentHash = hash();
@@ -58,8 +58,11 @@ define(
                 hash(ioQuery.objectToQuery(hashObj));
 
                 //Change common elements here
-                mainmodel.title(resource.appLanguages[newLanguage].title);
-                mainmodel.flagTitle(resource.appLanguages[newLanguage].flagTitle);
+                var title = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[newLanguage].title : resource.appLanguages[newLanguage].title);
+                var flagTitle = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[newLanguage].flagTitle : resource.appLanguages[newLanguage].flagTitle);
+
+                mainmodel.title(title);
+                mainmodel.flagTitle(flagTitle);
 
 
 
