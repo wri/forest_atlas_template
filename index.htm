@@ -211,9 +211,20 @@
 	<script type="text/javascript" src="http://js.arcgis.com/3.13"></script>
 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript">
-		require(["root/main"],function(Main){				
-			var language = "fr";
-			var main = new Main(language);
+		require(["root/template","root/main"],function(Template, Main){
+
+			Template.getApplicationInformation().then(function (commonConfig) {
+				console.log(commonConfig);
+				launch();
+			}, function (error) {
+				launch();
+			});
+
+
+			function launch () {
+				var language = "fr";
+				var main = new Main(language);
+			}
 		});
 	</script>	
 	<script type="text/javascript">

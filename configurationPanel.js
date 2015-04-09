@@ -91,7 +91,7 @@
       	{
       		"type": "string",
       		"fieldName": "flagLinkPath",
-      		"label": "URL for the flag:",
+      		"label": "URL to redirect to when the flag is clicked:",
       		"tooltip": "URL to take the user to when they click the flag"
       	},
       	{

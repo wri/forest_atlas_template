@@ -32,7 +32,6 @@
         countryFlagRight: "280px",
         countryTextWidth: "260px",
         flagPath: "app/images/GAB_flag_new.png",
-        //flagName: "GAB_flag_new.png",
         flagLinkPath: "http://www.eaux-forets.gouv.ga/",
 
         //legislative text
