@@ -1,11 +1,11 @@
 define(
     ["declare", "res/Resources"], function(declare, resource) {
 
-        var AGOL_CONFIG = app && app.config;
-
         var o = declare(null, {
 
             constructor: function() {
+
+                var AGOL_CONFIG = app && app.config;
 
                 o._config = {
 
