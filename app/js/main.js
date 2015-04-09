@@ -17,7 +17,6 @@ define(
         "dijit/TitlePane",
         "dijit/form/SimpleTextarea",
         "dijit/Dialog",
-
         "dojo/domReady!"
     ], function(declare, mparser, mainevents, mainconfig, mainui, hashcontroller, hash, ioQuery) {
 

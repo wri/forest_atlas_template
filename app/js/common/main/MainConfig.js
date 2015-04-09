@@ -1,6 +1,8 @@
 define(
     ["declare", "res/Resources"], function(declare, resource) {
 
+        console.log(app);
+
         var o = declare(null, {
 
             constructor: function() {

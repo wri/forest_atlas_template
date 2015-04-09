@@ -211,10 +211,17 @@
 	<script type="text/javascript" src="http://js.arcgis.com/3.13"></script>
 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript">
-		require(["root/template","root/main"],function(Template, Main){
+		
+		var app = {};
+
+		require(["root/template"],function(Template){
 
 			Template.getApplicationInformation().then(function (commonConfig) {
-				console.log(commonConfig);
+				// If Config Options are Found, mix them into the main config object
+				if (commonConfig) {
+					app.config = commonConfig;
+				}
+
 				launch();
 			}, function (error) {
 				launch();
@@ -222,8 +229,13 @@
 
 
 			function launch () {
-				var language = "fr";
-				var main = new Main(language);
+				// This is necessary due to the way the original developer set up the project
+				// We need to inject some config options in Main and app.config needs
+				// to be available before Main is required
+				require(["root/main"], function (Main) {
+					var language = "en";
+					var main = new Main(language);
+				});
 			}
 		});
 	</script>	
