@@ -22,7 +22,8 @@ define([
 			arcgisUtils.getItem(appid).then(function (res) {
 				// Pull All Relevant Config Values Here
 				var commonConfig = {},
-					values = res.itemData && res.itemData.values;
+					values = res.itemData && res.itemData.values,
+					language;
 
 				if (values) {
 					// Country Code
@@ -36,7 +37,9 @@ define([
 						}
 					};
 					// Add Additional Languages
-					commonConfig.appLanguages[values.appLanguages] = {
+					// The default id french, or fr, so test for a valid value first and then use that if necessary
+					language = ((values.appLanguages !== undefined && values.appLanguages !== '') ? values.appLanguages : 'fr');
+					commonConfig.appLanguages[language] = {
 						"title": values.languageTitle,
 						"flagTitle": values.languageFlagTitle
 					};
