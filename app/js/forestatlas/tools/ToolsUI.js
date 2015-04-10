@@ -43,19 +43,16 @@ define(
         "legendlayer",
         "esrirequest",
         "tiledmap",
-        "res/Resources",
         "ko",
         "connect",
         "dojo/domReady!"
-    ], function(declare, topic, on, all, domContruct, query, Query, FeatureLayer, Deferred, aspect, arrayUtil, registry, UIFactory, Config, Events, Model, MapConfig, InfoTemplate, dom, ready, attr, domClass, string, MapUI, MainModel, BasemapGallery, Graphic, arcgisUtils, legendDijit, Dialog, TooltipDialog, popup, PrintTemplate, HorizontalSlider, Scalebar, domStyle, contentPane, CheckBox, Memory, ComboBox, Print, LegendLayer, esriRequest, ArcGISTiledMapServiceLayer, resource, knockout, connect) {
+    ], function (declare, topic, on, all, domContruct, query, Query, FeatureLayer, Deferred, aspect, arrayUtil, registry, UIFactory, Config, Events, Model, MapConfig, InfoTemplate, dom, ready, attr, domClass, string, MapUI, MainModel, BasemapGallery, Graphic, arcgisUtils, legendDijit, Dialog, TooltipDialog, popup, PrintTemplate, HorizontalSlider, Scalebar, domStyle, contentPane, CheckBox, Memory, ComboBox, Print, LegendLayer, esriRequest, ArcGISTiledMapServiceLayer, knockout, connect) {
 
 
 
         var o = declare(null, {
 
             constructor: function() {
-
-                var AGOL_CONFIG = app && app.config;
                 var toolsevents = Events.getEvents();
                 var toolsconfig = Config.getConfig();
                 var mainmodel = MainModel.getVM();
@@ -114,7 +111,7 @@ define(
                 var dynamicLayersArray = [];
                 var index = 0;
 
-                var layersToShow = (AGOL_CONFIG ? AGOL_CONFIG.layersToShow : resource.layersToShow);
+                var layersToShow = app.config.layersToShow;
 
                 //mapLayerLangId == current language layer
                 arrayUtil.forEach(map.layerIds, function(layerId) {
@@ -251,7 +248,7 @@ define(
                     var slider = new HorizontalSlider({
                         name: "slider" + i,
                         arrayLayerValue: i,
-                        value: resource.defaultLayerTransparency,
+                        value: app.config.defaultLayerTransparency,
                         minimum: 0,
                         maximum: 100,
                         intermediateChanges: false,
@@ -349,7 +346,7 @@ define(
                         //add transparency sliders
                         var slider = new HorizontalSlider({
                             name: layerParams.idPrefix + "slider" + i,
-                            value: resource.defaultLayerTransparency,
+                            value: app.config.defaultLayerTransparency,
                             layerId: layer.id,
                             minimum: 0,
                             maximum: 100,
@@ -375,7 +372,7 @@ define(
                 generateUIForLayers(toolsconfig.forestLossLayers);
                 generateUIForLayers(toolsconfig.forestCoverLayers);
 
-                topic.publish(toolsevents.transparencyChange, mapLanguageLayerIds, resource.defaultLayerTransparency, visLayersArr);
+                topic.publish(toolsevents.transparencyChange, mapLanguageLayerIds, app.config.defaultLayerTransparency, visLayersArr);
 
                 var sources = mainmodel.sourcesArray();
                 var sourceContent;
@@ -410,7 +407,7 @@ define(
 
                     attr.set(dom.byId("data_title"), "data-bind", "{text:downloadData}");
                     var requestHandle = esriRequest({
-                        "url": (AGOL_CONFIG ? AGOL_CONFIG.dataDownloadURL : resource.dataDownloadURL),
+                        "url": app.config.dataDownloadURL,
                         "content": {
                             "f": "json"
                         },
@@ -482,7 +479,7 @@ define(
                         var dataTitleDiv = domContruct.create("a", {
                             id: "downloadAllLink",
                             "class": "links",
-                            "href": (AGOL_CONFIG ? AGOL_CONFIG.downloadAll : resource.downloadAll),
+                            "href": app.config.downloadAll,
                             "innerHTML": "Download All shapefiles"
                         }, "listItemAll");
 
@@ -595,7 +592,7 @@ define(
                 var printDijit = new Print({
                     map: map,
                     templates: templates,
-                    url: (AGOL_CONFIG ? AGOL_CONFIG.printURL : resource.printURL)
+                    url: app.config.printURL
                 }, dom.byId("printContent"));
 
 
@@ -609,9 +606,9 @@ define(
 
                 on(dom.byId("print-button"), "click", function() {
 
-                    var country = (AGOL_CONFIG ? AGOL_CONFIG.country : resource.country); 
-                    var title = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[mainmodel.currentLanguage()].title : resource.appLanguages[mainmodel.currentLanguage()].title);
-                    var subtitle = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[mainmodel.currentLanguage()].flagTitle : resource.appLanguages[mainmodel.currentLanguage()].flagTitle);
+                    var country = app.config.country;
+                    var title = app.config.appLanguages[mainmodel.currentLanguage()].title;
+                    var subtitle = app.config.appLanguages[mainmodel.currentLanguage()].flagTitle;
 
                     arrayUtil.forEach(printDijit.templates, function(printTemplate) {
                         if (printTemplate.format == "pdf") {

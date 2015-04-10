@@ -1,14 +1,12 @@
 define(
 
-    ["declare", "res/Resources"], function(declare, resource, Events) {
+    ["declare"], function(declare) {
 
         var o = declare(null, {
 
             constructor: function() {
 
-                var AGOL_CONFIG = app && app.config;
-
-                var webMapID = (AGOL_CONFIG && AGOL_CONFIG.webMapID) || resource.webMapID;
+                var webMapID = app.config.webMapID;
 
                 o._config = {
                     // proxy:"/proxy/proxy.php",
@@ -21,7 +19,7 @@ define(
                     webMapDefaults: {
                         ignorePopups: false,
 
-                        geometryServiceURL: resource.geometryServiceURL
+                        geometryServiceURL: app.config.geometryServiceURL
                     },
 
                     corsEnabledServers: [

@@ -5,7 +5,6 @@ define(
         "dom",
         "dialog",
         "aspect",
-        "res/Resources",
         "root/languages",
         "mainconfig",
         "mainevents",
@@ -15,7 +14,7 @@ define(
         "registry",
         "construct",
         "ready"
-    ], function(declare, topic, on, dom, Dialog, aspect, resource, languages, Config, Events, arrayUtil, query, UIFactory, registry, domConstruct, ready) {
+    ], function(declare, topic, on, dom, Dialog, aspect, languages, Config, Events, arrayUtil, query, UIFactory, registry, domConstruct, ready) {
 
         var o = declare(null, {
 
@@ -24,15 +23,13 @@ define(
                 var mainevents = Events.getEvents();
                 var mainconfig = Config.getConfig();
                 var uifactory = UIFactory.initialize();
-                var langType = langType;
-                var AGOL_CONFIG = app && app.config;
 
                 arrayUtil.forEach(mainconfig.ui, function(item) {
                     uifactory.create(item);
                 });
                 topic.publish(mainevents.UIcreationComplete, appType, langType);
 
-                var configuredLanguages = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages : resource.appLanguages);
+                var configuredLanguages = app.config.appLanguages;
 
                 for (var lang in configuredLanguages) {
                     var languageButton = domConstruct.create("a", languages[lang].languageButtonProps, "languageToggle");

@@ -31,7 +31,6 @@ define(
         "keys",
         "basemaplayer",
         "tiledmap",
-        "res/Resources",
         "esri/dijit/Popup",
         "esri/config",
         "atlas/tools/Helper",
@@ -40,7 +39,7 @@ define(
         "esri/layers/ImageServiceParameters",
         "esri/layers/ArcGISImageServiceLayer",
         "esri/layers/ArcGISDynamicMapServiceLayer"
-    ], function (declare, hash, ioQuery, Map, arcgisUtils, legendDijit, identityManager, MainModel, topic, domConstruct, query, on, registry, arrayUtil, UIFactory, all, aspect, connect, Config, Events, SimpleRenderer, SimpleFillSymbol, SimpleLineSymbol, SimpleMarkerSymbol, Color, GraphicsLayer, Extent, SpatialReference, Keys, BasemapLayer, ArcGISTiledMapServiceLayer, resource, Popup, esriConfig, Helper, RasterFunction, ImageParameters, ImageServiceParameters, ArcGISImageServiceLayer, ArcGISDynamicMapServiceLayer) {
+    ], function (declare, hash, ioQuery, Map, arcgisUtils, legendDijit, identityManager, MainModel, topic, domConstruct, query, on, registry, arrayUtil, UIFactory, all, aspect, connect, Config, Events, SimpleRenderer, SimpleFillSymbol, SimpleLineSymbol, SimpleMarkerSymbol, Color, GraphicsLayer, Extent, SpatialReference, Keys, BasemapLayer, ArcGISTiledMapServiceLayer, Popup, esriConfig, Helper, RasterFunction, ImageParameters, ImageServiceParameters, ArcGISImageServiceLayer, ArcGISDynamicMapServiceLayer) {
 
         var o = declare(null, {
 
@@ -70,9 +69,8 @@ define(
 
 
                 var webMapDefaults = mapconfig.webMapDefaults;
-                var AGOL_CONFIG = app && app.config;
-                var webMapID = (AGOL_CONFIG && AGOL_CONFIG.webMapID) || resource.webMapID;
-                var maskMapUrl = (AGOL_CONFIG ? AGOL_CONFIG.maskMapUrl : resource.maskMapUrl);
+                var webMapID = app.config.webMapID;
+                var maskMapUrl = app.config.maskMapUrl;
                 var vm = MainModel.getVM();
 
                 arcgisUtils.createMap(webMapID, "map", {
@@ -157,7 +155,7 @@ define(
 
                     document.getElementById('infoWindowData').appendChild(frag);
 
-                    var opacity = (resource.defaultLayerTransparency / 100);
+                    var opacity = (app.config.defaultLayerTransparency / 100);
 
                     var lossParams = new ImageServiceParameters();
                     lossParams.renderingRule = new RasterFunction(mapconfig.forectCoverLoss.rasterFunction);

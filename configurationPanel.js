@@ -122,5 +122,10 @@
 
       ]
     }
-  ]
+  ],
+  "values": {
+    "appLanguages": "fr",
+    "countryFlagRight": "280",
+   	"countryTextWidth": "260"
+  }
 }

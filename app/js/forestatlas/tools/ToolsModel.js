@@ -1,6 +1,6 @@
 define(
-    ["declare", "ko", "dom", "topic", "toolsconfig", "memory", "number", "array", "res/Resources", "root/languages", "query", "attr"],
-    function(declare, ko, dom, topic, Config, Memory, number, arrayUtil, resource, languages, query, attr) {
+    ["declare", "ko", "dom", "topic", "toolsconfig", "memory", "number", "array", "root/languages", "query", "attr"],
+    function(declare, ko, dom, topic, Config, Memory, number, arrayUtil, languages, query, attr) {
         var o = declare(null, {
 
 
@@ -17,12 +17,10 @@ define(
 
                     function(Events, MainModel, topic) {
                         var mainmodel = MainModel.getVM();
-                        var AGOL_CONFIG = app && app.config;
                         var currentLanguage = mainmodel.currentLanguage();
 
-                        
-                        var title = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[currentLanguage].title : resource.appLanguages[currentLanguage].title);
-                        var flagTitle = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[currentLanguage].flagTitle : resource.appLanguages[currentLanguage].flagTitle);
+                        var title = app.config.appLanguages[currentLanguage].title;
+                        var flagTitle = app.config.appLanguages[currentLanguage].flagTitle;
 
                         var translation = languages[currentLanguage];
                         var toolsevents = Events.getEvents();
@@ -74,7 +72,7 @@ define(
                         o._vm.originalEditableGraphic = ko.observable({});
 
                         //about link
-                        var aboutLinkURL = AGOL_CONFIG ? AGOL_CONFIG.aboutLinkUrl : resource.aboutLinkUrl;
+                        var aboutLinkURL = app.config.aboutLinkUrl;
                         o._vm.aboutLink = ko.observable(aboutLinkURL);
 
                         // Buttons on the Map

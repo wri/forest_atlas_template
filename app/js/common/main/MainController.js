@@ -1,5 +1,5 @@
 define(
-    ["declare", "res/Resources",
+    ["declare",
         "mainmodel",
         "mainconfig",
         "registry",
@@ -15,15 +15,14 @@ define(
         "dom",
         "root/languages",
         "ioquery"
-    ], function(declare, resource, Model, Config, registry, topic, hash, all, string, domClass, on, FeatureLayer, queryTask, query, dom, languages, ioQuery) {
+    ], function(declare, Model, Config, registry, topic, hash, all, string, domClass, on, FeatureLayer, queryTask, query, dom, languages, ioQuery) {
         var appType = "";
         var langType = "";
 
         return declare(null, {
 
             changeTitle: function(language) {
-                var AGOL_CONFIG = app && app.config;
-                var title = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[language].title : resource.appLanguages[language].title);
+                var title = app.config.appLanguages[language].title;
                 window.document.title = title;
             },
 
@@ -43,7 +42,6 @@ define(
             changeLanguage: function(value) {
 
                 this.changeTitle(value);
-                var AGOL_CONFIG = app && app.config;
 
                 var newLanguage = value;
                 var translation = languages[newLanguage];
@@ -58,8 +56,8 @@ define(
                 hash(ioQuery.objectToQuery(hashObj));
 
                 //Change common elements here
-                var title = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[newLanguage].title : resource.appLanguages[newLanguage].title);
-                var flagTitle = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[newLanguage].flagTitle : resource.appLanguages[newLanguage].flagTitle);
+                var title = app.config.appLanguages[newLanguage].title;
+                var flagTitle = app.config.appLanguages[newLanguage].flagTitle;
 
                 mainmodel.title(title);
                 mainmodel.flagTitle(flagTitle);

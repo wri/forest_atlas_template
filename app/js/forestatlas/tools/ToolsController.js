@@ -58,12 +58,11 @@ define(
         "registry",
         "esrirequest",
         "tiledmap",
-        "res/Resources",
         "arcgisutil",
         "atlas/tools/DrawTools",
         "atlas/tools/Uploader",
         "atlas/tools/Helper"
-    ], function(declare, hash, ioQuery, Model, MapModel, MapConfig, Config, registry, style, dom, arrayUtil, ComboBox, MenuItem, MenuSeparator, Memory, domClass, query, FindTask, FindParameters, number, all, string, topic, MainModel, cookie, all, win, MapUI, Grid, ItemFileWriteStore, UIFactory, domContruct, domAttr, Query, QueryTask, on, connect, Graphic, Edit, Draw, UndoManager, Delete, Update, Add, AttachmentEditor, Memory, FilteringSelect, ScreenUtils, Extent, ScreenPoint, dynamicMapLayer, LayerDrawingOptions, FeatureLayer, webMercatorUtils, ioQuery, registry, esriRequest, ArcGISTiledMapServiceLayer, resource, arcgisUtils, DrawTools, Uploader, Helper) {
+    ], function (declare, hash, ioQuery, Model, MapModel, MapConfig, Config, registry, style, dom, arrayUtil, ComboBox, MenuItem, MenuSeparator, Memory, domClass, query, FindTask, FindParameters, number, all, string, topic, MainModel, cookie, all, win, MapUI, Grid, ItemFileWriteStore, UIFactory, domContruct, domAttr, Query, QueryTask, on, connect, Graphic, Edit, Draw, UndoManager, Delete, Update, Add, AttachmentEditor, Memory, FilteringSelect, ScreenUtils, Extent, ScreenPoint, dynamicMapLayer, LayerDrawingOptions, FeatureLayer, webMercatorUtils, ioQuery, registry, esriRequest, ArcGISTiledMapServiceLayer, arcgisUtils, DrawTools, Uploader, Helper) {
 
         return declare(null, {
 
@@ -497,8 +496,7 @@ define(
 
             dataDownload: function(layer, layerNum) {
 
-                var AGOL_CONFIG = app && app.config;
-                var dataDownloadURL = (AGOL_CONFIG ? AGOL_CONFIG.dataDownloadURL : resource.dataDownloadURL);
+                var dataDownloadURL = app.config.dataDownloadURL;
 
                 if (layerNum != "All") {
 
@@ -1173,7 +1171,7 @@ define(
                             break;
                     }
                 } else {
-                    basemapID = resource.basemap;
+                    basemapID = app.config.basemap;
                 }
                 var url = layer.url;
                 var urlSplit = url.split("/");
@@ -1238,8 +1236,7 @@ define(
 
                 if (feature !== undefined) {
                     var attributes = feature.attributes;
-                    var AGOL_CONFIG = app && app.config;
-                    var pdfURL = (AGOL_CONFIG ? AGOL_CONFIG.pdfURL : resource.pdfURL);
+                    var pdfURL = app.config.pdfURL;
 
 
                     if (legislative) {

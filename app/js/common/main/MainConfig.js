@@ -1,14 +1,13 @@
 define(
-    ["declare", "res/Resources"], function(declare, resource) {
+    ["declare"], function(declare) {
 
         var o = declare(null, {
 
             constructor: function() {
 
-                var AGOL_CONFIG = app && app.config;
-                var flagLinkPath = (AGOL_CONFIG ? AGOL_CONFIG.flagLinkPath : resource.flagLinkPath);
-                var flagPath = (AGOL_CONFIG ? AGOL_CONFIG.flagPath : resource.flagPath);
-                var countryTextWidth = (AGOL_CONFIG ? AGOL_CONFIG.countryTextWidth : resource.countryTextWidth);
+                var flagLinkPath = app.config.flagLinkPath;
+                var flagPath = app.config.flagPath;
+                var countryTextWidth = app.config.countryTextWidth;
 
                 o._config = {
 

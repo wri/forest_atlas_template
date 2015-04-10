@@ -10,11 +10,9 @@ define(
                 var id = domID;
                 o._vm = {};
 
-                require(["ko", "mainconfig", "dom", "topic", "mainevents", "keyscontroller", "res/Resources", "root/languages"],
+                require(["ko", "mainconfig", "dom", "topic", "mainevents", "keyscontroller", "root/languages"],
 
-                    function(ko, Config, dom, topic, Events, keyscontroller, resource, languages) {
-
-                        var AGOL_CONFIG = app && app.config;
+                    function(ko, Config, dom, topic, Events, keyscontroller, languages) {
 
                         var mainconfig = Config.getConfig();
                         var mainevents = Events.getEvents();
@@ -34,10 +32,10 @@ define(
                         o._vm.currentSelectedLayers = ko.observableArray([]);
 
                         //top titles
-                        var title = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[language].title : resource.appLanguages[language].title);
-                        var flagTitle = (AGOL_CONFIG ? AGOL_CONFIG.appLanguages[language].flagTitle : resource.appLanguages[language].flagTitle);
-                        var flagPath = (AGOL_CONFIG ? AGOL_CONFIG.flagPath : resource.flagPath);
-                        var flagName = (AGOL_CONFIG ? AGOL_CONFIG.flagName : resource.flagName);
+                        var title = app.config.appLanguages[language].title;
+                        var flagTitle = app.config.appLanguages[language].flagTitle;
+                        var flagPath = app.config.flagPath;
+                        var flagName = app.config.flagName;
 
                         o._vm.title = ko.observable(title);
                         o._vm.flagTitle = ko.observable(flagTitle);
