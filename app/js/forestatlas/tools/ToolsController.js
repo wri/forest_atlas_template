@@ -1157,7 +1157,7 @@ define(
                     basemap: basemapID,
                     title: vm.title(),
                     flagTitle: vm.flagTitle(),
-                    flagName: vm.flagName(),
+                    flagPath: app.config.flagPath,
                     webMap: mapconfig.webMapID,
                     locale: vm.currentLanguage()
                     //extents:extentsLatLon.xmin.toFixed(2)+","+extentsLatLon.ymin.toFixed(2)+","+extentsLatLon.xmax.toFixed(2)+","+extentsLatLon.ymax.toFixed(2)

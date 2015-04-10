@@ -21,8 +21,8 @@
 	<!-- Fonts
 	================================================== -->
 
-	<script type="text/javascript" src="//use.typekit.net/gua1sca.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<!-- <script type="text/javascript" src="//use.typekit.net/gua1sca.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script> -->
 	<!-- CSS
 	================================================== -->
 
@@ -166,24 +166,15 @@
 
 	<script> 
 		var dojoConfig = { 
-	    	//baseUrl: "/app",
 	    	parseOnLoad: false, 
 	    	isDebug: false, 
 	    	async: true,
-	    	// packages: [
-	    	// 	{name: "printTools", location: location.pathname.replace(/\/[^/]+$/, "") + "/app/js/print"},
-	    	// 	{name: "atlasTools", location: location.pathname.replace(/\/[^/]+$/, "") + "/app/js/forestatlas/tools"}
-	    	// ]
 	    	packages: [   
-     
 	        {name: "common", location: location.pathname.replace(/\/[^/]+$/, "") + "/app/js/common"},
 	        {name: "root", location: location.pathname.replace(/\/[^/]+$/, "") + "/app/js"},
 	        {name: "suitability", location: location.pathname.replace(/\/[^/]+$/, "") + "/app/js/suitability"},
 	        {name: "atlas", location: location.pathname.replace(/\/[^/]+$/, "") + "/app/js/forestatlas"},
 	        {name: "res", location: location.pathname.replace(/\/[^/]+$/, "") + "/gab/resources"}
-	        
-	        //{name: "doh", location: location.pathname.replace(/\/[^/]+$/, "") + "util/doh"}
-        
     		],
     		aliases: [
 	    		//Util
@@ -335,6 +326,7 @@
 
 				esriConfig.defaults.io.corsEnabledServers.push("http://gis-forest-atlas.wri.org/");
 				esriConfig.defaults.io.corsEnabledServers.push("http://gis-potico.wri.org");
+				esriConfig.defaults.io.corsEnabledServers.push("http://gis-gfw.wri.org");
 
 				var url = window.location.href;
 				var queryStr = url.split("?");
@@ -558,18 +550,21 @@
 										
 										
 							if (feature.geometry.type=="polygon" || feature.geometry.type=="polyline") {
-								var graphic = new Graphic(feature.geometry,sfs)
+								var graphic = new Graphic(feature.geometry,sfs);
 								map.setExtent(feature.geometry.getExtent(),true);
 							} else {
 								//alert(feature.geometry.type);	
-								var graphic = new Graphic(feature.geometry,sms)						
+								var graphic = new Graphic(feature.geometry,sms);
 								map.centerAndZoom(feature.geometry,8);
 							}
 							
 							map.graphics.add(graphic);
 							var flagContent = domConstruct.create("span",{"class":"flagContent"},"reportTitle", "first");
 							domConstruct.create("span",{"class":"flagTitle",innerHTML:queryObj.flagTitle},flagContent);
-							domConstruct.create("img",{"class":"flagImg",src:"app/images/" + queryObj.flagName},flagContent);	
+
+							// We Don't Want a relative path, if it is, remove the first section
+							var flagUrl = (queryObj.flagPath.slice(0, 3) === '../' ? queryObj.flagPath.slice(3) : queryObj.flagPath);
+							domConstruct.create("img",{"class":"flagImg",src: flagUrl},flagContent);
 						}); // end array util
 						
 						require(['atlas/tools/Fetcher'], function (Fetcher) {
