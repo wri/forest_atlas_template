@@ -339,7 +339,7 @@ define([
 				}
 			}
 
-			function failure (err) {
+			function failure (error) {
 				if (error.details) {
         	if (error.details[0] === 'The requested image exceeds the size limit.' && content.pixelSize !== 500) {
           	content.pixelSize = 500;
