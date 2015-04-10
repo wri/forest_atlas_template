@@ -17,19 +17,19 @@ define([], function() {
 
             analysisOptions: [
                 "Tree Cover Loss",
-                "Land Cover",
-                "Tree Cover Density",
-                "Intact Forest Landscape",
-                "Above Ground Biomass",
+                "Land Cover Loss",
+                "Tree Cover Density Loss",
+                "Intact Forest Landscape Loss",
+                "Above Ground Biomass Loss",
                 "Land Cover Composition",
                 "Active Fires"
             ],
 
             analysisLoss: "Tree Cover Loss",
-            analysisLC: "Land Cover",
-            analysisTCD: "Tree Cover Density",
-            analysisIFL: "Intact Forest",
-            analysisCS: "Biomass",
+            analysisLC: "Land Cover Loss",
+            analysisTCD: "Tree Cover Density Loss",
+            analysisIFL: "Intact Forest Loss",
+            analysisCS: "Biomass Loss",
             analysisFire: "Active Fires",
             analysisLCComposition: "Land Cover Composition",
 
@@ -248,70 +248,70 @@ define([], function() {
             buttonLayersText: "+ Couches",
             tabLegendTitle: "Légende",
             basemapImageTitle: "Image",
-            closeButtonText: "Close",
+            closeButtonText: "Fermer",
 
             popupDataTab: 'Données',
             popupAnalysisTab: 'Analyses',
 
             analysisOptions: [
-                "Perde totale",
+                "Perte totale",
                 "Occupation du Sol",
                 "Densité de la Couverture Arborée",
-                "Intact Forest Landscape",
-                "Above Ground Biomass",
-                "Composition d'Occupation du Sol",
+                "Paysage Forestier Intact",
+                "Biomasse Aérienne",
+                "Occupation du Sol",
                 "Feux Actifs"
             ],
 
-            analysisLoss: "Perde totale",
+            analysisLoss: "Perte totale",
             analysisLC: "Occupation du Sol",
             analysisTCD: "Densité de la Couverture Arborée",
             analysisIFL: "Forêt Intacte",
-            analysisCS: "Biomasse",
+            analysisCS: "Biomasse Aérienne",
             analysisFire: "Feux Actifs",
             analysisLCComposition: "Composition d'Occupation du Sol",
 
-            analysisLossChartTitle: 'Perde de la Couverture Arborée en Hectare',
-            analysisLCChartTitle: 'Perde de la Couverture Arborée annuelle (en Hectare) par Type d\'Occupation du Sol',
-            analysisTCDChartTitle: 'Perde de la Couverture Arborée annuelle (en Hectare) par Densité de la Couverture Arborée',
-            analysisIFLChartTitle: 'Perde de la Couverture Arborée annuelle (en Hectare) par Paysage Forestier Intact',
-            analysisCSChartTitle: 'Perde de la Couverture Arborée annuelle (en Hectare) par Biomasse Aérienne (MgC/ha)',
+            analysisLossChartTitle: 'Perte de la Couverture Arborée en Hectare',
+            analysisLCChartTitle: "Perte de la Couverture Arborée annuelle (en hectares) par Type d/'Occupation du Sol",
+            analysisTCDChartTitle: 'Perte de la Couverture Arborée annuelle (en hectares) par Densité de la Couverture Arborée',
+            analysisIFLChartTitle: 'Perte de la Couverture Arborée annuelle (en hectares) par Paysage Forestier Intact',
+            analysisCSChartTitle: 'Perte de la Couverture Arborée annuelle (en hectares) par Biomasse Aérienne (MgC/ha)',
 
-            firesOneWeek: 'Past Week',
-            fires72Hours: 'Past 72 hours',
-            fires48Hours: 'Past 48 hours',
-            fires24Hours: 'Past 24 hours',
+            firesOneWeek: 'Dernière semaine',
+            fires72Hours: 'Dernières 72 heures',
+            fires48Hours: 'Dernières 48 heures',
+            fires24Hours: 'Dernières 24 heures',
 
-            drawButtonText: 'Draw',
-            uploadButtonText: 'Upload',
+            drawButtonText: 'Dessiner',
+            uploadButtonText: 'Charger',
 
             uploadInstructions: [
-                "Select a zip file(.zip) containing a shapefile(.shp,.dbf,.prj) or a valid geojson file (.geojson or .json) from your local file system.",
-                "The shapefile must be in Geographic Coordinate System (WGS84).",
-                "Both the zipped shapefile and geojson file must contain polygon geometry.",
-                "The zipped shapefile should not exceed 1 Megabyte, files larger then 1 Megabyte may not upload."
+                "Sélectionnez un fichier zip(.zip) contenant un shapefile(.shp,.dbf,.prj) ou un fichier geojson valide (.geojson or .json) dans votre répertoire local.",
+                "Le shapefile doit être en système de coordonnées géographiques (WGS84).",
+                "Les deux fichiers zippés shapefile et geojson doivent contenir la géométrie de polygone.",
+                "Le fichier shapefile zippé ne doit pas depasser 1 Megabyte. Les fichiers de plus de 1 Megabyte ne peuvent pas etre téléchargés."
             ],
 
-            lossStartingYear: 'Start of year:',
-            lossEndingYear: 'End of year:',
+            lossStartingYear: "Début de l\'année:",
+            lossEndingYear: "Fin de l\'année:",
 
             accordionForestLossTitle: "Dynamique d'Occupation du Sol",
             accordionLandUseTitle: "Affectation des Terres",
             accordionForestCoverTitle: "Occupation du Sol",
 
-            forestCoverLossLabel: 'Perde de la Couverture Arborée',
+            forestCoverLossLabel: 'Perte de la Couverture Arborée',
             activeFiresLabel: 'Feux Actifs (les 7 derniers jours)',
             treeCoverDensityLabel: 'Densité de la Couverture Arborée',
             landCoverLabel: 'Occupation du Sol',
             treeCoverGainLabel: 'Gain de la Couverture Arborée',
-            carbonLayerLabel: 'Above Ground Biomass',
-            intactForestLayerLabel: 'Intact Forest Landscape',
+            carbonLayerLabel: 'Biomasse Aérienne',
+            intactForestLayerLabel: 'Paysage Forestier Intact',
             
-            treeCoverAnalysis: "Sélectionnez une analyse sur la perde de la couverture arborée ci-dessous:",
-            otherAnalysisTypes: "Ou sélectionnez des analyses basées sur l'occupation du sol ou des feux actives:",
+            treeCoverAnalysis: "Sélectionnez une analyse sur la perte de la couverture arborée ci-dessous:",
+            otherAnalysisTypes: "Ou sélectionnez des analyses basées sur l'occupation du sol ou des feux actifs:",
 
             about: "Au sujet de",
-            downloadData: "Télécharger de données",
+            downloadData: "Télécharger des données",
             sources: "Sources",
             print: "Imprimer",
 
@@ -333,9 +333,9 @@ define([], function() {
                 "imagery_with_labels": "Imagerie et étiquettes",
                 "streets": "Rues",
                 "topographic": "Topographie",
-                "dark_gray_canvas": "Dark Gray Canvas",
+                "dark_gray_canvas": "Toile Gris Foncée",
                 "light_gray_canvas": "Nuances de gris",
-                "national_geographic": "National Geographic",
+                "national_geographic": "National Géographic",
                 "oceans": "Océans et bathymétrie",
                 "terrain_with_labels": "Terrain avec étiquettes",
                 "openstreetmap": "Open Street Map",
@@ -350,12 +350,12 @@ define([], function() {
                 innerHTML: "Français"// THIS IS WHAT SHOWS IN THE APP AND CAN CHANGE
             },
 
-            drawNamingDialogTitle: 'Enter a name:',
-            drawNamingDialogSubmit: 'Submit',
-            drawNamingDialogNoNameError: 'Please enter a name to continue.',
+            drawNamingDialogTitle: 'Entrez un nom:',
+            drawNamingDialogSubmit: 'Soumettre',
+            drawNamingDialogNoNameError: 'Veuillez entrer un nom pour continuer.',
 
-            clearAllFeatures: 'Clear all',
-            deleteCustomFeature: 'delete feature'
+            clearAllFeatures: "Tout effacer",
+            deleteCustomFeature: "Effacer l/'objet",
 
 
         },

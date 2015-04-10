@@ -37,7 +37,7 @@ define([
 						}
 					};
 					// Add Additional Languages
-					// The default id french, or fr, so test for a valid value first and then use that if necessary
+					// The default is french, or fr, so test for a valid value first and then use fr if necessary
 					language = ((values.appLanguages !== undefined && values.appLanguages !== '') ? values.appLanguages : 'fr');
 					commonConfig.appLanguages[language] = {
 						"title": values.languageTitle,

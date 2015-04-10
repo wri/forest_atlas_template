@@ -211,8 +211,6 @@ define(
 
             changeLayerVisibility: function(args, obj) {
                 var map = MapUI.getMap();
-                //console.log(args);
-                //console.log(obj);
                 var layerId = obj.layerId;
                 var targetLayer = map.getLayer(layerId);
                 var visible = args[0];
@@ -259,7 +257,6 @@ define(
                     topic.publish(toolsevents.clearHighlight);
 
                     var map = MapUI.getMap();
-                    console.log(geometry);
                     var graphic = new Graphic(geometry[0]); //symbol,attributes,infoTemplate
 
                     var geometryType = geometry[0].type;
@@ -297,8 +294,7 @@ define(
 
 
             transparencyChange: function(mapLanguageLayerIds, sliderValue, arrayLayerValue) {
-                //alert(arrayLayerValue);
-                console.log(mapLanguageLayerIds);
+
                 for (var i = 0; i < mapLanguageLayerIds.length; i++) {
 
                     var map = MapUI.getMap();
@@ -307,8 +303,6 @@ define(
                     var optionsArray = MapModel.getVM().layersDrawingOption();
                     var layerDrawingOption = new LayerDrawingOptions();
 
-                    console.log(arrayLayerValue);
-
                     layerDrawingOption.transparency = value;
                     if (arrayLayerValue.length > 1) {
                         for (var j = 0; j < arrayLayerValue.length; j++)
@@ -316,18 +310,13 @@ define(
                     } else {
                         optionsArray[arrayLayerValue] = layerDrawingOption;
                     }
-                    // console.log(optionsArray);
+                    
                     MapModel.getVM().layersDrawingOption(optionsArray);
                     targetLayer.setLayerDrawingOptions(optionsArray);
 
                 }
             },
             toggleMapLayer: function(mapLanguageLayerIds, checkBoxChecked, arrayLayerValue) {
-                //console.log("controller active");
-                //console.log(mapLanguageLayerIds);
-                //console.log(checkBoxChecked);
-                //console.log(arrayLayerValue);
-
                 var vm = MapModel.getVM();
                 var currentLayerId = vm.currentActiveLayer().id;
 
@@ -346,8 +335,7 @@ define(
                     dom.byId("sliderText" + arrayLayerValue).style.display = "block";
                     dom.byId("sliderTitleDiv" + arrayLayerValue).style.color = "#000";
                 }
-                // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-                //alert(arrayLayerValue);
+
                 for (var i = 0; i < mapLanguageLayerIds.length; i++) {
 
                     var map = MapUI.getMap();
@@ -361,7 +349,6 @@ define(
 
                         } else if (targetLayer.id == currentLayerId) {
                             targetFeatureLayer.show();
-                            console.log("show: " + targetFeatureLayer.id);
                         }
                     }
                     var dynamicLayerInfo = targetLayer.createDynamicLayerInfosFromLayerInfos();
@@ -375,7 +362,6 @@ define(
                     //get index of reference array
                     var index = referenceArray.indexOf(arrayLayerValue);
                     var layerInd = targetLayer.visibleLayers.indexOf(index);
-                    console.log(targetLayer);
 
                     if (checkBoxChecked == false) {
                         targetLayer.visibleLayers.splice(layerInd, 1);
@@ -404,15 +390,9 @@ define(
                     if (out.length == 0) {
                         out.push(-1);
                     }
-                    console.log(out);
 
                     targetLayer.visibleLayers = out;
-
-                    console.log(map);
-                    //targetLayer.visibleLayers.hide();
-                    console.log(targetLayer.visibleLayers);
-                    targetLayer.setVisibleLayers(targetLayer.visibleLayers);
-                    // map.graphicsLayerIds.push("GAB_online_en_618_5");
+                    targetLayer.setVisibleLayers(targetLayer.visibleLayers);                    
                     map.graphics.refresh();
 
                 }
@@ -554,7 +534,7 @@ define(
                         }
 
                         function statusCallback(jobinfo) {
-                            console.dir(jobinfo);
+                            // console.dir(jobinfo);
                         }
 
                     });
@@ -566,8 +546,7 @@ define(
                         gp = new Geoprocessor(dataDownloadURL);
                         gp.setOutSpatialReference({
                             wkid: 102100
-                        });
-                        console.log(layer);
+                        });                        
                         var params = {
                             "Layers_to_Clip": layer,
                             "Area_of_Interest": {
@@ -701,14 +680,10 @@ define(
 
                         for (name in result.feature.attributes) {
                             count++;
-
                             if (name == title) {
-
                                 nameValue = result.feature.attributes[name];
-                                console.log(nameValue);
                             }
                         }
-                        //console.log(mapResponse.itemInfo.itemData.operationalLayers[0].layers);
 
                         var layers = mapResponse.itemInfo.itemData.operationalLayers[0].layers;
                         arrayUtil.some(layers, function(layer) {
@@ -717,7 +692,6 @@ define(
                             if (layerId == layer.id) {
 
                                 var feature = result.feature;
-                                //console.log(layerId);
                                 data.push({
                                     name: result.value + " | " + result.layerName + ": " + nameValue,
                                     id: "result" + index,
@@ -858,16 +832,13 @@ define(
                             out[layerInt] = layerInt;
                             targetLayer.visibleLayers = out;
                             targetLayer.setVisibleLayers(targetLayer.visibleLayers);
-                            //console.log(out);
 
                             var featureLayerId = lid + "_" + layerInt;
                             var targetFeatureLayer = map._layers[featureLayerId];
                             if (targetFeatureLayer && lid == layerId) {
                                 targetFeatureLayer.show();
-                                //console.log("show: " + featureLayerId);
                             } else if (lid != layerId) {
-                                // targetFeatureLayer.hide(); 
-                                //console.log(featureLayerId);
+                                // targetFeatureLayer.hide();
                             }
                         });
 
@@ -945,10 +916,8 @@ define(
                 var layerId = vm.currentActiveLayer().id;
                 var dynamicLayersArray = [];
                 var index = 0;
-
-                //mapLayerLangId == current language layer
+            
                 arrayUtil.forEach(map.layerIds, function(lid) {
-                    //console.log(map.getLayer(lid));
 
                     // Only apply to ArcGIS Online Layers
                     if (lid.search('online') === -1) {
@@ -971,7 +940,6 @@ define(
                             var targetFeatureLayer = map._layers[featureLayerId];
                             if (targetFeatureLayer) {
                                 targetFeatureLayer.hide();
-                                console.log(targetFeatureLayer.id);
                             }
                         });
 
@@ -1078,7 +1046,6 @@ define(
                 if (layerMinScale === 0 && layerMaxScale === 0) hideAll = false;
 
                 arrayUtil.forEach(layer.layerInfos, function(linfo, i) {
-                    console.log(linfo);
 
                     if (hideAll) {
                         domClass.add("container" + i, "dijitHidden");
@@ -1087,8 +1054,6 @@ define(
 
                     var minScale = linfo.minScale;
                     var maxScale = linfo.maxScale;
-
-                    console.log(currentScale + " " + minScale + " " + maxScale);
 
                     if (minScale === 0 && maxScale === 0) {
                         domClass.remove("container" + i, "dijitHidden");
@@ -1107,7 +1072,6 @@ define(
 
 
             printReport: function(obj, evt) {
-                console.log(obj);
                 var map = MapUI.getMap();
                 var vm = MainModel.getVM();
                 var mapmodel = MapModel.getVM();
@@ -1119,16 +1083,10 @@ define(
                 var objectIdField = layer.objectIdField;
 
                 var featureId = selectedFeature.attributes[objectIdField];
-                //var extents = selectedFeature._extent;
-                //var extentsLatLon = webMercatorUtils.webMercatorToGeographic(extents);
                 var basemap = registry.byId("basemapGallery").getSelected();
 
-                //alert(basemap.id);
+                var basemapID;
 
-                var basemapID; //"national-geographic";
-
-                //"streets" , "satellite" , "hybrid", "topo", "gray", "oceans", "national-geographic", "osm".
-                // debugger;
                 if (basemap) {
                     var title = basemap.title.toLowerCase();
                     title = title.replace(/ +/g, "_");
@@ -1205,10 +1163,9 @@ define(
                     //extents:extentsLatLon.xmin.toFixed(2)+","+extentsLatLon.ymin.toFixed(2)+","+extentsLatLon.xmax.toFixed(2)+","+extentsLatLon.ymax.toFixed(2)
                 };
 
+                var printLocation = (location.href.search('wri.github.io') > -1 ? 'printReport.htm?' : '../printReport.htm?');
                 var queryStr = ioQuery.objectToQuery(queryObj);
-
-
-                window.open("../printReport.htm?" + queryStr, "_blank");
+                window.open(printLocation + queryStr, "_blank");
 
             },
 
