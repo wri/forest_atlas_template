@@ -222,20 +222,32 @@
 					app.config = commonConfig;
 				}
 
-				launch();
+				launch(true);
 			}, function (error) {
-				launch();
+				launch(false);
 			});
 
 
-			function launch () {
+			function launch (hasAGOLConfig) {
 				// This is necessary due to the way the original developer set up the project
 				// We need to inject some config options in Main and app.config needs
 				// to be available before Main is required
-				require(["root/main"], function (Main) {
+				require(["root/main", "res/Resources"], function (Main, Resource) {
 
 					// Merge Resources in here and then remove all references of resources from the application
 					// Only merge in options that are undefined
+
+					var key;
+
+					if (hasAGOLConfig) {
+						for (key in app.config) {
+							if (app.config[key] === undefined || app.config[key] === '') {
+								app.config[key] = Resource[key];
+							}
+						}
+					} else {
+						app.config = Resource;
+					}
 					
 					var language = "en";
 					var main = new Main(language);

@@ -15,7 +15,7 @@ define([
 
 			if (!appid) {
 				// If there is no app id, just show the application defaults and don't query agol for information
-				deferred.resolve();
+				deferred.reject(new Error("There is no application configuration imformation."));
 				return deferred.promise;
 			}
 
@@ -41,7 +41,7 @@ define([
 						"flagTitle": values.languageFlagTitle
 					};
 
-					commonConfig.layersToShow = values.layersToShow.split(",").map(function(layer) { return parseInt(layer); });
+					commonConfig.layersToShow = values.layersToShow && values.layersToShow.split(",").map(function(layer) { return parseInt(layer); });
 					commonConfig.downloadAll = values.downloadAll;
 					commonConfig.maskMapUrl = values.maskMapUrl;
 					commonConfig.webMapID = values.webmap;
@@ -55,6 +55,11 @@ define([
 					commonConfig.aboutLinkUrl = values.aboutLinkUrl;
 					commonConfig.printURL = values.printURL;
 					commonConfig.dataDownloadURL = values.dataDownloadURL;
+
+					// Other Values not configurable, set them to undefined as they will get pulled from resources later
+					commonConfig.geometryServiceURL = undefined;
+					commonConfig.basemap = undefined;
+					commonConfig.defaultLayerTransparency = undefined;
 
 				}
 
