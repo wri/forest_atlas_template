@@ -48,8 +48,6 @@ define(
                 var mapevents = Events.getEvents();
                 var mapconfig = Config.getConfig();
 
-
-
                 if (document.URL.indexOf("~calumbutler") > -1) {
                     esriConfig.defaults.io.proxyUrl = "../../../../proxy/proxy.php";
                 } else {

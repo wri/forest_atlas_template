@@ -330,7 +330,7 @@ define(
                     dom.byId("sliderTitleDiv" + arrayLayerValue).style.color = "#cfcfcf";
 
                 } else if (checkBoxChecked == true) {
-                    check[arrayLayerValue].style.backgroundImage = "url('../app/images/ico-checkmark.png')";
+                    check[arrayLayerValue].style.backgroundImage = "url('app/images/ico-checkmark.png')";
                     dom.byId("sliderContainerDiv" + arrayLayerValue).style.display = "block";
                     dom.byId("sliderText" + arrayLayerValue).style.display = "block";
                     dom.byId("sliderTitleDiv" + arrayLayerValue).style.color = "#000";
@@ -363,14 +363,10 @@ define(
                     var index = referenceArray.indexOf(arrayLayerValue);
                     var layerInd = targetLayer.visibleLayers.indexOf(index);
 
-                    if (checkBoxChecked == false) {
+                    if (!checkBoxChecked) {
                         targetLayer.visibleLayers.splice(layerInd, 1);
-
-                    } else if (checkBoxChecked == true) {
-                        targetLayer.visibleLayers.push(arrayLayerValue);
-
                     } else {
-                        //do nothing
+                        targetLayer.visibleLayers.push(arrayLayerValue);
                     }
 
 
@@ -417,7 +413,7 @@ define(
                 // This should be refactored and done via css so we dont need to query the dom and update inline styles
                 // every time
 
-                query(containerIdString + ' .dijitCheckBox')[0].style.backgroundImage = (active ? "url('../app/images/ico-checkmark.png')" : style);
+                query(containerIdString + ' .dijitCheckBox')[0].style.backgroundImage = (active ? "url('app/images/ico-checkmark.png')" : style);
                 query(containerIdString + ' .sliderContainer')[0].style.display = style;
                 query(containerIdString + ' .sliderText')[0].style.display = style;
                 query(containerIdString + ' .sliderTitleDiv')[0].style.color = color;
@@ -481,7 +477,7 @@ define(
                 if (layerNum != "All") {
 
                     var write = dom.byId("listItem" + layerNum);
-                    write.style.background = "url('../app/images/ajax-loader.gif') no-repeat right";
+                    write.style.background = "url('app/images/ajax-loader.gif') no-repeat right";
 
                     require(["dojo/dom", "dojo/_base/array", "esri/tasks/Geoprocessor"], function(dom, arrayUtil, Geoprocessor) {
                         gp = new Geoprocessor(dataDownloadURL);
@@ -541,7 +537,7 @@ define(
                 } else {
 
                     var write = dom.byId("allItem");
-                    write.style.background = "url('../app/images/ajax-loader.gif') no-repeat right";
+                    write.style.background = "url('app/images/ajax-loader.gif') no-repeat right";
                     require(["dojo/dom", "esri/tasks/Geoprocessor"], function(dom, Geoprocessor) {
                         gp = new Geoprocessor(dataDownloadURL);
                         gp.setOutSpatialReference({
@@ -848,7 +844,7 @@ define(
 
                 var checkArray = query("#toolsContainer .dijitCheckBox");
                 arrayUtil.some(checkArray, function(checkBox, index) {
-                    checkBox.style.backgroundImage = "url('../app/images/ico-checkmark.png')";
+                    checkBox.style.backgroundImage = "url('app/images/ico-checkmark.png')";
                     layersArray[index] = index;
                 });
 

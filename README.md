@@ -10,5 +10,12 @@
 
 ## Updating
 <p>
-		Note this was taken from the gab folder of the WRI Forest Atlas App. Due to the configuration of the app the path's need to be modified to make this work. If updates to the original WRI Forest Atlas App are made, copy over the index.htm from the gab folder and update all the paths necessary.  There are atleast four links with relative paths and items defined in the dojoConfig also use relative paths and need to be updated as well as the flagPath in the resources/Resource.js file.
+		Note this was taken from the gab folder of the WRI Forest Atlas App. Due to the configuration of the app the path's need to be modified to make this work. If updates to the original WRI Forest Atlas App are made, copy over the index.htm from the gab folder and update all the paths necessary.  There are atleast four links with relative paths and items defined in the dojoConfig also use relative paths and need to be updated as well as the flagPath in the resources/Resource.js file.  The ToolsController.js also has several relative path's that need updating.  Try running <code>grep -nr --color '\.\.\/' ./ | cut -d: -f1 -f2</code> in terminal and updating all relative paths not in css files.  Will need to add some code later to handle this better so there is no need for doing this manually.
 </p>
+
+### Future Updates
+<ul>
+	<li>Clean up code architecture so no manual updates are necessary.</li>
+	<li>Unify Codebase with WRI Forest Atlas to make maintaining these simpler.</li>
+	<li>Integrate templating so there is no need multiple separate html files.</li>
+</ul>
