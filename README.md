@@ -15,7 +15,7 @@
 
 ### Future Updates
 <ul>
-	<li>Clean up code architecture so no manual updates are necessary.</li>
-	<li>Unify Codebase with WRI Forest Atlas to make maintaining these simpler.</li>
-	<li>Integrate templating so there is no need multiple separate html files.</li>
+	<li>Clean up code architecture so manual updates are not necessary.</li>
+	<li>Unify the codebase with the WRI Forest Atlas to make maintaining these applications easier.</li>
+	<li>Integrate templating so there is no need for multiple separate html files.</li>
 </ul>
