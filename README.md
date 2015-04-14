@@ -17,5 +17,5 @@
 <ul>
 	<li>Clean up code architecture so manual updates are not necessary.</li>
 	<li>Unify the codebase with the WRI Forest Atlas to make maintaining these applications easier.</li>
-	<li>Integrate templating so there is no need for multiple separate html files.</li>
+	<li>Integrate templating so there is no need for multiple separate html files (in the main application, which will be used here).</li>
 </ul>
