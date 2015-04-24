@@ -3,6 +3,7 @@ define(
     ["declare",
         "hash",
         "ioquery",
+        "ko",
         "toolsmodel",
         "mapmodel",
         "mapconfig",
@@ -62,7 +63,7 @@ define(
         "atlas/tools/DrawTools",
         "atlas/tools/Uploader",
         "atlas/tools/Helper"
-    ], function (declare, hash, ioQuery, Model, MapModel, MapConfig, Config, registry, style, dom, arrayUtil, ComboBox, MenuItem, MenuSeparator, Memory, domClass, query, FindTask, FindParameters, number, all, string, topic, MainModel, cookie, all, win, MapUI, Grid, ItemFileWriteStore, UIFactory, domContruct, domAttr, Query, QueryTask, on, connect, Graphic, Edit, Draw, UndoManager, Delete, Update, Add, AttachmentEditor, Memory, FilteringSelect, ScreenUtils, Extent, ScreenPoint, dynamicMapLayer, LayerDrawingOptions, FeatureLayer, webMercatorUtils, ioQuery, registry, esriRequest, ArcGISTiledMapServiceLayer, arcgisUtils, DrawTools, Uploader, Helper) {
+    ], function (declare, hash, ioQuery, ko, Model, MapModel, MapConfig, Config, registry, style, dom, arrayUtil, ComboBox, MenuItem, MenuSeparator, Memory, domClass, query, FindTask, FindParameters, number, all, string, topic, MainModel, cookie, all, win, MapUI, Grid, ItemFileWriteStore, UIFactory, domContruct, domAttr, Query, QueryTask, on, connect, Graphic, Edit, Draw, UndoManager, Delete, Update, Add, AttachmentEditor, Memory, FilteringSelect, ScreenUtils, Extent, ScreenPoint, dynamicMapLayer, LayerDrawingOptions, FeatureLayer, webMercatorUtils, ioQuery, registry, esriRequest, ArcGISTiledMapServiceLayer, arcgisUtils, DrawTools, Uploader, Helper) {
 
         return declare(null, {
 
@@ -105,6 +106,16 @@ define(
 
                 if (!Helper.isMobile()) {
                     registry.byId("legendTitlePane").toggle();
+                }
+
+                var basemapGallery = registry.byId('basemapGallery');
+                // Apply bindings to the basemap gallery
+                if (basemapGallery.loaded) {
+                    ko.applyBindings(toolsmodel, document.getElementById('basemapGallery'));
+                } else {
+                    on.once(basemapGallery, 'load', function () {
+                        ko.applyBindings(toolsmodel, document.getElementById('basemapGallery'));
+                    });
                 }
 
             },

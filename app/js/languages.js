@@ -39,6 +39,21 @@ define([], function() {
             analysisIFLChartTitle: 'Annual Tree Cover Loss (in hectares) on Intact Forest Landscapes',
             analysisCSChartTitle: 'Annual Tree Cover Loss on Above Ground Biomass (MgC/ha)',
 
+            // Chart Labels
+            analysisChartLabels: {
+                // Don't translate the keys, only parts inbetween quotes
+                // Also dont change the order, the correctness of the analysis depends on it
+                landCover: ['Agriculture', 'Mixed agriculture and forest', 'Grassland / Shrub', 'Mixed forest and grassland', 'Non-forest', 'Primary Forest', 'Secondary Forest', 'Settlements', 'Swamp', 'Water Bodies'],
+                treeDensity: ['31 - 50%', '51 - 74%', '75 - 100%'],
+                intactForest: ['Intact Forest'],
+                carbonStock: ['0', '1 - 10', '11 - 20', '21- 35', '36 - 70', '71 - 100', '101 - 150', '151 - 200', '201 - 300', 'Greater than 300'],
+                activeFires: {
+                    start: 'There are',
+                    active: 'active fires',
+                    end: 'in the last 7 days.'
+                }
+            },
+
             firesOneWeek: 'Past Week',
             fires72Hours: 'Past 72 hours',
             fires48Hours: 'Past 48 hours',
@@ -155,6 +170,21 @@ define([], function() {
             analysisTCDChartTitle: 'Annual Tree Cover Loss (in hectares) on Tree Cover Density',
             analysisIFLChartTitle: 'Annual Tree Cover Loss (in hectares) on Intact Forest Landscapes',
             analysisCSChartTitle: 'Annual Tree Cover Loss on Above Ground Biomass (MgC/ha)',
+
+            // Chart Labels
+            analysisChartLabels: {
+                // Don't translate the keys, only parts inbetween quotes
+                // Also dont change the order, the correctness of the analysis depends on it
+                landCover: ['Agriculture', 'Mixed agriculture and forest', 'Grassland / Shrub', 'Mixed forest and grassland', 'Non-forest', 'Primary Forest', 'Secondary Forest', 'Settlements', 'Swamp', 'Water Bodies'],
+                treeDensity: ['31 - 50%', '51 - 74%', '75 - 100%'],
+                intactForest: ['Intact Forest'],
+                carbonStock: ['0', '1 - 10', '11 - 20', '21- 35', '36 - 70', '71 - 100', '101 - 150', '151 - 200', '201 - 300', 'Greater than 300'],
+                activeFires: {
+                    start: 'There are',
+                    active: 'active fires',
+                    end: 'in the last 7 days.'
+                }
+            },
 
             firesOneWeek: 'Past Week',
             fires72Hours: 'Past 72 hours',
@@ -277,6 +307,21 @@ define([], function() {
             analysisIFLChartTitle: 'Perte de la Couverture Arborée annuelle (en hectares) par Paysage Forestier Intact',
             analysisCSChartTitle: 'Perte de la Couverture Arborée annuelle (en hectares) par Biomasse Aérienne (MgC/ha)',
 
+            // Chart Labels
+            analysisChartLabels: {
+                // Don't translate the keys, only parts inbetween quotes
+                // Also dont change the order, the correctness of the analysis depends on it
+                landCover: ['Agriculture', 'Mixed agriculture and forest', 'Grassland / Shrub', 'Mixed forest and grassland', 'Non-forest', 'Primary Forest', 'Secondary Forest', 'Settlements', 'Swamp', 'Water Bodies'],
+                treeDensity: ['31 - 50%', '51 - 74%', '75 - 100%'],
+                intactForest: ['Intact Forest'],
+                carbonStock: ['0', '1 - 10', '11 - 20', '21- 35', '36 - 70', '71 - 100', '101 - 150', '151 - 200', '201 - 300', 'Greater than 300'],
+                activeFires: {
+                    start: 'There are',
+                    active: 'active fires',
+                    end: 'in the last 7 days.'
+                }
+            },
+
             firesOneWeek: 'Dernière semaine',
             fires72Hours: 'Dernières 72 heures',
             fires48Hours: 'Dernières 48 heures',
@@ -395,6 +440,21 @@ define([], function() {
             analysisTCDChartTitle: 'Annual Tree Cover Loss (in hectares) on Tree Cover Density',
             analysisIFLChartTitle: 'Annual Tree Cover Loss (in hectares) on Intact Forest Landscapes',
             analysisCSChartTitle: 'Annual Tree Cover Loss on Above Ground Biomass (MgC/ha)',
+
+            // Chart Labels
+            analysisChartLabels: {
+                // Don't translate the keys, only parts inbetween quotes
+                // Also dont change the order, the correctness of the analysis depends on it
+                landCover: ['Agriculture', 'Mixed agriculture and forest', 'Grassland / Shrub', 'Mixed forest and grassland', 'Non-forest', 'Primary Forest', 'Secondary Forest', 'Settlements', 'Swamp', 'Water Bodies'],
+                treeDensity: ['31 - 50%', '51 - 74%', '75 - 100%'],
+                intactForest: ['Intact Forest'],
+                carbonStock: ['0', '1 - 10', '11 - 20', '21- 35', '36 - 70', '71 - 100', '101 - 150', '151 - 200', '201 - 300', 'Greater than 300'],
+                activeFires: {
+                    start: 'There are',
+                    active: 'active fires',
+                    end: 'in the last 7 days.'
+                }
+            },
 
             firesOneWeek: 'Past Week',
             fires72Hours: 'Past 72 hours',

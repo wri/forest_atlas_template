@@ -706,14 +706,10 @@ define(
 
 
                 /* Start Basemap Gallery ----------------------------*/
-                // var basemapsDiv = domContruct.create("div", {
-                //     id: "basemapsDiv"
-                // }, "basemapGalleryCP");
                 o._basemapGallery = new BasemapGallery({
                     id: "basemapGallery",
                     showArcGISBasemaps: true,
                     map: map
-                    // "data-bind": "{with:basemapTitles}"
                 }, "basemap-gallery");
                 o._basemapGallery.startup();
 

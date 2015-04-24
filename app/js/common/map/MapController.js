@@ -274,7 +274,8 @@ define(
 
 
                     // Something is still generalizing features, may have to go to server and get new features
-                    // as we get slightly different results based on the generalization
+                    // as we get slightly different results based on the generalization which is recalculated at 
+                    // every zoom level
 
                     if (selected.attributes.OBJECTID) {
                         var objectId = selected.attributes.OBJECTID;

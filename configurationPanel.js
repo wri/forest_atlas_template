@@ -4,6 +4,9 @@
             "category": "General Settings",
             "fields": [
                 {
+                    "type": "webmap" 
+                },
+                {
                     "type": "string",
                     "fieldName": "country",
                     "label": "Three Digit Country ISO Code:",

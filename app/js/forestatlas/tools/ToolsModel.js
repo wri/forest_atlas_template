@@ -207,7 +207,7 @@ define(
                         };
 
                         // Apply Bindings
-                        ko.applyBindings(o._vm, dom.byId(id));
+                        ko.applyBindings(o._vm, document.body);
 
                     });
 
@@ -238,7 +238,7 @@ define(
 
         o.destroy = function() {
             delete o._instance;
-        }
+        };
 
         return o;
     });

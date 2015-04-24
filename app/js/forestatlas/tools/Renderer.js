@@ -40,9 +40,11 @@ define([
 			var mapFunction = function (item) { return (item * pixelSize * pixelSize) / 10000; },
 					lossConfig = toolsConfig.analysisConfig.totalLoss,
 					xAxisLabels = lossConfig.labels, // Tree Cover Loss Labels
-					yAxisLabels = config.labels, // Land Cover Labels
 					xMapValues = this.fromBounds(lossConfig.bounds),
 					yMapValues = this.fromBounds(config.bounds),
+					model = MainModel.getVM(),
+					currentLang = model ? model.currentLanguage() : (printOptions ? printOptions.lang : 'en'),
+					yAxisLabels = languages[currentLang].analysisChartLabels[config.labelKey],
 					series = [],
 					colors = [],
 					location,
@@ -242,15 +244,22 @@ define([
 		renderLandCoverComposition: function (histograms, pixelSize, printOptions) {
 			var mapFunction = function (item) { return (item * pixelSize * pixelSize) / 10000; },
 					landCoverConfig = toolsConfig.analysisConfig.landCover,
-					labels = landCoverConfig.labels,
 					colors = landCoverConfig.colors,
 					series = [],
 					data = [],
 					activeFeatureTitle,
 					currentLang,
 					chartId,
+					labels,
 					model,
 					title;
+
+			model = MainModel.getVM();
+			currentLang = model ? model.currentLanguage() : (printOptions ? printOptions.lang : 'en');
+			title = languages[currentLang].analysisLCComposition;
+			titleNode = document.querySelector('#results-header .title');
+			activeFeatureTitle = titleNode ? titleNode.innerHTML : '';
+			labels = languages[currentLang].analysisChartLabels.landCover;
 
 			if (pixelSize !== 100) {
 				histograms = histograms.map(mapFunction);
@@ -264,12 +273,6 @@ define([
 					histograms[i]
 				]);
 			}
-
-			model = MainModel.getVM();
-			currentLang = model ? model.currentLanguage() : (printOptions ? printOptions.lang : 'en');
-			title = languages[currentLang].analysisLCComposition;
-			titleNode = document.querySelector('#results-header .title');
-			activeFeatureTitle = titleNode ? titleNode.innerHTML : '';
 
 			chartId = "#" + (printOptions ? printOptions.container : "analysis-chart");
 
@@ -327,13 +330,17 @@ define([
 		renderFireData: function (results, printOptions) {
 			// var totalFires = results[0].features.concat(results[1].features),
 			var	totalFires = results[0].features,
+					model = MainModel.getVM(),
 					content = "",
-					chartId;			
+					currentLang,
+					chartId;
 
-			content += "<div id='analysis-chart'><section class='fire-badge'><div>There are</div>";
+			currentLang = model ? model.currentLanguage() : (printOptions ? printOptions.lang : 'en');
+
+			content += "<div id='analysis-chart'><section class='fire-badge'><div>" + languages[currentLang].analysisChartLabels.activeFires.start + "</div>";
 			content += "<div class='fire-count'>" + (totalFires.length || 0) + "</div>";
-			content += "<div class='fire-count'>active fires</div>";
-			content += "<div>in the last 7 days.</div></section></div>";
+			content += "<div class='fire-count'>" + languages[currentLang].analysisChartLabels.activeFires.active + "</div>";
+			content += "<div>" + languages[currentLang].analysisChartLabels.activeFires.end + "</div></section></div>";
 
 			// This content must be replaced completely which is why the content contains a div with 
 			// the same id, highcharts redraws charts on window resize even if I replace innerHTML

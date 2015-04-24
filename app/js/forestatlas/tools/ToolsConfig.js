@@ -2,8 +2,8 @@ define(
     ["declare"], function(declare) {
 
         // Labels need to match the range of bounds
-        var totalLossBounds = [1, 12];
-        var totalLossLabels = [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012];
+        var totalLossBounds = [1, 13];
+        var totalLossLabels = [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013];
 
         var iflBounds = [0, 1];
         var carbonBounds = [0, 9];
@@ -179,12 +179,12 @@ define(
                         clearanceAlertAnalysisUrl: 'http://gis-potico.wri.org/arcgis/rest/services/CommoditiesAnalyzer/GFWanalysis_wm/ImageServer',
 
                         totalLoss: {
-                            rasterId: "$517", //12
+                            rasterId: "$521", //12
                             bounds: totalLossBounds,
                             labels: totalLossLabels,
                             mosaicRule: {
                                 "mosaicMethod" : "esriMosaicLockRaster",
-                                "lockRasterIds": [517],
+                                "lockRasterIds": [521],
                                 "ascending" : true,
                                 "mosaicOperation" : "MT_FIRST"
                             },
@@ -211,7 +211,8 @@ define(
                             labels: ["Intact Forest"],
                             colors: ["#186513"],
                             title: "Annual Tree Cover Loss (in hectares) on Intact Forest Landscapes",
-                            titleKey: 'analysisIFLChartTitle'
+                            titleKey: 'analysisIFLChartTitle',
+                            labelKey: 'intactForest'
                         },
                         carbon: {
                             rasterId: '$1',
@@ -219,7 +220,8 @@ define(
                             labels: ["0", "1 - 10", "11 - 20", "21- 35", "36 - 70", "71 - 100", "101 - 150", "151 - 200", "201 - 300", "Greater than 300"],
                             colors: ["#fdffcc", "#faeeb9", "#f6ddaa", "#f4ca99", "#f1bc8b", "#eca97a", "#e89c6f", "#e08b5e", "#db7c54", "#d56f4a"],
                             title: "Annual Tree Cover Loss (in hectares) on Forest Carbon Stocks (Mg C /Ha)",
-                            titleKey: 'analysisCSChartTitle'
+                            titleKey: 'analysisCSChartTitle',
+                            labelKey: 'carbonStock'
                         },
                         landCover: {
                             rasterId: '$523',
@@ -228,6 +230,7 @@ define(
                             colors: ["#d89827", "#86fc1f", "#fdffb6", "#b98f57", "#CCC", "#5fa965", "#c7ffb6", "#fca0bf", "#538996", "#65a2f8"],
                             title: 'Annual Tree Cover Loss (in hectares) on Land Cover',
                             titleKey: 'analysisLCChartTitle',
+                            labelKey: 'landCover',
                             mosaicRule: {
                                 "mosaicMethod" : "esriMosaicLockRaster",
                                 "lockRasterIds": [3],
@@ -243,6 +246,7 @@ define(
                             colors: ["#ccf1a5", "#859a59", "#4b5923"],
                             title: "Annual Tree Cover Loss (in hectares) on Tree Cover Density",
                             titleKey: 'analysisTCDChartTitle',
+                            labelKey: 'treeDensity',
                             includeFormaIdInRemap: true,
                             rasterRemap: {
                                 "rasterFunction": "Remap",
