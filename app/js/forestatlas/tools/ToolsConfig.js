@@ -7,7 +7,7 @@ define(
 
         var iflBounds = [0, 1];
         var carbonBounds = [0, 9];
-        var landCoverBounds = [1, 10];
+        var landCoverBounds = [1, 20];
         var treeDensityBounds = [1, 3];
         var protectedAreaBounds = [0, 1];
         var primForestBounds = [1, 2];
@@ -204,7 +204,6 @@ define(
                             url: 'http://gis-potico.wri.org/arcgis/rest/services/Fires/Global_Fires/MapServer'
                         },
 
-
                         ifl: {
                             rasterId: '$9',
                             bounds: iflBounds,
@@ -226,8 +225,8 @@ define(
                         landCover: {
                             rasterId: '$523',
                             bounds: landCoverBounds,
-                            labels: ["Agriculture", "Mixed agriculture and forest", "Grassland / Shrub", "Mixed forest and grassland", "Non-forest", "Primary Forest", "Secondary Forest", "Settlements", "Swamp", "Water Bodies"],
-                            colors: ["#d89827", "#86fc1f", "#fdffb6", "#b98f57", "#CCC", "#5fa965", "#c7ffb6", "#fca0bf", "#538996", "#65a2f8"],
+                            labels: ['Dense moist forest', 'Submontane forest', 'Mountain forest', 'Edaphic forest', 'Mangrove', 'Forest-savanna mosaic', 'Rural complex and young secondary forest', 'Closed to open deciduous woodland', 'Savanna woodland-Tree savanna', 'Shrubland','Grassland','Aquatic grassland','Swamp grassland','Sparse vegetation','Mosaic cultivated areas/vegeatation( herbaceous or shrub)','Agriculture','Irrigated agriculture','Bare areas','Artificial surfaces and associated areas','Water Bodies'],
+                            colors: ["#3B823D", "#7CA079", "#AAB785", "#355936", "#5BBCF8", "#8BB94B", "#F0F979", "#7B8840", "#CABA4F", "#D3A162", "#FDCA76", "#C1E5DC", "#7AD3AB", "#F3F3AF", "#F6988F", "#FFFFF0", "#FFFFF0", "#A7A7A7", "#F83D48", "#353C92"],
                             title: 'Annual Tree Cover Loss (in hectares) on Land Cover',
                             titleKey: 'analysisLCChartTitle',
                             labelKey: 'landCover',

@@ -43,7 +43,7 @@ define([], function() {
             analysisChartLabels: {
                 // Don't translate the keys, only parts inbetween quotes
                 // Also dont change the order, the correctness of the analysis depends on it
-                landCover: ['Agriculture', 'Mixed agriculture and forest', 'Grassland / Shrub', 'Mixed forest and grassland', 'Non-forest', 'Primary Forest', 'Secondary Forest', 'Settlements', 'Swamp', 'Water Bodies'],
+                landCover: ['Dense moist forest', 'Submontane forest', 'Mountain forest', 'Edaphic forest', 'Mangrove', 'Forest-savanna mosaic', 'Rural complex and young secondary forest', 'Closed to open deciduous woodland', 'Savanna woodland-Tree savanna', 'Shrubland','Grassland','Aquatic grassland','Swamp grassland','Sparse vegetation','Mosaic cultivated areas/vegeatation( herbaceous or shrub)','Agriculture','Irrigated agriculture','Bare areas','Artificial surfaces and associated areas','Water Bodies'],
                 treeDensity: ['31 - 50%', '51 - 74%', '75 - 100%'],
                 intactForest: ['Intact Forest'],
                 carbonStock: ['0', '1 - 10', '11 - 20', '21- 35', '36 - 70', '71 - 100', '101 - 150', '151 - 200', '201 - 300', 'Greater than 300'],
@@ -175,7 +175,7 @@ define([], function() {
             analysisChartLabels: {
                 // Don't translate the keys, only parts inbetween quotes
                 // Also dont change the order, the correctness of the analysis depends on it
-                landCover: ['Agriculture', 'Mixed agriculture and forest', 'Grassland / Shrub', 'Mixed forest and grassland', 'Non-forest', 'Primary Forest', 'Secondary Forest', 'Settlements', 'Swamp', 'Water Bodies'],
+                landCover: ['Dense moist forest', 'Submontane forest', 'Mountain forest', 'Edaphic forest', 'Mangrove', 'Forest-savanna mosaic', 'Rural complex and young secondary forest', 'Closed to open deciduous woodland', 'Savanna woodland-Tree savanna', 'Shrubland','Grassland','Aquatic grassland','Swamp grassland','Sparse vegetation','Mosaic cultivated areas/vegeatation( herbaceous or shrub)','Agriculture','Irrigated agriculture','Bare areas','Artificial surfaces and associated areas','Water Bodies'],
                 treeDensity: ['31 - 50%', '51 - 74%', '75 - 100%'],
                 intactForest: ['Intact Forest'],
                 carbonStock: ['0', '1 - 10', '11 - 20', '21- 35', '36 - 70', '71 - 100', '101 - 150', '151 - 200', '201 - 300', 'Greater than 300'],
@@ -311,7 +311,7 @@ define([], function() {
             analysisChartLabels: {
                 // Don't translate the keys, only parts inbetween quotes
                 // Also dont change the order, the correctness of the analysis depends on it
-                landCover: ['Agriculture', 'Mixed agriculture and forest', 'Grassland / Shrub', 'Mixed forest and grassland', 'Non-forest', 'Primary Forest', 'Secondary Forest', 'Settlements', 'Swamp', 'Water Bodies'],
+                landCover: ['Dense moist forest', 'Submontane forest', 'Mountain forest', 'Edaphic forest', 'Mangrove', 'Forest-savanna mosaic', 'Rural complex and young secondary forest', 'Closed to open deciduous woodland', 'Savanna woodland-Tree savanna', 'Shrubland','Grassland','Aquatic grassland','Swamp grassland','Sparse vegetation','Mosaic cultivated areas/vegeatation( herbaceous or shrub)','Agriculture','Irrigated agriculture','Bare areas','Artificial surfaces and associated areas','Water Bodies'],
                 treeDensity: ['31 - 50%', '51 - 74%', '75 - 100%'],
                 intactForest: ['Intact Forest'],
                 carbonStock: ['0', '1 - 10', '11 - 20', '21- 35', '36 - 70', '71 - 100', '101 - 150', '151 - 200', '201 - 300', 'Greater than 300'],
@@ -445,7 +445,7 @@ define([], function() {
             analysisChartLabels: {
                 // Don't translate the keys, only parts inbetween quotes
                 // Also dont change the order, the correctness of the analysis depends on it
-                landCover: ['Agriculture', 'Mixed agriculture and forest', 'Grassland / Shrub', 'Mixed forest and grassland', 'Non-forest', 'Primary Forest', 'Secondary Forest', 'Settlements', 'Swamp', 'Water Bodies'],
+                landCover: ['Dense moist forest', 'Submontane forest', 'Mountain forest', 'Edaphic forest', 'Mangrove', 'Forest-savanna mosaic', 'Rural complex and young secondary forest', 'Closed to open deciduous woodland', 'Savanna woodland-Tree savanna', 'Shrubland','Grassland','Aquatic grassland','Swamp grassland','Sparse vegetation','Mosaic cultivated areas/vegeatation( herbaceous or shrub)','Agriculture','Irrigated agriculture','Bare areas','Artificial surfaces and associated areas','Water Bodies'],
                 treeDensity: ['31 - 50%', '51 - 74%', '75 - 100%'],
                 intactForest: ['Intact Forest'],
                 carbonStock: ['0', '1 - 10', '11 - 20', '21- 35', '36 - 70', '71 - 100', '101 - 150', '151 - 200', '201 - 300', 'Greater than 300'],
