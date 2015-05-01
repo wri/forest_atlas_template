@@ -178,6 +178,8 @@ define(
                     });
 
                     if (!infoWindow.features) {
+                        domStyle.set('customPopup', 'display', 'none');
+                        infoWindow.hide();
                         return;
                     }
 

@@ -122,6 +122,7 @@ define([
 					}
 				},
 				title: {
+					useHTML: true,
 					text: title
 				},
 				xAxis: {
@@ -297,6 +298,7 @@ define([
 					}
 				},
 				title: {
+					useHTML: true,
 					text: (!activeFeatureTitle ? title: null)
 				},
 				plotOptions: {
