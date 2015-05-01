@@ -51,6 +51,10 @@ define([
 					data,
 					i, j;
 
+			function hasValidValues (value) {
+				return value !== 0;
+			}
+
 			if (useSimpleRule) {
 				series.push({
 					'name': yAxisLabels[0],
@@ -65,11 +69,14 @@ define([
 						location = encoder.encode(xMapValues[j], yMapValues[i]);
 						data.push(histograms[location] || 0);
 					}
-					series.push({
-						'name': yAxisLabels[i],
-						'data': data.map(mapFunction)
-					});
-					colors.push(config.colors[i]);
+
+					if (data.some(hasValidValues)) {
+						series.push({
+							'name': yAxisLabels[i],
+							'data': data.map(mapFunction)
+						});
+						colors.push(config.colors[i]);
+					}
 				}
 
 			}
@@ -101,8 +108,6 @@ define([
 			title = languages[currentLang][titleKey];
 			titleNode = document.querySelector('#results-header .title');
 			activeFeatureTitle = this.cleanTitle(titleNode ? titleNode.innerHTML : '');
-
-
 
 			chartId = "#" + (printOptions ? printOptions.container : "analysis-chart");
 
@@ -163,6 +168,7 @@ define([
 		},
 
 		/**
+		* Specific Chart to show total Tree Cover loss by itself, not crossed with anything
 		*	@param {array} histograms - histogram data
 		* @param {integer} pixelSize - pixelSize used in requests
 		* @param {object} printOptions - additional options needed to use this from the print report 
@@ -269,10 +275,12 @@ define([
 			histograms = histograms.slice(1);
 
 			for (var i = 0, length = histograms.length; i < length; i++) {
-				data.push([
-					labels[i],
-					histograms[i]
-				]);
+				if (histograms[i] !== 0) {
+					data.push([
+						labels[i],
+						histograms[i]
+					]);
+				}
 			}
 
 			chartId = "#" + (printOptions ? printOptions.container : "analysis-chart");
@@ -477,7 +485,7 @@ define([
 			var hrefValue = 'data:application/vnd.ms-excel;base64,',
 					blobType = 'text/csv;charset=utf-8;',
 					link = document.createElement('a'),
-					filename = 'data.csv',
+					filename = document.querySelector('.analysis-options-select').value + '.csv',
 					blob;
 
 			if (window.navigator.msSaveOrOpenBlob) {
