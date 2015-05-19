@@ -101,8 +101,12 @@ define([
 		},
 
 		activate: function () {
-			toolbar.activate(Draw.FREEHAND_POLYGON);
+			var viewModel = Model.getVM(),
+					strings = languages[viewModel.currentLanguage()];
+
 			isActive = true;
+			toolbar.activate(Draw.FREEHAND_POLYGON);
+			toolbar._tooltip.innerHTML = strings.drawTools.freehand;
 		},
 
 		deactivate: function () {

@@ -54,6 +54,11 @@ define([], function() {
                 }
             },
 
+            // Draw Tool Tooltips
+            drawTools: {
+                freehand: 'Press down to start and let go to finish'
+            },
+
             firesOneWeek: 'Past Week',
             fires72Hours: 'Past 72 hours',
             fires48Hours: 'Past 48 hours',
@@ -184,6 +189,11 @@ define([], function() {
                     active: 'active fires',
                     end: 'in the last 7 days.'
                 }
+            },
+
+            // Draw Tool Tooltips
+            drawTools: {
+                freehand: 'Press down to start and let go to finish'
             },
 
             firesOneWeek: 'La semana pasada',
@@ -322,6 +332,11 @@ define([], function() {
                 }
             },
 
+            // Draw Tool Tooltips
+            drawTools: {
+                freehand: 'Press down to start and let go to finish'
+            },
+
             firesOneWeek: 'Dernière semaine',
             fires72Hours: 'Dernières 72 heures',
             fires48Hours: 'Dernières 48 heures',
@@ -454,6 +469,11 @@ define([], function() {
                     active: 'active fires',
                     end: 'in the last 7 days.'
                 }
+            },
+
+            // Draw Tool Tooltips
+            drawTools: {
+                freehand: 'Press down to start and let go to finish'
             },
 
             firesOneWeek: 'Past Week',
