@@ -70,7 +70,7 @@ define([
 						arrayUtils.forEach(themeNames, function (theme, index) {
 							themes.push({
 								label: theme,
-								value: themeIds[index]
+								value: themeIds[index].replace(' ','')
 							});
 						});
 					}
