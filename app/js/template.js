@@ -62,8 +62,8 @@ define([
 
 					// Map Theme Options
 					// Only set this value if the configuration options are matching and correct, else set it to an empty array
-					var themeNames = values.mapThemes.split(',');
-					var themeIds = values.mapThemeIds.split(',');
+					var themeNames = values.mapThemes && values.mapThemes.split(',') || [];
+					var themeIds = values.mapThemeIds && values.mapThemeIds.split(',') || [];
 					var themes = [];
 
 					if (themeNames.length === themeIds.length && themeNames.length > 0) {
