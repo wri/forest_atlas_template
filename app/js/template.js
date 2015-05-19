@@ -45,7 +45,6 @@ define([
 					};
 
 					commonConfig.layersToShow = values.layersToShow && values.layersToShow.split(",").map(function(layer) { return parseInt(layer); });
-					commonConfig.downloadAll = values.downloadAll;
 					commonConfig.maskMapUrl = values.maskMapUrl;
 					commonConfig.webMapID = values.webmap;
 
@@ -59,7 +58,6 @@ define([
 					commonConfig.aboutLinkUrl = values.aboutLinkUrl;
 					commonConfig.downloadDataUrl = values.downloadDataUrl;
 					commonConfig.printURL = values.printURL;
-					commonConfig.dataDownloadURL = values.dataDownloadURL;
 
 					// Other Values not configurable, set them to undefined as they will get pulled from resources later
 					commonConfig.geometryServiceURL = undefined;

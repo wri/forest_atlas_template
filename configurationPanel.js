@@ -50,18 +50,6 @@
                 },
                 {
                     "type": "string",
-                    "fieldName": "downloadAll",
-                    "label": "Link for ALL data download on S3:",
-                    "tooltip": "URL that links a zip file so the user can download all the data."
-                },
-                {
-                    "type": "string",
-                    "fieldName": "dataDownloadURL",
-                    "label": "Download data url from server:",
-                    "tooltip": "GPservice url"
-                },
-                {
-                    "type": "string",
                     "fieldName": "maskMapUrl",
                     "label": "URL for Mask Layer",
                     "tooltip": "This is a url for a mask layer to hide the other countries but show the country of focus.",

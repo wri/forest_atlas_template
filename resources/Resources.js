@@ -18,8 +18,6 @@
 
         layersToShow: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19],
 
-        downloadAll: "http://data.wri.org/forest_atlas/gab/gis_data/gab_data.zip",
-
         maskMapUrl: "http://gis-forest-atlas.wri.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer",
 
         // Not in Configuration Panel
@@ -49,9 +47,6 @@
 
         //print image
         printURL: "http://gis-forestatlas.wri.org/arcgis/rest/services/GAB/GABExportWebMap/GPServer/Export%20Web%20Map",
-
-        //shape file download
-        dataDownloadURL: "http://gis-forest-atlas.wri.org/arcgis/rest/services/GAB/GABExtractDataTask/GPServer/Extract%20Data%20Task",
 
         // toolsContainerFlag: "no_ministry_logo_sm.png",
 
