@@ -21,7 +21,6 @@ define(
           highlighGraphic:"highlighGraphic",
           clearHighlight:"clearHighlight",
           popupToggle:"popupToggle",
-          dataDownload:"dataDownload",          
           showLoading:"showLoading",
           hideLoading:"hideLoading",
           search:"search",
@@ -109,12 +108,6 @@ define(
         	that.debug("Tools >>> popupToggle");
         	controller.popupToggle(count);
         });
-            
-         var dataDownload = topic.subscribe(o._events.dataDownload,function(layer,layerNum) {         
-             that.debug("Tools >>> dataDownload");
-             controller.dataDownload(layer,layerNum);
-           });
-
 
          var showLoading = topic.subscribe(o._events.showLoading,function() {         
           that.debug("Tools >>> showLoading");

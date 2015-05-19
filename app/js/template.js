@@ -57,6 +57,7 @@ define([
 
 					commonConfig.pdfURL = values.pdfURL;
 					commonConfig.aboutLinkUrl = values.aboutLinkUrl;
+					commonConfig.downloadDataUrl = values.downloadDataUrl;
 					commonConfig.printURL = values.printURL;
 					commonConfig.dataDownloadURL = values.dataDownloadURL;
 

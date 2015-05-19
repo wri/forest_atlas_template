@@ -119,6 +119,12 @@
                 },
                 {
                     "type": "string",
+                    "fieldName": "downloadDataUrl",
+                    "label": "Open Data portal URL:",
+                    "tooltip": "URL to your Open Data Portal."
+                },
+                {
+                    "type": "string",
                     "fieldName": "printURL",
                     "label": "Print Service Url:",
                     "tooltip": "URL for a valid print service this application will need to connect to"

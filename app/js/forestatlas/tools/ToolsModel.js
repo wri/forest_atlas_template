@@ -47,15 +47,8 @@ define(
                         o._vm.printReport = ko.observable(translation.printReport);
                         o._vm.clickPrintReport = function(obj, evt) {
                             topic.publish(toolsevents.printReport, obj, evt);
-                        }
+                        };
                         o._vm.zoom = ko.observable(translation.zoom);
-
-
-                        o._dataModel.downloadData = ko.observable(translation.downloadData);
-                        o._dataModel.singleShapeDownload = ko.observable(translation.singleShapeDownload);
-                        o._dataModel.allShapeDownload = ko.observable(translation.allShapeDownload);
-                        o._dataModel.kmlDownload = ko.observable(translation.kmlDownload);
-                        o._dataModel.allShapeDownload = ko.observable(translation.allShapeDownload);
 
                         o._vm.selectAll = ko.observable(translation.selectAll);
                         o._vm.clearAll = ko.observable(translation.clearAll);
@@ -72,8 +65,8 @@ define(
                         o._vm.originalEditableGraphic = ko.observable({});
 
                         //about link
-                        var aboutLinkURL = app.config.aboutLinkUrl;
-                        o._vm.aboutLink = ko.observable(aboutLinkURL);
+                        o._vm.aboutLink = ko.observable(app.config.aboutLinkUrl);
+                        o._vm.downloadLink = ko.observable(app.config.downloadDataUrl);
 
                         // Buttons on the Map
                         o._vm.basemapGalleryVisible = ko.observable(false);

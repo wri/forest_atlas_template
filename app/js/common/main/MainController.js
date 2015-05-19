@@ -79,7 +79,6 @@ define(
 
 
                             var toolsmodel = ToolsModel.getVM();
-                            var dataModel = ToolsModel.getDataModel();
 
                             toolsmodel.tabBasemapTitle(translation.tabBasemapTitle);
                             toolsmodel.tabLegendTitle(translation.tabLegendTitle);
@@ -96,11 +95,6 @@ define(
                             toolsmodel.legislativeText(translation.legislativeText);
                             toolsmodel.printReport(translation.printReport);
                             toolsmodel.zoom(translation.zoom);
-
-                            dataModel.downloadData(translation.downloadData);
-                            dataModel.singleShapeDownload(translation.singleShapeDownload);
-                            dataModel.allShapeDownload(translation.allShapeDownload);
-                            dataModel.kmlDownload(translation.kmlDownload);
 
                             toolsmodel.closeButtonText(translation.closeButtonText);
                             toolsmodel.popupDataTab(translation.popupDataTab);
@@ -190,19 +184,6 @@ define(
                                 mapLayerLangId = layerId;
                                 return (layerIdlowerCase.indexOf("_" + language) > -1);
                             }); //end array loop
-
-                            //change sources language
-                            var sources = mainmodel.sourcesArray();
-                            var sourceContent;
-
-                            arrayUtil.forEach(sources, function(source) {
-                                if (source.id == mapLayerLangId) {
-                                    sourceContent = source.resourceInfo.serviceDescription;
-                                }
-                            });
-
-                            var contentPane = query("#sources .dijitDialogPaneContent");
-                            contentPane[0].innerHTML = sourceContent;
 
                             var layoutObj = mainmodel.printLayouts();
                             //console.log(layoutObj);

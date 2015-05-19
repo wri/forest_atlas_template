@@ -68,7 +68,6 @@ define(
 
                         // Apply Bindings
                         o._vm.currentActiveLayer = ko.observable();
-                        o._vm.sourcesArray = ko.observableArray([]);
                         o._vm.printLayouts = ko.observableArray([]);
 
                         ko.applyBindings(o._vm, dom.byId(id));

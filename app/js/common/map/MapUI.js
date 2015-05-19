@@ -81,10 +81,6 @@ define(
                         navigationMode: "css-transforms"
                     }
                 }).then(function(response) {
-                    var sources = response.itemInfo.itemData.operationalLayers;
-                    for (var i = 0; i < sources.length; i++) {
-                        vm.sourcesArray.push(sources[i]);
-                    }
 
                     o._map = response.map;
 

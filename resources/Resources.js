@@ -44,6 +44,9 @@
 
         aboutLinkUrl: "http://www.wri.org/our-work/project/congo-basin-forests/gabon#project-tabs",
 
+        // Download Data URL
+        downloadDataUrl: "http://data.globalforestwatch.org/",
+
         //print image
         printURL: "http://gis-forestatlas.wri.org/arcgis/rest/services/GAB/GABExportWebMap/GPServer/Export%20Web%20Map",
 
