@@ -91,6 +91,7 @@ define(
                             toolsmodel.downloadData(translation.downloadData);
                             toolsmodel.sources(translation.sources);
                             toolsmodel.print(translation.print);
+                            toolsmodel.mapThemesLabel(translation.mapThemesLabel);
 
                             toolsmodel.legislativeText(translation.legislativeText);
                             toolsmodel.printReport(translation.printReport);

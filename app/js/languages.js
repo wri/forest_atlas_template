@@ -59,6 +59,8 @@ define([], function() {
                 freehand: 'Press down to start and let go to finish'
             },
 
+            mapThemesLabel: 'Map Themes',
+
             firesOneWeek: 'Past Week',
             fires72Hours: 'Past 72 hours',
             fires48Hours: 'Past 48 hours',
@@ -195,6 +197,8 @@ define([], function() {
             drawTools: {
                 freehand: 'Press down to start and let go to finish'
             },
+
+            mapThemesLabel: 'Map Themes',
 
             firesOneWeek: 'La semana pasada',
             fires72Hours: 'Las últimas 72 horas',
@@ -337,6 +341,8 @@ define([], function() {
                 freehand: 'Press down to start and let go to finish'
             },
 
+            mapThemesLabel: 'Map Themes',
+
             firesOneWeek: 'Dernière semaine',
             fires72Hours: 'Dernières 72 heures',
             fires48Hours: 'Dernières 48 heures',
@@ -475,6 +481,8 @@ define([], function() {
             drawTools: {
                 freehand: 'Press down to start and let go to finish'
             },
+
+            mapThemesLabel: 'Map Themes',
 
             firesOneWeek: 'Past Week',
             fires72Hours: 'Past 72 hours',

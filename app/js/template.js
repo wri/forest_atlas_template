@@ -70,7 +70,7 @@ define([
 						arrayUtils.forEach(themeNames, function (theme, index) {
 							themes.push({
 								label: theme,
-								value: themeIds[index].replace(' ','')
+								value: 'http://wri.github.io/forest_atlas_template/?appid=' + themeIds[index].replace(' ','')
 							});
 						});
 					}

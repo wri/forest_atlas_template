@@ -69,8 +69,9 @@ define(
                         o._vm.downloadLink = ko.observable(app.config.downloadDataUrl);
 
                         // Nav Dropdown - Map Theme Chooser
-                        o._vm.mapThemeChooser = ko.observableArray(app.config.mapThemes);
-                        o._vm.selectedMapTheme = ko.observable();
+                        o._vm.mapThemes = ko.observableArray(app.config.mapThemes);
+                        o._vm.showMapThemes = ko.observable(false);
+                        o._vm.mapThemesLabel = ko.observable(translation.mapThemesLabel);
 
                         // Buttons on the Map
                         o._vm.basemapGalleryVisible = ko.observable(false);
@@ -203,16 +204,16 @@ define(
                             });
                         };
 
-                        o._vm.mapThemeChosen = function (thisModel, evt) {
-                            var base = toolsconfig.appUrl;
-                            var appId = thisModel.selectedMapTheme().value;
-                            if (appId) {
-                                // Open the application
-                                window.open(base + '?appid=' + appId);
-                                // Reset the select to have no choice selected again
-                                thisModel.selectedMapTheme(undefined);
-                            }
-                        };
+                        // o._vm.mapThemeChosen = function (thisModel, evt) {
+                        //     var base = toolsconfig.appUrl;
+                        //     var appId = thisModel.selectedMapTheme().value;
+                        //     if (appId) {
+                        //         // Open the application
+                        //         window.open(base + '?appid=' + appId);
+                        //         // Reset the select to have no choice selected again
+                        //         thisModel.selectedMapTheme(undefined);
+                        //     }
+                        // };
 
                         // Apply Bindings
                         ko.applyBindings(o._vm, document.body);

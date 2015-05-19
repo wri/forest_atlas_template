@@ -197,6 +197,14 @@ define(
                     style.set('clearAllFeatures', 'display', 'none');
                 });
 
+                on(dom.byId('mapThemeLink'), 'mouseover', function () {
+                    vm.showMapThemes(true);
+                });
+
+                on(dom.byId('mapThemeLink'), 'mouseout', function () {
+                    vm.showMapThemes(false);
+                });
+
             },
 
             toggleLayerPanel: function () {

@@ -22,7 +22,7 @@ define(
                 o._config = {
 
                     // App URL, Map Themes will use this as a base path, this is where the templated application lives
-                    appUrl: 'http://wri.github.io/forest_atlas_template/',
+                    // appUrl: 'http://wri.github.io/forest_atlas_template/',
 
                     defaultLayerOpacity: 80,
                     /*0-100*/
