@@ -1366,6 +1366,12 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 	top: 12px;
 }
 
+.mapThemeChooser {
+	margin-top: -9px;
+	height: 30px;
+	width: auto;
+}
+
 #newTitleInput {
 	margin: 8px 0;
 }

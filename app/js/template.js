@@ -2,8 +2,9 @@ define([
 	'esri/urlUtils',
 	'dojo/Deferred', 
 	'dojo/promise/all', 
-	'esri/arcgis/utils'
-], function (urlUtils, Deferred, all, arcgisUtils) {
+	'esri/arcgis/utils',
+	'dojo/_base/array'
+], function (urlUtils, Deferred, all, arcgisUtils, arrayUtils) {
 
 	return {
 
@@ -58,6 +59,23 @@ define([
 					commonConfig.aboutLinkUrl = values.aboutLinkUrl;
 					commonConfig.downloadDataUrl = values.downloadDataUrl;
 					commonConfig.printURL = values.printURL;
+
+					// Map Theme Options
+					// Only set this value if the configuration options are matching and correct, else set it to an empty array
+					var themeNames = values.mapThemes.split(',');
+					var themeIds = values.mapThemeIds.split(',');
+					var themes = [];
+
+					if (themeNames.length === themeIds.length && themeNames.length > 0) {
+						arrayUtils.forEach(themeNames, function (theme, index) {
+							themes.push({
+								label: theme,
+								value: themeIds[index]
+							});
+						});
+					}
+
+					commonConfig.mapThemes = themes;
 
 					// Other Values not configurable, set them to undefined as they will get pulled from resources later
 					commonConfig.geometryServiceURL = undefined;

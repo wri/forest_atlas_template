@@ -116,6 +116,22 @@
                     "fieldName": "printURL",
                     "label": "Print Service Url:",
                     "tooltip": "URL for a valid print service this application will need to connect to"
+                },
+                {
+                    "type": "paragraph",
+                    "value": "The following map themes are a way we can link this Forest Atlas to other Forest Atlases.  The two fields need to be in sync with each other.  The first input is a comma separated list of names of the Atlases and the second input is a comma separated list of Application ID's.  For example, if the names are listed like so: Forest Atlas of Cameroon, Forest Atlas of Gabon.  Then the ID's should be listed in the same order.  So: {appid for Cameroon}, {appid for Gabon}."
+                },
+                {
+                    "type": "string",
+                    "fieldName": "mapThemes",
+                    "label": "Names of Map Themes:",
+                    "tooltip": "Comma spearated list of names of the various Map Themes you want to link to in your application."
+                },
+                {
+                    "type": "string",
+                    "fieldName": "mapThemeIds",
+                    "label": "Application ID's for Map Themes:",
+                    "tooltip": "Comma spearated list of Application ID's for the above Map Themes."
                 }
             ]
         }

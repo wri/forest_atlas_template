@@ -1,6 +1,7 @@
 ﻿define([], function() {
 
     var o = {
+
         //country code
         country: "GAB",
 
@@ -47,6 +48,10 @@
 
         //print image
         printURL: "http://gis-forestatlas.wri.org/arcgis/rest/services/GAB/GABExportWebMap/GPServer/Export%20Web%20Map",
+
+        // Available Map Themes, These are completely controlled from the template, there are no default values 
+        // other then an empty array
+        mapThemes: []
 
         // toolsContainerFlag: "no_ministry_logo_sm.png",
 

@@ -11,8 +11,6 @@ define(
 
                 o._config = {
 
-                    contactUsURL: "http://emammal.si.edu/user/password",
-
 
                     browserChecklist: [{
                         id: "ie",

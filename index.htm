@@ -366,6 +366,9 @@
 					<ul>
 						<li><a href="#" target="_blank" data-bind="text:about,attr:{href:aboutLink}"></a></li>
 						<li><a href="#" target="_blank" data-bind="text:downloadData, attr: {href:downloadLink}"></a></li>
+						<li data-bind="visible: mapThemeChooser().length > 0">
+							<select class='mapThemeChooser hideOnLoad' data-bind="options: mapThemeChooser, optionsText: 'label', value: selectedMapTheme, optionsCaption: 'Select Map Theme...',event:{change: mapThemeChosen}"></select>
+						</li>
 					</ul>
 				
 				</div>
