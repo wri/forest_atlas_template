@@ -1371,12 +1371,13 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 	position: absolute;
 	display: none;
 	top: 40px;
-	left: 0;
+	right: 0;
 }
 
 .map-theme-sub-menu a {
 	padding: 5px !important;
 	display: inline-block;
+	white-space: nowrap;
 }
 
 .nav-menu-link:hover .map-theme-sub-menu {
