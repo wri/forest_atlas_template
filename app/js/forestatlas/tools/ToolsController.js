@@ -78,18 +78,6 @@ define(
                 var mapResponse = MapUI.getWebMapResponse();
                 var layersList = arcgisUtils.getLegendLayers(mapResponse);
 
-                // var mainmodel = MainModel.getVM();
-                arrayUtil.forEach(layersList, function(lyr) {
-                    var layer = map.getLayer(lyr.layer.id);
-                    on(layer, "update-end", function() {
-
-                        if (toolsmodel.currentLayerId() == layer.id) {
-
-
-                        }
-                    });
-                });
-
                 // Initialize Add This
                 addthis.init();
 

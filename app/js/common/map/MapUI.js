@@ -323,7 +323,7 @@ define(
         }); //end declare
 
         o.initialize = function() {
-            if (null == o._instance) {
+            if (!o._instance) {
                 o._instance = new o();
             }
             return o._instance;

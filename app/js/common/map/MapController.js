@@ -26,17 +26,15 @@ define(
 
         return declare(null, {
 
-
-
             zoomToDefault: function() {
                 var mapconfig = Config.getConfig();
                 var vm = MainModel.getVM();
                 require(["mapui"], function(MapUI) {
                     var map = MapUI.getMap();
-
                     map.setExtent(vm.initExtent());
                 });
             },
+
             clickCoordinates: function(evt) {
                 var mp = webMercatorUtils.webMercatorToGeographic(evt.mapPoint);
                 var vm = Model.getVM();
