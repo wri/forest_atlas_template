@@ -17,7 +17,7 @@ define([
 			if (!appid) {
 				// If there is no app id, just show the application defaults and don't query agol for information
 				deferred.reject(new Error("There is no application configuration imformation."));
-				return deferred.promise;
+				return deferred;
 			}
 
 			arcgisUtils.getItem(appid).then(function (res) {
@@ -89,7 +89,7 @@ define([
 				deferred.reject(new Error("Unable to retrieve application configuration imformation."));
 			});
 
-			return deferred.promise;
+			return deferred;
 
 		}
 

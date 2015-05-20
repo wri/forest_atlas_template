@@ -1091,7 +1091,7 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 
 #searchButton {
 	position: relative;
-  background: url("images/ico-search.png") no-repeat scroll center center rgb(77, 77, 77);
+  background: url(../images/ico-search.png) no-repeat scroll center center rgb(77, 77, 77);
 	border: 0px none;
 	display: block;
 	z-index: 100;

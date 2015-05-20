@@ -16,10 +16,8 @@ define(
 
                 topic.subscribe("/dojo/hashchange", function(changedHash) {
                     // Handle the hash change publish
-                    //What was changed?
                     var init = initialize;
-                    initialize = false;
-                    var obj = ioQuery.queryToObject(changedHash); // get      
+                    var obj = ioQuery.queryToObject(changedHash);
                     var appType = obj.v;
                     var langType = obj.l;
 
@@ -33,15 +31,7 @@ define(
                                 ["toolsevents", "atlas/tools/ToolsEvents"],
                                 ["toolsui", "atlas/tools/ToolsUI"],
                                 ["toolsmodel", "atlas/tools/ToolsModel"],
-                                ["toolscontroller", "atlas/tools/ToolsController"],
-
-                                //editor
-                                ["editorconfig", "atlas/editor/EditorConfig"],
-                                ["editorevents", "atlas/editor/EditorEvents"],
-                                ["editorui", "atlas/editor/EditorUI"],
-                                ["editormodel", "atlas/editor/EditorModel"],
-                                ["editorcontroller", "atlas/editor/EditorController"]
-
+                                ["toolscontroller", "atlas/tools/ToolsController"]
                             ]
                         });
 
@@ -51,8 +41,6 @@ define(
 
                         //load common main
                         require(["mainconfig", "mainevents", "mainui"], function(mainconfig, mainevents, mainui) {
-                            //commonresource = commonresources.initialize();
-                            //console.log(commonresource);
                             mainconfig.initialize(); //Must not have any dependencies
                             mainevents.initialize(); //no dependencies, Initializes maincontroller    
                             mainui.initialize(appType, langType); //config and events must be initialized
@@ -66,7 +54,7 @@ define(
                             // The lat, lon, and zoom is set in the mapui constructor
                         });
 
-                        return; //
+                        return;
                     }
 
                 });
@@ -76,7 +64,7 @@ define(
 
 
         o.initialize = function(init) {
-            if (null == o._instance) {
+            if (!o._instance) {
                 o._instance = new o(init);
             }
             return o._instance;
