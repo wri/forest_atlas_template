@@ -221,6 +221,19 @@ define(
 
             },
 
+            resetLayerPanel: function () {
+                var stackContainer = registry.byId('stackContainer'),
+                    position = 400;
+
+                style.set('toolsContainer', 'width', position + 'px');
+                style.set(stackContainer.domNode, 'left', position + 'px');
+                registry.byId('mainBorderContainer').resize();
+
+                style.set('closeLayersButton', 'display', 'block');
+                style.set('openLayersButton', 'display', 'none');
+                // Resize the accordion to avoid weirdness with labels
+                dijit.byId('accordionContainer').resize();
+            },
 
             changeLayerVisibility: function(args, obj) {
                 var map = MapUI.getMap();
@@ -482,136 +495,6 @@ define(
                     layer.setOpacity((opacity / 100));
                 }
             },
-
-            // dataDownload: function(layer, layerNum) {
-
-            //     var dataDownloadURL = app.config.dataDownloadURL;
-
-            //     if (layerNum != "All") {
-
-            //         var write = dom.byId("listItem" + layerNum);
-            //         write.style.background = "url('app/images/ajax-loader.gif') no-repeat right";
-
-            //         require(["dojo/dom", "dojo/_base/array", "esri/tasks/Geoprocessor"], function(dom, arrayUtil, Geoprocessor) {
-            //             gp = new Geoprocessor(dataDownloadURL);
-            //             gp.setOutSpatialReference({
-            //                 wkid: 102100
-            //             });
-
-            //             var params = {
-            //                 "Layers_to_Clip": [layer],
-            //                 "Area_of_Interest": {
-            //                     "displayFieldName": "",
-            //                     "geometryType": "esriGeometryPolygon",
-            //                     "spatialReference": {
-            //                         "wkid": null
-            //                     },
-            //                     "fields": [{
-            //                         "name": "FID",
-            //                         "type": "esriFieldTypeOID",
-            //                         "alias": "FID"
-            //                     }, {
-            //                         "name": "Id",
-            //                         "type": "esriFieldTypeInteger",
-            //                         "alias": "Id"
-            //                     }, {
-            //                         "name": "Shape_Length",
-            //                         "type": "esriFieldTypeDouble",
-            //                         "alias": "Shape_Length"
-            //                     }, {
-            //                         "name": "Shape_Area",
-            //                         "type": "esriFieldTypeDouble",
-            //                         "alias": "Shape_Area"
-            //                     }],
-            //                     "features": [],
-            //                     "exceededTransferLimit": false
-            //                 },
-            //                 "Feature_Format": "Shapefile - SHP - .shp"
-            //             };
-
-            //             gp.execute(params, completeCallback, statusCallback, function(error) {
-            //                 console.log("Tools Controller >>>>>>>>>>>>>>> Status Error Data Download");
-            //                 console.log(error);
-            //             });
-
-            //             function completeCallback(jobinfo) {
-            //                 var url = jobinfo[0].value.url;
-            //                 window.open(url, "Download");
-            //                 write.style.background = "none";
-            //                 console.log("Tools Controller >>>>>>>>>>>>>>>> Download Success");
-
-            //             }
-
-            //             function statusCallback(jobinfo) {
-            //                 // console.dir(jobinfo);
-            //             }
-
-            //         });
-            //     } else {
-
-            //         var write = dom.byId("allItem");
-            //         write.style.background = "url('app/images/ajax-loader.gif') no-repeat right";
-            //         require(["dojo/dom", "esri/tasks/Geoprocessor"], function(dom, Geoprocessor) {
-            //             gp = new Geoprocessor(dataDownloadURL);
-            //             gp.setOutSpatialReference({
-            //                 wkid: 102100
-            //             });                        
-            //             var params = {
-            //                 "Layers_to_Clip": layer,
-            //                 "Area_of_Interest": {
-            //                     "displayFieldName": "",
-            //                     "geometryType": "esriGeometryPolygon",
-            //                     "spatialReference": {
-            //                         "wkid": null
-            //                     },
-            //                     "fields": [{
-            //                         "name": "FID",
-            //                         "type": "esriFieldTypeOID",
-            //                         "alias": "FID"
-            //                     }, {
-            //                         "name": "Id",
-            //                         "type": "esriFieldTypeInteger",
-            //                         "alias": "Id"
-            //                     }, {
-            //                         "name": "Shape_Length",
-            //                         "type": "esriFieldTypeDouble",
-            //                         "alias": "Shape_Length"
-            //                     }, {
-            //                         "name": "Shape_Area",
-            //                         "type": "esriFieldTypeDouble",
-            //                         "alias": "Shape_Area"
-            //                     }],
-            //                     "features": [],
-            //                     "exceededTransferLimit": false
-            //                 },
-            //                 "Feature_Format": "Shapefile - SHP - .shp"
-            //             };
-
-            //             gp.setUpdateDelay(10000);
-
-            //             gp.submitJob(params, completeCallback, statusCallback, function(error) {
-            //                 console.log("Tools Controller >>>>>>>>>>>>>>> Status Error Data Download");
-            //                 console.log(error);
-            //             });
-
-            //             function completeCallback(jobinfo) {
-            //                 //var url = jobinfo[0].value.url;
-            //                 console.log(jobinfo);
-            //                 window.open(url, "Download");
-            //                 write.style.background = "none";
-            //                 console.log("Tools Controller >>>>>>>>>>>>>>>> Download Success");
-
-            //             }
-
-            //             function statusCallback(jobinfo) {
-            //                 console.dir(jobinfo);
-            //             }
-
-            //         });
-            //     }
-
-
-            // },
             
             search: function(inputValue, currentLayerId) {
                 var map = MapUI.getMap(),
