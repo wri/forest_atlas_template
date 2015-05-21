@@ -454,6 +454,14 @@
 								
 							</div>
 							<div data-bind="visible: basemapGalleryVisible()" class="map-widget-container basemap-container hideOnLoad">
+								<div class="landsat-layers">
+									<span class="landsat-header" data-bind='text: landsatTextLabel'></span>
+									<input type="checkbox" id="landsat-checkbox" />
+									<select 
+										class='landsat-select' 
+										data-bind='options: landsatOptions, value: selectedLandsatYear, event: {change: landsatYearChanged}'>
+									</select>
+								</div>
 								<div id='basemap-gallery'></div>
 							</div>
 

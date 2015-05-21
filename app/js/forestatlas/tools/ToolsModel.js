@@ -104,9 +104,7 @@ define(
                         o._vm.analysisIFL = ko.observable(translation.analysisIFL);
                         o._vm.analysisCS = ko.observable(translation.analysisCS);
                         o._vm.analysisFire = ko.observable(translation.analysisFire);
-
                         o._vm.analysisOptions = ko.observableArray(translation.analysisOptions);
-
                         o._vm.firesOneWeek = ko.observable(translation.firesOneWeek);
                         o._vm.fires72Hours = ko.observable(translation.fires72Hours);
                         o._vm.fires48Hours = ko.observable(translation.fires48Hours);
@@ -130,16 +128,16 @@ define(
                         o._vm.treeCoverGainLabel = ko.observable(translation.treeCoverGainLabel);
                         o._vm.carbonLayerLabel = ko.observable(translation.carbonLayerLabel);
                         o._vm.intactForestLayerLabel = ko.observable(translation.intactForestLayerLabel);
-
-
                         o._vm.uploadInstructions = ko.observableArray(translation.uploadInstructions);
                         o._vm.drawButtonText = ko.observable(translation.drawButtonText);
                         o._vm.uploadButtonText = ko.observable(translation.uploadButtonText);
-
                         o._vm.currentAnalysisType = ko.observable(translation.analysisLoss);
-
                         o._vm.clearAllFeatures = ko.observable(translation.clearAllFeatures);
                         o._vm.deleteCustomFeature = ko.observable(translation.deleteCustomFeature);
+                        o._vm.landsatTextLabel = ko.observable(translation.landsatTextLabel);
+                        
+                        o._vm.landsatOptions = ko.observableArray([2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000]);
+                        o._vm.selectedLandsatYear = ko.observable(2013);
 
                         o._vm.customFeatureShowing = ko.observable(false);
 
@@ -204,16 +202,12 @@ define(
                             });
                         };
 
-                        // o._vm.mapThemeChosen = function (thisModel, evt) {
-                        //     var base = toolsconfig.appUrl;
-                        //     var appId = thisModel.selectedMapTheme().value;
-                        //     if (appId) {
-                        //         // Open the application
-                        //         window.open(base + '?appid=' + appId);
-                        //         // Reset the select to have no choice selected again
-                        //         thisModel.selectedMapTheme(undefined);
-                        //     }
-                        // };
+                        o._vm.landsatYearChanged = function (thisModel, evt) {
+                            var checkbox = document.getElementById('landsat-checkbox');
+                            if (checkbox.checked) {
+                                topic.publish('updateLandsatLayer');
+                            }
+                        };
 
                         // Apply Bindings
                         ko.applyBindings(o._vm, document.body);

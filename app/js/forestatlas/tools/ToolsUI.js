@@ -439,8 +439,12 @@ define(
                     url: app.config.printURL
                 }, dom.byId("printContent"));
 
-
                 printDijit.startup();
+
+                printDijit.on('print-start', function () {
+                    // Send Event to Google Analytics
+                    ga('A.send', 'event', 'Event', 'click', 'Print Map', 'User clicked the Print Map button on the map.');
+                });
 
                 var loadingGif = domContruct.create("div", {
                     id: "laodingGif",

@@ -1424,4 +1424,22 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 	background: #fff url('../images/ico-carat-dropdown-close.png') 96% center no-repeat;
 }
 
+.landsat-layers {
+	position: relative;
+	height: 30px;
+	margin: 10px 5px;
+}
+.landsat-header {
+	line-height: 30px;
+	font-size: 15px;
+	padding: 0 5px;
+}
+.landsat-checkbox {
+	padding: 0 10px;
+}
+.landsat-select {
+	display: inline-block;
+	height: 30px;
+	width: 150px;
+}
 

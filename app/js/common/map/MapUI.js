@@ -34,12 +34,13 @@ define(
         "esri/dijit/Popup",
         "esri/config",
         "atlas/tools/Helper",
+        "esri/layers/WebTiledLayer",
         "esri/layers/RasterFunction",
         "esri/layers/ImageParameters",
         "esri/layers/ImageServiceParameters",
         "esri/layers/ArcGISImageServiceLayer",
         "esri/layers/ArcGISDynamicMapServiceLayer"
-    ], function (declare, hash, ioQuery, Map, arcgisUtils, legendDijit, identityManager, MainModel, topic, domConstruct, query, on, registry, arrayUtil, UIFactory, all, aspect, connect, Config, Events, SimpleRenderer, SimpleFillSymbol, SimpleLineSymbol, SimpleMarkerSymbol, Color, GraphicsLayer, Extent, SpatialReference, Keys, BasemapLayer, ArcGISTiledMapServiceLayer, Popup, esriConfig, Helper, RasterFunction, ImageParameters, ImageServiceParameters, ArcGISImageServiceLayer, ArcGISDynamicMapServiceLayer) {
+    ], function (declare, hash, ioQuery, Map, arcgisUtils, legendDijit, identityManager, MainModel, topic, domConstruct, query, on, registry, arrayUtil, UIFactory, all, aspect, connect, Config, Events, SimpleRenderer, SimpleFillSymbol, SimpleLineSymbol, SimpleMarkerSymbol, Color, GraphicsLayer, Extent, SpatialReference, Keys, BasemapLayer, ArcGISTiledMapServiceLayer, Popup, esriConfig, Helper, WebTiledLayer, RasterFunction, ImageParameters, ImageServiceParameters, ArcGISImageServiceLayer, ArcGISDynamicMapServiceLayer) {
 
         var o = declare(null, {
 
@@ -242,8 +243,15 @@ define(
                         visible: true
                     });
 
+                    var landsatLayer = new WebTiledLayer(mapconfig.landsatLayer.url, {
+                        copyright: mapconfig.landsatLayer.copyright,
+                        id: mapconfig.landsatLayer.id,
+                        visible: false
+                    });
+
                     o._map.addLayers([
                         legendLayer,
+                        landsatLayer,
                         forestLossLayer,
                         activeFiresLayer,
                         treeCoverDensityLayer,

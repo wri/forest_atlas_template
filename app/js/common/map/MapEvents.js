@@ -17,7 +17,8 @@ define(
           layerAdded:"layerAdded",
           updateCustomInfoWindow: "updateCustomInfoWindow",
           updateAnalysisTab: "updateAnalysisTab",
-          popupTabChanged: "popupTabChanged"
+          popupTabChanged: "popupTabChanged",
+          updateLandsatLayer: 'updateLandsatLayer'
         };
 
         var controller = new MapController();
@@ -63,6 +64,12 @@ define(
           that.debug("Map >>> popupTabChanged");
           controller.popupTabChanged();
         });
+
+        o.updateLandsatLayer = topic.subscribe(o._events.updateLandsatLayer, function () {
+          that.debug("Map >>> updateLandsatLayer");
+          controller.updateLandsatLayer();
+        });
+
           
       }, // End Constructor
 

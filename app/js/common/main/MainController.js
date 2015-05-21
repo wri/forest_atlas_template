@@ -147,6 +147,7 @@ define(
 
                             toolsmodel.clearAllFeatures(translation.clearAllFeatures);
                             toolsmodel.deleteCustomFeature(translation.deleteCustomFeature);
+                            toolsmodel.landsatTextLabel(translation.landsatTextLabel);
 
                             // update the current analysis type to the same type but in the new language
                             switch (toolsmodel.currentAnalysisType()) {

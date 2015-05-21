@@ -121,6 +121,7 @@ define(
                     on(dom.byId('lossPlayButton'), 'click', self.animateForestLossLayer.bind(self));
                     on(dom.byId('lossStartYear'), 'change', self.updateForestLossLayer);
                     on(dom.byId('lossEndYear'), 'change', self.updateForestLossLayer);
+                    on(dom.byId('landsat-checkbox'), 'change', self.updateLandsatLayer);
 
 
                 });
@@ -440,6 +441,41 @@ define(
 
                 }, duration);
 
+            },
+
+            updateLandsatLayer: function () {
+                require(['toolsmodel', 'mapui'], function (ToolsModel, MapUI) {
+                    var landsatConfig = Config.getConfig().landsatLayer,
+                        checkbox = dom.byId('landsat-checkbox'),
+                        vm = ToolsModel.getVM(),
+                        map = MapUI.getMap(),
+                        landsatLayer,
+                        urlTemplate,
+                        urlPath;
+
+                    landsatLayer = map.getLayer(landsatConfig.id);
+
+                    if (checkbox.checked) {
+                        // Below outputs URLs like these:
+                        // urlTemplate - https://wri-tiles.s3.amazonaws.com/umd_landsat/2000/${level}/${col}/${row}.png
+                        // urlPath - umd_landsat/2000/${level}/${col}/${row}.png
+                        urlTemplate = landsatConfig.urlBase + vm.selectedLandsatYear() + landsatConfig.urlTemplateSection;
+                        urlPath = landsatConfig.urlFragment + vm.selectedLandsatYear() + landsatConfig.urlTemplateSection;
+                        // Update the paths in the layer, then refresh the layer
+                        landsatLayer.url = urlTemplate;
+                        landsatLayer.urlPath = urlPath;
+                        landsatLayer.urlTemplate = urlTemplate;
+                        landsatLayer.refresh();
+                        // If the layer is not showing, show it
+                        if (!landsatLayer.visible) {
+                            landsatLayer.setVisibility(true);
+                        }
+                    } else {
+                        // Hide Layer
+                        landsatLayer.setVisibility(false);
+                    }
+
+                });
             }
 
         }); //end declare

@@ -59,6 +59,8 @@ define([], function() {
                 freehand: 'Press down to start and let go to finish'
             },
 
+            landsatTextLabel: 'Landsat imagery:',
+
             mapThemesLabel: 'Map Themes',
 
             firesOneWeek: 'Past Week',
@@ -197,6 +199,8 @@ define([], function() {
             drawTools: {
                 freehand: 'Press down to start and let go to finish'
             },
+
+            landsatTextLabel: 'Landsat imagery:',
 
             mapThemesLabel: 'Map Themes',
 
@@ -341,6 +345,8 @@ define([], function() {
                 freehand: 'Press down to start and let go to finish'
             },
 
+            landsatTextLabel: 'Landsat imagery:',
+
             mapThemesLabel: 'Map Themes',
 
             firesOneWeek: 'Dernière semaine',
@@ -481,6 +487,8 @@ define([], function() {
             drawTools: {
                 freehand: 'Press down to start and let go to finish'
             },
+
+            landsatTextLabel: 'Landsat imagery:',
 
             mapThemesLabel: 'Map Themes',
 

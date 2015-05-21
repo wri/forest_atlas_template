@@ -142,6 +142,7 @@ define(
                     if (vm.basemapGalleryVisible()) {
                         vm.basemapGalleryVisible(false);
                     }
+                    ga('A.send', 'event', 'Event', 'click', 'Share Button', 'User clicked the share button.');
                 });
 
                 on(dom.byId('basemap-button'), 'click', function () {
@@ -156,6 +157,11 @@ define(
 
                 on(dom.byId('uploadFeatures'), 'click', function () {
                     vm.showUploadTools(!vm.showUploadTools());
+
+                    if (vm.showUploadTools()) {
+                        // Send Event to Google Analytics
+                        ga('A.send', 'event', 'Event', 'click', 'Upload', 'User clicked the upload button.');
+                    }
                 });
 
                 on(dom.byId('drawFeatures'), 'click', function () {
@@ -1156,9 +1162,11 @@ define(
                     //extents:extentsLatLon.xmin.toFixed(2)+","+extentsLatLon.ymin.toFixed(2)+","+extentsLatLon.xmax.toFixed(2)+","+extentsLatLon.ymax.toFixed(2)
                 };
 
-                var printLocation = (location.href.search('wri.github.io') > -1 ? 'printReport.htm?' : '../printReport.htm?');
                 var queryStr = ioQuery.objectToQuery(queryObj);
-                window.open(printLocation + queryStr, "_blank");
+                window.open('printReport.htm?' + queryStr, "_blank");
+
+                // Send Event to Google Analytics
+                ga('A.send', 'event', 'Event', 'click', 'Print Report', 'User clicked the Print Report button in the infoWindow.');
 
             },
 
