@@ -31,7 +31,7 @@
 		position:absolute;
 		right:0px;
 		top:-3px;
-		width:155px;
+		width:170px;
 		height: 42px;
 		border-left: 1px solid #fff;
 		padding: 0 0 0 10px;
@@ -48,7 +48,7 @@
 	}
 	#navMenu{
 		position: absolute;
-		right: 180px;
+		right: 190px;
 		top: 15px;	
 	}
 	#navMenu ul li{
@@ -157,7 +157,9 @@ top:0px;
 	float:left;
 }
 
-
+#mobileMenu {
+	display: none;
+}
 
 #gridDiv {
   	height: 240px;
@@ -386,7 +388,7 @@ top:0px;
 .draw-uploaded-feature #popupDataTab,
 .draw-uploaded-feature #popupData,
 .draw-uploaded-feature #analysis-footer .actionList,
-.draw-uploaded-feature #analysis-footer a {
+.draw-uploaded-feature #analysis-footer #legislative {
 	display: none;
 }
 
@@ -536,13 +538,6 @@ top:0px;
 	color: blue;
 }
 
-/* Tablet Portrait size to standard 960 (devices and browsers) */
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-
-
-
-}
-
 /* Hide some elements earlier to prevent collisions with other elements */
 @media only screen and (max-width: 900px) {
 	#searchBox {
@@ -621,35 +616,15 @@ top:0px;
 		display: none;
 	}
 
+	.landsat-layers {
+		height: 60px;
+	}
+
 }
 
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {}
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media only screen and (max-width: 500px) {
-
-}
-
+@media only screen and (max-width: 500px) {}
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-
-
-
-
-}
-
-
-/* #Font-Face
-================================================== */
-/* 	This is the proper syntax for an @font-face file
-		Just create a "fonts" folder at the root,
-		copy your FontName into code below and remove
-		comment brackets */
-
-/*	@font-face {
-	    font-family: 'FontName';
-	    src: url('../fonts/FontName.eot');
-	    src: url('../fonts/FontName.eot?iefix') format('eot'),
-	         url('../fonts/FontName.woff') format('woff'),
-	         url('../fonts/FontName.ttf') format('truetype'),
-	         url('../fonts/FontName.svg#webfontZam02nTh') format('svg');
-	    font-weight: normal;
-	    font-style: normal; }
+@media only screen and (min-width: 480px) and (max-width: 767px) {}

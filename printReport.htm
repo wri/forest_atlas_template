@@ -320,8 +320,8 @@
 	<script type="text/javascript">
 		require(["dojo/io-query","esri/map","esri/config","esri/geometry/Extent","esri/layers/ArcGISDynamicMapServiceLayer","esri/layers/LayerDrawingOptions",
 			"esri/layers/ImageParameters","dojo/_base/array","esri/tasks/QueryTask","esri/tasks/query","dojo/dom-construct","esri/graphic","esri/symbols/SimpleMarkerSymbol",
-			"esri/symbols/SimpleFillSymbol","esri/symbols/SimpleLineSymbol","dojo/_base/Color","dojo/number","dojo/_base/config","esri/request","esri/lang","dojo/domReady!"],
-			function(ioQuery,Map,esriConfig,Extent,ArcGISDynamicMapServiceLayer,LayerDrawingOptions,ImageParameters,arrayUtil,QueryTask,Query,domConstruct,Graphic,SimpleMarkerSymbol,SimpleFillSymbol,SimpleLineSymbol,Color,dojoNumber,dojoConfig,esriRequest,esriLang){	
+			"esri/symbols/SimpleFillSymbol","esri/symbols/SimpleLineSymbol","dojo/_base/Color","dojo/number","dojo/_base/config","esri/request","esri/lang","esri/geometry/Polygon","dojo/domReady!"],
+			function(ioQuery,Map,esriConfig,Extent,ArcGISDynamicMapServiceLayer,LayerDrawingOptions,ImageParameters,arrayUtil,QueryTask,Query,domConstruct,Graphic,SimpleMarkerSymbol,SimpleFillSymbol,SimpleLineSymbol,Color,dojoNumber,dojoConfig,esriRequest,esriLang, Polygon){	
 
 				esriConfig.defaults.io.corsEnabledServers.push("http://gis-forest-atlas.wri.org/");
 				esriConfig.defaults.io.corsEnabledServers.push("http://gis-potico.wri.org");
@@ -330,26 +330,20 @@
 				var url = window.location.href;
 				var queryStr = url.split("?");
 	
-				if (queryStr.length!=2){
-					return;
-					console.log("Invalid Query String");
-				}
+				if (queryStr.length !== 2) { return; }
+
 				var queryObj = ioQuery.queryToObject(queryStr[1]);
 				dojoConfig.locale = queryObj.locale+"-"+queryObj.locale;
-				
-				//var extents = queryObj.extents.split(",");
-	
-				//var extentsLatLon = new Extent({xmin:extents[0],ymin:extents[1],xmax:extents[2],ymax:extents[3],spatialReference:{wkid:4326}});
-				//var extentsWM = webMercatorUtils.geographicToWebMercator(extentsLatLon);
-				
-	
+
+				var sfs = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID,
+					new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT,
+					new Color([255,0,0]), 2),new Color([255,255,0,0.25])
+				);
+
 				var map = new Map("map", {
-		        // center: [-70.6508, 43.1452],
-		        // zoom: 16,
 		        slider:false,
 		        logo:false,	        
 		        basemap: queryObj.basemap
-		        
 		    });
 				domConstruct.create("span",{innerHTML:queryObj.title},reportTitle);
 				
@@ -372,17 +366,17 @@
 					var request = {
 						url:webmapInfo,
 						callbackParamName:"callback"
-					}
+					};
+
 					var webmapRequest = esriRequest(request);
 					webmapRequest.then(function(response){
-						console.log(response);
 						addDynamicLayer();
 						addReport(response);
 					},function(err){
 						console.log(err);
 					});
 	
-				}
+				};
 	
 				var addDynamicLayer = function(){
 					var layerId = queryObj.layerId;
@@ -394,13 +388,10 @@
 					var imageParameters = new ImageParameters();
 					imageParameters.layerIds = [layerId];
 					imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
-					var layerDefs = [];
-					//arrayUtil.forEach(imageParameters.layerIds,function(layerId){
-						layerDefs[layerId] = idField+"="+idValue;
-					//})
-					
-					imageParameters.layerDefinitions = layerDefs;
-					
+					// var layerDefs = [];
+
+					// layerDefs[layerId] = idField+"="+idValue;
+										
 					var optionsArray = [];
 	
 					arrayUtil.forEach(transparency,function(val,i){
@@ -409,26 +400,24 @@
 						optionsArray[i] = layerDrawingOption;
 					});
 	
-	
-					var layer = new ArcGISDynamicMapServiceLayer(mapService,{
-						//imageParameters:imageParameters,
-						visible:false,
-						opacity:0.8
-					});
-	
-					layer.setVisibleLayers(visibleLayers);
-	
-				
-					map.on("layer-add",function(){
-						layer.setLayerDrawingOptions(optionsArray);
-						layer.show();
-					});
-	
-					map.addLayer(layer);
+					if (mapService) {
+						var layer = new ArcGISDynamicMapServiceLayer(mapService, {
+							visible:false,
+							opacity:0.8
+						});
+		
+						layer.setVisibleLayers(visibleLayers);
+		
+					
+						map.on("layer-add",function(){
+							layer.setLayerDrawingOptions(optionsArray);
+							layer.show();
+						});
+		
+						map.addLayer(layer);
+					}
 
-
-
-				}	
+				};
 				
 				var addReport = function(mapResponse){
 	
@@ -436,6 +425,31 @@
 					var layer;
 					var fieldMapping = {};
 					var locale = queryObj.locale;
+
+
+					var flagContent = domConstruct.create("span",{"class":"flagContent"},"reportTitle", "first");
+						domConstruct.create("span",{"class":"flagTitle",innerHTML:queryObj.flagTitle},flagContent);
+
+					// We Don't Want a relative path, if it is, remove the first section
+					var flagUrl = (queryObj.flagPath.slice(0, 3) === '../' ? queryObj.flagPath.slice(3) : queryObj.flagPath);
+					domConstruct.create("img",{"class":"flagImg",src: flagUrl},flagContent);
+
+					if (queryObj.mapService === undefined) {
+						// Feature came from grphics layer and is a custom feature
+						var geo = JSON.parse(queryObj.customGeo);
+						var polygon = new Polygon(geo);
+						var graphic = new Graphic(polygon, sfs);
+
+						domConstruct.create("div",{
+							"class":"dataTitle", 
+							'innerHTML': 'Custom Feature: ' + queryObj.customTitle
+						},"reportTitle");
+						
+						map.graphics.add(graphic);
+						map.setExtent(polygon.getExtent(), true);
+						addCharts(graphic);
+						return;
+					}
 		
 	
 					arrayUtil.some(mapResponse.operationalLayers,function(webmapLayer){
@@ -454,7 +468,7 @@
 					//console.dir(layer.popupInfo.fieldInfos);
 					arrayUtil.forEach(layer.popupInfo.fieldInfos,function(f){
 						if (f.visible && arrayUtil.indexOf(fieldToExclude,f["fieldName"])<0){
-							fieldMapping[f["fieldName"]] = {"alias":f["label"],type:"Will Be Filled Later"}
+							fieldMapping[f["fieldName"]] = {"alias":f["label"],type:"Will Be Filled Later"};
 						}						
 					});//end array util
 	
@@ -465,17 +479,9 @@
 					var idField = queryObj.idField;
 					var idValue = queryObj.idValue;
 					var where = idField+'='+idValue;
-					console.log(queryLayer);
 					query.returnGeometry = true;
 					query.where = where;//"'"+idField+"='"+idValue+"'";
 					query.outFields = ['*'];
-					
-					console.log(query);
-					var sfs = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID,
-							new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT,
-							new Color([255,0,0]), 2),new Color([255,255,0,0.25])
-							);
-					
 					
 					var sms = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 10,
 							new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
@@ -484,56 +490,41 @@
 			
 					
 					queryTask.execute(query, function(results){
-						console.log(results);
 						var fields = results.fields;
-						//console.dir(fields);
-
-			
 						//Add field Types from Map Service
 						arrayUtil.forEach(fields,function(f){
-						
-							console.log(f["name"]);
 							if (fieldMapping[f["name"]]){
-											
-								//fieldMapping[f["name"]] = {"alias":f["alias"],type:f["type"]}
 								fieldMapping[f["name"]].type = f["type"];
 							}							
 						});//end array util
 					
 						var features = results.features;
 						var displayFieldName = results.displayFieldName;
-						//console.dir(results);
-						//console.log("fieldMapping");
-						//console.dir(fieldMapping);
-									
 				
 						arrayUtil.forEach(features,function(feature){
 							//Add Title 
 							var row = domConstruct.create("div",{"class":"dataTitle"},"reportTitle");
 							row.innerHTML = esriLang.substitute(feature.attributes,titleTemplate.replace("{","${"));
 										
-				
 							for (fieldName in feature.attributes) {
 								if (fieldMapping[fieldName]){
 									var row = domConstruct.create("div",{"class":"dataRow"},"report");
 									var name = fieldMapping[fieldName].alias;
 									var type = fieldMapping[fieldName].type;
-									var val = feature.attributes[fieldName];
-									console.log(val + " "+ type);
-									
-						
+									var val = feature.attributes[fieldName];									
+
 									switch (type) {
 										case "esriFieldTypeDouble":											
-											if (val) { val = dojoNumber.format(val.toFixed(2)) };								
+											if (val) { val = dojoNumber.format(val.toFixed(2)); }
 											break;
 										case "esriFieldTypeInteger":
-											if (val) { val = dojoNumber.format(val.toFixed(2)) };
+											if (val) { val = dojoNumber.format(val.toFixed(2)); }
 											break;									
 										case "esriFieldTypeSmallInteger":
-											if (val) { val = dojoNumber.format(val.toFixed(2)) };
+											if (val) { val = dojoNumber.format(val.toFixed(2)); }
 											break;
 										case "esriFieldTypeSingle":
-											if (val) { val = dojoNumber.format(val.toFixed(2)) };
+											if (val) { val = dojoNumber.format(val.toFixed(2)); }
 											break;
 										case "esriFieldTypeDate":	
 											if (val) { 									
@@ -546,91 +537,88 @@
 								}// end if							
 							}//end for
 										
-										
+							var graphic;	
 										
 							if (feature.geometry.type=="polygon" || feature.geometry.type=="polyline") {
-								var graphic = new Graphic(feature.geometry,sfs);
+								graphic = new Graphic(feature.geometry,sfs);
 								map.setExtent(feature.geometry.getExtent(),true);
 							} else {
-								//alert(feature.geometry.type);	
-								var graphic = new Graphic(feature.geometry,sms);
+								graphic = new Graphic(feature.geometry,sms);
 								map.centerAndZoom(feature.geometry,8);
 							}
 							
 							map.graphics.add(graphic);
-							var flagContent = domConstruct.create("span",{"class":"flagContent"},"reportTitle", "first");
-							domConstruct.create("span",{"class":"flagTitle",innerHTML:queryObj.flagTitle},flagContent);
 
-							// We Don't Want a relative path, if it is, remove the first section
-							var flagUrl = (queryObj.flagPath.slice(0, 3) === '../' ? queryObj.flagPath.slice(3) : queryObj.flagPath);
-							domConstruct.create("img",{"class":"flagImg",src: flagUrl},flagContent);
 						}); // end array util
 						
-						require(['atlas/tools/Fetcher'], function (Fetcher) {
-
-							var graphic = features[0];
-							var lang = 'en';
-							// Create the containers for the charts, the container ids will be passed
-							// to the calls in the fetcher, create the id's first
-							var treeCoverLossId = 'treeCoverLossChart',
-									landCoverId = 'landCoverChart',
-									treeCoverDensityId = 'treeCoverDensityChart',
-									iflChartId = 'intactForestChart',
-									biomassId = 'biomassChart',
-									landCoverCompositionId = 'landCoverCompositionChart',
-									firesBadgeId = 'firesBadge';
-
-							domConstruct.create("div", {"class": "chart-container", "id": treeCoverLossId}, "report");
-							domConstruct.create("div", {"class": "chart-container", "id": landCoverId}, "report");
-							domConstruct.create("div", {"class": "chart-container", "id": treeCoverDensityId}, "report");
-							domConstruct.create("div", {"class": "chart-container", "id": iflChartId}, "report");
-							domConstruct.create("div", {"class": "chart-container", "id": biomassId}, "report");
-							domConstruct.create("div", {"class": "chart-container", "id": landCoverCompositionId}, "report");
-							domConstruct.create("div", {"class": "chart-container", "id": firesBadgeId}, "report");
-
-							// Get Analysis By Type
-							Fetcher.getTotalLoss(graphic, {
-								container: treeCoverLossId,
-								lang: lang
-							});
-
-							Fetcher.getLandCover(graphic, {
-								container: landCoverId,
-								lang: lang
-							});
-
-							Fetcher.getTreeCoverDensity(graphic, {
-								container: treeCoverDensityId,
-								lang: lang
-							});
-
-							Fetcher.getIntactForestLandscapes(graphic, {
-								container: iflChartId,
-								lang: lang
-							});
-
-							Fetcher.getCarbon(graphic, {
-								container: biomassId,
-								lang: lang
-							});
-
-							Fetcher.getLandCoverComposition(graphic, {
-								container: landCoverCompositionId,
-								lang: lang
-							});
-
-							Fetcher.getFires(graphic, {
-								container: firesBadgeId,
-								lang: lang
-							});
-
-						});
-
+						addCharts(features[0]);
 
 					});
 	
 	
 				};
+
+				var addCharts = function (graphic) {
+					require(['atlas/tools/Fetcher'], function (Fetcher) {
+						var lang = 'en';
+						// Create the containers for the charts, the container ids will be passed
+						// to the calls in the fetcher, create the id's first
+						var treeCoverLossId = 'treeCoverLossChart',
+								landCoverId = 'landCoverChart',
+								treeCoverDensityId = 'treeCoverDensityChart',
+								iflChartId = 'intactForestChart',
+								biomassId = 'biomassChart',
+								landCoverCompositionId = 'landCoverCompositionChart',
+								firesBadgeId = 'firesBadge';
+
+						domConstruct.create("div", {"class": "chart-container", "id": treeCoverLossId}, "report");
+						domConstruct.create("div", {"class": "chart-container", "id": landCoverId}, "report");
+						domConstruct.create("div", {"class": "chart-container", "id": treeCoverDensityId}, "report");
+						domConstruct.create("div", {"class": "chart-container", "id": iflChartId}, "report");
+						domConstruct.create("div", {"class": "chart-container", "id": biomassId}, "report");
+						domConstruct.create("div", {"class": "chart-container", "id": landCoverCompositionId}, "report");
+						domConstruct.create("div", {"class": "chart-container", "id": firesBadgeId}, "report");
+
+						// Get Analysis By Type
+						Fetcher.getTotalLoss(graphic, {
+							container: treeCoverLossId,
+							lang: lang
+						});
+
+						Fetcher.getLandCover(graphic, {
+							container: landCoverId,
+							lang: lang
+						});
+
+						Fetcher.getTreeCoverDensity(graphic, {
+							container: treeCoverDensityId,
+							lang: lang
+						});
+
+						Fetcher.getIntactForestLandscapes(graphic, {
+							container: iflChartId,
+							lang: lang
+						});
+
+						Fetcher.getCarbon(graphic, {
+							container: biomassId,
+							lang: lang
+						});
+
+						Fetcher.getLandCoverComposition(graphic, {
+							container: landCoverCompositionId,
+							lang: lang
+						});
+
+						Fetcher.getFires(graphic, {
+							container: firesBadgeId,
+							lang: lang
+						});
+
+					});
+				};
+
+
 				//var main = new Main();
 			});//end require
 	</script>	

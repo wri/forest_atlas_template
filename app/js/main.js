@@ -7,6 +7,7 @@ define([
     "hashcontroller",
     "hash",
     "ioquery",
+    "atlas/tools/Helper",
     "dijit/form/TextBox", //Call layout Widgets here
     "dijit/form/Button",
     "dijit/form/CheckBox",
@@ -17,7 +18,7 @@ define([
     "dijit/form/SimpleTextarea",
     "dijit/Dialog",
     "dojo/domReady!"
-], function(declare, mparser, mainevents, mainconfig, mainui, hashcontroller, hash, ioQuery) {
+], function(declare, mparser, mainevents, mainconfig, mainui, hashcontroller, hash, ioQuery, Helper) {
 
     return declare(null, {
 
@@ -48,7 +49,8 @@ define([
 
             }
 
-            hash(initHash); //Go to default hash		
+            hash(initHash); //Go to default hash
+            Helper.enableLayout();	
 
         }
 

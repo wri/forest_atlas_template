@@ -273,19 +273,19 @@
 		});
 	</script>	
 	<script type="text/javascript">
-	  var _gaq = _gaq || [];
-	  	_gaq.push(
-	  	['_setAccount', 'UA-1981881-3'],
-	  	['_trackPageview'],
-	  	['b._setAccount', 'UA-1981181-14'],
-	  	['b._trackPageview']
-		);
+	 //  var _gaq = _gaq || [];
+	 //  	_gaq.push(
+	 //  	['_setAccount', 'UA-1981881-3'],
+	 //  	['_trackPageview'],
+	 //  	['b._setAccount', 'UA-1981181-14'],
+	 //  	['b._trackPageview']
+		// );
 
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
+	 //  (function() {
+	 //    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	 //    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	 //    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	 //  })();
 
 	</script>
 </head>
@@ -344,6 +344,11 @@
 			<ul>
 				<li><a href="#" target="_blank" data-bind="text:about,attr:{href:aboutLink}"></a></li>
 				<li><a href="#" target="_blank" data-bind="text:downloadData, attr: {href:downloadLink}"></a></li>
+				<span data-bind="foreach: mapThemes">
+					<li>
+						<a target="_blank" data-bind="text: label, attr: { href: value }"></a>
+					</li>
+				</span>
 			</ul>
 		</div>
 
@@ -373,9 +378,7 @@
 				
 				</div>
 				
-				<div id="languageToggle" style="poisition:absolute;z-index:999">
-			 										
-				</div>
+				<div id="languageToggle"></div>
 		</div>
 	
 		<div data-dojo-type="dijit/layout/ContentPane" id="toolsContainer"  data-dojo-props="region:'left',id:'toolsContainer',parseOnLoad:false" splitter="false" minSize="20">

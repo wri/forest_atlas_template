@@ -199,6 +199,15 @@ define(
                     vm.showMapThemes(false);
                 });
 
+                topic.subscribe("changeLayout", function (didChangeToMobile) {
+                    if (!didChangeToMobile) {
+                        // Switched to desktop view
+                        if (style.get('mobileMenu', 'display') === 'block') {
+                            style.set('mobileMenu', 'display', 'none');
+                        }
+                    }
+                });
+
             },
 
             toggleLayerPanel: function () {
@@ -1014,11 +1023,6 @@ define(
                     basemapID = app.config.basemap;
                 }
                 var url = layer.url;
-                var urlSplit = url.split("/");
-                var layerId = urlSplit.pop();
-
-                var mapService = urlSplit.join("/");
-
                 var targetLayer = map.getLayer(mapmodel.currentActiveLayer().id);
                 var visibleLayers = targetLayer.visibleLayers;
 
@@ -1027,23 +1031,35 @@ define(
                     transparecnyArr.push(ldo.transparency);
                 });
 
-
-
                 var queryObj = {
                     idField: objectIdField,
                     idValue: selectedFeature.attributes[objectIdField],
-                    mapService: mapService,
-                    layerId: layerId,
-                    visibleLayers: visibleLayers.join(","),
-                    transparency: transparecnyArr.join(","),
                     basemap: basemapID,
                     title: vm.title(),
                     flagTitle: vm.flagTitle(),
                     flagPath: app.config.flagPath,
                     webMap: mapconfig.webMapID,
-                    locale: vm.currentLanguage()
-                    //extents:extentsLatLon.xmin.toFixed(2)+","+extentsLatLon.ymin.toFixed(2)+","+extentsLatLon.xmax.toFixed(2)+","+extentsLatLon.ymax.toFixed(2)
+                    locale: vm.currentLanguage(),
+                    visibleLayers: visibleLayers.join(","),
+                    transparency: transparecnyArr.join(",")
                 };
+
+                if (url) {
+                    var urlSplit = url.split("/");
+                    var layerId = urlSplit.pop();
+                    var mapService = urlSplit.join("/");
+
+                    queryObj.mapService = mapService;
+                    queryObj.layerId = layerId;                    
+
+                } else {
+
+                    // The selected feature is from the graphics layer and has to be handled 
+                    // differently, the geometry needs to be passed on so it can be rendered
+                    // on the print page
+                    queryObj.customGeo = JSON.stringify(selectedFeature.geometry);
+                    queryObj.customTitle = selectedFeature.attributes.Custom_Title;
+                }
 
                 var queryStr = ioQuery.objectToQuery(queryObj);
                 window.open('printReport.htm?' + queryStr, "_blank");
