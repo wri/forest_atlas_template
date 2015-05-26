@@ -441,8 +441,11 @@ define(
                 var style = (active ? 'block' : 'none');
                 var color = (active ? '#000' : '#CFCFCF');
                 var mapconfig = MapConfig.getConfig();
+                var mainmodel = MainModel.getVM();
+                var lang = mainmodel.currentLanguage();
                 var map = MapUI.getMap();
                 var visibleLayers, layer, tempNode;
+
 
                 // Update the styling of the checkboxes, do it in a similar way to the above function so everything looks the same
                 // This should be refactored and done via css so we dont need to query the dom and update inline styles
@@ -459,11 +462,6 @@ define(
                 }
 
                 if (active) {
-                    // Update the Map Service
-                    layer = map.getLayer(layerId);
-                    if (layer) {
-                        layer.show();
-                    }
 
                     // Update Legend for Image Service layers
                     if (mapconfig[layerId].legendLayer) {
@@ -472,6 +470,17 @@ define(
                         visibleLayers.push(mapconfig[layerId].legendLayer);
                         layer.setVisibleLayers(visibleLayers);
                         layer.show(); 
+                    }
+
+                    // Update the Map Service
+                    layer = map.getLayer(layerId);
+
+                    if (mapconfig[layerId].hasLanguageSupport) {
+                        var layerNum = lang === 'en' ? 0 : (lang === 'fr' ? 1 : 2);
+                        layer.setVisibleLayers([layerNum]);
+                        layer.show();
+                    } else if (layer) {
+                        layer.show();
                     }
 
                 } else {

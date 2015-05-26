@@ -116,7 +116,7 @@ define(
                         'container': 'forestLossLayers',
                         'layers': [
                             {
-                                'id': 'forectCoverLoss',
+                                'id': 'forestCoverLoss',
                                 'textBinding': 'forestCoverLossLabel',
                                 'toolsContainerId': 'forestCoverControls',
                                 'toolContent': '<div class="forest-loss-toolbox">' + 

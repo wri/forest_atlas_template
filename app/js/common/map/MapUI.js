@@ -153,11 +153,11 @@ define(
                     var opacity = (app.config.defaultLayerTransparency / 100);
 
                     var lossParams = new ImageServiceParameters();
-                    lossParams.renderingRule = new RasterFunction(mapconfig.forectCoverLoss.rasterFunction);
+                    lossParams.renderingRule = new RasterFunction(mapconfig.forestCoverLoss.rasterFunction);
 
-                    var forestLossLayer = new ArcGISImageServiceLayer(mapconfig.forectCoverLoss.url, {
+                    var forestLossLayer = new ArcGISImageServiceLayer(mapconfig.forestCoverLoss.url, {
                         imageServiceParameters: lossParams,
-                        id: mapconfig.forectCoverLoss.id,
+                        id: mapconfig.forestCoverLoss.id,
                         visible: false,
                         opacity: opacity
                     });

@@ -14,8 +14,9 @@ define(
         "query",
         "dom",
         "root/languages",
-        "ioquery"
-    ], function(declare, Model, Config, registry, topic, hash, all, string, domClass, on, FeatureLayer, queryTask, query, dom, languages, ioQuery) {
+        "ioquery",
+        'mapconfig'
+    ], function(declare, Model, Config, registry, topic, hash, all, string, domClass, on, FeatureLayer, queryTask, query, dom, languages, ioQuery, MapConfig) {
         var appType = "";
         var langType = "";
 
@@ -73,6 +74,7 @@ define(
                     var mp = vm.mapPoint();
                     var map = MapUI.getMap();
                     var infoLayer = map.infoWindow;
+                    var mapConf = MapConfig.getConfig();
 
                     switch (appType) {
                         case "atlas":
@@ -191,18 +193,12 @@ define(
                             //console.log(layoutObj);
 
                             vm.currentActiveLayer(map.getLayer(mapLayerLangId));
-                            console.log(map);
-
-
 
 
                             arrayUtil.forEach(map.getLayer(mapLayerLangId).layerInfos, function(layerInfos, index) {
-
                                 var sliderTitle = "sliderTitleDiv" + index;
                                 var dataTitle = "dataTitleDiv" + index;
                                 dom.byId(sliderTitle).innerHTML = layerInfos.name;
-
-
                             });
 
                             var toggleLanguage = [];
@@ -244,7 +240,13 @@ define(
                                             targetFeatureLayer.hide();
                                         }
                                     }); //end array loop */
-                                    map.getLayer(layerId).hide();
+
+                                    // Dont hide layers that are considered extra layers, or layers not defined
+                                    // in the webmap, those layers should not be turned off because we are changing
+                                    // languages
+                                    if (arrayUtil.indexOf(mapConf.extraLayerKeys, layerId) === -1) {
+                                        map.getLayer(layerId).hide();
+                                    }
                                 }
                             });
 
@@ -252,7 +254,6 @@ define(
 
                             var dynamicLayerInfo = map.getLayer(mapLayerLangId).createDynamicLayerInfosFromLayerInfos();
                             var visiblerLayers = map.getLayer(mapLayerLangId).visibleLayers;
-                            console.log(visiblerLayers);
                             //Hide All Feature Layers, show if included in visiblerLayers
                             arrayUtil.forEach(dynamicLayerInfo, function(layerInfo, k) {
                                 var layerInt = k + 1;
@@ -264,7 +265,7 @@ define(
                                         targetFeatureLayer.show();
 
                                     } else {
-
+                                        console.log(targetFeatureLayer.id);
                                         targetFeatureLayer.hide();
                                     }
 
@@ -273,16 +274,29 @@ define(
 
                             });
 
-
-
-                            map.getLayer("maskLayer").show();
-                            vm.currentActiveLayer(map.getLayer(mapLayerLangId));
                             registry.byId("legendDiv").refresh([{
                                 layer: vm.currentActiveLayer(),
                                 title: ""
                             }]);
-                            //console.log(map._layers);
+
+                            map.getLayer("maskLayer").show();
+                            vm.currentActiveLayer(map.getLayer(mapLayerLangId));
                             map.infoWindow.hide();
+
+                            // Change any Extra layers layer number to the correct language
+                            var layerConf,
+                                layerNum,
+                                layer;
+                            
+                            arrayUtil.forEach(mapConf.extraLayerKeys, function (configKey) {
+                                layerConf = mapConf[configKey];
+                                if (layerConf.hasLanguageSupport) {
+                                    layer = map.getLayer(layerConf.id);
+                                    layerNum = newLanguage === 'en' ? 0 : (newLanguage === 'fr' ? 1 : 2);
+                                    layer.setVisibleLayers([layerNum]);
+                                    console.dir(layer);
+                                }
+                            });
 
 
                             break;

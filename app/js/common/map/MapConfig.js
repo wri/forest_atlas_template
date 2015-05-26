@@ -41,6 +41,24 @@ define(
 
                     }],
 
+                    /** extraLayerKeys
+                     * Anytime you add an additional layer or remove an additional layer, update the key
+                     * here as well, this list is used in MainController.changeLanguage to toggle mapservices
+                     * to the correct language.
+                     * If the layer supports it and follows the following pattern: [0] = en, [1] = fr, [2] = es
+                     * then just add the hasLanguageSupport key, otherwise, we need to store the correct mapping and use that
+                     */
+                    extraLayerKeys: [
+                        'landsatLayer',
+                        'forestCoverLoss',
+                        'activeFires',
+                        'treeCoverDensity',
+                        'landCover',
+                        'forestGainLayer',
+                        'carbonLayer',
+                        'intactForestLayer',
+                        'legendLayer'
+                    ],
 
                     // Extra Layers
 
@@ -56,9 +74,9 @@ define(
                         urlTemplateSection: '/${level}/${col}/${row}.png'
                     },
 
-                    forectCoverLoss: {
+                    forestCoverLoss: {
                         url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestCover_lossyear/ImageServer',
-                        id: 'forectCoverLoss',
+                        id: 'forestCoverLoss',
                         legendLayer: 11,
                         defaultRange: [1, 13],
                         colormap: [[1, 219, 101, 152]],
@@ -91,7 +109,8 @@ define(
                     landCover: {
                         url: 'http://gis-gfw.wri.org/arcgis/rest/services/GFWForestCover/central_africa_land_cover/MapServer',
                         id: 'landCover',
-                        defaultLayers: [0]
+                        defaultLayers: [0],
+                        hasLanguageSupport: true
                     },
                     forestGainLayer: {
                         url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestGain_2000_2012_map/MapServer',
