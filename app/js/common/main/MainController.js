@@ -218,8 +218,6 @@ define(
                             });
 
 
-
-
                             arrayUtil.forEach(map.layerIds, function(layerId) {
 
                                 if (layerId == mapLayerLangId) {
@@ -249,8 +247,6 @@ define(
                                     }
                                 }
                             });
-
-
 
                             var dynamicLayerInfo = map.getLayer(mapLayerLangId).createDynamicLayerInfosFromLayerInfos();
                             var visiblerLayers = map.getLayer(mapLayerLangId).visibleLayers;
