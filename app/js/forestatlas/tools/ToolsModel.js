@@ -135,11 +135,18 @@ define(
                         o._vm.clearAllFeatures = ko.observable(translation.clearAllFeatures);
                         o._vm.deleteCustomFeature = ko.observable(translation.deleteCustomFeature);
                         o._vm.landsatTextLabel = ko.observable(translation.landsatTextLabel);
+
+                        o._vm.tcdSelectorBegin = ko.observable(translation.tcdSelectorBegin);
+                        o._vm.tcdSelectorEnd = ko.observable(translation.tcdSelectorEnd);
+                        o._vm.treeCoverSliderLabel = ko.observable(translation.treeCoverSliderLabel);
+                        o._vm.tcdSelectorValue = ko.observable(30);
                         
                         o._vm.landsatOptions = ko.observableArray([2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000]);
                         o._vm.selectedLandsatYear = ko.observable(2013);
 
                         o._vm.customFeatureShowing = ko.observable(false);
+
+
 
 
                         o._vm.changePopupTabs = function (model, evt) {
@@ -207,6 +214,18 @@ define(
                             if (checkbox.checked) {
                                 topic.publish('updateLandsatLayer');
                             }
+                        };
+
+                        o._vm.canopyDensityClicked = function () {
+                            require(['atlas/tools/treeCoverDensityDialog'], function (TCDDialog) {
+                                TCDDialog.show();
+                            });
+                        };
+
+                        o._vm.treeCoverDialogClose = function () {
+                            require(['atlas/tools/treeCoverDensityDialog'], function (TCDDialog) {
+                                TCDDialog.hide();
+                            });
                         };
 
                         // Apply Bindings

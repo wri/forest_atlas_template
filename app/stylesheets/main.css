@@ -1311,7 +1311,7 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 }
 
 .analysis-selection-types {
-	height: 40px;
+	height: 60px;
 }
 
 .analysis-options-select {
@@ -1442,4 +1442,100 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 	height: 30px;
 	width: 150px;
 }
+
+/** Tree Cover Density Slider & Selector CSS **/
+.tcd-selector-wrapper {
+	display: inline-block;
+	font-weight: bold;
+	margin-left: 5px;
+	font-size: 13px;
+}
+.tcd-selector-value {
+	background-color: rgb(240, 171, 0);
+	border-radius: 35px;
+	padding: 2px 7px;
+	cursor: pointer;
+	color: white;
+}
+.tcd-selector-value:before {
+	content: "> ";
+}
+.tcd-selector-value:after {
+	content: " %";	
+}
+.animated {
+	-webkit-transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
+}
+.tree-cover-dialog {
+	background-color: white;
+	margin-left: -150px;
+	margin-top: -100px;
+	position: absolute;
+	padding: 20px;
+	height: 200px;
+	width: 300px;
+	opacity: 0;
+	left: 50%;
+	top: 50%;
+}
+.tree-cover-dialog.active {
+	z-index: 500000;
+	opacity: 1;
+}
+.tree-cover-slider-container {
+	margin: 10px auto;
+	width: 250px;
+}
+.tree-cover-slider-label {
+	font-size: 22px;
+}
+.trees {
+	margin: 20px 0;
+	height: 60px;
+	width: 100%;
+}
+.tree-icon {
+	background: url('../images/tree.png') no-repeat;
+	margin: 25px 0 0 15px;
+	height: 41px;
+	width: 25px;
+	float: left;
+}
+.forest-icon {
+	background: url('../images/forest.png') no-repeat;
+	margin-right: 15px;
+	float: right;
+	height: 60px;
+	width: 91px;
+}
+.close-icon {
+	background: url('../images/close_x.png') no-repeat center;
+	height: 25px;
+	width: 25px;
+}
+.tree-cover-close {
+	position: absolute;
+	cursor: pointer;
+	right: 5px;
+	top: 5px;
+}
+/** Slider Overrides **/
+.irs-grid-text:after,
+.irs .irs-single:after {
+	content: "%";
+}
+.irs-grid-text { color: #000; }
+.irs-single {
+	background-color: rgb(240, 171, 0);
+	color: #FFF;
+}
+.irs-min, 
+.irs-max {
+	display: none;
+}
+/** Tree Cover Density Slider & Selector CSS **/
+
+
+
 

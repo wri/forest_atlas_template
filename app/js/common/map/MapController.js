@@ -396,6 +396,25 @@ define(
 
             },
 
+            updateTCDRenderingRule: function () {
+
+                require(['mapui', 'esri/layers/RasterFunction', 'toolsmodel'], function (MapUI, RasterFunction, ToolsModel) {
+                    var tcdConfig = Config.getConfig().treeCoverDensity,
+                        rasterFunc = tcdConfig.rasterFunction,
+                        toolsModel = ToolsModel.getVM(),
+                        map = MapUI.getMap(),
+                        layer = map.getLayer(tcdConfig.id),
+                        range = [toolsModel.tcdSelectorValue(), 101];
+
+                    rasterFunc.rasterFunctionArguments.Raster.rasterFunctionArguments.InputRanges = range;
+                    if (layer) {
+                        layer.setRenderingRule(new RasterFunction(rasterFunc));
+                    }
+
+                });
+
+            },
+
             animateForestLossLayer: function () {
                 var playButton = document.getElementById('lossPlayButton');
                 var startSelect = document.getElementById('lossStartYear');

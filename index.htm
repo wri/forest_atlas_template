@@ -26,10 +26,10 @@
 	<!-- CSS
   ================================================== -->
 	<link rel="stylesheet" href="app/stylesheets/base.css">
-	
 	<link rel="stylesheet" href="http://js.arcgis.com/3.13/esri/css/esri.css">
 	<link rel="stylesheet" href="http://js.arcgis.com/3.13/dijit/themes/tundra/tundra.css">
-	
+	<link rel="stylesheet" href="app/js/common/lib/ion.rangeSlider.css">
+	<link rel="stylesheet" href="app/js/common/lib/ion.rangeSlider.skinNice.css">
 	<link rel="stylesheet" href="app/stylesheets/main.css">
 	<link rel="stylesheet" href="app/stylesheets/layout.css">
 
@@ -207,6 +207,7 @@
   </script>
 	<script type="text/javascript" src="http://js.arcgis.com/3.13"></script>
 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script src="app/js/common/lib/ion.rangeSlider.min.js"></script>
 	<script type="text/javascript">
 		
 		var app = {};
@@ -324,6 +325,11 @@
 								<option data-bind="attr: {value: analysisFire}, text: analysisFire"></option>
 								<option data-bind="attr: {value: analysisLCComposition}, text: analysisLCComposition"></option>
 							</select>
+							<div class='tcd-selector-wrapper'>
+								<span class='tcd-selector-label' data-bind='text: tcdSelectorBegin'></span>
+								<span class='tcd-selector-value' data-bind='text: tcdSelectorValue, click: canopyDensityClicked'></span>
+								<span class='tcd-selector-label' data-bind='text: tcdSelectorEnd'></span>
+							</div>
 						</div>
 						<div id="analysis-loader" class="hidden">
 							<span class="loading-wheel"></span>
@@ -337,6 +343,22 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Tree Cover Density Dialog -->
+	<div class="tree-cover-dialog animated">
+		<div class="close-icon tree-cover-close" data-bind='click: treeCoverDialogClose'></div>
+		<div class="tree-cover-slider-header">
+			<div class="tree-cover-slider-label" data-bind='text: treeCoverSliderLabel'></div>
+			<div class="trees">
+				<span class="tree-icon"></span>
+				<span class="forest-icon"></span>
+			</div>
+		</div>
+		<div class="tree-cover-slider-container">
+			<div id="tree-cover-slider"></div>
+		</div>
+	</div>
+	<!-- Tree Cover Density Dialog -->
 
 	<div data-dojo-type="dijit/layout/BorderContainer"  class="borderContainer" id="mainBorderContainer" data-dojo-props="parseOnLoad:false,gutters:false,design:'headline'"><!-- BorderContainer -->
 
@@ -367,13 +389,13 @@
 				<div id="navMenu">
 					<ul>
 						<li><a href="#" target="_blank" data-bind="text:about,attr:{href:aboutLink}"></a></li>
-						<li><a href="#" target="_blank" data-bind="text:downloadData, attr: {href:downloadLink}"></a></li>
 						<li class='nav-menu-link' data-bind="visible: mapThemes().length > 0">
 							<a id='mapThemeLink' href="javascript:void(0);" data-bind='text:mapThemesLabel'></a>
 							<div class='map-theme-sub-menu' data-bind="foreach: mapThemes">
-								<a target='_blank' data-bind="text:label,attr:{href:value}"></a>
+								<a target='_self' data-bind="text:label,attr:{href:value}"></a>
 							</div>
 						</li>
+						<li><a href="#" target="_blank" data-bind="text:downloadData, attr: {href:downloadLink}"></a></li>
 					</ul>
 				
 				</div>

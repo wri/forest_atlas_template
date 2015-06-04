@@ -26,7 +26,6 @@ define(
         "topic",
         "mainmodel",
         "cookie",
-        "all",
         "win",
         "mapui",
         "grid",
@@ -46,7 +45,6 @@ define(
         "update",
         "add",
         "attachmenteditor",
-        "memory",
         "filteringselect",
         "screenutils",
         "extent",
@@ -55,15 +53,14 @@ define(
         "layerDrawingOptions",
         "featureLayer",
         "webMercatorUtils",
-        "ioquery",
-        "registry",
         "esrirequest",
         "tiledmap",
         "arcgisutil",
         "atlas/tools/DrawTools",
         "atlas/tools/Uploader",
-        "atlas/tools/Helper"
-    ], function (declare, hash, ioQuery, ko, Model, MapModel, MapConfig, Config, registry, style, dom, arrayUtil, ComboBox, MenuItem, MenuSeparator, Memory, domClass, query, FindTask, FindParameters, number, all, string, topic, MainModel, cookie, all, win, MapUI, Grid, ItemFileWriteStore, UIFactory, domContruct, domAttr, Query, QueryTask, on, connect, Graphic, Edit, Draw, UndoManager, Delete, Update, Add, AttachmentEditor, Memory, FilteringSelect, ScreenUtils, Extent, ScreenPoint, dynamicMapLayer, LayerDrawingOptions, FeatureLayer, webMercatorUtils, ioQuery, registry, esriRequest, ArcGISTiledMapServiceLayer, arcgisUtils, DrawTools, Uploader, Helper) {
+        "atlas/tools/Helper",
+        "esri/layers/RasterFunction"
+    ], function (declare, hash, ioQuery, ko, Model, MapModel, MapConfig, Config, registry, style, dom, arrayUtil, ComboBox, MenuItem, MenuSeparator, Memory, domClass, query, FindTask, FindParameters, number, all, string, topic, MainModel, cookie, win, MapUI, Grid, ItemFileWriteStore, UIFactory, domContruct, domAttr, Query, QueryTask, on, connect, Graphic, Edit, Draw, UndoManager, Delete, Update, Add, AttachmentEditor, FilteringSelect, ScreenUtils, Extent, ScreenPoint, dynamicMapLayer, LayerDrawingOptions, FeatureLayer, webMercatorUtils, esriRequest, ArcGISTiledMapServiceLayer, arcgisUtils, DrawTools, Uploader, Helper, RasterFunction) {
 
         return declare(null, {
 
@@ -442,6 +439,7 @@ define(
                 var color = (active ? '#000' : '#CFCFCF');
                 var mapconfig = MapConfig.getConfig();
                 var mainmodel = MainModel.getVM();
+                var toolsmodel = Model.getVM();
                 var lang = mainmodel.currentLanguage();
                 var map = MapUI.getMap();
                 var visibleLayers, layer, tempNode;
@@ -475,6 +473,14 @@ define(
                     // Update the Map Service
                     layer = map.getLayer(layerId);
 
+                    // If this is a tree cover density layer, I need to set the rendering rule on it
+                    // so that it renders with the appropriate density values applied
+                    if (mapconfig.treeCoverDensity.id === layer.id) {
+                        topic.publish('updateTCDRenderingRule');
+                    }
+
+                    // If the layer has language support, set the appropriate visible layers
+                    // currently, en = 0, fr = 1, es = 2
                     if (mapconfig[layerId].hasLanguageSupport) {
                         var layerNum = lang === 'en' ? 0 : (lang === 'fr' ? 1 : 2);
                         layer.setVisibleLayers([layerNum]);

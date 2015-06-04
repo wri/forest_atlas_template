@@ -263,10 +263,11 @@ define(
                     ]);
 
                     on(o._map, 'layers-add-result', function () {
-                        o._map.reorderLayer(treeCoverDensityLayer, 1);
-                        o._map.reorderLayer(landCoverLayer, 2);
-                        o._map.reorderLayer(intactForestLayer, 3);
-                        o._map.reorderLayer(carbonLayer, 4);
+                        o._map.reorderLayer(landsatLayer, 1);
+                        o._map.reorderLayer(treeCoverDensityLayer, 2);
+                        o._map.reorderLayer(landCoverLayer, 3);
+                        o._map.reorderLayer(intactForestLayer, 4);
+                        o._map.reorderLayer(carbonLayer, 5);
                     });
 
                     o._map.addLayer(maskLayer);

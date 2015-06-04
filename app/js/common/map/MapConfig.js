@@ -63,7 +63,7 @@ define(
                     // Extra Layers
 
                     landsatLayer: {
-                        url: 'https://wri-tiles.s3.amazonaws.com/umd_landsat/2013/${level}/${col}/${row}.png',
+                        url: 'https://wri-tiles.s3.amazonaws.com/umd_landsat/2013/${level}/${row}/${col}.png',
                         copyright: 'Landsat Imagery',
                         id: 'landsat-layer',
                         // The following are needed for updating the url of a WebTiledLayer
@@ -71,7 +71,7 @@ define(
                         // urlTemplate = urlBase + year + urlTemplateSection
                         urlBase: 'https://wri-tiles.s3.amazonaws.com/umd_landsat/',
                         urlFragment: 'umd_landsat/',
-                        urlTemplateSection: '/${level}/${col}/${row}.png'
+                        urlTemplateSection: '/${level}/${row}/${col}.png'
                     },
 
                     forestCoverLoss: {
@@ -104,7 +104,22 @@ define(
                     treeCoverDensity: {
                         url: 'http://50.18.182.188:6080/arcgis/rest/services/TreeCover2000/ImageServer',
                         id: 'treeCoverDensity',
-                        legendLayer: 29
+                        legendLayer: 29,
+                        rasterFunction: {
+                            "rasterFunction": "Colormap",
+                            "rasterFunctionArguments": {
+                                "Colormap": [[50,14,204,14]],
+                                "Raster": {
+                                    "rasterFunction" : "Remap",
+                                    "rasterFunctionArguments" : {
+                                        "InputRanges" : [30, 101],
+                                        "OutputValues" : [50],
+                                        "AllowUnmatched": false
+                                    },
+                                    "variableName" : "Raster"
+                                }
+                            }
+                        }
                     },
                     landCover: {
                         url: 'http://gis-gfw.wri.org/arcgis/rest/services/GFWForestCover/central_africa_land_cover/MapServer',

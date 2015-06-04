@@ -620,6 +620,16 @@ top:0px;
 		height: 60px;
 	}
 
+	.analysis-options-select {
+		width: 220px;
+	}
+
+	.tree-cover-dialog {
+		border: 2px solid black;
+		height: 220px;
+		left: 45%;
+	}
+
 }
 
 /* Tablet Portrait size to standard 960 (devices and browsers) */

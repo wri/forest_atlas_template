@@ -151,6 +151,10 @@ define(
                             toolsmodel.deleteCustomFeature(translation.deleteCustomFeature);
                             toolsmodel.landsatTextLabel(translation.landsatTextLabel);
 
+                            toolsmodel.tcdSelectorBegin(translation.tcdSelectorBegin);
+                            toolsmodel.tcdSelectorEnd(translation.tcdSelectorEnd);
+                            toolsmodel.treeCoverSliderLabel(translation.treeCoverSliderLabel);
+
                             // update the current analysis type to the same type but in the new language
                             switch (toolsmodel.currentAnalysisType()) {
                                 case languages[prevLanguage].analysisLoss:

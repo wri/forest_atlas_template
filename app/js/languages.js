@@ -59,6 +59,10 @@ define([], function() {
                 freehand: 'Press down to start and let go to finish'
             },
 
+            tcdSelectorBegin: 'Displaying results with',
+            tcdSelectorEnd: 'canopy density',
+            treeCoverSliderLabel: 'Adjust the minimum canopy density for tree cover and tree cover loss',
+
             landsatTextLabel: 'Landsat imagery:',
 
             mapThemesLabel: 'Map Themes',
@@ -199,6 +203,10 @@ define([], function() {
             drawTools: {
                 freehand: 'Press down to start and let go to finish'
             },
+
+            tcdSelectorBegin: 'Displaying results with',
+            tcdSelectorEnd: 'canopy density',
+            treeCoverSliderLabel: 'Adjust the minimum canopy density for tree cover and tree cover loss',
 
             landsatTextLabel: 'Landsat imagery:',
 
@@ -345,6 +353,10 @@ define([], function() {
                 freehand: 'Press down to start and let go to finish'
             },
 
+            tcdSelectorBegin: 'Displaying results with',
+            tcdSelectorEnd: 'canopy density',
+            treeCoverSliderLabel: 'Adjust the minimum canopy density for tree cover and tree cover loss',
+
             landsatTextLabel: 'Landsat imagery:',
 
             mapThemesLabel: 'Map Themes',
@@ -487,6 +499,10 @@ define([], function() {
             drawTools: {
                 freehand: 'Press down to start and let go to finish'
             },
+
+            tcdSelectorBegin: 'Displaying results with',
+            tcdSelectorEnd: 'canopy density',
+            treeCoverSliderLabel: 'Adjust the minimum canopy density for tree cover and tree cover loss',
 
             landsatTextLabel: 'Landsat imagery:',
 

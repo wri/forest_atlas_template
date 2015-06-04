@@ -18,7 +18,8 @@ define(
           updateCustomInfoWindow: "updateCustomInfoWindow",
           updateAnalysisTab: "updateAnalysisTab",
           popupTabChanged: "popupTabChanged",
-          updateLandsatLayer: 'updateLandsatLayer'
+          updateLandsatLayer: 'updateLandsatLayer',
+          updateTCDRenderingRule: 'updateTCDRenderingRule'
         };
 
         var controller = new MapController();
@@ -68,6 +69,11 @@ define(
         o.updateLandsatLayer = topic.subscribe(o._events.updateLandsatLayer, function () {
           that.debug("Map >>> updateLandsatLayer");
           controller.updateLandsatLayer();
+        });
+
+        o.updateTCDRenderingRule = topic.subscribe(o._events.updateTCDRenderingRule, function () {
+          that.debug("Map >>> updateTCDRenderingRule");
+          controller.updateTCDRenderingRule();
         });
 
           
