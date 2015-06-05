@@ -181,6 +181,24 @@ define(
                         totalLossAnalysisUrl: 'http://gis-gfw.wri.org/arcgis/rest/services/GFW/analysis/ImageServer',
                         clearanceAlertAnalysisUrl: 'http://gis-potico.wri.org/arcgis/rest/services/CommoditiesAnalyzer/GFWanalysis_wm/ImageServer',
 
+                        treeCoverDensityRule: {
+                            "rasterFunction": "Arithmetic",
+                            "rasterFunctionArguments": {
+                                "Raster": {
+                                    "rasterFunction": "Remap",
+                                    "rasterFunctionArguments": {
+                                        "InputRanges": [0, 50, 50, 101], // Set this value based on TCD Slider amount
+                                        "OutputValues": [0, 1],
+                                        "Raster": "", // Insert Raster ID here
+                                        "AllowUnmatched": false
+                                    },
+                                    "variableName": "Raster"
+                                },
+                                "Raster2": "" // Insert Rendering Rule Here
+                            },
+                            "Operation": 3
+                        },
+
                         totalLoss: {
                             rasterId: "$521", //12
                             bounds: totalLossBounds,

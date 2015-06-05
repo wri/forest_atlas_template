@@ -3,11 +3,12 @@ define([
 	"toolsconfig",
 	"esri/request",
 	"dojo/Deferred",
+	"dojo/_base/lang",
 	"dojo/promise/all",
 	"esri/tasks/query",
   "esri/tasks/QueryTask",
   "atlas/tools/Renderer"
-], function (ToolsModel, ToolsConfig, esriRequest, Deferred, all, Query, QueryTask, Renderer) {
+], function (ToolsModel, ToolsConfig, esriRequest, Deferred, lang, all, Query, QueryTask, Renderer) {
 	'use strict';
 
 	// Just in case the config is not initialized for some reason
@@ -428,6 +429,9 @@ define([
 					self = this,
 					content;
 
+			// Prepare for Use with Correct Tree Cover Density Value
+			renderingRule = self.getRuleWithTCDValues(renderingRule);
+
 			content = {
 				geometryType: 'esriGeometryPolygon',
 				geometry: JSON.stringify(graphic.geometry),
@@ -460,6 +464,30 @@ define([
 
 			this.computeHistogram(url, content, success, failure);
 			return deferred.promise;
+		},
+
+		/**
+		* Takes a rendering rule and raster ID and generates a new rendering rule that performs the analysis
+		* over a given tree cover denstiy range
+		* @param {string} rule - Rendering Rule or Mosaic Rule for performing Analysis
+		* @return {string} Stringified clone of Tree Cover Density Rendering Rule 
+		**								 with the correct range, rasterId, and rule plugged in
+		*/
+		getRuleWithTCDValues: function (rule) {
+			var tcdRenderingRule = lang.clone(analysisConfig.treeCoverDensityRule),
+					rasterId = analysisConfig.treeDensity.rasterId,
+					tcdValue = Model.tcdSelectorValue(),
+					range = [0 , tcdValue, tcdValue, 101];
+
+			// Set the Raster Id
+			tcdRenderingRule.rasterFunctionArguments.Raster.rasterFunctionArguments.Raster = rasterId;
+			// Set the Range
+			tcdRenderingRule.rasterFunctionArguments.Raster.rasterFunctionArguments.InputRanges = range;
+			// Set the Rendering Rule, rule is a string, parse it so when returning the stringified rule 
+			// it does not pick up escape characters
+			tcdRenderingRule.rasterFunctionArguments.Raster2 = JSON.parse(rule);
+
+			return JSON.stringify(tcdRenderingRule);
 		},
 
 		/**
