@@ -486,6 +486,8 @@ define([
 			// Set the Rendering Rule, rule is a string, parse it so when returning the stringified rule 
 			// it does not pick up escape characters
 			tcdRenderingRule.rasterFunctionArguments.Raster2 = JSON.parse(rule);
+			// Add outputPixelType to the original rendering rule
+			tcdRenderingRule.rasterFunctionArguments.Raster2.outputPixelType = "U8";
 
 			return JSON.stringify(tcdRenderingRule);
 		},

@@ -397,7 +397,7 @@ define(
             },
 
             updateTCDRenderingRule: function () {
-
+                var self = this;
                 require(['mapui', 'esri/layers/RasterFunction', 'toolsmodel'], function (MapUI, RasterFunction, ToolsModel) {
                     var tcdConfig = Config.getConfig().treeCoverDensity,
                         rasterFunc = tcdConfig.rasterFunction,
@@ -407,8 +407,13 @@ define(
                         range = [toolsModel.tcdSelectorValue(), 101];
 
                     rasterFunc.rasterFunctionArguments.Raster.rasterFunctionArguments.InputRanges = range;
+
                     if (layer) {
                         layer.setRenderingRule(new RasterFunction(rasterFunc));
+                    }
+
+                    if (toolsModel.popupActiveTab() === 'popupAnalysisTab' && map.infoWindow.isShowing) {
+                        self.updateAnalysisTab();
                     }
 
                 });
