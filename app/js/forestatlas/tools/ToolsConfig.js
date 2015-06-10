@@ -184,6 +184,7 @@ define(
                         treeCoverDensityRule: {
                             "rasterFunction": "Arithmetic",
                             "rasterFunctionArguments": {
+                                "Operation": 3,
                                 "Raster": {
                                     "rasterFunction": "Remap",
                                     "rasterFunctionArguments": {
@@ -195,8 +196,7 @@ define(
                                     "variableName": "Raster"
                                 },
                                 "Raster2": "" // Insert Rendering Rule Here
-                            },
-                            "Operation": 3
+                            }
                         },
 
                         totalLoss: {
