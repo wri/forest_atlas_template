@@ -157,7 +157,15 @@ define(
                         'layers': [
                             {
                                 'id': 'treeCoverDensity',
-                                'textBinding': 'treeCoverDensityLabel'
+                                'textBinding': 'treeCoverDensityLabel',
+                                'toolsContainerId': 'treeCoverControls',
+                                'toolContent': '<div class="tree-cover-toolbox">' +
+                                    '<div class="tcd-selector-wrapper">' +
+                                        '<span class="tcd-selector-label" data-bind="text: tcdSelectorBegin"></span>' +
+                                        '<span class="tcd-selector-value" data-bind="text: tcdSelectorValue, click: canopyDensityClicked"></span>' +
+                                        '<span class="tcd-selector-label" data-bind="text: tcdSelectorEnd"></span>' +
+                                    '</div>' +
+                                '</div>'
                             },
                             {
                                 'id': 'landCover',
