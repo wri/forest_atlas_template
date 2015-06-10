@@ -372,7 +372,7 @@ define(
                 require(['mapui', 'esri/layers/RasterFunction'], function (MapUI, RasterFunction) {
                     var startIndex = document.getElementById('lossStartYear').selectedIndex;
                     var stopIndex = document.getElementById('lossEndYear').selectedIndex;
-                    var lossConfig = Config.getConfig().forectCoverLoss;
+                    var lossConfig = Config.getConfig().forestCoverLoss;
                     var map = MapUI.getMap();
                     var layer = map.getLayer(lossConfig.id);
                     var range;
