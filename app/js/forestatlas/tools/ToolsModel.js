@@ -217,13 +217,13 @@ define(
                         };
 
                         o._vm.canopyDensityClicked = function () {
-                            require(['atlas/tools/treeCoverDensityDialog'], function (TCDDialog) {
+                            require(['atlas/tools/TreeCoverDensityDialog'], function (TCDDialog) {
                                 TCDDialog.show();
                             });
                         };
 
                         o._vm.treeCoverDialogClose = function () {
-                            require(['atlas/tools/treeCoverDensityDialog'], function (TCDDialog) {
+                            require(['atlas/tools/TreeCoverDensityDialog'], function (TCDDialog) {
                                 TCDDialog.hide();
                             });
                         };
