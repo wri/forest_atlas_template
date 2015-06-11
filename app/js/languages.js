@@ -337,29 +337,29 @@ define([], function() {
             analysisChartLabels: {
                 // Don't translate the keys, only parts inbetween quotes
                 // Also dont change the order, the correctness of the analysis depends on it
-                landCover: ['Dense moist forest', 'Submontane forest', 'Mountain forest', 'Edaphic forest', 'Mangrove', 'Forest-savanna mosaic', 'Rural complex and young secondary forest', 'Closed to open deciduous woodland', 'Savanna woodland-Tree savanna', 'Shrubland','Grassland','Aquatic grassland','Swamp grassland','Sparse vegetation','Mosaic cultivated areas/vegeatation( herbaceous or shrub)','Agriculture','Irrigated agriculture','Bare areas','Artificial surfaces and associated areas','Water Bodies'],
+                landCover: ['Forêt dense humide', 'Forêt de transition', 'Forêt de montagne', 'Forêt édaphique', 'Mangrove', 'Mosaïque forêt-savane', 'Complexe rural et forêt secondaire jeune', 'Forêt sèche claire et/ou forêt sèche dense', 'Savane boisée et/ou savane arborée', 'Savane arbustive','Savane herbeuse','Prairie aquatique','Prairie marécagueuse','Faible couvert végétal','Mosaïque terres cultivées/végétation naturelle (herbacée ou arbustive)','Agriculture','Agriculture irriguée','Sans couvert végétal','Villes et zones associées','Eau'],
                 treeDensity: ['31 - 50%', '51 - 74%', '75 - 100%'],
-                intactForest: ['Intact Forest'],
+                intactForest: ['Forêt Intacte'],
                 carbonStock: ['0', '1 - 10', '11 - 20', '21- 35', '36 - 70', '71 - 100', '101 - 150', '151 - 200', '201 - 300', 'Greater than 300'],
                 activeFires: {
-                    start: 'There are',
-                    active: 'active fires',
-                    end: 'in the last 7 days.'
+                    start: 'Il y a eu',
+                    active: 'feux actifs',
+                    end: 'dans les 7 derniers jours.'
                 }
             },
 
             // Draw Tool Tooltips
             drawTools: {
-                freehand: 'Press down to start and let go to finish'
+                freehand: 'Cliquez puis maintenez pour commencer et relachez pour terminer'
             },
 
-            tcdSelectorBegin: 'Displaying results with',
-            tcdSelectorEnd: 'canopy density',
-            treeCoverSliderLabel: 'Adjust the minimum canopy density for tree cover and tree cover loss',
+            tcdSelectorBegin: 'Affichage des résultats avec',
+            tcdSelectorEnd: 'densité de la canopée',
+            treeCoverSliderLabel: 'Régler la densité de la canopée minimale pour la couverture arborée et la perte de la couverture arborée',
 
-            landsatTextLabel: 'Landsat imagery:',
+            landsatTextLabel: 'Images Landsat:',
 
-            mapThemesLabel: 'Map Themes',
+            mapThemesLabel: 'Thèmes de la carte',
 
             firesOneWeek: 'Dernière semaine',
             fires72Hours: 'Dernières 72 heures',
@@ -373,11 +373,11 @@ define([], function() {
                 "Sélectionnez un fichier zip(.zip) contenant un shapefile(.shp,.dbf,.prj) ou un fichier geojson valide (.geojson or .json) dans votre répertoire local.",
                 "Le shapefile doit être en système de coordonnées géographiques (WGS84).",
                 "Les deux fichiers zippés shapefile et geojson doivent contenir la géométrie de polygone.",
-                "Le fichier shapefile zippé ne doit pas depasser 1 Megabyte. Les fichiers de plus de 1 Megabyte ne peuvent pas etre téléchargés."
+                "Le fichier shapefile zippé ne doit pas depasser 1 Megabyte. Les fichiers de plus de 1 Megabyte ne peuvent pas être téléchargés."
             ],
 
-            lossStartingYear: "Début de l\'année:",
-            lossEndingYear: "Fin de l\'année:",
+            lossStartingYear: "Année de début':",
+            lossEndingYear: "Année de Fin:",
 
             accordionForestLossTitle: "Dynamique d'Occupation du Sol",
             accordionLandUseTitle: "Affectation des Terres",
@@ -419,7 +419,7 @@ define([], function() {
                 "topographic": "Topographie",
                 "dark_gray_canvas": "Toile Gris Foncée",
                 "light_gray_canvas": "Nuances de gris",
-                "national_geographic": "National Géographic",
+                "national_geographic": "National Geographic",
                 "oceans": "Océans et bathymétrie",
                 "terrain_with_labels": "Terrain avec étiquettes",
                 "openstreetmap": "Open Street Map",
