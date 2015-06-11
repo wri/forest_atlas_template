@@ -284,11 +284,9 @@ top:0px;
 }*/
 
 #customPopup {
-	/*-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;*/
 	background-color: #fff;
 	border: 1px solid #b5b5b5;
+	box-sizing: border-box;
 	position: absolute;
 	overflow: hidden;
 	z-index: 10000;
@@ -300,13 +298,13 @@ top:0px;
 }
 
 #customPopupClose {
-	background: url('../images/close_x.png') no-repeat center right;
+	background: url('../images/close_x.png') no-repeat center;
 	position: absolute;
 	cursor: pointer;
 	height: 50px;
-	width: 30px;
+	width: 50px;
 	z-index: 10;
-	right: 5px;
+	right: 0;
 	top: 0;
 }
 
@@ -628,6 +626,10 @@ top:0px;
 		border: 2px solid black;
 		height: 220px;
 		left: 45%;
+	}
+
+	.mobile-map-theme-list {
+		margin-top: 10px;
 	}
 
 }

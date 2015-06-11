@@ -826,7 +826,7 @@ define(
                 arrayUtil.forEach(map.layerIds, function(lid) {
 
                     // Only apply to ArcGIS Online Layers
-                    if (lid.search('online') === -1) {
+                    if (lid.toLowerCase().search('online') === -1) {
                         return;
                     }
 
@@ -1056,7 +1056,8 @@ define(
                     webMap: mapconfig.webMapID,
                     locale: vm.currentLanguage(),
                     visibleLayers: visibleLayers.join(","),
-                    transparency: transparecnyArr.join(",")
+                    transparency: transparecnyArr.join(","),
+                    tcd: toolsmodel.tcdSelectorValue()
                 };
 
                 if (url) {

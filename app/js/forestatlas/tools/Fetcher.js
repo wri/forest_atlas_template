@@ -7,8 +7,9 @@ define([
 	"dojo/promise/all",
 	"esri/tasks/query",
   "esri/tasks/QueryTask",
-  "atlas/tools/Renderer"
-], function (ToolsModel, ToolsConfig, esriRequest, Deferred, lang, all, Query, QueryTask, Renderer) {
+  "atlas/tools/Renderer",
+  "esri/urlUtils"
+], function (ToolsModel, ToolsConfig, esriRequest, Deferred, lang, all, Query, QueryTask, Renderer, urlUtils) {
 	'use strict';
 
 	// Just in case the config is not initialized for some reason
@@ -476,8 +477,19 @@ define([
 		getRuleWithTCDValues: function (rule) {
 			var tcdRenderingRule = lang.clone(analysisConfig.treeCoverDensityRule),
 					rasterId = analysisConfig.treeDensity.rasterId,
-					tcdValue = Model.tcdSelectorValue(),
+					tcdValue = Model ? Model.tcdSelectorValue() : getTCDFromUrl(),
 					range = [0 , tcdValue, tcdValue, 101];
+
+			/**
+			* This same function is used in the print report and since its a separate page it does not have
+			* access to toolsmodel.tcdSelectorValue, it is passed in the url as tcd, if this cant be found
+			* default to 30
+			*/
+			function getTCDFromUrl () {
+				var urlParams = urlUtils.urlToObject(location.href);
+				var tcd = urlParams && urlParams.query && urlParams.query.tcd;
+				return tcd ? parseInt(tcd) : 30;
+			}
 
 			// Set the Raster Id
 			tcdRenderingRule.rasterFunctionArguments.Raster.rasterFunctionArguments.Raster = rasterId;

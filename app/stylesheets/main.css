@@ -17,6 +17,7 @@
 }
 
 /*============ These Classes Contain the Annoying Blue/Orange Highlight Attached to All the Dijits, Override Here =============*/
+/** Esri Overrides **/
 /* basemaps */
 .esriBasemapGalleryNode{
 	height:120px;
@@ -30,6 +31,21 @@
 .dijitTitlePane .dijitArrowNodeInner {
 	display: inline-block;
 }
+
+/** Legend, some of these are overrides to base.css and the rules its using, since they are too generic **/
+.esriLegendService div {
+	padding: 5px 0;
+}
+.esriLegendLayer,
+.esriLegendLayer table,
+.esriLegendLayer td {
+	vertical-align: middle;
+}
+.esriLegendLayerLabel {
+	margin-bottom: 5px;
+}
+
+/** Esri Overrides **/
 
 #sidebar .sliderContainer input[type="range"] {
     margin-bottom: 4px;
@@ -955,9 +971,6 @@ width: 15px;
 	margin:10px 0 0 0;
 }
 
-#legendTitlePane .dijitTitlePaneTitle:hover{
-	background-color: #fff;'	
-}
 .esriControlsBR{
 	right: 150px;
 }
@@ -1533,7 +1546,10 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 .irs .irs-single:after {
 	content: "%";
 }
-.irs-grid-text { color: #000; }
+.irs-grid-text { 
+	color: #777; 
+	bottom: 5px;
+}
 .irs-single {
 	background-color: rgb(240, 171, 0);
 	color: #FFF;
@@ -1541,6 +1557,20 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 .irs-min, 
 .irs-max {
 	display: none;
+}
+.irs-grid-pol.small {
+	display: none;
+}
+.irs-line-right,
+.irs-line-mid {
+	background: rgb(240, 171, 0);
+	height: 7px;
+}
+.irs-line-right {
+	border-radius: 5px;
+}
+.irs-slider.state_hover, .irs-slider:hover {
+	background-position: 0 -120px;
 }
 /** Tree Cover Density Slider & Selector CSS **/
 

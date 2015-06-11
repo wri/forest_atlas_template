@@ -377,6 +377,12 @@ define(
                     var layer = map.getLayer(lossConfig.id);
                     var range;
 
+                    // Force the End Year to be greater then the start year, if its greater, update its value
+                    if (startIndex > stopIndex) {
+                        startIndex = stopIndex;
+                        document.getElementById('lossStartYear').selectedIndex = stopIndex;
+                    }
+
                     // Values in slider are from a 0 based index, the range starts at 1
                     // so we need to shift the values by 1 to have correct range
                     // Also the rule is [inclusive, exclusive], so if values are 3,3 use 3,3
@@ -384,7 +390,7 @@ define(
                     range = (startIndex === stopIndex ? 
                             [startIndex + 1, stopIndex + 1] : 
                             [startIndex + 1, stopIndex + 2]
-                    ); 
+                    );
 
                     // Update the correct values in the raster function, dont update the config so copy the object first
                     var rasterFunc = JSON.parse(JSON.stringify(lossConfig.rasterFunction));

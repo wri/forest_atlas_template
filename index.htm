@@ -366,11 +366,14 @@
 			<ul>
 				<li><a href="#" target="_blank" data-bind="text:about,attr:{href:aboutLink}"></a></li>
 				<li><a href="#" target="_blank" data-bind="text:downloadData, attr: {href:downloadLink}"></a></li>
-				<span data-bind="foreach: mapThemes">
-					<li>
-						<a target="_blank" data-bind="text: label, attr: { href: value }"></a>
-					</li>
-				</span>
+				<li data-bind="visible: mapThemes().length > 0">
+					<a id='mapThemeLink' href="javascript:void(0);" data-bind='text:mapThemesLabel'></a>
+					<ul class='mobile-map-theme-list' data-bind="foreach: mapThemes">
+						<li>
+							<a target="_self" data-bind="text: label, attr: { href: value }"></a>
+						</li>
+					</ul>
+				</li>
 			</ul>
 		</div>
 

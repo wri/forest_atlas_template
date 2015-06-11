@@ -111,6 +111,8 @@ define([
 
 			chartId = "#" + (printOptions ? printOptions.container : "analysis-chart");
 
+			
+
 			// Charts will live in analysis-chart
 			$(chartId).highcharts({
 				chart: {
