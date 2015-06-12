@@ -66,7 +66,10 @@ define(
 
             UIcreationComplete: function(response) {
 
-                //calculate score     
+                // Remove Hide On Load Classes so Dijits Appear Correctly
+                query('.hideOnLoad').forEach(function (node) {
+                    domClass.remove(node, 'hideOnLoad');
+                });
 
                 Model.initialize("mapTools", response);
 
@@ -83,11 +86,6 @@ define(
 
                 // Init the Draw Tools
                 DrawTools.init();
-
-                // Remove Hide On Load Classes so Dijits Appear Correctly
-                query('.hideOnLoad').forEach(function (node) {
-                    domClass.remove(node, 'hideOnLoad');
-                });
 
                 if (!Helper.isMobile()) {
                     registry.byId("legendTitlePane").toggle();
