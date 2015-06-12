@@ -325,7 +325,7 @@ define([
 			vm.showUploadTools(false);
 
 			// Send Event to Google Analytics
-			ga('A.send', 'event', 'Event', 'completed', 'Upload', 'User successfully uploaded a GeoJSON file.');
+			ga('A.send', 'event', 'Event', 'Upload', 'User successfully uploaded a GeoJSON file.');
 
 		},
 
@@ -358,7 +358,7 @@ define([
 			map.setExtent(extent, true);
 
 			// Send Event to Google Analytics
-			ga('A.send', 'event', 'Event', 'completed', 'Upload', 'User successfully uploaded a shapefile.');
+			ga('A.send', 'event', 'Event', 'Upload', 'User successfully uploaded a shapefile.');
 
 		},
 

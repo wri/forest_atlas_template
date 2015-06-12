@@ -30,31 +30,31 @@ define([
 			switch (type) {
 				case viewModel.analysisLoss():
 					this.getTotalLoss(graphic);
-          ga('A.send', 'event', 'Event', 'click', 'Analysis', 'User analyzed Tree cover loss in hectares.');
+          ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Tree cover loss in hectares.');
 				break;
 				case viewModel.analysisLC():
 					this.getLandCover(graphic);
-          ga('A.send', 'event', 'Event', 'click', 'Analysis', 'User analyzed Tree cover loss(in hectares) on Land Cover.');
+          ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Tree cover loss(in hectares) on Land Cover.');
 				break;
 				case viewModel.analysisTCD():
 					this.getTreeCoverDensity(graphic);
-          ga('A.send', 'event', 'Event', 'click', 'Analysis', 'User analyzed Tree cover loss(in hectares) on Above Ground Biomass.');
+          ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Tree cover loss(in hectares) on Above Ground Biomass.');
 				break;
 				case viewModel.analysisIFL():
 					this.getIntactForest(graphic);
-          ga('A.send', 'event', 'Event', 'click', 'Analysis', 'User analyzed Tree cover loss(in hectares) on Tree Cover Density.');
+          ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Tree cover loss(in hectares) on Tree Cover Density.');
 				break;
 				case viewModel.analysisCS():
 					this.getCarbonStock(graphic);
-          ga('A.send', 'event', 'Event', 'click', 'Analysis', 'User analyzed Tree cover loss(in hectares) on Intact Forest.');
+          ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Tree cover loss(in hectares) on Intact Forest.');
 				break;
 				case viewModel.analysisFire():
-          ga('A.send', 'event', 'Event', 'click', 'Analysis', 'User analyzed Active fires in the last 7 days.');
+          ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Active fires in the last 7 days.');
 					this.getFires(graphic);
 				break;
 				case viewModel.analysisLCComposition():
 					this.getLandCoverComposition(graphic);
-          ga('A.send', 'event', 'Event', 'click', 'Analysis', 'User analyzed Land Cover Composition.');
+          ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Land Cover Composition.');
 				break;
 			}
 

@@ -443,7 +443,7 @@ define(
 
                 printDijit.on('print-start', function () {
                     // Send Event to Google Analytics
-                    ga('A.send', 'event', 'Event', 'click', 'Print Map', 'User clicked the Print Map button on the map.');
+                    ga('A.send', 'event', 'Event', 'Print Map', 'User clicked the Print Map button on the map.');
                 });
 
                 var loadingGif = domContruct.create("div", {

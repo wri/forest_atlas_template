@@ -137,7 +137,7 @@ define(
                     if (vm.basemapGalleryVisible()) {
                         vm.basemapGalleryVisible(false);
                     }
-                    ga('A.send', 'event', 'Event', 'click', 'Share Button', 'User clicked the share button.');
+                    ga('A.send', 'event', 'Event', 'Share Button', 'User clicked the share button.');
                 });
 
                 on(dom.byId('basemap-button'), 'click', function () {
@@ -155,7 +155,7 @@ define(
 
                     if (vm.showUploadTools()) {
                         // Send Event to Google Analytics
-                        ga('A.send', 'event', 'Event', 'click', 'Upload', 'User clicked the upload button.');
+                        ga('A.send', 'event', 'Event', 'Upload', 'User clicked the upload button.');
                     }
                 });
 
@@ -1079,7 +1079,7 @@ define(
                 window.open('printReport.htm?' + queryStr, "_blank");
 
                 // Send Event to Google Analytics
-                ga('A.send', 'event', 'Event', 'click', 'Print Report', 'User clicked the Print Report button in the infoWindow.');
+                ga('A.send', 'event', 'Event', 'Print Report', 'User clicked the Print Report button in the infoWindow.');
 
             },
 
