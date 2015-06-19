@@ -328,7 +328,7 @@ define([], function() {
             analysisLCComposition: "Composition d'Occupation du Sol",
 
             analysisLossChartTitle: 'Perte de la Couverture Arborée en Hectare',
-            analysisLCChartTitle: "Perte de la Couverture Arborée annuelle (en hectares) par Type d/'Occupation du Sol",
+            analysisLCChartTitle: "Perte de la Couverture Arborée annuelle (en hectares) par Type d\'Occupation du Sol",
             analysisTCDChartTitle: 'Perte de la Couverture Arborée annuelle (en hectares) par Densité de la Couverture Arborée',
             analysisIFLChartTitle: 'Perte de la Couverture Arborée annuelle (en hectares) par Paysage Forestier Intact',
             analysisCSChartTitle: 'Perte de la Couverture Arborée annuelle (en hectares) par Biomasse Aérienne (MgC/ha)',
@@ -439,7 +439,7 @@ define([], function() {
             drawNamingDialogNoNameError: 'Veuillez entrer un nom pour continuer.',
 
             clearAllFeatures: "Tout effacer",
-            deleteCustomFeature: "Effacer l/'objet",
+            deleteCustomFeature: "Effacer l\'objet",
 
 
         },
