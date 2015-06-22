@@ -221,6 +221,20 @@ define(
                     style.set('openLayersButton', 'display', 'none');
                     // Resize the accordion to avoid weirdness with labels
                     dijit.byId('accordionContainer').resize();
+                    // There seems to be some mobile specific issues now with these labels as well and
+                    // accordionContainer.resize is not working, for now, use this hack, this accordion container
+                    // should probably be replaced with something that is not a dijit as it is causing too many issues
+                    // Hack selects another content pane, then reselects the current pane, forcing all the labels to resize and show
+                    if (Helper.isMobile()) {
+                        var currentChild = dijit.byId('accordionContainer').get('selectedChildWidget').id;
+                        // Grab an id to another node
+                        var newChild = currentChild === 'layersCP' ? 'forestLossLayers' : 'layersCP';
+
+                        dijit.byId('accordionContainer').selectChild(newChild);
+                        setTimeout(function () { 
+                            dijit.byId('accordionContainer').selectChild(currentChild); 
+                        }, 0);
+                    }
                 }
 
             },
