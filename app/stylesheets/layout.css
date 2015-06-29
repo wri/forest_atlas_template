@@ -26,7 +26,7 @@
 
 	/* Smaller than standard 960 (devices and browsers) */
 @media only screen and (max-width: 9999px) {
-	
+
 	#languageToggle{
 		position:absolute;
 		right:0px;
@@ -49,7 +49,7 @@
 	#navMenu{
 		position: absolute;
 		right: 190px;
-		top: 15px;	
+		top: 15px;
 	}
 	#navMenu ul li{
 		float: left;
@@ -57,7 +57,7 @@
 		margin-bottom:0px;
 		height: 40px;
 	}
-	
+
 	#spanish{
 		border-left: 1px solid #fff;
 	}
@@ -90,7 +90,7 @@
 
 #basemapContentPane{
 	width:300px;
-	height:200px;		
+	height:200px;
 }
 
 #map{
@@ -130,11 +130,11 @@ top:0px;
 	margin-right: 280px;
 	vertical-align: middle;
 	margin-top: -7px;
-	
+
 }
 
 #countryFlag {
-	vertical-align: middle;	
+	vertical-align: middle;
 	margin-top: 8px;
 	height: 40px;
 	float: right;
@@ -153,7 +153,7 @@ top:0px;
 	z-index:1400;
 }
 #search{
-	
+
 	float:left;
 }
 
@@ -183,9 +183,9 @@ top:0px;
 	top:3px;
 }
 
-.legendContainer{	
+.legendContainer{
 	max-height: 300px;
-	position:absolute; 
+	position:absolute;
 	right:80px;
 	z-Index:999;
 	overflow:hidden;
@@ -198,7 +198,7 @@ top:0px;
 	line-height: 58px;
 	vertical-align: middle;
 	position:absolute;
-	width: 100%;	
+	width: 100%;
 	height:58px;
 	font-size: 26px;
 	font-weight: 600;
@@ -208,7 +208,7 @@ top:0px;
 
 .app #mainTitle h4{
 	line-height: 60px;
-}	
+}
 
 #layersCP p{
 	text-align: center;
@@ -272,7 +272,7 @@ top:0px;
 }
 
 /*#mobilePopupUnderlay {
-	background-color: #CCC;	
+	background-color: #CCC;
 	position: absolute;
 	z-index: 9999;
 	display: none;
@@ -336,7 +336,7 @@ top:0px;
 
 #customPopupBody {
 	position: absolute;
-	background: #CCC; 
+	background: #CCC;
 	height: 100%;
 	width: 100%;
 }
@@ -377,8 +377,8 @@ top:0px;
 	right: 0;
 	left: 0;
 }
-	
-.popup-tab.active {	
+
+.popup-tab.active {
 	border-top: 6px solid #eeab02;
 	background-color: #FFF;
 }
@@ -568,7 +568,7 @@ top:0px;
 		width: 180px !important;
 		border-left: none;
 		right: 60px;
-		top: -3px; /* Top is -3 because the content is not vertically centered, this improves it */ 
+		top: -3px; /* Top is -3 because the content is not vertically centered, this improves it */
 	}
 
 	#languageToggle a {
@@ -619,17 +619,24 @@ top:0px;
 	}
 
 	.analysis-options-select {
-		width: 195px;
+		width: 185px;
 	}
 
 	.tree-cover-dialog {
 		border: 2px solid black;
+		margin-left: -120px;
 		height: 220px;
+		width: 240px;
 		left: 45%;
 	}
 
 	.mobile-map-theme-list {
 		margin-top: 10px;
+	}
+
+	.mobile-map-theme-list a {
+		display: inline-block;
+		margin-right: 20px;
 	}
 
 }
