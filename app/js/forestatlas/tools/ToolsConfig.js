@@ -8,6 +8,7 @@ define(
         var iflBounds = [0, 1];
         var carbonBounds = [0, 9];
         var landCoverBounds = [1, 20];
+        //var treeDensityBounds = [1, 1];
         var treeDensityBounds = [1, 3];
         var protectedAreaBounds = [0, 1];
         var primForestBounds = [1, 2];
@@ -266,13 +267,36 @@ define(
                                 "mosaicOperation" : "MT_FIRST"
                             }
                         },
+
+                        /* Potential New Config */
+                        // treeDensity: {
+                        //     rasterId: '$520',
+                        //     formaId: '$12',
+                        //     bounds: treeDensityBounds,
+                        //     labels: ["Tree Cover Density Loss"],
+                        //     colors: ["#CF5188"],
+                        //     title: "Annual Tree Cover Loss (in hectares)",
+                        //     titleKey: 'analysisTCDChartTitle',
+                        //     labelKey: 'treeDensity',
+                        //     includeFormaIdInRemap: true,
+                        //     rasterRemap: {
+                        //         "rasterFunction": "Remap",
+                        //         "rasterFunctionArguments": {
+                        //             "InputRanges": [10, 101],
+                        //             "OutputValues": [1],
+                        //             "Raster": "$520",
+                        //             "AllowUnmatched": false
+                        //         }
+                        //     }
+                        // },
+
                         treeDensity: {
                             rasterId: '$520',
                             formaId: '$12',
                             bounds: treeDensityBounds,
                             labels: ["31 - 50%", "51 - 74%", "75 - 100%"],
                             colors: ["#ccf1a5", "#859a59", "#4b5923"],
-                            title: "Annual Tree Cover Loss (in hectares)",
+                            title: "Annual Tree Cover Loss (in hectares) on Tree Cover Density",
                             titleKey: 'analysisTCDChartTitle',
                             labelKey: 'treeDensity',
                             includeFormaIdInRemap: true,
