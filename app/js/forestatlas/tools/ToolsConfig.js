@@ -119,14 +119,14 @@ define(
                                 'id': 'forestCoverLoss',
                                 'textBinding': 'forestCoverLossLabel',
                                 'toolsContainerId': 'forestCoverControls',
-                                'toolContent': '<div class="forest-loss-toolbox">' + 
+                                'toolContent': '<div class="forest-loss-toolbox">' +
                                     '<table>' +
-                                        '<tr>' + 
-                                            '<td><span data-bind="text: lossStartingYear"></span></td>' + 
+                                        '<tr>' +
+                                            '<td><span data-bind="text: lossStartingYear"></span></td>' +
                                             '<td><select id="lossStartYear" data-bind="options: forestLossYears"></select></td>' +
                                             '<td rowspan="2"><div id="lossPlayButton" class="loss-play-button"></div></td>' +
                                         '</tr>' +
-                                        '<tr>' + 
+                                        '<tr>' +
                                             '<td><span data-bind="text: lossEndingYear"></span></td>' +
                                             '<td><select id="lossEndYear" data-bind="options: forestLossYears,value: forestLossYears()[forestLossYears().length - 1]"></select></td>' +
                                         '</tr>' +
@@ -170,7 +170,7 @@ define(
                             {
                                 'id': 'landCover',
                                 'textBinding': 'landCoverLabel'
-                            },                            
+                            },
                             {
                                 'id': 'intactForestLayer',
                                 'textBinding': 'intactForestLayerLabel'
@@ -272,7 +272,7 @@ define(
                             bounds: treeDensityBounds,
                             labels: ["31 - 50%", "51 - 74%", "75 - 100%"],
                             colors: ["#ccf1a5", "#859a59", "#4b5923"],
-                            title: "Annual Tree Cover Loss (in hectares) on Tree Cover Density",
+                            title: "Annual Tree Cover Loss (in hectares)",
                             titleKey: 'analysisTCDChartTitle',
                             labelKey: 'treeDensity',
                             includeFormaIdInRemap: true,
@@ -332,7 +332,7 @@ define(
         };
 
         o.initialize = function() {
-            if (null == o._instance) {
+            if (undefined === o._instance) {
                 o._instance = new o();
             }
             return o._instance;

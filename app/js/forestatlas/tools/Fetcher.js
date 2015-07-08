@@ -16,7 +16,7 @@ define([
 	ToolsConfig.initialize();
 
 	var performLossAnalysis = true;
-	var performClearanceAnalysis = false;	
+	var performClearanceAnalysis = false;
 	var toolsConfig = ToolsConfig.getConfig();
 	var analysisConfig = toolsConfig.analysisConfig;
 	var Model = ToolsModel.getVM();
@@ -26,7 +26,7 @@ define([
 		/**
 		* Start Performing the Analysis for this particular dataset
 		* @param {object} graphic - Esri Graphic Object
-		* @param {object} printOptions - additional options needed to use this from the print report 
+		* @param {object} printOptions - additional options needed to use this from the print report
 		*/
 		getIntactForestLandscapes: function (graphic, printOptions) {
 			this.debug('Fetcher >>> getIntactForestLandscapes');
@@ -48,7 +48,7 @@ define([
 				});
 			} else {
 				deferred.resolve();
-			}			
+			}
 
 			return deferred.promise;
 		},
@@ -78,7 +78,7 @@ define([
 				});
 			} else {
 				deferred.resolve();
-			}			
+			}
 
 			return deferred.promise;
 		},
@@ -108,7 +108,7 @@ define([
 				});
 			} else {
 				deferred.resolve();
-			}			
+			}
 
 			return deferred.promise;
 		},
@@ -138,7 +138,7 @@ define([
 				});
 			} else {
 				deferred.resolve();
-			}			
+			}
 
 			return deferred.promise;
 		},
@@ -168,7 +168,7 @@ define([
 				});
 			} else {
 				deferred.resolve();
-			}			
+			}
 
 			return deferred.promise;
 		},
@@ -198,7 +198,7 @@ define([
 				});
 			} else {
 				deferred.resolve();
-			}			
+			}
 
 			return deferred.promise;
 		},
@@ -228,7 +228,7 @@ define([
 				});
 			} else {
 				deferred.resolve();
-			}			
+			}
 
 			return deferred.promise;
 		},
@@ -258,7 +258,7 @@ define([
 				});
 			} else {
 				deferred.resolve();
-			}			
+			}
 
 			return deferred.promise;
 		},
@@ -414,8 +414,8 @@ define([
 		* Main analysis function to cross layers and geometry with total tree cover loss
 		* @param {object} config - basic settings and info necessary to perform analysis
 		* @param {object} graphic - Esri Graphic Object
-		* @param {boolean} useSimpleRule - whether or not to use the simple version of the rendering rule 
-		* @param {object} printOptions - additional options needed to use this from the print report 
+		* @param {boolean} useSimpleRule - whether or not to use the simple version of the rendering rule
+		* @param {object} printOptions - additional options needed to use this from the print report
 		* @return {object} returns a promise
 		*/
 		totalLossAnalysis: function (config, graphic, useSimpleRule, printOptions) {
@@ -424,7 +424,7 @@ define([
 					url = analysisConfig.totalLossAnalysisUrl,
 					encoder = this.getEncoder(lossConfig.bounds, config.bounds),
 					rasterId = config.rasterRemap ? config.rasterRemap : config.rasterId,
-					renderingRule = useSimpleRule ? 
+					renderingRule = useSimpleRule ?
 							encoder.getSimpleRule(lossConfig.rasterId, rasterId) :
 							encoder.render(lossConfig.rasterId, rasterId),
 					self = this,
@@ -471,7 +471,7 @@ define([
 		* Takes a rendering rule and raster ID and generates a new rendering rule that performs the analysis
 		* over a given tree cover denstiy range
 		* @param {string} rule - Rendering Rule or Mosaic Rule for performing Analysis
-		* @return {string} Stringified clone of Tree Cover Density Rendering Rule 
+		* @return {string} Stringified clone of Tree Cover Density Rendering Rule
 		**								 with the correct range, rasterId, and rule plugged in
 		*/
 		getRuleWithTCDValues: function (rule) {
@@ -495,7 +495,7 @@ define([
 			tcdRenderingRule.rasterFunctionArguments.Raster.rasterFunctionArguments.Raster = rasterId;
 			// Set the Range
 			tcdRenderingRule.rasterFunctionArguments.Raster.rasterFunctionArguments.InputRanges = range;
-			// Set the Rendering Rule, rule is a string, parse it so when returning the stringified rule 
+			// Set the Rendering Rule, rule is a string, parse it so when returning the stringified rule
 			// it does not pick up escape characters
 			tcdRenderingRule.rasterFunctionArguments.Raster2 = JSON.parse(rule);
 			// Add outputPixelType to the original rendering rule
@@ -508,7 +508,7 @@ define([
 		* Main analysis function to cross layers and geometry with total tree cover loss
 		* @param {object} config - basic settings and info necessary to perform analysis
 		* @param {object} graphic - Esri Graphic Object
-		* @param {boolean} useSimpleRule - whether or not to use the simple version of the rendering rule 
+		* @param {boolean} useSimpleRule - whether or not to use the simple version of the rendering rule
 		* @param {object} printOptions - additional options needed to use this from the print report
 		* @return {object} returns a promise
 		*/
@@ -521,7 +521,7 @@ define([
           rasterId,
           content,
           encoder;
-			
+
 
 			function success() {
 				console.log('Success');
@@ -547,7 +547,7 @@ define([
 
       encoder = this.getEncoder(Model.clearanceAlertBounds(), config.bounds);
       rasterId = config.rasterRemap ? config.rasterRemap : config.rasterId;
-      renderingRule = useSimpleRule ? 
+      renderingRule = useSimpleRule ?
       		encoder.getSimpleRule(clearanceConfig.rasterId, rasterId) :
       		encoder.render(clearanceConfig.rasterId, rasterId);
       content = {
@@ -581,12 +581,12 @@ define([
 		},
 
 		/**
-		* Helper function to generate a encoding function that generates a rendering rule, and can 
+		* Helper function to generate a encoding function that generates a rendering rule, and can
 		* encode and decode input and output values in the histograms array to help pull the correct values
 		* out when the histograms array is received based on the bounds provided
 		* @param {array} arrayA - a layers bounds for it's raster ids in array format
 		* @param {array} arrayB - a layers bounds for it's raster ids in array format
-		* @param {object} options - Any additional options, here from previous version but not currently used 
+		* @param {object} options - Any additional options, here from previous version but not currently used
 		* @return {object} Object containing several helper functions
 		*/
 		getEncoder: function(arrayA, arrayB, options) {
@@ -652,8 +652,8 @@ define([
     * @return {array} - Array representing the bounds
     */
     fromBounds: function (arr) {
-    	if (arr.length !== 2) { 
-    		return arr; 
+    	if (arr.length !== 2) {
+    		return arr;
     	}
     	var result = [], index = arr[0], length = arr[1];
     	for (index; index <= length; index++) {

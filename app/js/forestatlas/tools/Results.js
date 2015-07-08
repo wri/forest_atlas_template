@@ -12,7 +12,7 @@ define([
 		*/
 		debug: function (msg) {
 			console.log(msg);
-		},	
+		},
 
 		/**
 		* Get Results for the provided type of analysis and graphic and render that into the Analysis Tab
@@ -49,8 +49,8 @@ define([
           ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Tree cover loss(in hectares) on Intact Forest.');
 				break;
 				case viewModel.analysisFire():
-          ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Active fires in the last 7 days.');
 					this.getFires(graphic);
+          ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Active fires in the last 7 days.');
 				break;
 				case viewModel.analysisLCComposition():
 					this.getLandCoverComposition(graphic);
@@ -129,7 +129,7 @@ define([
 			Fetcher.getFires(graphic).then(function (res) {
 				// Remove the loader by adding the class hiding it
 				domClass.add('analysis-loader', 'hidden');
-			});	
+			});
 		},
 
 		/**
@@ -141,7 +141,7 @@ define([
 			Fetcher.getLandCoverComposition(graphic).then(function (res) {
 				// Remove the loader by adding the class hiding it
 				domClass.add('analysis-loader', 'hidden');
-			});	
+			});
 		}
 
 	};
