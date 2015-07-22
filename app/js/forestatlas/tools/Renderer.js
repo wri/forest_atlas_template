@@ -32,11 +32,11 @@ define([
 		* @param {integer} pixelSize - pixel size used in the request, may have to adjust results based no this value
 		* @param {object} config - config used in request
 		* @param {object} encoder - used in request to encode values, will need it to parse response
-		* @param {boolean} useSimpleRule - Tells me which rendering rule was used in the request 
+		* @param {boolean} useSimpleRule - Tells me which rendering rule was used in the request
 		* @param {object} printOptions - additional options needed to use this from the print report
 		*/
 		formatTreeCoverData: function (histograms, pixelSize, config, encoder, useSimpleRule, printOptions) {
-			
+
 			var mapFunction = function (item) { return (item * pixelSize * pixelSize) / 10000; },
 					lossConfig = toolsConfig.analysisConfig.totalLoss,
 					xAxisLabels = lossConfig.labels, // Tree Cover Loss Labels
@@ -92,7 +92,7 @@ define([
 		* @param {array} colors - array of colors for each entry in the chart
 		* @param {array} xAxisLabels - array of labels for xAxis
 		* @param {array} yAxisLabels - array of labels for yAxis
-		* @param {object} printOptions - additional options needed to use this from the print report 
+		* @param {object} printOptions - additional options needed to use this from the print report
 		*/
 		renderTreeCoverChart: function (titleKey, data, colors, xAxisLabels, yAxisLabels, printOptions) {
 
@@ -111,7 +111,7 @@ define([
 
 			chartId = "#" + (printOptions ? printOptions.container : "analysis-chart");
 
-			
+
 
 			// Charts will live in analysis-chart
 			$(chartId).highcharts({
@@ -173,7 +173,7 @@ define([
 		* Specific Chart to show total Tree Cover loss by itself, not crossed with anything
 		*	@param {array} histograms - histogram data
 		* @param {integer} pixelSize - pixelSize used in requests
-		* @param {object} printOptions - additional options needed to use this from the print report 
+		* @param {object} printOptions - additional options needed to use this from the print report
 		*/
 		renderTotalLossData: function (histograms, pixelSize, printOptions) {
 
@@ -246,9 +246,39 @@ define([
 		},
 
 		/**
+		* Specific Chart to show total Tree Cover loss by itself, not crossed with anything
 		*	@param {array} histograms - histogram data
 		* @param {integer} pixelSize - pixelSize used in requests
-		* @param {object} printOptions - additional options needed to use this from the print report 
+		* @param {object} printOptions - additional options needed to use this from the print report
+		*/
+		renderTotalGainData: function (histograms, pixelSize) {
+			var mapFunction = function (item) { return (item * pixelSize * pixelSize) / 10000; },
+					model = MainModel.getVM(),
+					currentLang = model ? model.currentLanguage() : 'en',
+					title = languages[currentLang].analysisGainChartTitle,
+					content;
+
+			if (pixelSize !== 100) {
+				histograms = histograms.map(mapFunction);
+			}
+
+
+			// TODO: This is Temporary until we know what we want the UI to look like
+			content = "<div id='analysis-chart'>";
+			content += "<p>Title: " + title + "</p>";
+			content += "<p>GAIN 2001-2012: " + histograms[1] + " ha</p>";
+			content += "</div>";
+
+			// This content must be replaced completely which is why the content contains a div with
+			// the same id, highcharts redraws charts on window resize even if I replace innerHTML
+			$('#analysis-chart').replaceWith(content);
+
+		},
+
+		/**
+		*	@param {array} histograms - histogram data
+		* @param {integer} pixelSize - pixelSize used in requests
+		* @param {object} printOptions - additional options needed to use this from the print report
 		*/
 		renderLandCoverComposition: function (histograms, pixelSize, printOptions) {
 			var mapFunction = function (item) { return (item * pixelSize * pixelSize) / 10000; },
@@ -354,7 +384,7 @@ define([
 			content += "<div class='fire-count'>" + languages[currentLang].analysisChartLabels.activeFires.active + "</div>";
 			content += "<div>" + languages[currentLang].analysisChartLabels.activeFires.end + "</div></section></div>";
 
-			// This content must be replaced completely which is why the content contains a div with 
+			// This content must be replaced completely which is why the content contains a div with
 			// the same id, highcharts redraws charts on window resize even if I replace innerHTML
 			chartId = "#" + (printOptions ? printOptions.container : "analysis-chart");
 
@@ -383,8 +413,8 @@ define([
     * @return {array} - Array representing the bounds
     */
     fromBounds: function (arr) {
-    	if (arr.length !== 2) { 
-    		return arr; 
+    	if (arr.length !== 2) {
+    		return arr;
     	}
     	var result = [], index = arr[0], length = arr[1];
     	for (index; index <= length; index++) {
@@ -494,7 +524,7 @@ define([
 
 				blob = this.base64toBlob(this.base64_encode(csvStringData), blobType);
 				navigator.msSaveBlob(blob, filename);
-				
+
 			} else if (saveAs && !!new Blob) {
 				// If the FileSaver is loaded from cdn correctly and is supported in this browser, use it
 				blob = this.base64toBlob(this.base64_encode(csvStringData), blobType);
@@ -514,7 +544,7 @@ define([
 
     base64toBlob: function (base64Data, contentType) {
     	// Taken From: http://stackoverflow.com/questions/16245767/creating-a-blob-from-a-base64-string-in-javascript
-    	// Only works in 
+    	// Only works in
 		    contentType = contentType || '';
 		    var sliceSize = 1024;
 		    var byteCharacters = atob(base64Data);
@@ -585,7 +615,7 @@ define([
 
     /**
     * Takes a title like "MyFeature (1 of 3)" and returns "MyFeature"
-    * Also handles titles like "My (cool) feature (1 of 3)" 
+    * Also handles titles like "My (cool) feature (1 of 3)"
     *				and turns them into "My (cool) feature"
     * @param {string} title - title to manipulate
     * @return {string} returns newly formatted title or original title if it does not need formatting

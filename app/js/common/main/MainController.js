@@ -104,6 +104,7 @@ define(
                             toolsmodel.popupAnalysisTab(translation.popupAnalysisTab);
 
                             toolsmodel.analysisLoss(translation.analysisLoss);
+                            toolsmodel.analysisGain(translation.analysisGain);
                             toolsmodel.analysisLC(translation.analysisLC);
                             toolsmodel.analysisTCD(translation.analysisTCD);
                             toolsmodel.analysisIFL(translation.analysisIFL);
@@ -119,7 +120,7 @@ define(
                             toolsmodel.fires24Hours(translation.fires24Hours);
 
                             toolsmodel.lossStartingYear(translation.lossStartingYear);
-                            toolsmodel.lossEndingYear(translation.lossEndingYear);                        
+                            toolsmodel.lossEndingYear(translation.lossEndingYear);
 
                             toolsmodel.accordionForestCoverTitle(translation.accordionForestCoverTitle);
                             toolsmodel.accordionForestLossTitle(translation.accordionForestLossTitle);
@@ -135,7 +136,7 @@ define(
                             toolsmodel.intactForestLayerLabel(translation.intactForestLayerLabel);
 
                             toolsmodel.treeCoverAnalysis(translation.treeCoverAnalysis);
-                            toolsmodel.otherAnalysisTypes(translation.otherAnalysisTypes);                        
+                            toolsmodel.otherAnalysisTypes(translation.otherAnalysisTypes);
 
                             toolsmodel.selectAll(translation.selectAll);
                             toolsmodel.clearAll(translation.clearAll);
@@ -160,12 +161,15 @@ define(
                                 case languages[prevLanguage].analysisLoss:
                                     toolsmodel.currentAnalysisType(translation.analysisLoss);
                                 break;
+                                case languages[prevLanguage].analysisGain:
+                                    toolsmodel.currentAnalysisType(translation.analysisGain);
+                                break;
                                 case languages[prevLanguage].analysisLC:
                                     toolsmodel.currentAnalysisType(translation.analysisLC);
                                 break;
                                 case languages[prevLanguage].analysisTCD:
                                     toolsmodel.currentAnalysisType(translation.analysisTCD);
-                                break;  
+                                break;
                                 case languages[prevLanguage].analysisIFL:
                                     toolsmodel.currentAnalysisType(translation.analysisIFL);
                                 break;
@@ -287,7 +291,7 @@ define(
                             var layerConf,
                                 layerNum,
                                 layer;
-                            
+
                             arrayUtil.forEach(mapConf.extraLayerKeys, function (configKey) {
                                 layerConf = mapConf[configKey];
                                 if (layerConf.hasLanguageSupport) {

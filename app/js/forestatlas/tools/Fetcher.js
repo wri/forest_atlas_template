@@ -360,6 +360,51 @@ define([
 		},
 
 		/**
+		* @param {Graphic} graphic - Esri Graphic Object
+		*/
+		getTotalGain: function (graphic) {
+			this.debug('Fetcher >>> getTotalGain');
+			var deferred = new Deferred(),
+					url = analysisConfig.totalLossAnalysisUrl,
+					pixelSize = 100,
+					self = this,
+					content;
+
+			content = {
+				geometryType: 'esriGeometryPolygon',
+				geometry: JSON.stringify(graphic.geometry),
+				pixelSize: pixelSize,
+				mosaicRule: JSON.stringify(analysisConfig.totalGain.mosaicRule),
+				f: 'json'
+			};
+
+			function success(results) {
+				deferred.resolve(true);
+				if (results.histograms.length > 0) {
+					Renderer.renderTotalGainData(results.histograms[0].counts, content.pixelSize);
+				} else {
+					Renderer.renderUnavailable(printOptions);
+				}
+			}
+
+			function failure(error) {
+				if (error.details) {
+        	if (error.details[0] === 'The requested image exceeds the size limit.' && content.pixelSize !== 500) {
+          	content.pixelSize = 500;
+            self.computeHistogram(url, content, success, failure);
+          } else {
+          	deferred.resolve(false);
+          }
+        } else {
+        	deferred.resolve(false);
+        }
+			}
+
+			this.computeHistogram(url, content, success, failure);
+			return deferred;
+		},
+
+		/**
 		* Start Performing the Analysis for this particular dataset
 		* This is different from below becuase it does not cross the layer
 		* with other layers, its just loss in the provided geometry
@@ -389,7 +434,6 @@ define([
 				} else {
 					Renderer.renderUnavailable(printOptions);
 				}
-				//Renderer.formatTreeCoverData(results.histograms[0].counts, content.pixelSize, config, encoder, useSimpleRule);
 			}
 
 			function failure(error) {

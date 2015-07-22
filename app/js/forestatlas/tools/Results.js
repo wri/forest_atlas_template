@@ -32,6 +32,10 @@ define([
 					this.getTotalLoss(graphic);
           ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Tree cover loss in hectares.');
 				break;
+				case viewModel.analysisGain():
+					this.getTotalGain(graphic);
+          ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Tree cover gain in hectares.');
+				break;
 				case viewModel.analysisLC():
 					this.getLandCover(graphic);
           ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Tree cover loss(in hectares) on Land Cover.');
@@ -67,6 +71,18 @@ define([
 		getTotalLoss: function (graphic) {
 			this.debug('Results >>> getTotalLoss');
 			Fetcher.getTotalLoss(graphic).then(function (res) {
+				// Remove the loader by adding the class hiding it
+				domClass.add('analysis-loader', 'hidden');
+			});
+		},
+
+		/**
+		* Get Results for this data type
+		* @param {object} graphic
+		*/
+		getTotalGain: function (graphic) {
+			this.debug('Results >>> getTotalGain');
+			Fetcher.getTotalGain(graphic).then(function (res) {
 				// Remove the loader by adding the class hiding it
 				domClass.add('analysis-loader', 'hidden');
 			});

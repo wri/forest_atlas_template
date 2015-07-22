@@ -26,6 +26,7 @@ define([], function() {
             ],
 
             analysisLoss: "Tree Cover Loss",
+            analysisGain: "Tree Cover Gain",
             analysisLC: "Land Cover Loss",
             analysisTCD: "Tree Cover Density Loss",
             analysisIFL: "Intact Forest Loss",
@@ -34,6 +35,7 @@ define([], function() {
             analysisLCComposition: "Land Cover Composition",
 
             analysisLossChartTitle: 'Tree Cover Loss in hectares',
+            analysisGainChartTitle: 'Tree Cover Gain in hectares',
             analysisLCChartTitle: 'Annual Tree Cover Loss (in hectares) on Land Cover',
             analysisTCDChartTitle: 'Annual Tree Cover Loss (in hectares) on Tree Cover Density',
             analysisIFLChartTitle: 'Annual Tree Cover Loss (in hectares) on Intact Forest Landscapes',
@@ -96,7 +98,7 @@ define([], function() {
             treeCoverGainLabel: 'Tree Cover Gain',
             carbonLayerLabel: 'Above Ground Biomass',
             intactForestLayerLabel: 'Intact Forest Landscape',
-            
+
             treeCoverAnalysis: "Select a tree cover loss analysis below:",
             otherAnalysisTypes: "Or, select analysis based on land cover composition or active fires:",
 
@@ -171,6 +173,7 @@ define([], function() {
             ],
 
             analysisLoss: "Pérdida de la cobertura arbórea",
+            analysisGain: "Tree Cover Gain",
             analysisLC: "Cobertura vegetal",
             analysisTCD: "Densidad de dosel arbóreo",
             analysisIFL: "Paisajes Forestales Intactos",
@@ -179,6 +182,7 @@ define([], function() {
             analysisLCComposition: "Composición de la cobertura vegetal",
 
             analysisLossChartTitle: 'Pérdida de la cobertura arbórea en hectáreas cuadradas',
+            analysisGainChartTitle: 'Tree Cover Gain in hectares',
             analysisLCChartTitle: 'Pérdida anual de la cobertura arbórea (hectáreas cuadradas) on Land Cover',
             analysisTCDChartTitle: 'Pérdida anual de la cobertura arbórea (hectáreas cuadradas) on Tree Cover Density',
             analysisIFLChartTitle: 'Pérdida anual de la cobertura arbórea (hectáreas cuadradas) en Paisajes Forestales Intactos',
@@ -228,7 +232,7 @@ define([], function() {
             ],
 
             lossStartingYear: 'Año del inicio:',
-            lossEndingYear: 'Fin del año:', 
+            lossEndingYear: 'Fin del año:',
 
             accordionForestLossTitle: "Land Cover Dynamics",
             accordionLandUseTitle: "Uso del suelo",
@@ -320,6 +324,7 @@ define([], function() {
             ],
 
             analysisLoss: "Perte totale",
+            analysisGain: "Tree Cover Gain",
             analysisLC: "Occupation du Sol",
             analysisTCD: "Densité de la Couverture Arborée",
             analysisIFL: "Forêt Intacte",
@@ -328,6 +333,7 @@ define([], function() {
             analysisLCComposition: "Composition d'Occupation du Sol",
 
             analysisLossChartTitle: 'Perte de la Couverture Arborée en Hectare',
+            analysisGainChartTitle: 'Tree Cover Gain in hectares',
             analysisLCChartTitle: "Perte de la Couverture Arborée annuelle (en hectares) par Type d\'Occupation du Sol",
             analysisTCDChartTitle: 'Perte de la Couverture Arborée annuelle (en hectares) par Densité de la Couverture Arborée',
             analysisIFLChartTitle: 'Perte de la Couverture Arborée annuelle (en hectares) par Paysage Forestier Intact',
@@ -390,7 +396,7 @@ define([], function() {
             treeCoverGainLabel: 'Gain de la Couverture Arborée',
             carbonLayerLabel: 'Biomasse Aérienne',
             intactForestLayerLabel: 'Paysage Forestier Intact',
-            
+
             treeCoverAnalysis: "Sélectionnez une analyse sur la perte de la couverture arborée ci-dessous:",
             otherAnalysisTypes: "Ou sélectionnez des analyses basées sur l'occupation du sol ou des feux actifs:",
 
@@ -467,6 +473,7 @@ define([], function() {
             ],
 
             analysisLoss: "Tree Cover Loss",
+            analysisGain: "Tree Cover Gain",
             analysisLC: "Land Cover",
             analysisTCD: "Tree Cover Density",
             analysisIFL: "Intact Forest",
@@ -475,6 +482,7 @@ define([], function() {
             analysisLCComposition: "Land Cover Composition",
 
             analysisLossChartTitle: 'Tree Cover Loss in square hectares',
+            analysisGainChartTitle: 'Tree Cover Gain in hectares',
             analysisLCChartTitle: 'Annual Tree Cover Loss (in hectares) on Land Cover',
             analysisTCDChartTitle: 'Annual Tree Cover Loss (in hectares) on Tree Cover Density',
             analysisIFLChartTitle: 'Annual Tree Cover Loss (in hectares) on Intact Forest Landscapes',

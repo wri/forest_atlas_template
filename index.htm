@@ -7,20 +7,20 @@
 
 	<!-- Basic Page Needs
   ================================================== -->
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">	
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<title></title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	
+
 
 	<!-- Mobile Specific Metas
   ================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	
+
 	<!-- Fonts
   ================================================== -->
-  
+
 	<!-- <script type="text/javascript" src="//use.typekit.net/gua1sca.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script> -->
 	<!-- CSS
@@ -62,13 +62,13 @@
 	<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="../72x72" href="../images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"> -->
-	<script> 
-    var dojoConfig = { 
-    	parseOnLoad: false, 
-    	isDebug: false, 
+	<script>
+    var dojoConfig = {
+    	parseOnLoad: false,
+    	isDebug: false,
     	async: true,
     	locale:"en-us",
-    	packages: [   
+    	packages: [
         {name: "common", location: location.pathname.replace(/\/[^/]+$/, "") + "/app/js/common"},
         {name: "root", location: document.location.pathname.replace(/\/[^/]+$/, "") + "/app/js"},
         {name: "suitability", location: location.pathname.replace(/\/[^/]+$/, "") + "/app/js/suitability"},
@@ -83,18 +83,18 @@
 
     		//Map
 		    ["mapconfig", "common/map/MapConfig"],
-		    ["mapui", "common/map/MapUI"],		    
-		    ["mapevents", "common/map/MapEvents"],	
+		    ["mapui", "common/map/MapUI"],
+		    ["mapevents", "common/map/MapEvents"],
 		    ["mapcontroller", "common/map/MapController"],
-		    ["mapmodel", "common/map/MapModel"],	
+		    ["mapmodel", "common/map/MapModel"],
 
 		    //Main
 		    ["mainconfig", "common/main/MainConfig"],
-		    ["mainui", "common/main/MainUI"],		    
-		    ["mainevents", "common/main/MainEvents"],	
+		    ["mainui", "common/main/MainUI"],
+		    ["mainevents", "common/main/MainEvents"],
 		    ["maincontroller", "common/main/MainController"],
-		    ["mainmodel", "common/main/MainModel"],		    
-		    
+		    ["mainmodel", "common/main/MainModel"],
+
 		    //Other Libraries
 		    ["ko", "common/lib/knockout221"],
 		   // ["resources","resources"],
@@ -145,14 +145,14 @@
 		    ["legendlayer","esri/tasks/LegendLayer"],
 		    ["esrirequest","esri/request"],
 		    ["tiledmap","esri/layers/ArcGISTiledMapServiceLayer"],
-		    
+
 		    //Dojo Aliases
 		    ["cookie","dojo/cookie"],
 		    ["win","dojo/_base/window"],
 		    ["keys","dojo/keys"],
 		    ["ready","dojo/ready"],
 				["xparser", "dojo/parser"],
-				["xmlparser", "dojox/xml/parser"],			
+				["xmlparser", "dojox/xml/parser"],
 				["mparser", "dojox/mobile/parser"],
 				["declare", "dojo/_base/declare"],
 				["effects", "dojo/_base/fx"],
@@ -167,16 +167,16 @@
 		    ["combobox","dijit/form/ComboBox"],
 		    ["checkbox", "dijit/form/CheckBox"],
 		    ["button","dijit/form/Button"],
-				["textbox", "dijit/form/TextBox"],	
-				["numbertextbox", "dijit/form/NumberTextBox"],	
-				["datetextbox", "dijit/form/DateTextBox"],	
+				["textbox", "dijit/form/TextBox"],
+				["numbertextbox", "dijit/form/NumberTextBox"],
+				["datetextbox", "dijit/form/DateTextBox"],
 				["togglebutton", "dijit/form/ToggleButton"],
 				["radio", "dijit/form/RadioButton"],
 				["combobox", "dijit/form/ComboBox"],
 				["hslider", "dijit/form/HorizontalSlider"],
 				["tabcontainer","dijit/layout/TabContainer"],
 				["dialog","dijit/Dialog"],
-				["tooltipdialog","dijit/TooltipDialog"],						
+				["tooltipdialog","dijit/TooltipDialog"],
 				["popup","dijit/popup"],
 				["dropdownmenu","dijit/DropDownMenu"],
 				["menuitem","dijit/MenuItem"],
@@ -185,19 +185,19 @@
 				["filteringselect","dijit/form/FilteringSelect"],
 				["grid","dojox/grid/DataGrid"],
 				["ifrs","dojo/data/ItemFileWriteStore"],
-				["memory", "dojo/store/Memory"],			
+				["memory", "dojo/store/Memory"],
 				["hash", "dojo/hash"],
-				["ioquery", "dojo/io-query"],			
+				["ioquery", "dojo/io-query"],
 				["query", "dojo/query"],
 				["string","dojo/string"],
 				["number","dojo/number"],
 				["json","dojo/json"],
 		    ["topic", "dojo/topic"],
 		    ["connect", "dojo/_base/connect"],
-		    ["on", "dojo/on"],		    
+		    ["on", "dojo/on"],
 		    ["aspect", "dojo/aspect"],
 		    ["request", "dojo/request"],
-		    ["script", "dojo/request/script"],		    
+		    ["script", "dojo/request/script"],
 		    ["all",  "dojo/promise/all"],
 		    ["deferred",  "dojo/Deferred"],
 		    ["webMercatorUtils","esri/geometry/webMercatorUtils"],
@@ -209,7 +209,7 @@
 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 	<script src="app/js/common/lib/ion.rangeSlider.min.js"></script>
 	<script type="text/javascript">
-		
+
 		var app = {};
 
 		require(["root/template"],function(Template){
@@ -251,13 +251,13 @@
 						for (key in languages) {
 							if (languages[key]) {
 								languages[key].flagTitle = (
-									languages[key].flagTitle !== undefined ? 
-										languages[key].flagTitle : 
+									languages[key].flagTitle !== undefined ?
+										languages[key].flagTitle :
 										Resource.appLanguages[key].flagTitle // This is the default
 								);
 								languages[key].title = (
-									languages[key].title !== undefined ? 
-										languages[key].title : 
+									languages[key].title !== undefined ?
+										languages[key].title :
 										Resource.appLanguages[key].title // This is the default
 								);
 							}
@@ -266,13 +266,13 @@
 					} else {
 						app.config = Resource;
 					}
-					
+
 					var language = "en";
 					var main = new Main(language);
 				});
 			}
 		});
-	</script>	
+	</script>
 	<script type="text/javascript">
 	 //  var _gaq = _gaq || [];
 	 //  	_gaq.push(
@@ -318,6 +318,7 @@
 							<span class='analysis-selection-label'>Select Analysis:</span>
 							<select data-bind="event: {change: selectAnalysisType}" class='analysis-options-select'>
 								<option data-bind="attr: {value: analysisLoss}, text: analysisLoss"></option>
+								<option data-bind="attr: {value: analysisGain}, text: analysisGain"></option>
 								<option data-bind="attr: {value: analysisLC}, text: analysisLC"></option>
 								<option data-bind="attr: {value: analysisCS}, text: analysisCS"></option>
 								<option data-bind="attr: {value: analysisTCD}, text: analysisTCD"></option>
@@ -378,13 +379,13 @@
 		</div>
 
 		<div data-dojo-type="dijit/layout/ContentPane"  id="headerView" data-dojo-props="region:'top',parseOnLoad:false" class="appBackground">
-	
+
 		</div>
 		<div data-dojo-type="dijit/layout/ContentPane"  id="navView" data-dojo-props="region:'bottom',parseOnLoad:false" class="appBackground">
 				<div id="searchBox">
 					<div id="search"></div>
 					<div data-dojo-type="dijit/form/DropDownButton" data-dojo-props="id:'searchButton',parseOnLoad:false" id="searchButton">Search</div>
-					
+
 				</div>
 				<div id="mobileToggle">
 					<div class="mobileMenuButton"></div>
@@ -400,23 +401,23 @@
 						</li>
 						<li><a href="#" target="_blank" data-bind="text:downloadData, attr: {href:downloadLink}"></a></li>
 					</ul>
-				
+
 				</div>
-				
+
 				<div id="languageToggle"></div>
 		</div>
-	
+
 		<div data-dojo-type="dijit/layout/ContentPane" id="toolsContainer"  data-dojo-props="region:'left',id:'toolsContainer',parseOnLoad:false" splitter="false" minSize="20">
-			
+
 		</div>
-		
-		
-	
+
+
+
 		<div data-dojo-type="dijit/layout/StackContainer" id="stackContainer"  data-dojo-props="region:'center',id:'mainStackContainer',parseOnLoad:false">
-				
+
 				<div data-dojo-type="dijit/layout/ContentPane" id="mapView" data-dojo-props="parseOnLoad:true">
-						
-						
+
+
 						<div id="map" style="overflow:visible !important">
 							<div id="openLayersButton" class='open-layers-button' data-bind='text: buttonLayersText'></div>
 							<div id="expand">
@@ -425,15 +426,15 @@
 							<div class="legendContainer">
 						          <div data-dojo-type="dijit/TitlePane" id="legendTitlePane" data-dojo-props="title:'Legend', id:'legendTitlePane',closable:false,  open:false">
 										<div data-dojo-type="dijit/layout/ContentPane" id="legendCP"  data-dojo-props="region:'left',id:'legendCP',parseOnLoad:false" splitter="true" minSize="20" style="height: 240px;width:300px;">
-			
+
 										</div>
 						          </div>
-						     </div>	
+						     </div>
 
 						  <div id='analyze-button' class="map-button analysis-button hideOnLoad" title="Analyze"></div>
 							<div data-bind="visible: analyzeToolsVisible()" class="connector analysis-connector hideOnLoad"></div>
 							<div data-bind="visible: analyzeToolsVisible()" class="map-widget-container analysis-controls-container hideOnLoad">
-								
+
 								<div class="analyze-tools">
 									<div class="analyze-tool-button" id="drawFeatures" data-bind="text:drawButtonText"></div>
 									<div class="analyze-tool-button" id="uploadFeatures" data-bind="text:uploadButtonText"></div>
@@ -457,7 +458,7 @@
 										<input type="hidden" name="f" value="json" />
 									</form>
 									<div id="uploadNameSelectContainer">
-										
+
 									</div>
 								</div>
 
@@ -479,14 +480,14 @@
 
 							<div id='basemap-button' class="map-button basemap-button hideOnLoad" title="Basemaps"></div>
 							<div data-bind="visible: basemapGalleryVisible()" class="connector basemap-connector hideOnLoad">
-								
+
 							</div>
 							<div data-bind="visible: basemapGalleryVisible()" class="map-widget-container basemap-container hideOnLoad">
 								<div class="landsat-layers">
 									<span class="landsat-header" data-bind='text: landsatTextLabel'></span>
 									<input type="checkbox" id="landsat-checkbox" />
-									<select 
-										class='landsat-select' 
+									<select
+										class='landsat-select'
 										data-bind='options: landsatOptions, value: selectedLandsatYear, event: {change: landsatYearChanged}'>
 									</select>
 								</div>
@@ -494,14 +495,14 @@
 							</div>
 
 							<div id='print-button' class="map-button print-button hideOnLoad" title="Print"></div>
-						    
+
 						</div>
-	
+
 				</div>	<!-- mapView -->
-		
-	
-	
-	
+
+
+
+
 		</div><!-- stackContainer -->
 
 	</div><!-- borderContainer -->

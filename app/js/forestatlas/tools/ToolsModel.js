@@ -101,10 +101,12 @@ define(
 
                         o._vm.analysisLoss = ko.observable(translation.analysisLoss);
                         o._vm.analysisLC = ko.observable(translation.analysisLC);
+                        o._vm.analysisGain = ko.observable(translation.analysisGain);
                         o._vm.analysisTCD = ko.observable(translation.analysisTCD);
                         o._vm.analysisIFL = ko.observable(translation.analysisIFL);
                         o._vm.analysisCS = ko.observable(translation.analysisCS);
                         o._vm.analysisFire = ko.observable(translation.analysisFire);
+                        o._vm.analysisLCComposition = ko.observable(translation.analysisLCComposition);
                         o._vm.analysisOptions = ko.observableArray(translation.analysisOptions);
                         o._vm.firesOneWeek = ko.observable(translation.firesOneWeek);
                         o._vm.fires72Hours = ko.observable(translation.fires72Hours);
@@ -118,7 +120,6 @@ define(
                         o._vm.accordionForestLossTitle = ko.observable(translation.accordionForestLossTitle);
                         o._vm.accordionLandUseTitle = ko.observable(translation.accordionLandUseTitle);
 
-                        o._vm.analysisLCComposition = ko.observable(translation.analysisLCComposition);
                         o._vm.treeCoverAnalysis = ko.observable(translation.treeCoverAnalysis);
                         o._vm.otherAnalysisTypes = ko.observable(translation.otherAnalysisTypes);
 
@@ -141,7 +142,7 @@ define(
                         o._vm.tcdSelectorEnd = ko.observable(translation.tcdSelectorEnd);
                         o._vm.treeCoverSliderLabel = ko.observable(translation.treeCoverSliderLabel);
                         o._vm.tcdSelectorValue = ko.observable(30);
-                        
+
                         o._vm.landsatOptions = ko.observableArray([2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000]);
                         o._vm.selectedLandsatYear = ko.observable(2013);
 

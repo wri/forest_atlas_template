@@ -221,6 +221,16 @@ define(
                             totalLossTitle: ""
                         },
 
+                        totalGain: {
+                          rasterId: "$527",
+                          mosaicRule: {
+                            "mosaicMethod": "esriMosaicLockRaster",
+                            "lockRasterIds": [527],
+                            "ascending": true,
+                            "mosaicOperation": "MT_FIRST"
+                          }
+                        },
+
                         clearanceAlerts: {
                             rasterId: "$2"
                         },
