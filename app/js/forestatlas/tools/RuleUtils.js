@@ -1,8 +1,9 @@
 define([
   'toolsmodel',
   'toolsconfig',
-  'esri/urlUtils'
-], function (ToolsModel, ToolsConfig, urlUtils) {
+  'esri/urlUtils',
+  'dojo/_base/lang'
+], function (ToolsModel, ToolsConfig, urlUtils, lang) {
   'use strict';
 
   // Just in case
@@ -11,7 +12,14 @@ define([
   var analysisConfig = ToolsConfig.getConfig().analysisConfig;
   var Model = ToolsModel.getVM();
 
-  return {
+  /* Helper Function to get Density Value from URL if present or return a default of 30 */
+  var getDensityFromUrl = function getDensityFromUrl () {
+    var urlParams = urlUtils.urlToObject(location.href);
+    var tcd = urlParams && urlParams.query && urlParams.query.tcd;
+    return tcd ? parseInt(tcd) : 30;
+  };
+
+  var utils = {
 
     /**
     * Create a rendering rule for Total Loss or Total Gain that incorporates varying Tree Cover Density ranges
@@ -32,16 +40,29 @@ define([
     * Depending on the state of the application, the Density value may be in the URL, so check that as a backup if model does not exist
     */
     getCurrentDensityRange: function () {
-      var getDensityFromUrl = function getDensityFromUrl () {
-        var urlParams = urlUtils.urlToObject(location.href);
-        var tcd = urlParams && urlParams.query && urlParams.query.tcd;
-        return tcd ? parseInt(tcd) : 30;
-      };
-
       var densityValue = Model ? Model.tcdSelectorValue() : getDensityFromUrl();
       return [0 , densityValue, densityValue, 101];
+    },
+
+    /**
+    * Wrap rendering rule in Density analysis, may not work with all rules, For Total Loss or Total Gain, use getArithmeticRuleWithDensity
+    * @param {object} renderingRule - Rendering Rule to be mixed in with the Density Rule
+    */
+    addRenderingRuleToDensity: function (renderingRule) {
+      var densityRule = lang.clone(analysisConfig.treeCoverDensityRule),
+          rasterId = analysisConfig.treeDensity.rasterId,
+          range = this.getCurrentDensityRange();
+
+      densityRule.rasterFunctionArguments.Raster.rasterFunctionArguments.Raster = rasterId;
+      densityRule.rasterFunctionArguments.Raster.rasterFunctionArguments.InputRanges = range;
+      // Set rendering rule, it is a string so we need to parse it to prevent issues with escape characters
+      densityRule.rasterFunctionArguments.Raster2 = JSON.parse(renderingRule);
+      densityRule.rasterFunctionArguments.Raster2.outputPixelType = 'U8';
+      return JSON.stirngify(densityRule);
     }
 
   };
+
+  return utils;
 
 });

@@ -486,7 +486,7 @@ define([
 					content;
 
 			// Prepare for Use with Correct Tree Cover Density Value
-			renderingRule = self.getRuleWithTCDValues(renderingRule);
+			renderingRule = RuleUtils.addRenderingRuleToDensity(renderingRule);
 
 			content = {
 				geometryType: 'esriGeometryPolygon',
@@ -520,43 +520,6 @@ define([
 
 			this.computeHistogram(url, content, success, failure);
 			return deferred.promise;
-		},
-
-		/**
-		* Takes a rendering rule and raster ID and generates a new rendering rule that performs the analysis
-		* over a given tree cover denstiy range
-		* @param {string} rule - Rendering Rule or Mosaic Rule for performing Analysis
-		* @return {string} Stringified clone of Tree Cover Density Rendering Rule
-		**								 with the correct range, rasterId, and rule plugged in
-		*/
-		getRuleWithTCDValues: function (rule) {
-			var tcdRenderingRule = lang.clone(analysisConfig.treeCoverDensityRule),
-					rasterId = analysisConfig.treeDensity.rasterId,
-					tcdValue = Model ? Model.tcdSelectorValue() : getTCDFromUrl(),
-					range = [0 , tcdValue, tcdValue, 101];
-
-			/**
-			* This same function is used in the print report and since its a separate page it does not have
-			* access to toolsmodel.tcdSelectorValue, it is passed in the url as tcd, if this cant be found
-			* default to 30
-			*/
-			function getTCDFromUrl () {
-				var urlParams = urlUtils.urlToObject(location.href);
-				var tcd = urlParams && urlParams.query && urlParams.query.tcd;
-				return tcd ? parseInt(tcd) : 30;
-			}
-
-			// Set the Raster Id
-			tcdRenderingRule.rasterFunctionArguments.Raster.rasterFunctionArguments.Raster = rasterId;
-			// Set the Range
-			tcdRenderingRule.rasterFunctionArguments.Raster.rasterFunctionArguments.InputRanges = range;
-			// Set the Rendering Rule, rule is a string, parse it so when returning the stringified rule
-			// it does not pick up escape characters
-			tcdRenderingRule.rasterFunctionArguments.Raster2 = JSON.parse(rule);
-			// Add outputPixelType to the original rendering rule
-			tcdRenderingRule.rasterFunctionArguments.Raster2.outputPixelType = "U8";
-
-			return JSON.stringify(tcdRenderingRule);
 		},
 
 		/**
