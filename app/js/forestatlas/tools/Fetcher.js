@@ -8,8 +8,9 @@ define([
 	"esri/tasks/query",
   "esri/tasks/QueryTask",
   "atlas/tools/Renderer",
+	"atlas/tools/RuleUtils",
   "esri/urlUtils"
-], function (ToolsModel, ToolsConfig, esriRequest, Deferred, lang, all, Query, QueryTask, Renderer, urlUtils) {
+], function (ToolsModel, ToolsConfig, esriRequest, Deferred, lang, all, Query, QueryTask, Renderer, RuleUtils, urlUtils) {
 	'use strict';
 
 	// Just in case the config is not initialized for some reason
@@ -368,13 +369,18 @@ define([
 					url = analysisConfig.totalLossAnalysisUrl,
 					pixelSize = 100,
 					self = this,
+					renderingRule,
+					range,
 					content;
+
+			range = RuleUtils.getCurrentDensityRange();
+			renderingRule = RuleUtils.getArithmeticRuleWithDensity(analysisConfig.totalGain.rasterId, range);
 
 			content = {
 				geometryType: 'esriGeometryPolygon',
 				geometry: JSON.stringify(graphic.geometry),
 				pixelSize: pixelSize,
-				mosaicRule: JSON.stringify(analysisConfig.totalGain.mosaicRule),
+				renderingRule: renderingRule,
 				f: 'json'
 			};
 
@@ -417,13 +423,18 @@ define([
 					url = analysisConfig.totalLossAnalysisUrl,
 					pixelSize = 100,
 					self = this,
+					renderingRule,
+					range,
 					content;
+
+			range = RuleUtils.getCurrentDensityRange();
+			renderingRule = RuleUtils.getArithmeticRuleWithDensity(analysisConfig.totalLoss.rasterId, range);
 
 			content = {
 				geometryType: 'esriGeometryPolygon',
 				geometry: JSON.stringify(graphic.geometry),
 				pixelSize: pixelSize,
-				mosaicRule: JSON.stringify(analysisConfig.totalLoss.mosaicRule),
+				renderingRule: renderingRule,
 				f: 'json'
 			};
 

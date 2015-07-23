@@ -264,9 +264,8 @@ define([
 
 
 			// TODO: This is Temporary until we know what we want the UI to look like
-			content = "<div id='analysis-chart'>";
-			content += "<p>Title: " + title + "</p>";
-			content += "<p>GAIN 2001-2012: " + histograms[1] + " ha</p>";
+			content = "<div id='analysis-chart'><section class='result-badge gain'><div>" + title + "</div>";
+			content += "<div>from 2001 to 2012</div><div class='gain-count'>" + histograms[1] + " ha</div>";
 			content += "</div>";
 
 			// This content must be replaced completely which is why the content contains a div with
@@ -379,7 +378,7 @@ define([
 
 			currentLang = model ? model.currentLanguage() : (printOptions ? printOptions.lang : 'en');
 
-			content += "<div id='analysis-chart'><section class='fire-badge'><div>" + languages[currentLang].analysisChartLabels.activeFires.start + "</div>";
+			content += "<div id='analysis-chart'><section class='result-badge fires'><div>" + languages[currentLang].analysisChartLabels.activeFires.start + "</div>";
 			content += "<div class='fire-count'>" + (totalFires.length || 0) + "</div>";
 			content += "<div class='fire-count'>" + languages[currentLang].analysisChartLabels.activeFires.active + "</div>";
 			content += "<div>" + languages[currentLang].analysisChartLabels.activeFires.end + "</div></section></div>";

@@ -470,8 +470,7 @@ top:0px;
 	transform: translate(365px, 0px) !important;
 }
 
-.fire-badge {
-	border: 3px solid rgb(240, 171, 0);
+.result-badge {
 	position: relative;
 	text-align: center;
 	padding: 10px 20px;
@@ -481,7 +480,20 @@ top:0px;
 	top: 30px;
 }
 
-.fire-badge div {
+.result-badge.fires {
+	border: 3px solid rgb(240, 171, 0);
+}
+
+.result-badge.gain {
+	border: 3px solid #6d6de5;
+}
+
+.gain-count {
+	font-size: 24px;
+	color: #6d6de5;
+}
+
+.result-badge div {
 	margin: 5px 0;
 }
 

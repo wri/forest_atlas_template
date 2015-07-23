@@ -208,6 +208,23 @@ define(
                             }
                         },
 
+                        lossGainWithDensityRasterFunction: {
+                          "rasterFunction": "Arithmetic",
+                          "rasterFunctionArguments": {
+                            "Raster": {
+                              "rasterFunction": "Remap",
+                              "rasterFunctionArguments": {
+                                "InputRanges": [], // Example: [0, 10, 10, 101]
+                                "OutputValues": [0, 1],
+                                "Raster": "$520",
+                                "AllowUnmatched": false
+                              }
+                            },
+                            "Raster2": "", // Example: $521
+                            "Operation": 3
+                          }
+                        },
+
                         totalLoss: {
                             rasterId: "$521", //12
                             bounds: totalLossBounds,
