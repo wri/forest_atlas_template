@@ -295,28 +295,6 @@ define(
                             }
                         },
 
-                        /* Potential New Config */
-                        // treeDensity: {
-                        //     rasterId: '$520',
-                        //     formaId: '$12',
-                        //     bounds: treeDensityBounds,
-                        //     labels: ["Tree Cover Density Loss"],
-                        //     colors: ["#CF5188"],
-                        //     title: "Annual Tree Cover Loss (in hectares)",
-                        //     titleKey: 'analysisTCDChartTitle',
-                        //     labelKey: 'treeDensity',
-                        //     includeFormaIdInRemap: true,
-                        //     rasterRemap: {
-                        //         "rasterFunction": "Remap",
-                        //         "rasterFunctionArguments": {
-                        //             "InputRanges": [10, 101],
-                        //             "OutputValues": [1],
-                        //             "Raster": "$520",
-                        //             "AllowUnmatched": false
-                        //         }
-                        //     }
-                        // },
-
                         treeDensity: {
                             rasterId: '$520',
                             formaId: '$12',

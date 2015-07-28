@@ -167,9 +167,9 @@ define(
                                 case languages[prevLanguage].analysisLC:
                                     toolsmodel.currentAnalysisType(translation.analysisLC);
                                 break;
-                                case languages[prevLanguage].analysisTCD:
-                                    toolsmodel.currentAnalysisType(translation.analysisTCD);
-                                break;
+                                // case languages[prevLanguage].analysisTCD:
+                                //     toolsmodel.currentAnalysisType(translation.analysisTCD);
+                                // break;
                                 case languages[prevLanguage].analysisIFL:
                                     toolsmodel.currentAnalysisType(translation.analysisIFL);
                                 break;

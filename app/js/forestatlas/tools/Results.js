@@ -40,10 +40,10 @@ define([
 					this.getLandCover(graphic);
           ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Tree cover loss(in hectares) on Land Cover.');
 				break;
-				case viewModel.analysisTCD():
-					this.getTreeCoverDensity(graphic);
-          ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Tree cover loss(in hectares) on Above Ground Biomass.');
-				break;
+				// case viewModel.analysisTCD():
+				// 	this.getTreeCoverDensity(graphic);
+        //   ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Tree cover loss(in hectares) on Above Ground Biomass.');
+				// break;
 				case viewModel.analysisIFL():
 					this.getIntactForest(graphic);
           ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Tree cover loss(in hectares) on Tree Cover Density.');

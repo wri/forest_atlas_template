@@ -17,7 +17,7 @@
 	<!-- Mobile Specific Metas
 	================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	
+
 	<!-- Fonts
 	================================================== -->
 
@@ -26,8 +26,8 @@
 	<!-- CSS
 	================================================== -->
 
-	
-	
+
+
 	<link rel="stylesheet" href="//js.arcgis.com/3.12/esri/css/esri.css">
 	<link rel="stylesheet" href="//js.arcgis.com/3.12/dijit/themes/tundra/tundra.css">
 	<style>
@@ -40,7 +40,7 @@
 
 		}
 		#reportContent {
-				position: relative;	      
+				position: relative;
 	      /*right: 20px;
 	      z-index: 50;
 	      bottom:20px;
@@ -76,27 +76,27 @@
 	  	padding: 10px;
 	  	/*background-color: rgb(238, 171, 2);*/
 	  }
-	
+
 	  .flagContent{
 	  	max-width: 350px;
 	  	font-size: 15px;
 	  	float: right;
 	  	width: auto;
 	  }
-	
+
 	  .flagTitle{
 	  	max-width: 260px;
 	  	font-size: 16px;
 	  	height: 45px;
 	  	float: right;
 	  }
-	
+
 	  .flagImg{
 	  	margin: 0 15px 0 0;
 	  	float: left;
 	  }
 	  #report {
-	  	/*font-family:"proxima-nova-condensed",sans-serif;*/ 
+	  	/*font-family:"proxima-nova-condensed",sans-serif;*/
 	  	font-family:  "Arial Narrow", arial, sans-serif;
 	  	position:relative;
 	  	z-index: 50;
@@ -104,27 +104,27 @@
 	  	left: 25px;
 	  	top: 15px;
 	  }
-	
+
 	  .dataRow{
 	  	min-height: 25px;
 	  }
-	
-	  .dataTitle{	
+
+	  .dataTitle{
 	  	text-decoration: none;
 	  	position: relative;
 	  	font-size:16px;
 	  	top: 35px;
 	  }
-	
+
 	  .titleName,.titleValue{
 	  	float: left;
 	  	width: 50%;
 	  }
-	
+
 	  .dataField{
 	  	width: 350px;
 	  }
-	
+
 	  .dataValue{
 	  	width: 391px;
 	  }
@@ -132,7 +132,7 @@
 	  	display: inline-block;
 	  	text-align: left;
 	  	padding: 3px;
-	
+
 	  	background-color: rgb(255, 255, 255);
 	  	box-sizing:border-box;
 	  	-moz-box-sizing:border-box; /* Firefox */
@@ -148,13 +148,22 @@
   		margin: 20px;
   	}
 
-		.fire-badge {
-			border: 3px solid rgb(240, 171, 0);
-			margin: 0 auto 30px;
+		.result-badge {
+			position: relative;
 			text-align: center;
 			padding: 10px 20px;
 			font-size: 18px;
+			margin: 0 auto;
 			width: 200px;
+			top: 30px;
+		}
+
+		.result-badge.fires {
+			border: 3px solid rgb(240, 171, 0);
+		}
+
+		.result-badge div {
+			margin: 5px 0;
 		}
 
 		.fire-count {
@@ -164,12 +173,12 @@
 
 	</style>
 
-	<script> 
-		var dojoConfig = { 
-	    	parseOnLoad: false, 
-	    	isDebug: false, 
+	<script>
+		var dojoConfig = {
+	    	parseOnLoad: false,
+	    	isDebug: false,
 	    	async: true,
-	    	packages: [   
+	    	packages: [
 	        {name: "common", location: location.pathname.replace(/\/[^/]+$/, "") + "/app/js/common"},
 	        {name: "root", location: location.pathname.replace(/\/[^/]+$/, "") + "/app/js"},
 	        {name: "suitability", location: location.pathname.replace(/\/[^/]+$/, "") + "/app/js/suitability"},
@@ -184,15 +193,15 @@
 
 	    		//Map
 			    ["mapconfig", "common/map/MapConfig"],
-			    ["mapui", "common/map/MapUI"],		    
-			    ["mapevents", "common/map/MapEvents"],	
+			    ["mapui", "common/map/MapUI"],
+			    ["mapevents", "common/map/MapEvents"],
 			    ["mapcontroller", "common/map/MapController"],
-			    ["mapmodel", "common/map/MapModel"],	
+			    ["mapmodel", "common/map/MapModel"],
 
 			    //Main
 			    ["mainconfig", "common/main/MainConfig"],
-			    ["mainui", "common/main/MainUI"],		    
-			    ["mainevents", "common/main/MainEvents"],	
+			    ["mainui", "common/main/MainUI"],
+			    ["mainevents", "common/main/MainEvents"],
 			    ["maincontroller", "common/main/MainController"],
 			    ["mainmodel", "common/main/MainModel"],
 
@@ -250,15 +259,15 @@
 			    ["legendlayer","esri/tasks/LegendLayer"],
 			    ["esrirequest","esri/request"],
 			    ["tiledmap","esri/layers/ArcGISTiledMapServiceLayer"],
-			    
-			    
+
+
 			    //Dojo Aliases
 			    ["cookie","dojo/cookie"],
 			    ["win","dojo/_base/window"],
 			    ["keys","dojo/keys"],
 			    ["ready","dojo/ready"],
 					["xparser", "dojo/parser"],
-					["xmlparser", "dojox/xml/parser"],			
+					["xmlparser", "dojox/xml/parser"],
 					["mparser", "dojox/mobile/parser"],
 					["declare", "dojo/_base/declare"],
 					["effects", "dojo/_base/fx"],
@@ -273,16 +282,16 @@
 			    ["combobox","dijit/form/ComboBox"],
 			    ["checkbox", "dijit/form/CheckBox"],
 			    ["button","dijit/form/Button"],
-					["textbox", "dijit/form/TextBox"],	
-					["numbertextbox", "dijit/form/NumberTextBox"],	
-					["datetextbox", "dijit/form/DateTextBox"],	
+					["textbox", "dijit/form/TextBox"],
+					["numbertextbox", "dijit/form/NumberTextBox"],
+					["datetextbox", "dijit/form/DateTextBox"],
 					["togglebutton", "dijit/form/ToggleButton"],
 					["radio", "dijit/form/RadioButton"],
 					["combobox", "dijit/form/ComboBox"],
 					["hslider", "dijit/form/HorizontalSlider"],
 					["tabcontainer","dijit/layout/TabContainer"],
 					["dialog","dijit/Dialog"],
-					["tooltipdialog","dijit/TooltipDialog"],						
+					["tooltipdialog","dijit/TooltipDialog"],
 					["popup","dijit/popup"],
 					["dropdownmenu","dijit/DropDownMenu"],
 					["menuitem","dijit/MenuItem"],
@@ -291,19 +300,19 @@
 					["filteringselect","dijit/form/FilteringSelect"],
 					["grid","dojox/grid/DataGrid"],
 					["ifrs","dojo/data/ItemFileWriteStore"],
-					["memory", "dojo/store/Memory"],			
+					["memory", "dojo/store/Memory"],
 					["hash", "dojo/hash"],
-					["ioquery", "dojo/io-query"],			
+					["ioquery", "dojo/io-query"],
 					["query", "dojo/query"],
 					["string","dojo/string"],
 					["number","dojo/number"],
 					["json","dojo/json"],
 			    ["topic", "dojo/topic"],
 			    ["connect", "dojo/_base/connect"],
-			    ["on", "dojo/on"],		    
+			    ["on", "dojo/on"],
 			    ["aspect", "dojo/aspect"],
 			    ["request", "dojo/request"],
-			    ["script", "dojo/request/script"],		    
+			    ["script", "dojo/request/script"],
 			    ["all",  "dojo/promise/all"],
 			    ["deferred",  "dojo/Deferred"],
 			    ["webMercatorUtils","esri/geometry/webMercatorUtils"],
@@ -314,14 +323,14 @@
 	</script>
 
 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-	
+
 	<script type="text/javascript" src="http://js.arcgis.com/3.12"></script>
 
 	<script type="text/javascript">
 		require(["dojo/io-query","esri/map","esri/config","esri/geometry/Extent","esri/layers/ArcGISDynamicMapServiceLayer","esri/layers/LayerDrawingOptions",
 			"esri/layers/ImageParameters","dojo/_base/array","esri/tasks/QueryTask","esri/tasks/query","dojo/dom-construct","esri/graphic","esri/symbols/SimpleMarkerSymbol",
 			"esri/symbols/SimpleFillSymbol","esri/symbols/SimpleLineSymbol","dojo/_base/Color","dojo/number","dojo/_base/config","esri/request","esri/lang","esri/geometry/Polygon","dojo/domReady!"],
-			function(ioQuery,Map,esriConfig,Extent,ArcGISDynamicMapServiceLayer,LayerDrawingOptions,ImageParameters,arrayUtil,QueryTask,Query,domConstruct,Graphic,SimpleMarkerSymbol,SimpleFillSymbol,SimpleLineSymbol,Color,dojoNumber,dojoConfig,esriRequest,esriLang, Polygon){	
+			function(ioQuery,Map,esriConfig,Extent,ArcGISDynamicMapServiceLayer,LayerDrawingOptions,ImageParameters,arrayUtil,QueryTask,Query,domConstruct,Graphic,SimpleMarkerSymbol,SimpleFillSymbol,SimpleLineSymbol,Color,dojoNumber,dojoConfig,esriRequest,esriLang, Polygon){
 
 				esriConfig.defaults.io.corsEnabledServers.push("http://gis-forest-atlas.wri.org/");
 				esriConfig.defaults.io.corsEnabledServers.push("http://gis-potico.wri.org");
@@ -329,7 +338,7 @@
 
 				var url = window.location.href;
 				var queryStr = url.split("?");
-	
+
 				if (queryStr.length !== 2) { return; }
 
 				var queryObj = ioQuery.queryToObject(queryStr[1]);
@@ -342,12 +351,12 @@
 
 				var map = new Map("map", {
 		        slider:false,
-		        logo:false,	        
+		        logo:false,
 		        basemap: queryObj.basemap
 		    });
 				domConstruct.create("span",{innerHTML:queryObj.title},reportTitle);
-				
-	
+
+
 				map.on("load",function(){
 					//map.setLevel(map.getLevel()-1);
 					//map.setExtent(extentsWM,true);
@@ -355,12 +364,12 @@
 					map.disableMapNavigation();
 					map.disableRubberBandZoom();
 					map.disablePan();
-					
+
 					getWebmap();
-					
+
 				});
-	
-	
+
+
 				var getWebmap = function(){
 					var webmapInfo = "http://www.arcgis.com/sharing/rest/content/items/"+queryObj.webMap+"/data?f=json";
 					var request = {
@@ -375,9 +384,9 @@
 					},function(err){
 						console.log(err);
 					});
-	
+
 				};
-	
+
 				var addDynamicLayer = function(){
 					var layerId = queryObj.layerId;
 					var mapService = queryObj.mapService;
@@ -391,36 +400,36 @@
 					// var layerDefs = [];
 
 					// layerDefs[layerId] = idField+"="+idValue;
-										
+
 					var optionsArray = [];
-	
+
 					arrayUtil.forEach(transparency,function(val,i){
-						var layerDrawingOption = new LayerDrawingOptions();		        
-						layerDrawingOption.transparency = val;			      
+						var layerDrawingOption = new LayerDrawingOptions();
+						layerDrawingOption.transparency = val;
 						optionsArray[i] = layerDrawingOption;
 					});
-	
+
 					if (mapService) {
 						var layer = new ArcGISDynamicMapServiceLayer(mapService, {
 							visible:false,
 							opacity:0.8
 						});
-		
+
 						layer.setVisibleLayers(visibleLayers);
-		
-					
+
+
 						map.on("layer-add",function(){
 							layer.setLayerDrawingOptions(optionsArray);
 							layer.show();
 						});
-		
+
 						map.addLayer(layer);
 					}
 
 				};
-				
+
 				var addReport = function(mapResponse){
-	
+
 					var operationalLayer;
 					var layer;
 					var fieldMapping = {};
@@ -441,37 +450,37 @@
 						var graphic = new Graphic(polygon, sfs);
 
 						domConstruct.create("div",{
-							"class":"dataTitle", 
+							"class":"dataTitle",
 							'innerHTML': 'Custom Feature: ' + queryObj.customTitle
 						},"reportTitle");
-						
+
 						map.graphics.add(graphic);
 						map.setExtent(polygon.getExtent(), true);
 						addCharts(graphic);
 						return;
 					}
-		
-	
+
+
 					arrayUtil.some(mapResponse.operationalLayers,function(webmapLayer){
-						operationalLayer = webmapLayer;						
+						operationalLayer = webmapLayer;
 						return (arrayUtil.indexOf(webmapLayer.id.toLowerCase().split("_"),locale.toLowerCase())>0) //is "en" in ID?
 					});
-		
-	
+
+
 					arrayUtil.some(operationalLayer.layers,function(webmapFeatureLayer){
 						layer = webmapFeatureLayer;
 						return (webmapFeatureLayer.id == queryObj.layerId);
 					});
 
-		
+
 					//Add field Labels from WebMap
 					//console.dir(layer.popupInfo.fieldInfos);
 					arrayUtil.forEach(layer.popupInfo.fieldInfos,function(f){
 						if (f.visible && arrayUtil.indexOf(fieldToExclude,f["fieldName"])<0){
 							fieldMapping[f["fieldName"]] = {"alias":f["label"],type:"Will Be Filled Later"};
-						}						
+						}
 					});//end array util
-	
+
 					var titleTemplate = layer.popupInfo.title;
 					var queryLayer = queryObj.mapService + '/' + queryObj.layerId;
 					var queryTask = new QueryTask(queryLayer);
@@ -482,63 +491,63 @@
 					query.returnGeometry = true;
 					query.where = where;//"'"+idField+"='"+idValue+"'";
 					query.outFields = ['*'];
-					
+
 					var sms = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_SQUARE, 10,
 							new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
 							new Color([255,0,0]), 1),
 							new Color([0,255,0,0.25]));
-			
-					
+
+
 					queryTask.execute(query, function(results){
 						var fields = results.fields;
 						//Add field Types from Map Service
 						arrayUtil.forEach(fields,function(f){
 							if (fieldMapping[f["name"]]){
 								fieldMapping[f["name"]].type = f["type"];
-							}							
+							}
 						});//end array util
-					
+
 						var features = results.features;
 						var displayFieldName = results.displayFieldName;
-				
+
 						arrayUtil.forEach(features,function(feature){
-							//Add Title 
+							//Add Title
 							var row = domConstruct.create("div",{"class":"dataTitle"},"reportTitle");
 							row.innerHTML = esriLang.substitute(feature.attributes,titleTemplate.replace("{","${"));
-										
+
 							for (fieldName in feature.attributes) {
 								if (fieldMapping[fieldName]){
 									var row = domConstruct.create("div",{"class":"dataRow"},"report");
 									var name = fieldMapping[fieldName].alias;
 									var type = fieldMapping[fieldName].type;
-									var val = feature.attributes[fieldName];									
+									var val = feature.attributes[fieldName];
 
 									switch (type) {
-										case "esriFieldTypeDouble":											
+										case "esriFieldTypeDouble":
 											if (val) { val = dojoNumber.format(val.toFixed(2)); }
 											break;
 										case "esriFieldTypeInteger":
 											if (val) { val = dojoNumber.format(val.toFixed(2)); }
-											break;									
+											break;
 										case "esriFieldTypeSmallInteger":
 											if (val) { val = dojoNumber.format(val.toFixed(2)); }
 											break;
 										case "esriFieldTypeSingle":
 											if (val) { val = dojoNumber.format(val.toFixed(2)); }
 											break;
-										case "esriFieldTypeDate":	
-											if (val) { 									
+										case "esriFieldTypeDate":
+											if (val) {
 											var theDate = new Date(val);
 											val = theDate.getFullYear() + "-" + (theDate.getMonth() + 1) + "-" + theDate.getDate();
 											}
 											break;
 									}
 									row.innerHTML = "<div class='dataField'>"+ name + "</div><div class='dataValue'>" + val + "</div>";
-								}// end if							
+								}// end if
 							}//end for
-										
-							var graphic;	
-										
+
+							var graphic;
+
 							if (feature.geometry.type=="polygon" || feature.geometry.type=="polyline") {
 								graphic = new Graphic(feature.geometry,sfs);
 								map.setExtent(feature.geometry.getExtent(),true);
@@ -546,16 +555,16 @@
 								graphic = new Graphic(feature.geometry,sms);
 								map.centerAndZoom(feature.geometry,8);
 							}
-							
+
 							map.graphics.add(graphic);
 
 						}); // end array util
-						
+
 						addCharts(features[0]);
 
 					});
-	
-	
+
+
 				};
 
 				var addCharts = function (graphic) {
@@ -621,25 +630,25 @@
 
 				//var main = new Main();
 			});//end require
-	</script>	
+	</script>
 </head>
 <body class="tundra app">
 	<div id="reportContent">
 		<div id="reportTitle">
-			
+
 
 		</div>
 
 		<div id="map"></div>
 
 		<div id="report">
-			
+
 
 		</div>
 		<div id="forestContainer" style="height: 400px; width: 400px;">
-			
+
 		</div>
 
 	</div>
-	
+
 </body>

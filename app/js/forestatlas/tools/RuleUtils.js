@@ -58,7 +58,7 @@ define([
       // Set rendering rule, it is a string so we need to parse it to prevent issues with escape characters
       densityRule.rasterFunctionArguments.Raster2 = JSON.parse(renderingRule);
       densityRule.rasterFunctionArguments.Raster2.outputPixelType = 'U8';
-      return JSON.stirngify(densityRule);
+      return JSON.stringify(densityRule);
     }
 
   };

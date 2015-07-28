@@ -102,7 +102,7 @@ define(
                         o._vm.analysisLoss = ko.observable(translation.analysisLoss);
                         o._vm.analysisLC = ko.observable(translation.analysisLC);
                         o._vm.analysisGain = ko.observable(translation.analysisGain);
-                        o._vm.analysisTCD = ko.observable(translation.analysisTCD);
+                        // o._vm.analysisTCD = ko.observable(translation.analysisTCD);
                         o._vm.analysisIFL = ko.observable(translation.analysisIFL);
                         o._vm.analysisCS = ko.observable(translation.analysisCS);
                         o._vm.analysisFire = ko.observable(translation.analysisFire);
