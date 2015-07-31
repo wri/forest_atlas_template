@@ -171,6 +171,11 @@
 			color: red;
 		}
 
+		.loss-gain-analysis {
+			font-size: 18px;
+			margin: 5px;
+		}
+
 	</style>
 
 	<script>
@@ -445,13 +450,25 @@
 
 					if (queryObj.mapService === undefined) {
 						// Feature came from grphics layer and is a custom feature
-						var geo = JSON.parse(queryObj.customGeo);
+						var geoObject,
+								title,
+								geo;
+
+						if (localStorage) {
+							geoObject = JSON.parse(localStorage.getItem('custom-feature'));
+							geo = geoObject.geometry;
+							title = geoObject.title;
+						} else {
+							geo = JSON.parse(queryObj.customGeo);
+							title = queryObj.customTitle;
+						}
+
 						var polygon = new Polygon(geo);
 						var graphic = new Graphic(polygon, sfs);
 
 						domConstruct.create("div",{
 							"class":"dataTitle",
-							'innerHTML': 'Custom Feature: ' + queryObj.customTitle
+							'innerHTML': 'Custom Feature: ' + title
 						},"reportTitle");
 
 						map.graphics.add(graphic);
@@ -574,15 +591,15 @@
 						// to the calls in the fetcher, create the id's first
 						var treeCoverLossId = 'treeCoverLossChart',
 								landCoverId = 'landCoverChart',
-								treeCoverDensityId = 'treeCoverDensityChart',
 								iflChartId = 'intactForestChart',
 								biomassId = 'biomassChart',
+								gainAndLossId = 'gainAndLossResults',
 								landCoverCompositionId = 'landCoverCompositionChart',
 								firesBadgeId = 'firesBadge';
 
+						domConstruct.create("div", {"class": "chart-container", "id": gainAndLossId}, "report");
 						domConstruct.create("div", {"class": "chart-container", "id": treeCoverLossId}, "report");
 						domConstruct.create("div", {"class": "chart-container", "id": landCoverId}, "report");
-						domConstruct.create("div", {"class": "chart-container", "id": treeCoverDensityId}, "report");
 						domConstruct.create("div", {"class": "chart-container", "id": iflChartId}, "report");
 						domConstruct.create("div", {"class": "chart-container", "id": biomassId}, "report");
 						domConstruct.create("div", {"class": "chart-container", "id": landCoverCompositionId}, "report");
@@ -599,8 +616,8 @@
 							lang: lang
 						});
 
-						Fetcher.getTreeCoverDensity(graphic, {
-							container: treeCoverDensityId,
+						Fetcher.getTotalGainAndLoss(graphic, {
+							container: gainAndLossId,
 							lang: lang
 						});
 

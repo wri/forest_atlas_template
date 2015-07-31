@@ -1,10 +1,11 @@
 define([
 	"mainmodel",
+	"dojo/number",
 	"toolsconfig",
 	"root/languages",
 	"dojo/_base/array",
 	"common/lib/highcharts"
-], function (MainModel, ToolsConfig, languages, arrayUtils) {
+], function (MainModel, number, ToolsConfig, languages, arrayUtils) {
 
 	// Just in case the config is not initialized for some reason
 	ToolsConfig.initialize();
@@ -247,30 +248,45 @@ define([
 
 		/**
 		* Specific Chart to show total Tree Cover loss by itself, not crossed with anything
-		*	@param {array} histograms - histogram data
+		*	@param {array} gainHistograms - gainHistograms data
+		*	@param {array} lossHistograms - lossHistograms data
 		* @param {integer} pixelSize - pixelSize used in requests
 		* @param {object} printOptions - additional options needed to use this from the print report
 		*/
-		renderTotalGainData: function (histograms, pixelSize) {
+		renderTotalGainAndLossData: function (gainHistograms, lossHistograms, pixelSize, printOptions) {
 			var mapFunction = function (item) { return (item * pixelSize * pixelSize) / 10000; },
 					model = MainModel.getVM(),
-					currentLang = model ? model.currentLanguage() : 'en',
-					title = languages[currentLang].analysisGainChartTitle,
+					currentLang = model ? model.currentLanguage() : (printOptions ? printOptions.lang : 'en'),
+					gainTotal,
+					lossTotal,
 					content;
 
 			if (pixelSize !== 100) {
-				histograms = histograms.map(mapFunction);
+				gainHistograms = gainHistograms.map(mapFunction);
+				lossHistograms = lossHistograms.map(mapFunction);
 			}
+
+			// We dont care about the first value of the  lossHistograms as it represents no data,
+			// splice it out and then sum up the rest
+			if (lossHistograms) { lossHistograms.shift(); }
+
+			gainTotal = gainHistograms ? gainHistograms[1] : 'N/A';
+			lossTotal = lossHistograms ? lossHistograms.reduce(function (a, b) { return a + b; }) : 'N/A';
+
+			gainTotal = number.format(gainTotal);
+			lossTotal = number.format(lossTotal);
 
 
 			// TODO: This is Temporary until we know what we want the UI to look like
-			content = "<div id='analysis-chart'><section class='result-badge gain'><div>" + title + "</div>";
-			content += "<div>from 2001 to 2012</div><div class='gain-count'>" + histograms[1] + " ha</div>";
+			content = "<div id='analysis-chart'>";
+			content += "<div class='loss-gain-analysis'>" + [languages[currentLang].totalLossAnalysis, lossTotal, "ha"].join(' ') + "</div>";
+			content += "<div class='loss-gain-analysis'>" + [languages[currentLang].totalGainAnalysis, gainTotal, "ha"].join(' ') + "</div>";
 			content += "</div>";
 
 			// This content must be replaced completely which is why the content contains a div with
 			// the same id, highcharts redraws charts on window resize even if I replace innerHTML
-			$('#analysis-chart').replaceWith(content);
+			var chartId = "#" + (printOptions ? printOptions.container : "analysis-chart");
+			$(chartId).replaceWith(content);
 
 		},
 

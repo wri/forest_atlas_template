@@ -72,7 +72,7 @@ body,html{
     line-height: 1.5em;
     word-break: normal;
 	word-wrap: normal;
-	
+
 }
 
 
@@ -92,13 +92,13 @@ body,html{
 	color:rgba(255,255,255,0);
 	width:34px;
 	height:20px;
-	
+
 }
 .tundra .dijitButtonNode, .dijitButtonNode, .tundra .dijitButtonNode:hover, .dijitButtonNode:hover, .tundra .dijitButtonNode:focused, .dijitButtonNode:focused{
 	border: 0px solid white !important;
 	background-image: url() !important;
 	border-bottom:0px solid white !important;
-} 
+}
 dijit_form_ComboButton_0_label, .tundra .dijitComboButton .dijitButtonContentsHover{
 	display:none !important;
 	background: rgba(255,255,255,0);
@@ -113,15 +113,15 @@ dijit_form_ComboButton_0_label, .tundra .dijitComboButton .dijitButtonContentsHo
 	display:none;
 }
 #dijit_form_ComboButton_0_arrow{
-	
+
 	width:5px;
 	height:20px;
 } */
 #headerView{
 	overflow: hidden;
 	height:58px;
-	background-color: rgb(255,255,255);	
-	
+	background-color: rgb(255,255,255);
+
 	/*background-color: rgb(35,31,32);	*/
 
 }
@@ -133,7 +133,7 @@ dijit_form_ComboButton_0_label, .tundra .dijitComboButton .dijitButtonContentsHo
 /*fixes for firefox*/
 #flagTitle:focus{
 	color: #000;
-	text-decoration: none;	
+	text-decoration: none;
 }
 /* tools container----------------------------------------*/
 
@@ -170,7 +170,7 @@ dijit_form_ComboButton_0_label, .tundra .dijitComboButton .dijitButtonContentsHo
 	display: none;
 	z-index: 500;
 	left: 20px;
-	top: 20px;	
+	top: 20px;
 }
 .close-layers-button {
 	background: url('../images/close_x.png') no-repeat center;
@@ -189,7 +189,7 @@ dijit_form_ComboButton_0_label, .tundra .dijitComboButton .dijitButtonContentsHo
 	margin-right:30px;
 	font-size: 11px;
 	/*width:70%;*/
-	
+
 	padding: 0 0 10px 0;
 }
 
@@ -215,14 +215,14 @@ dijit_form_ComboButton_0_label, .tundra .dijitComboButton .dijitButtonContentsHo
 	position: absolute;
 	width: 100%;
 	text-align: center;
-	left: -100px;	
+	left: -100px;
 }
 
 .sliderText .right{
 	color: #666;
-	float:right !important;	
+	float:right !important;
 	display: inline-block;
-	
+
 }
 .tundra .dijitTab{
 	background: rgba(255,255,255,0);
@@ -418,7 +418,7 @@ display:none;
 	height:30px;
 	width:320px;
 	bottom:10px;
-	
+
 }
 
 #toolsContainer {
@@ -448,14 +448,14 @@ display:none;
 /*	transition: all 1s ease-in-out 0.3s;
 	-webkit-transition: all 1s ease-in-out 0.3s;
 	-moz-transition: all 1s ease-in-out 0.3s;*/
- 
+
 }
 
 .selectedLegendItem{
 	/*background-color: red;*/
 	border: 2px solid rgb(204, 204, 204);
 	color:#000000 !important;
-	
+
 }
 .legendItem
 {
@@ -547,7 +547,7 @@ bottom:0px;
 
 #searchBox .dijitTextBox {
 	width: 360px;
-	float: left;	
+	float: left;
 }
 
 .tundra .dijitComboBox .dijitButtonNode {
@@ -609,7 +609,7 @@ bottom:0px;
 
 .appButton.editorFormButton.editorFormDelete .dijitButtonNode{
 	line-height: 40px;
-	color:#FFF;	
+	color:#FFF;
 	background: #ffbfbf; /* Old browsers */
 background: -moz-linear-gradient(top,  #ffbfbf 0%, #f24b4b 50%, #e20000 52%, #b2696a 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffbfbf), color-stop(50%,#f24b4b), color-stop(52%,#e20000), color-stop(100%,#b2696a)); /* Chrome,Safari4+ */
@@ -710,7 +710,7 @@ top:2px;
 
 
 .app .dijitValidationTextBoxError {
-	height:20px;	
+	height:20px;
 }
 .dijitTabContainerTop-container{
 	overflow:auto;
@@ -797,8 +797,8 @@ top:2px;
 	font-family: "proxima-nova-condensed",sans-serif;
 	font-size:16px;
 	font-weight: 400;
-	
-	
+
+
 }*/
 /*.esriPopupWrapper .hzLine{
 	display:none;
@@ -845,7 +845,7 @@ top:2px;
 	/*font-family: "proxima-nova-condensed",sans-serif;*/
 	text-overflow: ellipsis;
 	padding-right: 80px;
-	overflow: hidden;	
+	overflow: hidden;
 	white-space: nowrap;
 }
 
@@ -857,7 +857,7 @@ top:2px;
 	display:none;
 }
 #printReport, #legislative{
-	
+
 	padding: 0 10px 0 0;
 	width: 130px !important;
 	font-size: 14px;
@@ -901,12 +901,12 @@ top:2px;
 }
 #dataContentList, #kmzList, #listItemAll{
 	list-style-type:disc;
-	
+
 }
 #dataContent .dijitContentPane:hover,#kmz:hover, #downloadAllLink:hover{
 	color:rgb(240, 171, 0);
 	text-decoration:underline;
-	
+
 }
 #kmz{
 	font-weight:400;
@@ -992,13 +992,13 @@ width: 15px;
 #clearAll{
 	float:right;
 	margin: 0 20px 10px 0;
-	
+
 }
 .esriPrint a{
 	color: #000;
 }
 .esriPrint a:hover{
-	
+
 	color:rgb(240, 171, 0);
 	text-decoration: underline;
 }
@@ -1024,7 +1024,7 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 	width: 27px;
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
-	border-radius: 4px 4px 0 0;	
+	border-radius: 4px 4px 0 0;
 }
 .esriSimpleSliderDecrementButton{
 	background: #fff no-repeat center;
@@ -1055,7 +1055,7 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	-o-border-radius: 4px;
-	border-radius: 4px;	
+	border-radius: 4px;
 }
 #fullExtentDiv{
 	background: no-repeat center;
@@ -1093,7 +1093,7 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 	margin-top: 4px;
 	height:27px;
 	width:27px;
-	
+
 }
 #sources .dijitDialogPaneContent{
 	overflow:auto;
@@ -1238,7 +1238,7 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 }
 
 .upload-tools {
-	margin: 10px;	
+	margin: 10px;
 }
 
 #shapefileUpload {
@@ -1463,6 +1463,10 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 	height: 30px;
 	width: 150px;
 }
+.loss-gain-analysis {
+	font-size: 16px;
+	margin: 5px;
+}
 
 /** Tree Cover Density Slider & Selector CSS **/
 .tcd-selector-wrapper {
@@ -1482,7 +1486,7 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 	content: "> ";
 }
 .tcd-selector-value:after {
-	content: " %";	
+	content: " %";
 }
 .animated {
 	-webkit-transition: all 0.25s ease-in-out;
@@ -1546,15 +1550,15 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 .irs .irs-single:after {
 	content: "%";
 }
-.irs-grid-text { 
-	color: #777; 
+.irs-grid-text {
+	color: #777;
 	bottom: 5px;
 }
 .irs-single {
 	background-color: rgb(240, 171, 0);
 	color: #FFF;
 }
-.irs-min, 
+.irs-min,
 .irs-max {
 	display: none;
 }
@@ -1574,7 +1578,3 @@ dijit_form_ComboButton_3_label:hover, dijit_form_ComboButton_3_label{
 	background-position: 0 -120px;
 }
 /** Tree Cover Density Slider & Selector CSS **/
-
-
-
-

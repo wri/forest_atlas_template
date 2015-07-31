@@ -178,7 +178,7 @@ define(
                 });
 
                 on(dom.byId('openLayersButton'), 'click', function () {
-                   self.toggleLayerPanel(); 
+                   self.toggleLayerPanel();
                 });
 
                 on(dom.byId('clearAllFeatures'), 'click', function () {
@@ -206,7 +206,7 @@ define(
             },
 
             toggleLayerPanel: function () {
-                var newWidth = Helper.isMobile() ? (window.innerWidth - 1) : 400; 
+                var newWidth = Helper.isMobile() ? (window.innerWidth - 1) : 400;
                 var newValue = style.get('toolsContainer', 'width') === 0 ? newWidth : 0;
                 var stackContainer = registry.byId('stackContainer');
                 style.set('toolsContainer', 'width', newValue + 'px');
@@ -231,8 +231,8 @@ define(
                         var newChild = currentChild === 'layersCP' ? 'forestLossLayers' : 'layersCP';
 
                         dijit.byId('accordionContainer').selectChild(newChild);
-                        setTimeout(function () { 
-                            dijit.byId('accordionContainer').selectChild(currentChild); 
+                        setTimeout(function () {
+                            dijit.byId('accordionContainer').selectChild(currentChild);
                         }, 0);
                     }
                 }
@@ -295,7 +295,7 @@ define(
 
             highlighGraphic: function(geometry /*Array*/ ) {
 
-                //first clear 
+                //first clear
                 require(["toolsevents"], function(Events) {
                     var toolsevents = Events.getEvents();
                     topic.publish(toolsevents.clearHighlight);
@@ -354,7 +354,7 @@ define(
                     } else {
                         optionsArray[arrayLayerValue] = layerDrawingOption;
                     }
-                    
+
                     MapModel.getVM().layersDrawingOption(optionsArray);
                     targetLayer.setLayerDrawingOptions(optionsArray);
 
@@ -432,7 +432,7 @@ define(
                     }
 
                     targetLayer.visibleLayers = out;
-                    targetLayer.setVisibleLayers(targetLayer.visibleLayers);                    
+                    targetLayer.setVisibleLayers(targetLayer.visibleLayers);
                     map.graphics.refresh();
 
                 }
@@ -479,7 +479,7 @@ define(
                         visibleLayers = layer.visibleLayers;
                         visibleLayers.push(mapconfig[layerId].legendLayer);
                         layer.setVisibleLayers(visibleLayers);
-                        layer.show(); 
+                        layer.show();
                     }
 
                     // Update the Map Service
@@ -531,7 +531,7 @@ define(
                     layer.setOpacity((opacity / 100));
                 }
             },
-            
+
             search: function(inputValue, currentLayerId) {
                 var map = MapUI.getMap(),
                     vm = MapModel.getVM(),
@@ -649,7 +649,7 @@ define(
                 var vm = MapModel.getVM();
                 var map = MapUI.getMap();
                 var searchObj = registry.byId("search");
-                
+
                 if (searchObj.item != null) {
                     map.infoWindow.hide();
 
@@ -834,7 +834,7 @@ define(
                 var layerId = vm.currentActiveLayer().id;
                 var dynamicLayersArray = [];
                 var index = 0;
-            
+
                 arrayUtil.forEach(map.layerIds, function(lid) {
 
                     // Only apply to ArcGIS Online Layers
@@ -1078,15 +1078,23 @@ define(
                     var mapService = urlSplit.join("/");
 
                     queryObj.mapService = mapService;
-                    queryObj.layerId = layerId;                    
+                    queryObj.layerId = layerId;
 
                 } else {
-
-                    // The selected feature is from the graphics layer and has to be handled 
-                    // differently, the geometry needs to be passed on so it can be rendered
-                    // on the print page
+                  // The selected feature is from the graphics layer and has to be handled
+                  // differently, the geometry needs to be passed on so it can be rendered
+                  // on the print page
+                  // Try Local Storage First
+                  if (localStorage) {
+                    var payload = {
+                      geometry: selectedFeature.geometry,
+                      title: selectedFeature.attributes.Custom_Title
+                    };
+                    localStorage.setItem('custom-feature', JSON.stringify(payload));
+                  } else {
                     queryObj.customGeo = JSON.stringify(selectedFeature.geometry);
                     queryObj.customTitle = selectedFeature.attributes.Custom_Title;
+                  }
                 }
 
                 var queryStr = ioQuery.objectToQuery(queryObj);

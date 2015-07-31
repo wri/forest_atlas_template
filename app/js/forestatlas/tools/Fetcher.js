@@ -363,8 +363,8 @@ define([
 		/**
 		* @param {Graphic} graphic - Esri Graphic Object
 		*/
-		getTotalGain: function (graphic) {
-			this.debug('Fetcher >>> getTotalGain');
+		getTotalGainAndLoss: function (graphic, printOptions) {
+			this.debug('Fetcher >>> getTotalGainAndLoss');
 			var deferred = new Deferred(),
 					url = analysisConfig.totalLossAnalysisUrl,
 					pixelSize = 100,
@@ -385,11 +385,11 @@ define([
 			};
 
 			function success(results) {
-				deferred.resolve(true);
-				if (results.histograms.length > 0) {
-					Renderer.renderTotalGainData(results.histograms[0].counts, content.pixelSize);
+				if (results && results.histograms.length > 0) {
+					deferred.resolve(results.histograms[0].counts);
 				} else {
 					Renderer.renderUnavailable(printOptions);
+					deferred.resolve(false);
 				}
 			}
 
@@ -406,6 +406,16 @@ define([
         }
 			}
 
+			// this.getTotalLoss(graphic, null, true) signifies null printOptions and true for dont render,
+			// this will pass the results back through the deferred so I can render them here
+
+			all([
+				deferred,
+				this.getTotalLoss(graphic, null, true)
+			]).then(function (results) {
+				Renderer.renderTotalGainAndLossData(results[0], results[1], content.pixelSize, printOptions);
+			});
+
 			this.computeHistogram(url, content, success, failure);
 			return deferred;
 		},
@@ -416,8 +426,9 @@ define([
 		* with other layers, its just loss in the provided geometry
 		* @param {object} graphic - Esri Graphic Object
 		* @param {object} printOptions - additional options needed to use this from the print report
+		* @param {string} dontRender - Return the data instead of rendering it into a chart
 		*/
-		getTotalLoss: function (graphic, printOptions) {
+		getTotalLoss: function (graphic, printOptions, dontRender) {
 			this.debug('Fetcher >>> getTotalLoss');
 			var deferred = new Deferred(),
 					url = analysisConfig.totalLossAnalysisUrl,
@@ -439,9 +450,14 @@ define([
 			};
 
 			function success(results) {
+				if (dontRender && results && results.histograms.length > 0) {
+					deferred.resolve(results.histograms[0].counts);
+					return;
+				}
+
 				deferred.resolve(true);
-				if (results.histograms.length > 0) {
-					Renderer.renderTotalLossData(results.histograms[0].counts, content.pixelSize, printOptions);
+				if (results && results.histograms.length > 0) {
+						Renderer.renderTotalLossData(results.histograms[0].counts, content.pixelSize, printOptions);
 				} else {
 					Renderer.renderUnavailable(printOptions);
 				}

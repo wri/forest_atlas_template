@@ -1,8 +1,9 @@
 define([
 	'toolsmodel',
 	'dojo/dom-class',
+	'dojo/promise/all',
 	'atlas/tools/Fetcher'
-], function ( Model, domClass, Fetcher) {
+], function ( Model, domClass, all, Fetcher) {
 	'use strict';
 
 	var Results = {
@@ -33,7 +34,7 @@ define([
           ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Tree cover loss in hectares.');
 				break;
 				case viewModel.analysisGain():
-					this.getTotalGain(graphic);
+					this.getTotalGainAndLoss(graphic);
           ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Tree cover gain in hectares.');
 				break;
 				case viewModel.analysisLC():
@@ -80,9 +81,9 @@ define([
 		* Get Results for this data type
 		* @param {object} graphic
 		*/
-		getTotalGain: function (graphic) {
+		getTotalGainAndLoss: function (graphic) {
 			this.debug('Results >>> getTotalGain');
-			Fetcher.getTotalGain(graphic).then(function (res) {
+			Fetcher.getTotalGainAndLoss(graphic).then(function (res) {
 				// Remove the loader by adding the class hiding it
 				domClass.add('analysis-loader', 'hidden');
 			});
