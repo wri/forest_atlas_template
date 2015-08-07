@@ -474,25 +474,28 @@ top:0px;
 	position: relative;
 	text-align: center;
 	padding: 10px 20px;
+	margin: 10px auto;
 	font-size: 18px;
-	margin: 0 auto;
 	width: 200px;
 	top: 30px;
 }
-
 .result-badge.fires {
 	border: 3px solid rgb(240, 171, 0);
 }
-
 .result-badge.gain {
 	border: 3px solid #6d6de5;
 }
-
 .gain-count {
 	font-size: 24px;
 	color: #6d6de5;
 }
-
+.result-badge.loss {
+	border: 3px solid #DE86A9;
+}
+.loss-count {
+	font-size: 24px;
+	color: #DE86A9;
+}
 .result-badge div {
 	margin: 5px 0;
 }

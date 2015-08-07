@@ -276,11 +276,15 @@ define([
 			gainTotal = number.format(gainTotal);
 			lossTotal = number.format(lossTotal);
 
-
-			// TODO: This is Temporary until we know what we want the UI to look like
 			content = "<div id='analysis-chart'>";
-			content += "<div class='loss-gain-analysis'>" + [languages[currentLang].totalLossAnalysis, lossTotal, "ha"].join(' ') + "</div>";
-			content += "<div class='loss-gain-analysis'>" + [languages[currentLang].totalGainAnalysis, gainTotal, "ha"].join(' ') + "</div>";
+			// Loss Badge
+			content += "<section class='result-badge loss'><div>" + languages[currentLang].totalLossAnalysis + "</div>";
+			content += "<div class='loss-count'>" + lossTotal + " ha</div>";
+			content += "</section>";
+			// Gain Badge
+			content += "<section class='result-badge gain'><div>" + languages[currentLang].totalGainAnalysis + "</div>";
+			content += "<div class='gain-count'>" + gainTotal + " ha</div>";
+			content += "</section>";
 			content += "</div>";
 
 			// This content must be replaced completely which is why the content contains a div with
