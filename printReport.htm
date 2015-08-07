@@ -96,8 +96,8 @@
 	  	float: left;
 	  }
 	  #report {
-	  	/*font-family:"proxima-nova-condensed",sans-serif;*/
 	  	font-family:  "Arial Narrow", arial, sans-serif;
+			padding-bottom: 20px;
 	  	position:relative;
 	  	z-index: 50;
 	  	right: 5px;
@@ -152,30 +152,48 @@
 			position: relative;
 			text-align: center;
 			padding: 10px 20px;
+			margin: 10px auto;
 			font-size: 18px;
-			margin: 0 auto;
 			width: 200px;
 			top: 30px;
 		}
-
 		.result-badge.fires {
 			border: 3px solid rgb(240, 171, 0);
 		}
-
+		.result-badge.gain {
+			border: 3px solid #6d6de5;
+		}
+		.gain-count {
+			font-size: 24px;
+			color: #6d6de5;
+		}
+		.result-badge.loss {
+			border: 3px solid #DE86A9;
+		}
+		.loss-count {
+			font-size: 24px;
+			color: #DE86A9;
+		}
 		.result-badge div {
 			margin: 5px 0;
 		}
-
 		.fire-count {
 			font-size: 24px;
 			color: red;
 		}
-
-		.loss-gain-analysis {
+		.unavailable-badge {
+			border: 3px solid rgb(240, 171, 0);
+			text-align: center;
+			padding: 10px 20px;
+			margin: 30px auto;
 			font-size: 18px;
-			margin: 5px;
+			width: 200px;
 		}
-
+		#gainAndLossResults,
+		#firesBadge {
+			padding-bottom: 40px;
+			height: 100%;
+		}
 	</style>
 
 	<script>
@@ -651,21 +669,9 @@
 </head>
 <body class="tundra app">
 	<div id="reportContent">
-		<div id="reportTitle">
-
-
-		</div>
-
+		<div id="reportTitle"></div>
 		<div id="map"></div>
-
-		<div id="report">
-
-
-		</div>
-		<div id="forestContainer" style="height: 400px; width: 400px;">
-
-		</div>
-
+		<div id="report"></div>
 	</div>
-
 </body>
+</html>

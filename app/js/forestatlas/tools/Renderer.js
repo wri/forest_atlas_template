@@ -276,7 +276,9 @@ define([
 			gainTotal = number.format(gainTotal);
 			lossTotal = number.format(lossTotal);
 
-			content = "<div id='analysis-chart'>";
+			var chartId = (printOptions ? printOptions.container : "analysis-chart");
+
+			content = "<div id='" + chartId + "'>";
 			// Loss Badge
 			content += "<section class='result-badge loss'><div>" + languages[currentLang].totalLossAnalysis + "</div>";
 			content += "<div class='loss-count'>" + lossTotal + " ha</div>";
@@ -289,8 +291,7 @@ define([
 
 			// This content must be replaced completely which is why the content contains a div with
 			// the same id, highcharts redraws charts on window resize even if I replace innerHTML
-			var chartId = "#" + (printOptions ? printOptions.container : "analysis-chart");
-			$(chartId).replaceWith(content);
+			$('#' + chartId).replaceWith(content);
 
 		},
 
@@ -397,17 +398,16 @@ define([
 					chartId;
 
 			currentLang = model ? model.currentLanguage() : (printOptions ? printOptions.lang : 'en');
+			chartId = (printOptions ? printOptions.container : "analysis-chart");
 
-			content += "<div id='analysis-chart'><section class='result-badge fires'><div>" + languages[currentLang].analysisChartLabels.activeFires.start + "</div>";
+			content += "<div id='" + chartId + "'><section class='result-badge fires'><div>" + languages[currentLang].analysisChartLabels.activeFires.start + "</div>";
 			content += "<div class='fire-count'>" + (totalFires.length || 0) + "</div>";
 			content += "<div class='fire-count'>" + languages[currentLang].analysisChartLabels.activeFires.active + "</div>";
 			content += "<div>" + languages[currentLang].analysisChartLabels.activeFires.end + "</div></section></div>";
 
 			// This content must be replaced completely which is why the content contains a div with
 			// the same id, highcharts redraws charts on window resize even if I replace innerHTML
-			chartId = "#" + (printOptions ? printOptions.container : "analysis-chart");
-
-			$(chartId).replaceWith(content);
+			$('#' + chartId).replaceWith(content);
 		},
 
 		/**
