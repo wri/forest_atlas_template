@@ -4,7 +4,7 @@
             "category": "General Settings",
             "fields": [
                 {
-                    "type": "webmap" 
+                    "type": "webmap"
                 },
                 {
                     "type": "string",
@@ -28,6 +28,12 @@
                             "value": "es"
                         }
                     ]
+                },
+                {
+                    "type": "boolean",
+                    "fieldName": "englishIsDefault",
+                    "label": "Set English as the default language",
+                    "tooltip": "Check this if you want english as the default language, if not uncheck this"
                 },
                 {
                     "type": "string",
@@ -126,6 +132,12 @@
                     "fieldName": "mapThemes",
                     "label": "Names of Map Themes:",
                     "tooltip": "Comma spearated list of names of the various Map Themes you want to link to in your application."
+                },
+                {
+                    "type": "string",
+                    "fieldName": "mapThemesAlternate",
+                    "label": "Names of Map Themes in your alternate language:",
+                    "tooltip": "Same names as above but in the alternate language you have chosen."
                 },
                 {
                     "type": "string",

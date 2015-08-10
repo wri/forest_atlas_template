@@ -111,12 +111,12 @@ define(
                         var fullExtentDiv = domConstruct.create("div", {
                             id: "fullExtentDiv"
                         }, node, "before");
-                        //var img = domConstruct.create("img",{src:"app/images/zoomFullExtent.png"},fullExtentDiv);                    
+                        //var img = domConstruct.create("img",{src:"app/images/zoomFullExtent.png"},fullExtentDiv);
 
                         on(fullExtentDiv, "click", function() {
                             topic.publish(mapevents.zoomToDefault);
                         });
-                    }); //end query  
+                    }); //end query
 
                     var higlightLineSymbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255, 0, 0]), 2);
                     var higlightPolySymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
@@ -134,7 +134,7 @@ define(
                         topic.publish(mapevents.clickCoordinates, evt);
                     });
 
-                    connect.connect(o._map.infoWindow, 'onSetFeatures', function () {                        
+                    connect.connect(o._map.infoWindow, 'onSetFeatures', function () {
                         topic.publish(mapevents.updateCustomInfoWindow);
                     });
 
@@ -298,7 +298,7 @@ define(
                         });
 
 
-                        
+
 
                     });
 
@@ -307,11 +307,11 @@ define(
                     var actionsPane = query(".actionsPane");
                     actionsPane[0].id = "actionsPane";
 
-                    var legislative = domConstruct.create("a", {
-                        id: "legislative",
-                        "data-bind": "{text:legislativeText}",
-                        target: "_blank"
-                    }, "actionsPane");
+                    // var legislative = domConstruct.create("a", {
+                    //     id: "legislative",
+                    //     "data-bind": "{text:legislativeText}",
+                    //     target: "_blank"
+                    // }, "actionsPane");
                     var printReport = domConstruct.create("a", {
                         id: "printReport",
                         "data-bind": "{text:printReport,click:clickPrintReport}",
@@ -320,14 +320,14 @@ define(
                     var text = query(".actionList .action");
                     text[0].innerHTML = "";
                     text[0].setAttribute("data-bind", "{text:zoom}");
-                    legislative.innerHTML = "Legislative Text";
+                    // legislative.innerHTML = "Legislative Text";
                     printReport.innerHTML = "Print Report";
 
                     topic.publish(mapevents.UICreationComplete);
 
                 });
 
-            } //constructor   
+            } //constructor
 
         }); //end declare
 

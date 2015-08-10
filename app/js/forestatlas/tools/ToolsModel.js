@@ -69,7 +69,7 @@ define(
                         o._vm.downloadLink = ko.observable(app.config.downloadDataUrl);
 
                         // Nav Dropdown - Map Theme Chooser
-                        o._vm.mapThemes = ko.observableArray(app.config.mapThemes);
+                        o._vm.mapThemes = ko.observableArray((currentLanguage === 'en' ? app.config.mapThemes : app.config.mapThemesAlternate));
                         o._vm.showMapThemes = ko.observable(false);
                         o._vm.mapThemesLabel = ko.observable(translation.mapThemesLabel);
 

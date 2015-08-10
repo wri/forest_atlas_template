@@ -1,7 +1,7 @@
 define([
 	'esri/urlUtils',
-	'dojo/Deferred', 
-	'dojo/promise/all', 
+	'dojo/Deferred',
+	'dojo/promise/all',
 	'esri/arcgis/utils',
 	'dojo/_base/array'
 ], function (urlUtils, Deferred, all, arcgisUtils, arrayUtils) {
@@ -63,8 +63,10 @@ define([
 					// Map Theme Options
 					// Only set this value if the configuration options are matching and correct, else set it to an empty array
 					var themeNames = values.mapThemes && values.mapThemes.split(',') || [];
+					var themeNamesAlternates = values.mapThemesAlternate && values.mapThemesAlternate.split(',') || [];
 					var themeIds = values.mapThemeIds && values.mapThemeIds.split(',') || [];
 					var themes = [];
+					var alternateThemes = [];
 
 					if (themeNames.length === themeIds.length && themeNames.length > 0) {
 						arrayUtils.forEach(themeNames, function (theme, index) {
@@ -75,7 +77,17 @@ define([
 						});
 					}
 
+					if (themeNamesAlternates.length === themeIds.length && themeNamesAlternates.length > 0) {
+						arrayUtils.forEach(themeNamesAlternates, function (theme, index) {
+							alternateThemes.push({
+								label: theme,
+								value: 'http://wri.github.io/forest_atlas_template/?appid=' + themeIds[index].replace(' ','')
+							});
+						});
+					}
+
 					commonConfig.mapThemes = themes;
+					commonConfig.mapThemesAlternate = alternateThemes;
 
 					// Other Values not configurable, set them to undefined as they will get pulled from resources later
 					commonConfig.geometryServiceURL = undefined;

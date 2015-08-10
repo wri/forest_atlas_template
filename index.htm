@@ -69,11 +69,11 @@
     	async: true,
     	locale:"en-us",
     	packages: [
-        {name: "common", location: location.pathname.replace(/\/[^/]+$/, "") + "/app/js/common"},
-        {name: "root", location: document.location.pathname.replace(/\/[^/]+$/, "") + "/app/js"},
-        {name: "suitability", location: location.pathname.replace(/\/[^/]+$/, "") + "/app/js/suitability"},
-        {name: "atlas", location: location.pathname.replace(/\/[^/]+$/, "") + "/app/js/forestatlas"},
-        {name: "res", location: location.pathname.replace(/\/[^/]+$/, "") + "/resources"}
+        {name: "common", location: location.pathname.replace(/\/[^/]+$/, "") + "app/js/common"},
+        {name: "root", location: document.location.pathname.replace(/\/[^/]+$/, "") + "app/js"},
+        {name: "suitability", location: location.pathname.replace(/\/[^/]+$/, "") + "app/js/suitability"},
+        {name: "atlas", location: location.pathname.replace(/\/[^/]+$/, "") + "app/js/forestatlas"},
+        {name: "res", location: location.pathname.replace(/\/[^/]+$/, "") + "resources"}
     	],
     	aliases: [
     		//Util
@@ -267,7 +267,17 @@
 						app.config = Resource;
 					}
 
-					var language = "en";
+					var language;
+					if (app.config.englishIsDefault) {
+						language = 'en';
+					} else {
+						// They can have a max of two languages, if they dont want english, look for whatever the other key is
+						for (var key in app.config.appLanguages) {
+							if (key !== 'en') { language = key; }
+						}
+					}
+					// If language for some reason is not defined, default to english
+					if (language === undefined) { language = 'en'; }
 					var main = new Main(language);
 				});
 			}

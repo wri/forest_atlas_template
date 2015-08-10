@@ -499,12 +499,10 @@ top:0px;
 .result-badge div {
 	margin: 5px 0;
 }
-
 .fire-count {
 	font-size: 24px;
 	color: red;
 }
-
 .unavailable-badge {
 	border: 3px solid rgb(240, 171, 0);
 	text-align: center;

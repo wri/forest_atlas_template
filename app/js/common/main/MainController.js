@@ -106,7 +106,7 @@ define(
                             toolsmodel.analysisLoss(translation.analysisLoss);
                             toolsmodel.analysisGain(translation.analysisGain);
                             toolsmodel.analysisLC(translation.analysisLC);
-                            toolsmodel.analysisTCD(translation.analysisTCD);
+                            // toolsmodel.analysisTCD(translation.analysisTCD);
                             toolsmodel.analysisIFL(translation.analysisIFL);
                             toolsmodel.analysisCS(translation.analysisCS);
                             toolsmodel.analysisFire(translation.analysisFire);
@@ -190,7 +190,13 @@ define(
                             //change map language layer
                             var language = newLanguage.toLowerCase();
                             var mapLayerLangId = "";
-                            //console.log(map);
+
+                            if (language === 'en') {
+                              toolsmodel.mapThemes(app.config.mapThemes);
+                            } else {
+                              toolsmodel.mapThemes(app.config.mapThemesAlternate);
+                            }
+
                             arrayUtil.some(map.layerIds, function(layerId) {
                                 layerIdlowerCase = layerId.toLowerCase();
                                 mapLayerLangId = layerId;
