@@ -5,11 +5,11 @@ define(
     var o =  declare(null, {
 
       constructor:function(){
-        
+
         var that = this;
 
         o._events = {
-          mapclick:"mapclick", 
+          mapclick:"mapclick",
           zoomToDefault:"zoomToDefault",
           clickLayerLegend:"clickLayerLegend",
           UICreationComplete:"MapUICreationComplete",
@@ -17,30 +17,31 @@ define(
           layerAdded:"layerAdded",
           updateCustomInfoWindow: "updateCustomInfoWindow",
           updateAnalysisTab: "updateAnalysisTab",
+          updateDocumentsTab: 'updateDocumentsTab',
           popupTabChanged: "popupTabChanged",
           updateLandsatLayer: 'updateLandsatLayer',
           updateTCDRenderingRule: 'updateTCDRenderingRule'
         };
 
         var controller = new MapController();
-                 
+
         // LoginUI Events
         o.mapclick = topic.subscribe(o._events.mapclick,function() {
           that.debug("Map >>> mapclick");
           controller.mapclick();
-        });  
+        });
 
         o.zoomToDefault = topic.subscribe(o._events.zoomToDefault,function() {
           that.debug("Map >>> zoomToDefault");
           controller.zoomToDefault();
-        }); 
-        
+        });
+
 
         o.UICreationComplete = topic.subscribe(o._events.UICreationComplete,function() {
           that.debug("Map >>> UICreationComplete");
           controller.UICreationComplete();
-        });  
-        
+        });
+
         o.clickCoordinates = topic.subscribe(o._events.clickCoordinates,function(evt){
         	that.debug("Map >>> clickCoordinates");
         	controller.clickCoordinates(evt);
@@ -61,6 +62,11 @@ define(
           controller.updateAnalysisTab();
         });
 
+        o.updateDocumentsTab = topic.subscribe(o._events.updateDocumentsTab, function () {
+          that.debug("Map >>> updateDocumentsTab");
+          controller.updateDocumentsTab();
+        });
+
         o.popupTabChanged = topic.subscribe(o._events.popupTabChanged, function () {
           that.debug("Map >>> popupTabChanged");
           controller.popupTabChanged();
@@ -76,33 +82,33 @@ define(
           controller.updateTCDRenderingRule();
         });
 
-          
+
       }, // End Constructor
 
       debug: function(message) {
 
         if (typeof message == 'string')
-          {console.log(message);} 
-              else 
-          {console.dir(message);}      
+          {console.log(message);}
+              else
+          {console.dir(message);}
 
       }
 
     });//end declare
 
-    o.getEvents = function () {      
+    o.getEvents = function () {
       return o._events;
     };
 
     o.initialize = function () {
     if (null == o._instance){
         o._instance = new o();
-    }        
+    }
         return o._instance;
     };
 
      o.destroy = function () {
-          o._apiResponseHandler.remove();          
+          o._apiResponseHandler.remove();
           o._zoomToDeployments.remove();
           o._apiRefresh.remove();
           o._filterMapByStatus.remove();
@@ -118,5 +124,5 @@ define(
     };
 
     return o;
-    
+
 });//end define

@@ -102,6 +102,7 @@ define(
                             toolsmodel.closeButtonText(translation.closeButtonText);
                             toolsmodel.popupDataTab(translation.popupDataTab);
                             toolsmodel.popupAnalysisTab(translation.popupAnalysisTab);
+                            toolsmodel.documentsUnavailable(translation.documentsUnavailable);
 
                             toolsmodel.analysisLoss(translation.analysisLoss);
                             toolsmodel.analysisGain(translation.analysisGain);

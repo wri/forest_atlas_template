@@ -95,6 +95,7 @@ define(
                         // Items for Custom Popup
                         o._vm.popupDataTab = ko.observable(translation.popupDataTab);
                         o._vm.popupAnalysisTab = ko.observable(translation.popupAnalysisTab);
+                        o._vm.popupDocumentTab = ko.observable(translation.popupDocumentTab);
                         o._vm.popupActiveTab = ko.observable('popupDataTab');
                         o._vm.popupIndex = ko.observable(0);
                         o._vm.popupCount = ko.observable(0);
@@ -148,14 +149,17 @@ define(
 
                         o._vm.customFeatureShowing = ko.observable(false);
 
-
+                        o._vm.featureDocuments = ko.observableArray([]);
+                        o._vm.documentsUnavailable = ko.observable(translation.documentsUnavailable);
 
 
                         o._vm.changePopupTabs = function (model, evt) {
                             var target = evt.target ? evt.target : evt.srcElement;
                             model.popupActiveTab(target.id);
                             if (target.id === 'popupAnalysisTab') {
-                                topic.publish('updateAnalysisTab');
+                              topic.publish('updateAnalysisTab');
+                            } else if (target.id === 'popupDocumentTab') {
+                              topic.publish('updateDocumentsTab');
                             }
                             // Publish Notification of Tab Changing Incase any controllers care about it
                             // they can subscribe to it

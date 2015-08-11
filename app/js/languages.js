@@ -14,6 +14,8 @@ define([], function() {
             closeButtonText: "Close",
             popupDataTab: 'Data',
             popupAnalysisTab: 'Analysis',
+            popupDocumentTab: 'Docs',
+            documentsUnavailable: 'There are no documents available for this area.',
 
             analysisOptions: [
                 "Tree Cover Loss",
@@ -164,6 +166,8 @@ define([], function() {
             closeButtonText: "Cerrar",
             popupDataTab: 'Datos',
             popupAnalysisTab: 'Análisis',
+            popupDocumentTab: 'Docs',
+            documentsUnavailable: 'There are no documents available for this area.',
 
             analysisOptions: [
                 "Pérdida de la cobertura arbórea",
@@ -316,6 +320,8 @@ define([], function() {
 
             popupDataTab: 'Données',
             popupAnalysisTab: 'Analyses',
+            popupDocumentTab: 'Docs',
+            documentsUnavailable: 'There are no documents available for this area.',
 
             analysisOptions: [
                 "Perte totale",
@@ -466,6 +472,8 @@ define([], function() {
             closeButtonText: "Close",
             popupDataTab: 'Data',
             popupAnalysisTab: 'Analysis',
+            popupDocumentTab: 'Docs',
+            documentsUnavailable: 'There are no documents available for this area.',
 
             analysisOptions: [
                 "Tree Cover Loss",

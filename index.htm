@@ -283,22 +283,6 @@
 			}
 		});
 	</script>
-	<script type="text/javascript">
-	 //  var _gaq = _gaq || [];
-	 //  	_gaq.push(
-	 //  	['_setAccount', 'UA-1981881-3'],
-	 //  	['_trackPageview'],
-	 //  	['b._setAccount', 'UA-1981181-14'],
-	 //  	['b._trackPageview']
-		// );
-
-	 //  (function() {
-	 //    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	 //    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	 //    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	 //  })();
-
-	</script>
 </head>
 <body class="tundra app">
 	<div id="customPopup">
@@ -307,6 +291,7 @@
 			<div id="popupTabs">
 				<div id='popupDataTab' class="popup-tab" data-bind="text: popupDataTab, css: {active: popupActiveTab() === 'popupDataTab'}, click: changePopupTabs"></div>
 				<div id='popupAnalysisTab' class="popup-tab" data-bind="text: popupAnalysisTab, css: {active: popupActiveTab() === 'popupAnalysisTab'}, click: changePopupTabs"></div>
+				<div id='popupDocumentTab' class="popup-tab" data-bind="text: popupDocumentTab, css: {active: popupActiveTab() === 'popupDocumentTab'}, click: changePopupTabs"></div>
 			</div>
 			<div id="popupTabContent">
 				<div id='popupData' data-bind="visible: popupActiveTab() === 'popupDataTab'">
@@ -348,7 +333,26 @@
 						<div id="results-chart-container">
 							<div id="analysis-chart"></div>
 						</div>
-						<div id="analysis-footer"></div>
+						<div id="analysis-footer" class='popup-footer'></div>
+					</div>
+				</div>
+				<div id='popupDocument' data-bind="visible: popupActiveTab() === 'popupDocumentTab'">
+					<div class="results-header">
+						<div class="customPopupPrevious" data-bind="visible: popupIndex() > 1, click: prevFeature"></div>
+						<div class="customPopupNext" data-bind="visible: popupIndex() < popupCount(), click: nextFeature"></div>
+						<div class="title"></div>
+					</div>
+					<div class="results-container">
+						<div class="documents-results">
+							<div class="documents-not-available" data-bind='text: documentsUnavailable,visible: featureDocuments().length === 0'></div>
+							<ul class='feature-documents' data-bind='foreach: featureDocuments'>
+								<li><a data-bind='text: name, attr: {href: url}' target='_blank'></a></li>
+							</ul>
+						</div>
+						<div id="documents-loader" class="hidden">
+							<span class="loading-wheel"></span>
+						</div>
+						<div id="document-footer" class='popup-footer'></div>
 					</div>
 				</div>
 			</div>

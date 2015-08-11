@@ -27,6 +27,7 @@ define([
 					language;
 
 				if (values) {
+
 					// Country Code
 					commonConfig.country = values.country;
 					// appLanguages
@@ -59,6 +60,10 @@ define([
 					commonConfig.aboutLinkUrl = values.aboutLinkUrl;
 					commonConfig.downloadDataUrl = values.downloadDataUrl;
 					commonConfig.printURL = values.printURL;
+
+					// Document Related Urls
+					commonConfig.documentDirectory = values.documentDirectory;
+					commonConfig.documentMapserver = values.documentMapserver;
 
 					// Map Theme Options
 					// Only set this value if the configuration options are matching and correct, else set it to an empty array

@@ -55,7 +55,7 @@ define(
 
                     Model.initialize("mapView");
                     toolsconfig.initialize(); //Must not have any dependencies
-                    ToolsEvents.initialize(); //no dependencies, Initializes maincontroller       
+                    ToolsEvents.initialize(); //no dependencies, Initializes maincontroller
                     toolsui.initialize(); //config and events must be initialized
 
                     var toolsevents = ToolsEvents.getEvents();
@@ -82,7 +82,7 @@ define(
                         if ((layerId != mapLayerLangId) && (layerId != map.layerIds[0])) {
                             map.getLayer(layerId).hide();
                         }
-                    }); //end array loop 
+                    }); //end array loop
                     map.getLayer("maskLayer").show();
                     on(map, "update-end", function(e) {
                         registry.byId("legendDiv").refresh([{
@@ -108,7 +108,7 @@ define(
                         }]);
 
                         topic.publish(toolsevents.mapUpdateEnd, e);
-                    }); // end on  
+                    }); // end on
 
                     on(map, "zoom-end", function(e) {
                         topic.publish(toolsevents.mapZoomEnd, e);
@@ -145,6 +145,8 @@ define(
                     // If analysis tab is open, update it
                     if (viewModel.popupActiveTab() === 'popupAnalysisTab') {
                         domConstruct.place(node, 'analysis-footer', 'first');
+                    } else if (viewModel.popupActiveTab() === 'popupDocumentTab') {
+                        domConstruct.place(node, 'document-footer', 'first');
                     } else {
                         container = query('.esriPopupWrapper .sizer');
                         if (container.length === 3) {
@@ -234,23 +236,20 @@ define(
                     viewModel.popupCount(infoWindow.features.length);
 
                     domStyle.set('customPopup', 'display', 'block');
-                    // if (isMobile) {
-                    //     domStyle.set('mobilePopupUnderlay', 'display', 'block');
-                    // }
 
                     // If analysis tab is open, update it
                     if (viewModel.popupActiveTab() === 'popupAnalysisTab') {
                         self.updateAnalysisTab();
                         // Trigger this as well to move over the footer on desktop
                         self.popupTabChanged();
+                    } else if (viewModel.popupActiveTab() === 'popupDocumentTab') {
+                      self.updateDocumentsTab();
+                      self.popupTabChanged();
                     }
 
                     tempHandle = on.once(dom.byId('customPopupClose'), 'click', function () {
                         domStyle.set('customPopup', 'display', 'none');
                         infoWindow.hide();
-                        // if (isMobile) {
-                        //     domStyle.set('mobilePopupUnderlay', 'display', 'none');
-                        // }
                     });
 
                     infoWindowHandles.push(tempHandle);
@@ -274,8 +273,8 @@ define(
                     query('#results-header .title')[0].innerHTML = title;
 
 
-                    // Something is still generalizing features, may have to go to server and get new features
-                    // as we get slightly different results based on the generalization which is recalculated at 
+                    // IdentifyTask is still generalizing features, may have to go to server and get new features
+                    // as we get slightly different results based on the generalization which is recalculated at
                     // every zoom level
 
                     if (selected.attributes.OBJECTID) {
@@ -314,6 +313,60 @@ define(
                     // }
 
                 });
+            },
+
+            updateDocumentsTab: function () {
+              require(['toolsmodel', 'mainmodel','mapui', 'esri/tasks/query', 'esri/tasks/QueryTask'], function (Model, MainModel, MapUI, EsriQuery, QueryTask) {
+                var infoWindow = MapUI.getMap().infoWindow;
+                var selected = infoWindow.getSelectedFeature();
+                var currentLanguage = MainModel.getVM().currentLanguage();
+                var layer = currentLanguage === 'en' ? 0 : 1;
+                var toolsModel = Model.getVM();
+
+
+                // If selected feature has a custom title use it, otherwise take whatever is in the infowindow
+                var title = selected.attributes.Custom_Title || infoWindow._title.innerHTML;
+                query('#popupDocument .title')[0].innerHTML = title;
+
+                // Add the loading wheel
+                domClass.remove('documents-loader', 'hidden');
+
+                // Clear out previous features documents
+                toolsModel.featureDocuments([]);
+
+                var queryUrl = app.config.documentMapserver;
+                var docsUrl = app.config.documentDirectory;
+
+                if (!app.config.documentDirectory && !app.config.documentMapserver) {
+                  // both of these are necessary for this feature to function, if either is
+                  // missing, just return after clearing out featureDocuments from the model
+                  return;
+                }
+
+                // Below is a sample query, url will come from AGOL config
+                var queryTask = new QueryTask(queryUrl + '/' + layer);
+                var esriQuery = new EsriQuery();
+                esriQuery.geometry = selected.geometry;
+                esriQuery.outFields = ['*'];
+                esriQuery.returnGeometry = false;
+
+                queryTask.execute(esriQuery, function (res) {
+                  var docs = [], url;
+                  arrayUtil.forEach(res.features, function (feature) {
+                    if (feature.attributes.url) {
+                      docs.push({
+                        name: feature.attributes.doc_titre || feature.attributes.url,
+                        url: docsUrl + encodeURIComponent(feature.attributes.url)
+                      });
+                    }
+                  });
+                  toolsModel.featureDocuments(docs);
+                  domClass.add('documents-loader', 'hidden');
+                }, function (err) {
+                  console.log(err);
+                });
+
+              });
             },
 
             updateFiresLayer: function (evt) {
@@ -387,8 +440,8 @@ define(
                     // so we need to shift the values by 1 to have correct range
                     // Also the rule is [inclusive, exclusive], so if values are 3,3 use 3,3
                     // if they are 3,4 then use 3,5
-                    range = (startIndex === stopIndex ? 
-                            [startIndex + 1, stopIndex + 1] : 
+                    range = (startIndex === stopIndex ?
+                            [startIndex + 1, stopIndex + 1] :
                             [startIndex + 1, stopIndex + 2]
                     );
 

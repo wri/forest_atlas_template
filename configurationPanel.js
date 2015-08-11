@@ -101,6 +101,18 @@
                 },
                 {
                     "type": "string",
+                    "fieldName": "documentDirectory",
+                    "label": "Document directory:",
+                    "tooltip": "This is the root directory where all the documents available from the map service below are hosted."
+                },
+                {
+                    "type": "string",
+                    "fieldName": "documentMapserver",
+                    "label": "Document MapService:",
+                    "tooltip": "Map Service that contains filenames of documents(pdfs) relative to the document directory.  It should have a url field that contains the name of the PDF."
+                },
+                {
+                    "type": "string",
                     "fieldName": "pdfURL",
                     "label": "Legislative Text:",
                     "tooltip": "Link to directory of pdfs for download when user clicks on Legislative Text"

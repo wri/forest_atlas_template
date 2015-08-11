@@ -403,6 +403,7 @@ top:0px;
 }
 
 #analysis-loader,
+#documents-loader,
 #results-chart-container {
 	background-color: #FFF;
 	position: absolute;
@@ -411,7 +412,7 @@ top:0px;
 	left: 0;
 }
 
-#analysis-footer {
+.popup-footer {
 	position: absolute;
 	height: 30px;
 	bottom: 0;
@@ -419,7 +420,8 @@ top:0px;
 	left: 0;
 }
 
-#analysis-loader {
+#analysis-loader,
+#documents-loader {
 	z-index: 50;
 }
 
@@ -443,7 +445,8 @@ top:0px;
 	padding: 0 4px;
 }
 
-#analysis-loader .loading-wheel {
+#analysis-loader .loading-wheel,
+#documents-loader .loading-wheel {
 	background: url('../images/ajax-loader.gif') center no-repeat;
 	background-size: 32px;
 	position: absolute;
@@ -549,6 +552,32 @@ top:0px;
 	color: blue;
 }
 
+.documents-results {
+	position: absolute;
+	overflow-y: auto;
+	bottom: 30px;
+	right: 0;
+	left: 0;
+	top: 0;
+}
+
+.documents-not-available {
+	font-size: 16px;
+	margin: 10px;
+}
+
+.feature-documents {
+	padding: 10px;
+}
+
+.feature-documents a {
+	color: blue;
+}
+
+.feature-documents a:hover, .feature-documents a:active {
+	color: initial;
+}
+
 /* Hide some elements earlier to prevent collisions with other elements */
 @media only screen and (max-width: 900px) {
 	#searchBox {
@@ -619,6 +648,7 @@ top:0px;
 	}
 
 	#analysis-loader,
+	#documents-loader,
 	#results-chart-container {
 		bottom: 0;
 	}
