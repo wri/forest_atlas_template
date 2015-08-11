@@ -51,6 +51,12 @@
 		right: 190px;
 		top: 15px;
 	}
+	.one-language #navMenu {
+		right: 10px;
+	}
+	.one-language #languageToggle {
+		display: none;
+	}
 	#navMenu ul li{
 		float: left;
 		padding:0 10px 0 5px;
