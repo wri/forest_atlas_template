@@ -166,3 +166,129 @@
         "countryTextWidth": "260"
     }
 }
+
+/* New Configuration Panel Settings *
+{
+  "configurationSettings": [
+    {
+      "category": "General Settings",
+      "fields": [
+        {"type": "webmap"},
+        {
+            "type": "string",
+            "fieldName": "country",
+            "label": "3-Digit Country ISO Code:",
+            "tooltip": "Enter the 3-digit ISO code representing your country of interest."
+        },
+        {
+            "type": "string",
+            "fieldName": "layersToShow",
+            "label": "Default visible layers:",
+            "tooltip": "Enter the layers you want visible by default as a comma separated string of layer numbers.",
+            "placeholder": "Ex.  0,1,2,3,6,9,12,13,14"
+        },
+        {
+            "type": "number",
+            "fieldName": "countryFlagRight",
+            "label": "Distance between flag and right side of the screen(in pixels):",
+            "tooltip": "Enter the approximate location of the flag in pixels",
+            "value": "280"
+        }
+      ]
+    },
+    {
+      "category": "Language Settings",
+      "fields": [
+
+      ]
+    },
+    {
+      "category": "Map Themes",
+      "fields": [
+        {
+          "type": "string",
+          "fieldName": "mapThemeIds",
+          "label": "Application ID's for other Forest Atlas Applications:",
+          "tooltip": "Comma spearated list of Application ID's for the other Forest Atlas Maps."
+        },
+        {
+          "type": "string",
+          "fieldName": "mapThemes",
+          "label": "Names for your Map Theme(s):",
+          "tooltip": "Comma spearated list of names of the various Map Theme(s) you want to link to in your application."
+        },
+        {
+          "type": "string",
+          "fieldName": "mapThemesOtherLanguage",
+          "label": "If your using a second language, Names for that language for your Map Theme(s):",
+          "tooltip": "Comma spearated list of names, same as above but use the second language you have chosen."
+        }
+      ]
+    },
+    {
+      "category": "Layer Settings",
+      "fields": [
+        {
+          "type": "paragraph",
+          "value": "Choose the following layers/analysis you would like to be included in your application:"
+        },
+        {
+            "type": "boolean",
+            "fieldName": "activeFiresIncluded",
+            "label": "Active Fires",
+            "tooltip": "Show Active Fires layer/analysis"
+        },
+        {
+            "type": "boolean",
+            "fieldName": "landCoverIncluded",
+            "label": "Land Cover",
+            "tooltip": "Show Land Cover layer/analysis"
+        },
+        {
+            "type": "boolean",
+            "fieldName": "iflIncluded",
+            "label": "Intact Forest Landscapes",
+            "tooltip": "Show Intact Forest Landscapes layer/analysis"
+        },
+        {
+            "type": "boolean",
+            "fieldName": "biomassIncluded",
+            "label": "Above Ground Biomass",
+            "tooltip": "Show Above Ground Biomass layer/analysis"
+        },
+        // The following should be disabled or listed as coming soon
+        {
+            "type": "boolean",
+            "fieldName": "formaIncluded",
+            "label": "FORMA",
+            "tooltip": "Show FORMA layer/analysis"
+        },
+        {
+            "type": "boolean",
+            "fieldName": "terraIncluded",
+            "label": "Terra-i",
+            "tooltip": "Show Terra-i layer/analysis"
+        },
+        {
+            "type": "boolean",
+            "fieldName": "imazonIncluded",
+            "label": "SAD-Imazon",
+            "tooltip": "Show SAD-Imazon layer/analysis"
+        },
+        {
+            "type": "boolean",
+            "fieldName": "globcoverIncluded",
+            "label": "Global Land Cover",
+            "tooltip": "Show Global Land Cover layer/analysis"
+        },
+        {
+            "type": "boolean",
+            "fieldName": "mangroveIncluded",
+            "label": "Mangroves",
+            "tooltip": "Show Mangroves layer/analysis"
+        }
+      ]
+    }
+  ]
+}
+/* New Configuration Panel Settings */
