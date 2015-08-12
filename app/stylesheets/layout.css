@@ -63,7 +63,6 @@
 		margin-bottom:0px;
 		height: 40px;
 	}
-
 	#spanish{
 		border-left: 1px solid #fff;
 	}
@@ -357,7 +356,7 @@ top:0px;
 }
 
 #popupTabs:first-child {
-	margin-left: 15px;
+	margin-left: 5px;
 }
 
 .popup-tab {
@@ -365,9 +364,9 @@ top:0px;
 	display: inline-block;
 	border-bottom: none;
 	line-height: 34px;
-	padding: 0 15px;
 	cursor: pointer;
 	font-size: 18px;
+	padding: 0 5px;
 	margin: 0 2px;
 	height: 40px;
 	color: #000;

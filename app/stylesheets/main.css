@@ -850,20 +850,15 @@ top:2px;
 }
 
 #printReport{
-	float: right;
+	float: left;
 }
-#legislative{
-	float:left;
-	display:none;
-}
-#printReport, #legislative{
 
-	padding: 0 10px 0 0;
-	width: 130px !important;
-	font-size: 14px;
+#printReport {
 	color: rgb(240, 171, 0);
+	padding-left: 10px;
+	font-size: 14px;
 }
-#printReport:hover, #legislative:hover{
+#printReport:hover {
 	text-decoration:underline;
 	color:white;
 	cursor:pointer;
