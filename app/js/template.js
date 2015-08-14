@@ -28,8 +28,6 @@ define([
 
 				if (values) {
 
-					console.log(values);
-
 					// Country Code
 					commonConfig.country = values.country;
 					// appLanguages
