@@ -274,7 +274,9 @@
 						document.body.className += ' one-language';
 					}
 
+					// Grab the default language
 					var language = app.config.defaultLanguage;
+
 					// If language for some reason is not defined, default to english
 					if (language === undefined) { language = 'en'; }
 					var main = new Main(language);
