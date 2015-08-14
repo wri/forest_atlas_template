@@ -96,11 +96,11 @@ define([], function() {
             accordionLandUseTitle: "Land Use",
             accordionForestCoverTitle: "Land Cover",
 
-            forestCoverLossLabel: 'Tree Cover Loss',
-            activeFiresLabel: 'Active Fires (last 7 days)',
-            treeCoverDensityLabel: 'Tree Cover Density',
+            forestCoverLossLabel: 'Tree Cover Loss (Hansen/UMD/Google/USGS/NASA)',
+            activeFiresLabel: 'Active Fires (last 7 days, NASA)',
+            treeCoverDensityLabel: 'Tree Cover Density (Hansen/UMD/Google/USGS/NASA)',
             landCoverLabel: 'Land Cover',
-            treeCoverGainLabel: 'Tree Cover Gain',
+            treeCoverGainLabel: 'Tree Cover Gain (Hansen/UMD/Google/USGS/NASA)',
             carbonLayerLabel: 'Above Ground Biomass',
             intactForestLayerLabel: 'Intact Forest Landscape',
 
@@ -246,11 +246,11 @@ define([], function() {
             accordionLandUseTitle: "Uso del suelo",
             accordionForestCoverTitle: "Cobertura vegetal ",
 
-            forestCoverLossLabel: 'Pérdida de la cobertura arbórea',
-            activeFiresLabel: 'Incendios activos (últimos 7 días)',
-            treeCoverDensityLabel: 'Densidad de dosel arbóreo',
+            forestCoverLossLabel: 'Pérdida de la cobertura arbórea (Hansen/UMD/Google/USGS/NASA)',
+            activeFiresLabel: 'Incendios activos (últimos 7 días, NASA)',
+            treeCoverDensityLabel: 'Densidad de dosel arbóreo (Hansen/UMD/Google/USGS/NASA)',
             landCoverLabel: 'Cobertura vegetal',
-            treeCoverGainLabel: 'Aumento de la cobertura arbórea',
+            treeCoverGainLabel: 'Aumento de la cobertura arbórea (Hansen/UMD/Google/USGS/NASA)',
             carbonLayerLabel: 'Biomasa arriba del suelo',
             intactForestLayerLabel: 'Paisajes Forestales Intactos',
 
@@ -400,11 +400,11 @@ define([], function() {
             accordionLandUseTitle: "Affectation des Terres",
             accordionForestCoverTitle: "Occupation du Sol",
 
-            forestCoverLossLabel: 'Perte de la Couverture Arborée',
-            activeFiresLabel: 'Feux Actifs (les 7 derniers jours)',
-            treeCoverDensityLabel: 'Densité de la Couverture Arborée',
+            forestCoverLossLabel: 'Perte de la Couverture Arborée (Hansen/UMD/Google/USGS/NASA)',
+            activeFiresLabel: 'Feux Actifs (les 7 derniers jours, NASA)',
+            treeCoverDensityLabel: 'Densité de la Couverture Arborée (Hansen/UMD/Google/USGS/NASA)',
             landCoverLabel: 'Occupation du Sol',
-            treeCoverGainLabel: 'Gain de la Couverture Arborée',
+            treeCoverGainLabel: 'Gain de la Couverture Arborée (Hansen/UMD/Google/USGS/NASA)',
             carbonLayerLabel: 'Biomasse Aérienne',
             intactForestLayerLabel: 'Paysage Forestier Intact',
 
@@ -552,11 +552,11 @@ define([], function() {
             accordionForestLossTitle: "Land Cover Dynamics",
             accordionLandUseTitle: "Land Use",
 
-            forestCoverLossLabel: 'Tree Cover Loss',
-            activeFiresLabel: 'Active Fires (last 7 days)',
-            treeCoverDensityLabel: 'Tree Cover Density',
+            forestCoverLossLabel: 'Tree Cover Loss (Hansen/UMD/Google/USGS/NASA)',
+            activeFiresLabel: 'Active Fires (last 7 days, NASA)',
+            treeCoverDensityLabel: 'Tree Cover Density (Hansen/UMD/Google/USGS/NASA)',
             landCoverLabel: 'Land Cover',
-            treeCoverGainLabel: 'Tree Cover Gain',
+            treeCoverGainLabel: 'Tree Cover Gain (Hansen/UMD/Google/USGS/NASA)',
             carbonLayerLabel: 'Above Ground Biomass',
             intactForestLayerLabel: 'Intact Forest Landscape',
 
