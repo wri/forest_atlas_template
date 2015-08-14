@@ -52,7 +52,7 @@ define([
 
 					// If these values are not present, then set them to undefined so they can be overwritten by the defaults in index.htm
 					commonConfig.countryFlagRight = (values.countryFlagRight !== undefined ? values.countryFlagRight + "px" : undefined);
-					commonConfig.countryTextWidth = (values.countryTextWidth !== undefined ? values.countryTextWidth + "px" : undefined);
+					commonConfig.countryTextWidth = (values.countryTextWidth !== undefined ? values.countryTextWidth + "px" : (values.countryFlagRight ? (values.countryFlagRight - 20) + 'px' : undefined));
 					commonConfig.flagPath = values.flagPath;
 					commonConfig.flagLinkPath = values.flagLinkPath;
 
