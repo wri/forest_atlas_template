@@ -28,23 +28,30 @@ define([
 
 				if (values) {
 
+					console.log(values);
+
 					// Country Code
 					commonConfig.country = values.country;
 					// appLanguages
 					// Add Default language with some default values
-					commonConfig.appLanguages = {
-						"en": {
-							"title": values.englishTitle,
-							"flagTitle": values.flagTitle
-						}
+					commonConfig.appLanguages = {};
+
+					commonConfig.appLanguages[values.defaultLanguage] = {
+						'title': values.defaultTitle,
+						'flagTitle': values.flagTitle,
+						'default': true
 					};
-					// Add Additional Languages
+					// Add Additional Languages if configured to
 					// The default is french, or fr, so test for a valid value first and then use fr if necessary
-					language = ((values.appLanguages !== undefined && values.appLanguages !== '') ? values.appLanguages : 'fr');
-					commonConfig.appLanguages[language] = {
-						"title": values.languageTitle,
-						"flagTitle": values.languageFlagTitle
-					};
+					commonConfig.useAdditionalLanguage = values.useAdditionalLanguage;
+
+					if (commonConfig.useAdditionalLanguage) {
+						language = values.secondLanguage || 'fr';
+						commonConfig.appLanguages[language] = {
+							"title": values.secondLanguageTitle,
+							"flagTitle": values.secondLanguageFlagTitle
+						};
+					}
 
 					commonConfig.layersToShow = values.layersToShow && values.layersToShow.split(",").map(function(layer) { return parseInt(layer); });
 					commonConfig.maskMapUrl = values.maskMapUrl;

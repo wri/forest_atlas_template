@@ -260,6 +260,9 @@
 										languages[key].title :
 										Resource.appLanguages[key].title // This is the default
 								);
+								if (languages[key].default) {
+									language = key;
+								}
 							}
 						}
 
@@ -267,15 +270,10 @@
 						app.config = Resource;
 					}
 
-					var language;
-					if (app.config.englishIsDefault) {
-						language = 'en';
-					} else {
-						// They can have a max of two languages, if they dont want english, look for whatever the other key is
-						for (var key in app.config.appLanguages) {
-							if (key !== 'en') { language = key; }
-						}
+					if (!app.config.useAdditionalLanguage) {
+						document.body.className += ' one-language';
 					}
+
 					// If language for some reason is not defined, default to english
 					if (language === undefined) { language = 'en'; }
 					var main = new Main(language);
