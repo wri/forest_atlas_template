@@ -39,7 +39,7 @@
         flagLinkPath: "http://www.eaux-forets.gouv.ga/",
 
         //legislative text
-        pdfURL: "http://gab.forest-atlas.org/doc_pdf/",
+        pdfURL: "http://gab.forest-atlas.org/resources/docs/",
 
         aboutLinkUrl: "http://gab.forest-atlas.org",
 
