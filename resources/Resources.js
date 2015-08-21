@@ -19,7 +19,7 @@
 
         layersToShow: [],
 
-        maskMapUrl: "http://gis-forest-atlas.wri.org/arcgis/rest/services/CMR/CMR_00_africa/MapServer",
+        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/CMR/CMR_00_africa/MapServer",
 
         // Not in Configuration Panel
         webMapID: "b96ee7fcd75e405dbf9a8b5a44ae734a",
@@ -30,7 +30,7 @@
         // Not in Configuration Panel
         defaultLayerTransparency: 80,
         // Not in Configuration Panel
-        geometryServiceURL: "http://gis-forest-atlas.wri.org/arcgis/rest/services/Utilities/Geometry/GeometryServer",
+        geometryServiceURL: "http://gis.forest-atlas.org/arcgis/rest/services/Utilities/Geometry/GeometryServer",
 
         //flag
         countryFlagRight: "300px",
@@ -47,7 +47,7 @@
         downloadDataUrl: "http://cmr-data.forest-atlas.org/",
 
         //print image
-        printURL: "http://gis-forest-atlas.wri.org/arcgis/rest/services/CMR/CMRExportWebMap/GPServer/Export%20Web%20Map",
+        printURL: "http://gis.forest-atlas.org/arcgis/rest/services/CMR/CMRExportWebMap/GPServer/Export%20Web%20Map",
 
         // Available Map Themes, These are completely controlled from the template, there are no default values
         // other then an empty array
