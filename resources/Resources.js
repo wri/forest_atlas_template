@@ -3,7 +3,7 @@
     var o = {
 
         //country code
-        country: "GAB",
+        country: "CAF",
 
         //languages
         appLanguages: {
@@ -19,7 +19,7 @@
 
         layersToShow: [],
 
-        maskMapUrl: "http://gis-forest-atlas.wri.org/arcgis/rest/services/CAF/CAF_00_africa/MapServer",
+        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/CAF/CAF_00_africa/MapServer",
 
         // Not in Configuration Panel
         webMapID: "2b990a56346c4d20950128132771d63b",
@@ -30,7 +30,7 @@
         // Not in Configuration Panel
         defaultLayerTransparency: 80,
         // Not in Configuration Panel
-        geometryServiceURL: "http://gis-forest-atlas.wri.org/arcgis/rest/services/Utilities/Geometry/GeometryServer",
+        geometryServiceURL: "http://gis.forest-atlas.org/arcgis/rest/services/Utilities/Geometry/GeometryServer",
 
         //flag
         countryFlagRight: "280px",
@@ -39,7 +39,7 @@
         flagLinkPath: "http://caf.forest-atlas.org/",
 
         //legislative text
-        pdfURL: "http://caf.forest-atlas.org/doc_pdf/",
+        pdfURL: "http://caf.forest-atlas.org/resources/docs/",
 
         aboutLinkUrl: "http://caf.forest-atlas.org",
 
@@ -47,7 +47,7 @@
         downloadDataUrl: "http://caf-data.forest-atlas.org/",
 
         //print image
-        printURL: "http://gis-forest-atlas.wri.org/arcgis/rest/services/CMR/CMRExportWebMap/GPServer/Export%20Web%20Map",
+        printURL: "http://gis.forest-atlas.org/arcgis/rest/services/CAF/CAFExportWebMap/GPServer/Export%20Web%20Map",
 
         // Available Map Themes, These are completely controlled from the template, there are no default values
         // other then an empty array
