@@ -8,7 +8,7 @@
         //languages
         appLanguages: {
             "en": {
-                title: "My Forest Atlas of Gabon",
+                title: "My Forest Atlas",
                 flagTitle: "Global Forest Watch"
             },
             "fr": {
