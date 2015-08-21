@@ -17,7 +17,7 @@
             }
         },
 
-        layersToShow: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19],
+        layersToShow: [],
 
         maskMapUrl: "http://gis-forest-atlas.wri.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer",
 
@@ -30,7 +30,7 @@
         // Not in Configuration Panel
         defaultLayerTransparency: 80,
         // Not in Configuration Panel
-        geometryServiceURL: "http://gis-forestatlas.wri.org/arcgis/rest/services/Utilities/Geometry/GeometryServer",
+        geometryServiceURL: "http://gis-forest-atlas.wri.org/arcgis/rest/services/Utilities/Geometry/GeometryServer",
 
         //flag
         countryFlagRight: "280px",
@@ -39,15 +39,15 @@
         flagLinkPath: "http://www.eaux-forets.gouv.ga/",
 
         //legislative text
-        pdfURL: "http://data.wri.org/forest_atlas/gab/doc_pdf/",
+        pdfURL: "http://gab.forest-atlas.org/doc_pdf/",
 
-        aboutLinkUrl: "http://www.wri.org/our-work/project/congo-basin-forests/gabon#project-tabs",
+        aboutLinkUrl: "http://gab.forest-atlas.org",
 
         // Download Data URL
-        downloadDataUrl: "http://data.globalforestwatch.org/",
+        downloadDataUrl: "http://gab-data.forest-atlas.org/",
 
         //print image
-        printURL: "http://gis-forestatlas.wri.org/arcgis/rest/services/GAB/GABExportWebMap/GPServer/Export%20Web%20Map",
+        printURL: "http://gis-forest-atlas.wri.org/arcgis/rest/services/GAB/GABExportWebMap/GPServer/Export%20Web%20Map",
 
         // Available Map Themes, These are completely controlled from the template, there are no default values
         // other then an empty array
