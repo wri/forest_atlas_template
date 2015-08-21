@@ -39,7 +39,7 @@
         flagLinkPath: "http://www.minfof.cm/",
 
         //legislative text
-        pdfURL: "http://cmr.forest-atlas.org/doc_pdf/",
+        pdfURL: "http://cmr.forest-atlas.org/resources/docs/",
 
         aboutLinkUrl: "http://cmr.forest-atlas.org/",
 
