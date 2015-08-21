@@ -19,7 +19,7 @@
 
         layersToShow: [],
 
-        maskMapUrl: "http://gis-forest-atlas.wri.org/arcgis/rest/services/GNQ/GNQ_00_africa/MapServer",
+        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/GNQ/GNQ_00_africa/MapServer",
 
         // Not in Configuration Panel
         webMapID: "9d8b867cd4634577b014bd00fe100d9c",
@@ -30,7 +30,7 @@
         // Not in Configuration Panel
         defaultLayerTransparency: 80,
         // Not in Configuration Panel
-        geometryServiceURL: "http://gis-forest-atlas.wri.org/arcgis/rest/services/Utilities/Geometry/GeometryServer",
+        geometryServiceURL: "http://gis.forest-atlas.org/arcgis/rest/services/Utilities/Geometry/GeometryServer",
 
         //flag
         countryFlagRight: "170px",
@@ -39,7 +39,7 @@
         flagLinkPath: "http://www.guineaecuatorialpress.com/noticia.php?id=126&lang=en",
 
         //legislative text
-        pdfURL: "http://gnq.forest-atlas.org/doc_pdf/",
+        pdfURL: "http://gnq.forest-atlas.org/resources/docs/",
 
         aboutLinkUrl: "http://gnq.forest-atlas.org/",
 
@@ -47,7 +47,7 @@
         downloadDataUrl: "http://gnq-data.forest-atlas.org/",
 
         //print image
-        printURL: "http://gis-forest-atlas.wri.org/arcgis/rest/services/GNQ/GNQExportWebMap/GPServer/Export%20Web%20Map",
+        printURL: "http://gis.forest-atlas.org/arcgis/rest/services/GNQ/GNQExportWebMap/GPServer/Export%20Web%20Map",
 
         // Available Map Themes, These are completely controlled from the template, there are no default values
         // other then an empty array
