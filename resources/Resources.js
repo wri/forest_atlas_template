@@ -30,16 +30,16 @@
         // Not in Configuration Panel
         defaultLayerTransparency: 80,
         // Not in Configuration Panel
-        geometryServiceURL: "http://gis-forestatlas.wri.org/arcgis/rest/services/Utilities/Geometry/GeometryServer",
+        geometryServiceURL: "http://gis-forest-atlas.wri.org/arcgis/rest/services/Utilities/Geometry/GeometryServer",
 
         //flag
         countryFlagRight: "300px",
         countryTextWidth: "260px",
         flagPath: "app/images/CMR_flag_new.png",
-        flagLinkPath: "http://minfof.cm/",
+        flagLinkPath: "http://www.minfof.cm/",
 
         //legislative text
-        pdfURL: "http://data.wri.org/forest_atlas/cmr/doc_pdf/",
+        pdfURL: "http://cmr.forest-atlas.org/doc_pdf/",
 
         aboutLinkUrl: "http://cmr.forest-atlas.org/",
 
@@ -47,7 +47,7 @@
         downloadDataUrl: "http://cmr-data.forest-atlas.org/",
 
         //print image
-        printURL: "http://gis-forestatlas.wri.org/arcgis/rest/services/CMR/CMRExportWebMap/GPServer/Export%20Web%20Map",
+        printURL: "http://gis-forest-atlas.wri.org/arcgis/rest/services/CMR/CMRExportWebMap/GPServer/Export%20Web%20Map",
 
         // Available Map Themes, These are completely controlled from the template, there are no default values
         // other then an empty array
