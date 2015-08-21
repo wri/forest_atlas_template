@@ -8,21 +8,21 @@
         //languages
         appLanguages: {
             "en": {
-                title: "Forest Atlas of Gabon",
-                flagTitle: "Ministry of Forest, Environment and Protection of Natural Resources"
+                title: "Forest Atlas of Central African Republic",
+                flagTitle: "Ministry of Water, Forest, Hunting and Fishing"
             },
             "fr": {
-                title: "Atlas Forestier du Gabon",
-                flagTitle: "Ministère de la Forêt, de l’Environnement et de la Protection des Ressources Naturelles"
+                title: "Atlas Forestier de la République Centrafricaine",
+                flagTitle: "Ministère des Eaux, Forêts, Chasse et Pêche"
             }
         },
 
-        layersToShow: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19],
+        layersToShow: [],
 
-        maskMapUrl: "http://gis-forest-atlas.wri.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer",
+        maskMapUrl: "http://gis-forest-atlas.wri.org/arcgis/rest/services/CAF/CAF_00_africa/MapServer",
 
         // Not in Configuration Panel
-        webMapID: "10db57b5316749478d5287155760fd14",
+        webMapID: "2b990a56346c4d20950128132771d63b",
 
         // Not in Configuration Panel
         basemap: "national-geographic",
@@ -30,24 +30,24 @@
         // Not in Configuration Panel
         defaultLayerTransparency: 80,
         // Not in Configuration Panel
-        geometryServiceURL: "http://gis-forestatlas.wri.org/arcgis/rest/services/Utilities/Geometry/GeometryServer",
+        geometryServiceURL: "http://gis-forest-atlas.wri.org/arcgis/rest/services/Utilities/Geometry/GeometryServer",
 
         //flag
         countryFlagRight: "280px",
         countryTextWidth: "260px",
-        flagPath: "app/images/GAB_flag_new.png",
-        flagLinkPath: "http://www.eaux-forets.gouv.ga/",
+        flagPath: "app/images/CAF_flag_new.png",
+        flagLinkPath: "http://caf.forest-atlas.org/",
 
         //legislative text
-        pdfURL: "http://data.wri.org/forest_atlas/gab/doc_pdf/",
+        pdfURL: "http://caf.forest-atlas.org/doc_pdf/",
 
-        aboutLinkUrl: "http://www.wri.org/our-work/project/congo-basin-forests/gabon#project-tabs",
+        aboutLinkUrl: "http://caf.forest-atlas.org",
 
         // Download Data URL
-        downloadDataUrl: "http://data.globalforestwatch.org/",
+        downloadDataUrl: "http://caf-data.forest-atlas.org/",
 
         //print image
-        printURL: "http://gis-forestatlas.wri.org/arcgis/rest/services/GAB/GABExportWebMap/GPServer/Export%20Web%20Map",
+        printURL: "http://gis-forest-atlas.wri.org/arcgis/rest/services/CMR/CMRExportWebMap/GPServer/Export%20Web%20Map",
 
         // Available Map Themes, These are completely controlled from the template, there are no default values
         // other then an empty array
