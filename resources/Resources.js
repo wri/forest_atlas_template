@@ -33,8 +33,8 @@
         geometryServiceURL: "http://gis.forest-atlas.org/arcgis/rest/services/Utilities/Geometry/GeometryServer",
 
         //flag
-        countryFlagRight: "280px",
-        countryTextWidth: "260px",
+        countryFlagRight: "120px",
+        countryTextWidth: "140px",
         flagPath: "http://www.globalforestwatch.org/assets/logo-new-b989ed109810f4bc3ddfe0fb21d204bd.png",
         flagLinkPath: "http://www.globalforestwatch.org/",
 
