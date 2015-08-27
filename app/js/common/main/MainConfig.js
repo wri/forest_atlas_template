@@ -9,6 +9,10 @@ define(
                 var flagPath = app.config.flagPath;
                 var countryTextWidth = app.config.countryTextWidth;
 
+                if (typeof countryTextWidth === 'number') {
+                  countryTextWidth += 'px'; 
+                }
+
                 o._config = {
 
 
