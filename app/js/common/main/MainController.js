@@ -23,7 +23,10 @@ define(
         return declare(null, {
 
             changeTitle: function(language) {
-                var title = app.config.appLanguages[language].title;
+                var languageInfo = app.config.appLanguages[language],
+                    title;
+                
+                title = languageInfo.title ? languageInfo.title : '';
                 window.document.title = title;
             },
 
@@ -33,10 +36,7 @@ define(
 
                 //set the title based on language
                 this.changeTitle(language);
-
                 Model.initialize("headerView", appType, langType);
-
-
             },
 
 
