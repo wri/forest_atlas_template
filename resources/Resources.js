@@ -5,9 +5,9 @@
 
     var o = {
 
-        aboutLinkUrl: 'http://www.wri.org/our-work/project/congo-basin-forests/gabon#project-tabs',
+        aboutLinkUrl: 'http://caf.forest-atlas.org',
 
-        country: 'GAB',
+        country: 'CAF',
 
         countryFlagRight: 280,
 
@@ -15,19 +15,19 @@
 
         defaultLanguage: 'en',
 
-        defaultTitle: 'Forest Atlas of Gabon',
+        defaultTitle: 'Forest Atlas of Central African Republic',
 
-        documentDirectory: 'https://wri-public-data.s3.amazonaws.com/forest_atlas/cmr/doc_pdf/',
+        documentDirectory: 'http://caf.forest-atlas.org/resources/docs/',
 
-        documentMapserver: 'http://54.88.79.102/arcgis/rest/services/CMR/documents_administratifs/MapServer',
+        documentMapserver: 'http://gis.forest-atlas.org/arcgis/rest/services/CAF/documents_administratifs/MapServer',
 
-        downloadDataUrl: 'http://data.globalforestwatch.org/',
+        downloadDataUrl: 'http://caf-data.forest-atlas.org/',
 
-        flagLinkPath: 'http://www.eaux-forets.gouv.ga/',
+        flagLinkPath: 'http://caf.forest-atlas.org',
 
-        flagPath: 'app/images/GAB_flag_new.png',
+        flagPath: 'app/images/CAF_flag_new.png',
 
-        flagTitle: 'Ministry of Forest, Environment and Protection of Natural Resources',
+        flagTitle: 'Ministry of Water, Forests, Hunting and Fishing',
 
         layersToShow: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19],
 
@@ -37,19 +37,19 @@
 
         mapThemesAlternate: [],
 
-        maskMapUrl: 'http://gis-forest-atlas.wri.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer',
+        maskMapUrl: 'http://gis.forest-atlas.wri/arcgis/rest/services/CAF/CAF_00_africa/MapServer',
 
-        printURL: 'http://gis-forestatlas.wri.org/arcgis/rest/services/GAB/GABExportWebMap/GPServer/Export%20Web%20Map',
+        printURL: 'http://gis.forest-atlas.wri/arcgis/rest/services/CAF/CAFExportWebMap/GPServer/Export%20Web%20Map',
 
         secondLanguage: 'fr',
 
-        secondLanguageTitle: 'Atlas Forestier du Gabon',
+        secondLanguageTitle: 'Atlas Forestier de la République Centrafricaine',
 
-        secondLanguageFlagTitle: 'Ministère de la Forêt, de l’Environnement et de la Protection des Ressources Naturelles',
+        secondLanguageFlagTitle: 'Ministère des Eaux, Forêts, Chasse et Pêche',
 
         useAdditionalLanguage: true,
 
-        webMapID: '10db57b5316749478d5287155760fd14',
+        webMapID: '2b990a56346c4d20950128132771d63b',
 
         // NOW FOR THE LAYER SETTINGS
         // These are placeholders, they currently do nothing but they will soon control which layers/analysis types are visible
