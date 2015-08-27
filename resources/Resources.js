@@ -5,7 +5,7 @@
 
     var o = {
 
-        aboutLinkUrl: 'http://www.wri.org/our-work/project/congo-basin-forests/gabon#project-tabs',
+        aboutLinkUrl: 'http://gab.forest-atlas.org/',
 
         country: 'GAB',
 
