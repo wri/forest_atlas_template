@@ -23,7 +23,7 @@
 
         downloadDataUrl: 'http://cmr-data.forest-atlas.org',
 
-        flagLinkPath: 'http://www.minfof.cm/,
+        flagLinkPath: 'http://www.minfof.cm/',
 
         flagPath: 'app/images/CMR_flag_new.png',
 
