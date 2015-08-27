@@ -3,8 +3,9 @@ define([
 	'dojo/Deferred',
 	'dojo/promise/all',
 	'esri/arcgis/utils',
-	'dojo/_base/array'
-], function (urlUtils, Deferred, all, arcgisUtils, arrayUtils) {
+	'dojo/_base/array',
+	'res/Resources'
+], function (urlUtils, Deferred, all, arcgisUtils, arrayUtils, Resources) {
 
 	return {
 
@@ -27,12 +28,16 @@ define([
 					language;
 
 				if (values) {
-
 					// Country Code
 					commonConfig.country = values.country;
 					// appLanguages
 					// Add Default language with some default values
 					commonConfig.appLanguages = {};
+
+					// Make sure we have a default language set up, should be in Resources.js but just in case, use en as backup
+					if (!values.defaultLanguage) {
+						values.defaultLanguage = Resources.defaultLanguage || 'en';
+					}
 
 					commonConfig.appLanguages[values.defaultLanguage] = {
 						'title': values.defaultTitle,
@@ -57,6 +62,7 @@ define([
 
 					// If these values are not present, then set them to undefined so they can be overwritten by the defaults in index.htm
 					commonConfig.countryFlagRight = (values.countryFlagRight !== undefined ? values.countryFlagRight + "px" : undefined);
+					// Should be countryFlagRight - 20
 					commonConfig.countryTextWidth = (values.countryTextWidth !== undefined ? values.countryTextWidth + "px" : (values.countryFlagRight ? (values.countryFlagRight - 20) + 'px' : undefined));
 					commonConfig.flagPath = values.flagPath;
 					commonConfig.flagLinkPath = values.flagLinkPath;

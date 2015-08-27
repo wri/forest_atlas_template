@@ -247,24 +247,24 @@
 						}
 
 						// Double Check the App Titles and Flag Titles
-						languages = app.config.appLanguages;
-						for (key in languages) {
-							if (languages[key]) {
-								languages[key].flagTitle = (
-									languages[key].flagTitle !== undefined ?
-										languages[key].flagTitle :
-										Resource.appLanguages[key].flagTitle // This is the default
-								);
-								languages[key].title = (
-									languages[key].title !== undefined ?
-										languages[key].title :
-										Resource.appLanguages[key].title // This is the default
-								);
-								if (languages[key].default) {
-									language = key;
-								}
-							}
-						}
+						// languages = app.config.appLanguages;
+						// for (key in languages) {
+						// 	if (languages[key]) {
+						// 		languages[key].flagTitle = (
+						// 			languages[key].flagTitle !== undefined ?
+						// 				languages[key].flagTitle :
+						// 				Resource.appLanguages[key].flagTitle // This is the default
+						// 		);
+						// 		languages[key].title = (
+						// 			languages[key].title !== undefined ?
+						// 				languages[key].title :
+						// 				Resource.appLanguages[key].title // This is the default
+						// 		);
+						// 		if (languages[key].default) {
+						// 			language = key;
+						// 		}
+						// 	}
+						// }
 
 					} else {
 						app.config = Resource;
@@ -274,12 +274,9 @@
 						document.body.className += ' one-language';
 					}
 
-					// Grab the default language
-					var language = app.config.defaultLanguage;
-
-					// If language for some reason is not defined, default to english
-					if (language === undefined) { language = 'en'; }
-					var main = new Main(language);
+					// If app.config.defaultLanguage for some reason is not defined, default to english
+					if (app.config.defaultLanguage === undefined) { app.config.defaultLanguage = 'en'; }
+					var main = new Main(app.config.defaultLanguage);
 				});
 			}
 		});
