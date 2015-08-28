@@ -29,7 +29,7 @@
 
         flagTitle: 'Ministry of Environment and Sustainable Development',
 
-        layersToShow: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19],
+        layersToShow: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
 
         // Available Map Themes, These are completely controlled from the template, there are no default values
         // other then an empty array
@@ -49,7 +49,7 @@
 
         useAdditionalLanguage: true,
 
-        webMapID: '10db57b5316749478d5287155760fd14',
+        webMapID: '7f24e4cfc66c420c98974bbf624bf003',
 
         // NOW FOR THE LAYER SETTINGS
         // These are placeholders, they currently do nothing but they will soon control which layers/analysis types are visible
