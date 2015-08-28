@@ -141,9 +141,11 @@ define(
 
                             if (layersToHide.indexOf(lid) === -1) {
                                 visibleLayers.push(lid);
-                            } else {
-                                targetFeatureLayer.hide();
                             }
+                            //  else {
+                            //   console.log(targetFeatureLayer);
+                            //   targetFeatureLayer.hide();
+                            // }
                         });
                         //map.getLayer(layerId).show();
                         map.getLayer(layerId).setVisibleLayers(visibleLayers);
