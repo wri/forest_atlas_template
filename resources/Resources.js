@@ -25,7 +25,7 @@
 
         flagLinkPath: 'http://www.guineaecuatorialpress.com/noticia.php?id=126&lang=en',
 
-        flagPath: 'app/images/GNQ_flag_new.png',
+        flagPath: 'app/images/GNQ_flag.png',
 
         flagTitle: 'Ministry of Agriculture and Forestry',
 
