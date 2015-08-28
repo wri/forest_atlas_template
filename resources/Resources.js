@@ -29,7 +29,7 @@
 
         flagTitle: 'Ministry of Forest, Environment and Protection of Natural Resources',
 
-        layersToShow: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+        layersToShow: [0, 1, 2, 3, 4, 9, 10, 11, 14, 15, 16],
 
         // Available Map Themes, These are completely controlled from the template, there are no default values
         // other then an empty array
