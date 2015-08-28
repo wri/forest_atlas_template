@@ -37,7 +37,7 @@
 
         mapThemesAlternate: [],
 
-        maskMapUrl: 'http://gis.forest-atlas.org/arcgis/rest/services/CMR/CMR_00_africa/MapServer',
+        maskMapUrl: 'http://gis.forest-atlas.org/arcgis/rest/services/CMR/CMR_00_Africa/MapServer',
 
         printURL: 'http://gis.forest-atlas.org/arcgis/rest/services/CMR/CMRExportWebMap/GPServer/Export%20Web%20Map',
 
@@ -49,7 +49,7 @@
 
         useAdditionalLanguage: true,
 
-        webMapID: '75e261134172433d87b9fd46eae1f9dd',
+        webMapID: 'b96ee7fcd75e405dbf9a8b5a44ae734a',
 
         // NOW FOR THE LAYER SETTINGS
         // These are placeholders, they currently do nothing but they will soon control which layers/analysis types are visible
