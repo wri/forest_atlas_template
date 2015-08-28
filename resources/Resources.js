@@ -29,7 +29,7 @@
 
         flagTitle: 'Ministry of Forest and Wildlife',
 
-        layersToShow: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19],
+        layersToShow: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
 
         // Available Map Themes, These are completely controlled from the template, there are no default values
         // other then an empty array
@@ -49,7 +49,7 @@
 
         useAdditionalLanguage: true,
 
-        webMapID: 'b96ee7fcd75e405dbf9a8b5a44ae734a',
+        webMapID: '75e261134172433d87b9fd46eae1f9dd',
 
         // NOW FOR THE LAYER SETTINGS
         // These are placeholders, they currently do nothing but they will soon control which layers/analysis types are visible
