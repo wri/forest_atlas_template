@@ -76,7 +76,7 @@ define(
                     }
                 });
 
-                // Set the Default Open Accordion Pane Under Layers 
+                // Set the Default Open Accordion Pane Under Layers
                 registry.byId('accordionContainer').selectChild(registry.byId('layersCP'));
 
 
@@ -111,14 +111,14 @@ define(
                 var dynamicLayersArray = [];
                 var index = 0;
 
-                var layersToShow = app.config.layersToShow;
+                var layersToHide = app.config.layersToHide;
 
                 //mapLayerLangId == current language layer
                 arrayUtil.forEach(map.layerIds, function(layerId) {
 
                     // Exit for Extra Layers, code below is for webmap layers and will break on these layers
                     if (layerId === 'landCover' || layerId === 'activeFires' || layerId === 'legendLayer' ||
-                        layerId === 'carbonLayer' || layerId === 'intactForestLayer' ) 
+                        layerId === 'carbonLayer' || layerId === 'intactForestLayer' )
                     {
                         return;
                     }
@@ -139,7 +139,7 @@ define(
                             var featureLayerId = targetLayer.id + "_" + lid;
                             var targetFeatureLayer = map.getLayer(featureLayerId);
 
-                            if (layersToShow.indexOf(lid) > -1) {
+                            if (layersToHide.indexOf(lid) === -1) {
                                 visibleLayers.push(lid);
                             } else {
                                 targetFeatureLayer.hide();
@@ -196,7 +196,7 @@ define(
                         }
                     });
 
-                    //create dom elements 
+                    //create dom elements
                     var containerDiv = domContruct.create("div", {
                         id: "container" + i,
                         "class": "toggleContainer"
@@ -507,7 +507,7 @@ define(
 
 
                 }, "search").startup();
-                
+
                 on(dom.byId("searchButton"), "click", function() {
                     if (registry.byId('search').get('value').length > 0) {
                         topic.publish(toolsevents.searchPopup);
@@ -583,9 +583,9 @@ define(
                 });
 
                 topic.publish(toolsevents.UIcreationComplete);
-                
 
-            } //constructor   
+
+            } //constructor
 
         }); //end declare
 

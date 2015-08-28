@@ -56,7 +56,7 @@ define([
 						};
 					}
 
-					commonConfig.layersToShow = values.layersToShow && values.layersToShow.split(",").map(function(layer) { return parseInt(layer); });
+					commonConfig.layersToHide = values.layersToHide ? values.layersToHide.split(",").map(function(layer) { return parseInt(layer); }) : [];
 					commonConfig.maskMapUrl = values.maskMapUrl;
 					commonConfig.webMapID = values.webmap;
 
