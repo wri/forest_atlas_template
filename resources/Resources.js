@@ -29,7 +29,7 @@
 
         flagTitle: 'Ministry of Agriculture and Forestry',
 
-        layersToShow: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19],
+        layersToShow: [0, 1, 2, 3, 4, 5, 6, 7, 8],
 
         // Available Map Themes, These are completely controlled from the template, there are no default values
         // other then an empty array
@@ -37,7 +37,7 @@
 
         mapThemesAlternate: [],
 
-        maskMapUrl: 'http://gis.forest-atlas.org/arcgis/rest/services/GNQ/GNQ_00_africa/MapServer',
+        maskMapUrl: 'http://gis.forest-atlas.org/arcgis/rest/services/GNQ/00_Africa/MapServer',
 
         printURL: 'http://gis.forest-atlas.org/arcgis/rest/services/GNQ/GNQExportWebMap/GPServer/Export%20Web%20Map',
 
