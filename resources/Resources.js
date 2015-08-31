@@ -56,11 +56,11 @@ define([], function () {
         // These are placeholders, they currently do nothing but they will soon control which layers/analysis types are visible
         activeFiresIncluded: true,
 
-        landCoverIncluded: false,
+        landCoverIncluded: true,
 
-        iflIncluded: false,
+        iflIncluded: true,
 
-        biomassIncluded: false,
+        biomassIncluded: true,
 
         // NOT PRESENT IN THE APPLICATION YET
         formaIncluded: false,
