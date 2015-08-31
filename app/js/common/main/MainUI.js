@@ -55,7 +55,7 @@ define(
                 });
 
 
-            } //constructor   
+            } //constructor
 
         }); //end declare
 

@@ -1,33 +1,32 @@
-define(
-    ["declare",
-        "array",
-        "mapmodel",
-        "mapconfig",
-        "mainmodel",
-        "connect",
-        "topic",
-        "on",
-        "hash",
-        "query",
-        "construct",
-        "connect",
-        "registry",
-        "all",
-        "string",
-        "memory",
-        "style",
-        "webMercatorUtils",
-        "dom",
-        "dojo/dom-class"
-    ], function(declare, arrayUtil, Model, Config, MainModel, connect, topic, on, hash, query, domConstruct,
-        connect, registry, all, string, Memory, domStyle, webMercatorUtils, dom, domClass) {
+define([
+  "declare",
+  "array",
+  "mapmodel",
+  "mapconfig",
+  "mainmodel",
+  "topic",
+  "on",
+  "hash",
+  "query",
+  "construct",
+  "connect",
+  "registry",
+  "all",
+  "string",
+  "memory",
+  "style",
+  "webMercatorUtils",
+  "dom",
+  "dojo/dom-class"
+], function(declare, arrayUtil, Model, Config, MainModel, topic, on, hash, query, domConstruct,
+      connect, registry, all, string, Memory, domStyle, webMercatorUtils, dom, domClass) {
+
 
         var infoWindowHandles = [];
 
         return declare(null, {
 
             zoomToDefault: function() {
-                var mapconfig = Config.getConfig();
                 var vm = MainModel.getVM();
                 require(["mapui"], function(MapUI) {
                     var map = MapUI.getMap();
@@ -88,22 +87,25 @@ define(
                         registry.byId("legendDiv").refresh([{
                             layer: vm.currentActiveLayer(),
                             title: ""
-                        },{
-                            layer: map.getLayer('activeFires'),
-                            title: ""
-                        },{
-                            layer: map.getLayer('landCover'),
-                            title: ""
-                        },{
-                            layer: map.getLayer('legendLayer'),
+                        },
+                        {
+                            layer: map.getLayer("activeFires"),
                             title: ""
                         },
                         {
-                            layer: map.getLayer('carbonLayer'),
+                            layer: map.getLayer("landCover"),
                             title: ""
                         },
                         {
-                            layer: map.getLayer('intactForestLayer'),
+                            layer: map.getLayer("legendLayer"),
+                            title: ""
+                        },
+                        {
+                            layer: map.getLayer("carbonLayer"),
+                            title: ""
+                        },
+                        {
+                            layer: map.getLayer("intactForestLayer"),
                             title: ""
                         }]);
 
@@ -114,14 +116,14 @@ define(
                         topic.publish(toolsevents.mapZoomEnd, e);
                     });
 
-                    query('.fires-toolbox div').forEach(function (firesOption) {
-                        on(firesOption, 'click', self.updateFiresLayer);
+                    query(".fires-toolbox div").forEach(function (firesOption) {
+                        on(firesOption, "click", self.updateFiresLayer);
                     });
 
-                    on(dom.byId('lossPlayButton'), 'click', self.animateForestLossLayer.bind(self));
-                    on(dom.byId('lossStartYear'), 'change', self.updateForestLossLayer);
-                    on(dom.byId('lossEndYear'), 'change', self.updateForestLossLayer);
-                    on(dom.byId('landsat-checkbox'), 'change', self.updateLandsatLayer);
+                    on(dom.byId("lossPlayButton"), "click", self.animateForestLossLayer.bind(self));
+                    on(dom.byId("lossStartYear"), "change", self.updateForestLossLayer);
+                    on(dom.byId("lossEndYear"), "change", self.updateForestLossLayer);
+                    on(dom.byId("landsat-checkbox"), "change", self.updateLandsatLayer);
 
 
                 });
@@ -130,28 +132,28 @@ define(
             },
 
             analyzeDrawnOrUploadedFeature: function (graphic) {
-                require(['mapui'], function (MapUI) {
+                require(["mapui"], function (MapUI) {
                     var map = MapUI.getMap();
                     map.infoWindow.setFeatures([graphic]);
                 });
             },
 
             popupTabChanged: function () {
-                require(['toolsmodel'], function (Model) {
+                require(["toolsmodel"], function (Model) {
                     var viewModel = Model.getVM(),
-                        node = dom.byId('actionsPane'),
+                        node = dom.byId("actionsPane"),
                         container;
 
                     // If analysis tab is open, update it
-                    if (viewModel.popupActiveTab() === 'popupAnalysisTab') {
-                        domConstruct.place(node, 'analysis-footer', 'first');
-                    } else if (viewModel.popupActiveTab() === 'popupDocumentTab') {
-                        domConstruct.place(node, 'document-footer', 'first');
+                    if (viewModel.popupActiveTab() === "popupAnalysisTab") {
+                        domConstruct.place(node, "analysis-footer", "first");
+                    } else if (viewModel.popupActiveTab() === "popupDocumentTab") {
+                        domConstruct.place(node, "document-footer", "first");
                     } else {
-                        container = query('.esriPopupWrapper .sizer');
+                        container = query(".esriPopupWrapper .sizer");
                         if (container.length === 3) {
                             container = container[2];
-                            domConstruct.place(node, container, 'first');
+                            domConstruct.place(node, container, "first");
                         }
                     }
 
@@ -160,7 +162,7 @@ define(
 
             updateCustomInfoWindow: function () {
                 var self = this;
-                require(['mapui', 'atlas/tools/Helper', 'toolsmodel', 'dojo/dom-class'], function (MapUI, Helper, Model, domClass) {
+                require(["mapui", "atlas/tools/Helper", "toolsmodel", "dojo/dom-class"], function (MapUI, Helper, Model, domClass) {
                     var map = MapUI.getMap();
                     var infoWindow = map.infoWindow;
                     // var isMobile = Helper.isMobile();
@@ -179,7 +181,7 @@ define(
                     });
 
                     if (!infoWindow.features) {
-                        domStyle.set('customPopup', 'display', 'none');
+                        domStyle.set("customPopup", "display", "none");
                         infoWindow.hide();
                         return;
                     }
@@ -187,35 +189,35 @@ define(
                     if (infoWindow.features[0]._layer.id === "customGraphicsLayer") {
                         // It is a custom feature and we need to customize the info window
                         domClass.add("customPopupBody", "draw-uploaded-feature");
-                        viewModel.popupActiveTab('popupAnalysisTab');
+                        viewModel.popupActiveTab("popupAnalysisTab");
                         viewModel.customFeatureShowing(true);
 
-                        tempHandle = on.once(dom.byId('deleteCustomFeature'), 'click', function () {
+                        tempHandle = on.once(dom.byId("deleteCustomFeature"), "click", function () {
                             feature = infoWindow.features[0];
-                            graphicsLayer = map.getLayer('customGraphicsLayer');
+                            graphicsLayer = map.getLayer("customGraphicsLayer");
 
                             if (graphicsLayer && feature) {
                                 graphicsLayer.remove(feature);
                             }
 
-                            domStyle.set('customPopup', 'display', 'none');
+                            domStyle.set("customPopup", "display", "none");
                             infoWindow.hide();
 
                         });
 
                         infoWindowHandles.push(tempHandle);
 
-                        tempHandle = on(dom.byId('editFeatureName'), 'click', function () {
+                        tempHandle = on(dom.byId("editFeatureName"), "click", function () {
                             feature = infoWindow.features[0];
                             // Change the title to a text field with the title in it if its editing
                             // else, save the new title
-                            if (domClass.contains('editFeatureName', 'isEditing')) {
-                                domClass.remove('editFeatureName', 'isEditing');
+                            if (domClass.contains("editFeatureName", "isEditing")) {
+                                domClass.remove("editFeatureName", "isEditing");
                                 tempTitle = $("#newTitleInput").val();
                                 feature.attributes.Custom_Title = tempTitle;
                                 $("#results-header .title").html(tempTitle);
                             } else {
-                                domClass.add('editFeatureName', 'isEditing');
+                                domClass.add("editFeatureName", "isEditing");
                                 titleNode = $("#results-header .title");
                                 tempTitle = titleNode.html();
                                 inputMarkup = "<input id='newTitleInput' type='text' value='" + tempTitle + "' />";
@@ -235,20 +237,20 @@ define(
                     viewModel.popupIndex(currentIndex);
                     viewModel.popupCount(infoWindow.features.length);
 
-                    domStyle.set('customPopup', 'display', 'block');
+                    domStyle.set("customPopup", "display", "block");
 
                     // If analysis tab is open, update it
-                    if (viewModel.popupActiveTab() === 'popupAnalysisTab') {
+                    if (viewModel.popupActiveTab() === "popupAnalysisTab") {
                         self.updateAnalysisTab();
                         // Trigger this as well to move over the footer on desktop
                         self.popupTabChanged();
-                    } else if (viewModel.popupActiveTab() === 'popupDocumentTab') {
+                    } else if (viewModel.popupActiveTab() === "popupDocumentTab") {
                       self.updateDocumentsTab();
                       self.popupTabChanged();
                     }
 
-                    tempHandle = on.once(dom.byId('customPopupClose'), 'click', function () {
-                        domStyle.set('customPopup', 'display', 'none');
+                    tempHandle = on.once(dom.byId("customPopupClose"), "click", function () {
+                        domStyle.set("customPopup", "display", "none");
                         infoWindow.hide();
                     });
 
@@ -258,7 +260,7 @@ define(
             },
 
             updateAnalysisTab: function () {
-                require(['toolsmodel', 'mapui', 'atlas/tools/Results', 'esri/tasks/query', 'esri/tasks/QueryTask'], function (Model, MapUI, Results, EsriQuery, QueryTask) {
+                require(["toolsmodel", "mapui", "atlas/tools/Results", "esri/tasks/query", "esri/tasks/QueryTask"], function (Model, MapUI, Results, EsriQuery, QueryTask) {
                     var infoWindow = MapUI.getMap().infoWindow;
                     var selected = infoWindow.getSelectedFeature();
                     var viewModel = Model.getVM();
@@ -266,11 +268,11 @@ define(
 
                     // If selected feature has a custom title use it, otherwise take whatever is in the infowindow
                     var title = selected.attributes.Custom_Title || infoWindow._title.innerHTML;
-                    var analysisTypesContainer = query('.analysis-selection-types')[0];
+                    var analysisTypesContainer = query(".analysis-selection-types")[0];
 
-                    domStyle.set('analysis-loader','top', analysisTypesContainer.offsetHeight + 'px');
-                    domStyle.set('results-chart-container','top', analysisTypesContainer.offsetHeight + 'px');
-                    query('#results-header .title')[0].innerHTML = title;
+                    domStyle.set("analysis-loader", "top", analysisTypesContainer.offsetHeight + "px");
+                    domStyle.set("results-chart-container", "top", analysisTypesContainer.offsetHeight + "px");
+                    query("#results-header .title")[0].innerHTML = title;
 
 
                     // IdentifyTask is still generalizing features, may have to go to server and get new features
@@ -284,7 +286,7 @@ define(
                         var queryTask = new QueryTask(url);
                         var esriQuery = new EsriQuery();
                         esriQuery.objectIds = [objectId];
-                        esriQuery.outFields = ['*'];
+                        esriQuery.outFields = ["*"];
                         esriQuery.returnGeometry = true;
                         esriQuery.maxAllowableOffset = 0;
 
@@ -307,7 +309,7 @@ define(
                     // // and My Other (random) Feature (1 of 3) becomes My Other (random) Feature
                     // var match;
                     // while ((match = regex.exec(title)) !== null) {
-                    //     if (match[0].indexOf('1 of') > -1) {
+                    //     if (match[0].indexOf("1 of") > -1) {
                     //         title = title.slice(0, match.index);
                     //     }
                     // }
@@ -316,20 +318,20 @@ define(
             },
 
             updateDocumentsTab: function () {
-              require(['toolsmodel', 'mainmodel','mapui', 'esri/tasks/query', 'esri/tasks/QueryTask'], function (Model, MainModel, MapUI, EsriQuery, QueryTask) {
+              require(["toolsmodel", "mainmodel", "mapui", "esri/tasks/query", "esri/tasks/QueryTask"], function (Model, MainModel, MapUI, EsriQuery, QueryTask) {
                 var infoWindow = MapUI.getMap().infoWindow;
                 var selected = infoWindow.getSelectedFeature();
                 var currentLanguage = MainModel.getVM().currentLanguage();
-                var layer = currentLanguage === 'en' ? 0 : 1;
+                var layer = currentLanguage === "en" ? 0 : 1;
                 var toolsModel = Model.getVM();
 
 
                 // If selected feature has a custom title use it, otherwise take whatever is in the infowindow
                 var title = selected.attributes.Custom_Title || infoWindow._title.innerHTML;
-                query('#popupDocument .title')[0].innerHTML = title;
+                query("#popupDocument .title")[0].innerHTML = title;
 
                 // Add the loading wheel
-                domClass.remove('documents-loader', 'hidden');
+                domClass.remove("documents-loader", "hidden");
 
                 // Clear out previous features documents
                 toolsModel.featureDocuments([]);
@@ -337,31 +339,34 @@ define(
                 var queryUrl = app.config.documentMapserver;
                 var docsUrl = app.config.documentDirectory;
 
-                if (!app.config.documentDirectory && !app.config.documentMapserver) {
+                if (!queryUrl && !docsUrl) {
                   // both of these are necessary for this feature to function, if either is
                   // missing, just return after clearing out featureDocuments from the model
                   return;
                 }
 
                 // Below is a sample query, url will come from AGOL config
-                var queryTask = new QueryTask(queryUrl + '/' + layer);
+                var queryTask = new QueryTask(queryUrl + "/" + layer);
                 var esriQuery = new EsriQuery();
                 esriQuery.geometry = selected.geometry;
-                esriQuery.outFields = ['*'];
+                esriQuery.outFields = ["*"];
                 esriQuery.returnGeometry = false;
 
                 queryTask.execute(esriQuery, function (res) {
-                  var docs = [], url;
+                  var docs = [];
                   arrayUtil.forEach(res.features, function (feature) {
                     if (feature.attributes.url) {
                       docs.push({
                         name: feature.attributes.doc_titre || feature.attributes.url,
+                        type: feature.attributes.type_ || "N/A",
+                        author: feature.attributes.auteur || "N/A",
+                        year: feature.attributes.date_doc ? new Date(feature.attributes.date_doc).getFullYear() : "N/A",
                         url: docsUrl + encodeURIComponent(feature.attributes.url)
                       });
                     }
                   });
                   toolsModel.featureDocuments(docs);
-                  domClass.add('documents-loader', 'hidden');
+                  domClass.add("documents-loader", "hidden");
                 }, function (err) {
                   console.log(err);
                 });
@@ -371,10 +376,10 @@ define(
 
             updateFiresLayer: function (evt) {
 
-                require(['mapui'], function (MapUI) {
+                require(["mapui"], function (MapUI) {
 
                     var target = evt.target ? evt.target : evt.srcElement;
-                    var previous = query('.fires-toolbox div.active')[0];
+                    var previous = query(".fires-toolbox div.active")[0];
                     var firesConfig = Config.getConfig().activeFires;
                     var map = MapUI.getMap();
                     var length = firesConfig.defaultLayers.length;
@@ -384,8 +389,8 @@ define(
                     var where = "";
                     var defs = [];
 
-                    domClass.remove(previous, 'active');
-                    domClass.add(target, 'active');
+                    domClass.remove(previous, "active");
+                    domClass.add(target, "active");
 
                     switch(target.id) {
                         case "firesWeek":
@@ -422,9 +427,9 @@ define(
 
             updateForestLossLayer: function () {
 
-                require(['mapui', 'esri/layers/RasterFunction'], function (MapUI, RasterFunction) {
-                    var startIndex = document.getElementById('lossStartYear').selectedIndex;
-                    var stopIndex = document.getElementById('lossEndYear').selectedIndex;
+                require(["mapui", "esri/layers/RasterFunction"], function (MapUI, RasterFunction) {
+                    var startIndex = document.getElementById("lossStartYear").selectedIndex;
+                    var stopIndex = document.getElementById("lossEndYear").selectedIndex;
                     var lossConfig = Config.getConfig().forestCoverLoss;
                     var map = MapUI.getMap();
                     var layer = map.getLayer(lossConfig.id);
@@ -433,7 +438,7 @@ define(
                     // Force the End Year to be greater then the start year, if its greater, update its value
                     if (startIndex > stopIndex) {
                         startIndex = stopIndex;
-                        document.getElementById('lossStartYear').selectedIndex = stopIndex;
+                        document.getElementById("lossStartYear").selectedIndex = stopIndex;
                     }
 
                     // Values in slider are from a 0 based index, the range starts at 1
@@ -457,7 +462,7 @@ define(
 
             updateTCDRenderingRule: function () {
                 var self = this;
-                require(['mapui', 'esri/layers/RasterFunction', 'toolsmodel'], function (MapUI, RasterFunction, ToolsModel) {
+                require(["mapui", "esri/layers/RasterFunction", "toolsmodel"], function (MapUI, RasterFunction, ToolsModel) {
                     var tcdConfig = Config.getConfig().treeCoverDensity,
                         rasterFunc = tcdConfig.rasterFunction,
                         toolsModel = ToolsModel.getVM(),
@@ -471,7 +476,7 @@ define(
                         layer.setRenderingRule(new RasterFunction(rasterFunc));
                     }
 
-                    if (toolsModel.popupActiveTab() === 'popupAnalysisTab' && map.infoWindow.isShowing) {
+                    if (toolsModel.popupActiveTab() === "popupAnalysisTab" && map.infoWindow.isShowing) {
                         self.updateAnalysisTab();
                     }
 
@@ -480,9 +485,9 @@ define(
             },
 
             animateForestLossLayer: function () {
-                var playButton = document.getElementById('lossPlayButton');
-                var startSelect = document.getElementById('lossStartYear');
-                var stopSelect = document.getElementById('lossEndYear');
+                var playButton = document.getElementById("lossPlayButton");
+                var startSelect = document.getElementById("lossStartYear");
+                var stopSelect = document.getElementById("lossEndYear");
                 var startIndex = startSelect.selectedIndex;
                 var stopIndex = stopSelect.selectedIndex - 1;
                 var duration = 1500;
@@ -491,16 +496,16 @@ define(
 
                 // Remove the play class, give it the play icon, and stop the animation if its going
                 function stopAnimation () {
-                    domClass.remove(playButton, 'playing');
+                    domClass.remove(playButton, "playing");
                     clearInterval(window.lossInterval);
                 }
 
-                if (domClass.contains(playButton, 'playing')) {
+                if (domClass.contains(playButton, "playing")) {
                     stopAnimation();
                     return;
                 } else {
                     // Add the class, give it the stop button and continue
-                    domClass.add(playButton, 'playing');
+                    domClass.add(playButton, "playing");
                 }
 
                 // Move the ending counter to the starting position, then animate towards the ending position
@@ -527,9 +532,9 @@ define(
             },
 
             updateLandsatLayer: function () {
-                require(['toolsmodel', 'mapui'], function (ToolsModel, MapUI) {
+                require(["toolsmodel", "mapui"], function (ToolsModel, MapUI) {
                     var landsatConfig = Config.getConfig().landsatLayer,
-                        checkbox = dom.byId('landsat-checkbox'),
+                        checkbox = dom.byId("landsat-checkbox"),
                         vm = ToolsModel.getVM(),
                         map = MapUI.getMap(),
                         landsatLayer,

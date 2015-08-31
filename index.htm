@@ -323,9 +323,26 @@
 					<div class="results-container">
 						<div class="documents-results">
 							<div class="documents-not-available" data-bind='text: documentsUnavailable,visible: featureDocuments().length === 0'></div>
-							<ul class='feature-documents' data-bind='foreach: featureDocuments'>
-								<li><a data-bind='text: name, attr: {href: url}' target='_blank'></a></li>
-							</ul>
+							<table class='feature-documents'>
+								<thead class='table-header'>
+									<th data-bind="text: documentType"></th>
+									<th data-bind="text: documentAuthor"></th>
+									<th data-bind="text: documentDate"></th>
+									<th data-bind="text: documentLink"></th>
+								</thead>
+								<tbody data-bind='foreach: featureDocuments'>
+									<tr>
+										<td data-bind="text: type"></td>
+										<td data-bind="text: author"></td>
+										<td data-bind="text: year"></td>
+										<td>
+											<a data-bind='attr: {href: url, title: name}' target='_blank'>
+												<div class="download-icon"></div>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 						<div id="documents-loader" class="hidden">
 							<span class="loading-wheel"></span>

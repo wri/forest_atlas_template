@@ -187,12 +187,12 @@ define(
                 });
 
                 //Add Sliders and Checkboxes
-                for (i = 0; i < len; i++) {
+                for (var i = 0; i < len; i++) {
                     visLayersArr[i] = i;
                     var visibleLayers = map.getLayer(mapLayerLangId).visibleLayers;
                     var checkValue = false;
                     arrayUtil.some(visibleLayers, function(id) {
-                        if (i == id) {
+                        if (i === id) {
                             checkValue = true;
                             return checkValue;
                         }
@@ -286,6 +286,16 @@ define(
                 function generateUIForLayers (layerParams) {
 
                     arrayUtil.forEach(layerParams.layers, function (layer, i) {
+
+                      // If the layer has been configured to not be rendered, then return here
+                      if (
+                        (layer.id === "activeFires" && !app.config.activeFiresIncluded) ||
+                        (layer.id === "landCover" && !app.config.landCoverIncluded) ||
+                        (layer.id === "carbonLayer" && !app.config.biomassIncluded) ||
+                        (layer.id === "intactForestLayer" && !app.config.iflIncluded)
+                      ) {
+                        return;
+                      }
 
                         var containerDiv = domContruct.create("div", {
                             id: layerParams.idPrefix + "container" + i,

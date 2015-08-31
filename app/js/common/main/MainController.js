@@ -25,7 +25,7 @@ define(
             changeTitle: function(language) {
                 var languageInfo = app.config.appLanguages[language],
                     title;
-                
+
                 title = languageInfo.title ? languageInfo.title : '';
                 window.document.title = title;
             },
@@ -103,6 +103,11 @@ define(
                             toolsmodel.popupDataTab(translation.popupDataTab);
                             toolsmodel.popupAnalysisTab(translation.popupAnalysisTab);
                             toolsmodel.documentsUnavailable(translation.documentsUnavailable);
+
+                            toolsmodel.documentType(translation.documentType);
+                            toolsmodel.documentAuthor(translation.documentAuthor);
+                            toolsmodel.documentDate(translation.documentDate);
+                            toolsmodel.documentLink(translation.documentLink);
 
                             toolsmodel.analysisLoss(translation.analysisLoss);
                             toolsmodel.analysisGain(translation.analysisGain);
