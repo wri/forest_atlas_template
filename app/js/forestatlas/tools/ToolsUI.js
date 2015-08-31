@@ -288,10 +288,8 @@ define(
                       // If the layer has been configured to not be rendered, then return here
                       // after removing its analysis layer from the app
                       if (
-                        (layer.id === "activeFires" && !app.config.activeFiresIncluded) ||
-                        (layer.id === "landCover" && !app.config.landCoverIncluded) ||
-                        (layer.id === "carbonLayer" && !app.config.biomassIncluded) ||
-                        (layer.id === "intactForestLayer" && !app.config.iflIncluded)
+                        (layer.id === "activeFires" && !app.config.activeFiresIncluded) || (layer.id === "landCover" && !app.config.landCoverIncluded) ||
+                        (layer.id === "carbonLayer" && !app.config.biomassIncluded) || (layer.id === "intactForestLayer" && !app.config.iflIncluded)
                       ) {
 
                         // Remove the associated analysis layer
