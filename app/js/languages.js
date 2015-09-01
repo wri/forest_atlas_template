@@ -20,7 +20,7 @@ define([], function() {
             documentType: "Type",
             documentAuthor: "Author",
             documentDate: "Year",
-            documentLink: "Link",
+            documentLink: "PDF",
 
             analysisOptions: [
                 "Tree Cover Loss",
@@ -177,7 +177,7 @@ define([], function() {
             documentType: "Type",
             documentAuthor: "Author",
             documentDate: "Year",
-            documentLink: "Link",
+            documentLink: "PDF",
 
             analysisOptions: [
                 "Pérdida de la cobertura arbórea",
@@ -336,7 +336,7 @@ define([], function() {
             documentType: "Type",
             documentAuthor: "Author",
             documentDate: "Year",
-            documentLink: "Link",
+            documentLink: "PDF",
 
             analysisOptions: [
                 "Perte totale",
@@ -492,7 +492,7 @@ define([], function() {
             documentType: "Type",
             documentAuthor: "Author",
             documentDate: "Year",
-            documentLink: "Link",
+            documentLink: "PDF",
 
             analysisOptions: [
                 "Tree Cover Loss",
