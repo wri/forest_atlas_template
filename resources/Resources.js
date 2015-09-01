@@ -1,35 +1,36 @@
-﻿define([], function() {
+﻿define([], function () {
+  "use strict";
 
     // TODO: This will later be broken into different sections based on what the user can configure in AGOL,
     // for now, its in Alphabetical order because its easier to make sure we are not missing any keys that are in AGOL
 
     var o = {
 
-        aboutLinkUrl: 'http://gab.forest-atlas.org/',
+        aboutLinkUrl: "http://www.wri.org/our-work/project/congo-basin-forests/gabon#project-tabs",
 
-        country: 'GAB',
+        country: "GAB",
 
         countryFlagRight: 280,
 
         countryTextWidth: 260,
 
-        defaultLanguage: 'en',
+        defaultLanguage: "en",
 
-        defaultTitle: 'Forest Atlas of Gabon',
+        defaultTitle: "Forest Atlas of Gabon",
 
-        documentDirectory: 'http://gab.forest-atlas.org/resources/docs/',
+        documentDirectory: "https://wri-public-data.s3.amazonaws.com/forest_atlas/cmr/doc_pdf/",
 
-        documentMapserver: 'http://gis.forest-atlas.org/arcgis/rest/services/GAB/documents_administratifs/MapServer',
+        documentMapserver: "http://54.88.79.102/arcgis/rest/services/CMR/documents_administratifs/MapServer",
 
-        downloadDataUrl: 'http://gab-data.forest-atlas.org/',
+        downloadDataUrl: "http://data.globalforestwatch.org/",
 
-        flagLinkPath: 'http://www.eaux-forets.gouv.ga/',
+        flagLinkPath: "http://www.eaux-forets.gouv.ga/",
 
-        flagPath: 'app/images/GAB_flag_new.png',
+        flagPath: "app/images/GAB_flag_new.png",
 
-        flagTitle: 'Ministry of Forest, Environment and Protection of Natural Resources',
+        flagTitle: "Ministry of Forest, Environment and Protection of Natural Resources",
 
-        layersToHide: [5,6,7,8,12,13],
+        layersToHide: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19],
 
         // Available Map Themes, These are completely controlled from the template, there are no default values
         // other then an empty array
@@ -37,19 +38,19 @@
 
         mapThemesAlternate: [],
 
-        maskMapUrl: 'http://gis.forest-atlas.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer',
+        maskMapUrl: "http://gis-forest-atlas.wri.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer",
 
-        printURL: 'http://gis.forest-atlas.org/arcgis/rest/services/GAB/GABExportWebMap/GPServer/Export%20Web%20Map',
+        printURL: "http://gis-forestatlas.wri.org/arcgis/rest/services/GAB/GABExportWebMap/GPServer/Export%20Web%20Map",
 
-        secondLanguage: 'fr',
+        secondLanguage: "fr",
 
-        secondLanguageTitle: 'Atlas Forestier du Gabon',
+        secondLanguageTitle: "Atlas Forestier du Gabon",
 
-        secondLanguageFlagTitle: 'Ministère de la Forêt, de l’Environnement et de la Protection des Ressources Naturelles',
+        secondLanguageFlagTitle: "Ministère de la Forêt, de l’Environnement et de la Protection des Ressources Naturelles",
 
         useAdditionalLanguage: true,
 
-        webMapID: '10db57b5316749478d5287155760fd14',
+        webMapID: "10db57b5316749478d5287155760fd14",
 
         // NOW FOR THE LAYER SETTINGS
         // These are placeholders, they currently do nothing but they will soon control which layers/analysis types are visible
