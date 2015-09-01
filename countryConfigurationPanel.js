@@ -107,6 +107,8 @@
     }
   ],
   "values": {
+	"flagTitle" : "Ministry of Forest and Wildlife",
+	"secondLanguageFlagTitle" : "Ministère des Forêts et de la Faune",
     "activeFiresIncluded": true,
     "landCoverIncluded": true,
     "biomassIncluded": true,
