@@ -1,4 +1,4 @@
-﻿define([], function () {
+define([], function () {
   "use strict";
 
     // TODO: This will later be broken into different sections based on what the user can configure in AGOL,
@@ -6,31 +6,31 @@
 
     var o = {
 
-        aboutLinkUrl: "http://gab.forest-atlas.org/",
+        aboutLinkUrl: "http://gnq.forest-atlas.org/",
 
-        country: "GAB",
+        country: "GNQ",
 
-        countryFlagRight: 280,
+        countryFlagRight: 170,
 
         countryTextWidth: 260,
 
         defaultLanguage: "en",
 
-        defaultTitle: "Forest Atlas of Gabon",
+        defaultTitle: "Forest Atlas of Equatorial Guinea",
 
-        documentDirectory: "http://gab.forest-atlas.org/resources/docs/",
+        documentDirectory: "http://gnq.forest-atlas.org/resources/docs/",
 
-        documentMapserver: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/documents_administratifs/MapServer",
+        documentMapserver: "http://gis.forest-atlas.org/arcgis/rest/services/GNQ/documents_administratifs/MapServer",
 
-        downloadDataUrl: "http://gab-data.forest-atlas.org/",
+        downloadDataUrl: "http://gnq-data.forest-atlas.org/",
 
-        flagLinkPath: "http://www.eaux-forets.gouv.ga/",
+        flagLinkPath: "http://www.guineaecuatorialpress.com/noticia.php?id=126&lang=en",
 
-        flagPath: "app/images/GAB_flag_new.png",
+        flagPath: "app/images/GNQ_flag_new.png",
 
-        flagTitle: "Ministry of Forest, Environment and Protection of Natural Resources",
+        flagTitle: "Ministry of Agriculture and Forestry",
 
-        layersToHide: [5,6,7,8,12,13],
+        layersToHide: [],
 
         // Available Map Themes, These are completely controlled from the template, there are no default values
         // other then an empty array
@@ -38,19 +38,19 @@
 
         mapThemesAlternate: [],
 
-        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer",
+        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/GNQ/GNQ_00_africa/MapServer",
 
-        printURL: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/GABExportWebMap/GPServer/Export%20Web%20Map",
+        printURL: "http://gis.forest-atlas.org/arcgis/rest/services/GNQ/GNQExportWebMap/GPServer/Export%20Web%20Map",
 
         secondLanguage: "fr",
 
-        secondLanguageTitle: "Atlas Forestier du Gabon",
+        secondLanguageTitle: "Atlas Forestal de la República de Guinea Ecuatorial",
 
-        secondLanguageFlagTitle: "Ministère de la Forêt, de l’Environnement et de la Protection des Ressources Naturelles",
+        secondLanguageFlagTitle: "Ministerio de Agricultura y Bosques",
 
         useAdditionalLanguage: true,
 
-        webMapID: "10db57b5316749478d5287155760fd14",
+        webMapID: "9d8b867cd4634577b014bd00fe100d9c",
 
         // NOW FOR THE LAYER SETTINGS
         // These are placeholders, they currently do nothing but they will soon control which layers/analysis types are visible

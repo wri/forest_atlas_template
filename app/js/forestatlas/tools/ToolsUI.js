@@ -46,9 +46,7 @@ define(
         "ko",
         "connect",
         "dojo/domReady!"
-    ], function (declare, topic, on, all, domContruct, query, Query, FeatureLayer, Deferred, aspect, arrayUtil, registry, UIFactory, Config, Events, Model, MapConfig, InfoTemplate, dom, ready, attr, domClass, string, MapUI, MainModel, BasemapGallery, Graphic, arcgisUtils, legendDijit, Dialog, TooltipDialog, popup, PrintTemplate, HorizontalSlider, Scalebar, domStyle, contentPane, CheckBox, Memory, ComboBox, Print, LegendLayer, esriRequest, ArcGISTiledMapServiceLayer, knockout, connect) {
-
-
+    ], function (declare, topic, on, all, domConstruct, query, Query, FeatureLayer, Deferred, aspect, arrayUtil, registry, UIFactory, Config, Events, Model, MapConfig, InfoTemplate, dom, ready, attr, domClass, string, MapUI, MainModel, BasemapGallery, Graphic, arcgisUtils, legendDijit, Dialog, TooltipDialog, popup, PrintTemplate, HorizontalSlider, Scalebar, domStyle, contentPane, CheckBox, Memory, ComboBox, Print, LegendLayer, esriRequest, ArcGISTiledMapServiceLayer, knockout, connect) {
 
         var o = declare(null, {
 
@@ -76,7 +74,7 @@ define(
                     }
                 });
 
-                // Set the Default Open Accordion Pane Under Layers 
+                // Set the Default Open Accordion Pane Under Layers
                 registry.byId('accordionContainer').selectChild(registry.byId('layersCP'));
 
 
@@ -111,14 +109,14 @@ define(
                 var dynamicLayersArray = [];
                 var index = 0;
 
-                var layersToShow = app.config.layersToShow;
+                var layersToHide = app.config.layersToHide;
 
                 //mapLayerLangId == current language layer
                 arrayUtil.forEach(map.layerIds, function(layerId) {
 
                     // Exit for Extra Layers, code below is for webmap layers and will break on these layers
                     if (layerId === 'landCover' || layerId === 'activeFires' || layerId === 'legendLayer' ||
-                        layerId === 'carbonLayer' || layerId === 'intactForestLayer' ) 
+                        layerId === 'carbonLayer' || layerId === 'intactForestLayer' )
                     {
                         return;
                     }
@@ -139,11 +137,13 @@ define(
                             var featureLayerId = targetLayer.id + "_" + lid;
                             var targetFeatureLayer = map.getLayer(featureLayerId);
 
-                            if (layersToShow.indexOf(lid) > -1) {
+                            if (layersToHide.indexOf(lid) === -1) {
                                 visibleLayers.push(lid);
-                            } else {
-                                targetFeatureLayer.hide();
                             }
+                            //  else {
+                            //   console.log(targetFeatureLayer);
+                            //   targetFeatureLayer.hide();
+                            // }
                         });
                         //map.getLayer(layerId).show();
                         map.getLayer(layerId).setVisibleLayers(visibleLayers);
@@ -162,17 +162,17 @@ define(
                 var len = map.getLayer(mapLayerLangId).layerInfos.length;
                 var visLayersArr = [];
 
-                var allContainerDiv = domContruct.create("div", {
+                var allContainerDiv = domConstruct.create("div", {
                     id: "allContainer",
                     "class": "allContainer"
                 }, "closeLayersButton", "after");
 
                 //Select all and clear all buttons
-                var selectAll = domContruct.create("a", {
+                var selectAll = domConstruct.create("a", {
                     id: "selectAll",
                     "data-bind": "{text:selectAll}"
                 }, "allContainer");
-                var clearAll = domContruct.create("a", {
+                var clearAll = domConstruct.create("a", {
                     id: "clearAll",
                     "data-bind": "{text:clearAll}"
                 }, "allContainer");
@@ -185,33 +185,33 @@ define(
                 });
 
                 //Add Sliders and Checkboxes
-                for (i = 0; i < len; i++) {
+                for (var i = 0; i < len; i++) {
                     visLayersArr[i] = i;
                     var visibleLayers = map.getLayer(mapLayerLangId).visibleLayers;
                     var checkValue = false;
                     arrayUtil.some(visibleLayers, function(id) {
-                        if (i == id) {
+                        if (i === id) {
                             checkValue = true;
                             return checkValue;
                         }
                     });
 
-                    //create dom elements 
-                    var containerDiv = domContruct.create("div", {
+                    //create dom elements
+                    var containerDiv = domConstruct.create("div", {
                         id: "container" + i,
                         "class": "toggleContainer"
                     }, "layersCP");
-                    var checkBoxDiv = domContruct.create("div", {
+                    var checkBoxDiv = domConstruct.create("div", {
                         id: "checkBoxDiv" + i
                     }, containerDiv);
-                    var titleDiv = domContruct.create("div", {
+                    var titleDiv = domConstruct.create("div", {
                         id: "sliderTitleDiv" + i
                     }, containerDiv);
-                    var sliderContainerDiv = domContruct.create("div", {
+                    var sliderContainerDiv = domConstruct.create("div", {
                         id: "sliderContainerDiv" + i,
                         "class": "sliderContainer"
                     }, containerDiv);
-                    var sliderDiv = domContruct.create("div", {
+                    var sliderDiv = domConstruct.create("div", {
                         id: "sliderDiv" + i
                     }, sliderContainerDiv);
                     var subLayersTitle = subLayersList[i].name;
@@ -257,11 +257,11 @@ define(
                         }
                     }, "sliderDiv" + i);
 
-                    var sliderText = domContruct.create("div", {
+                    var sliderText = domConstruct.create("div", {
                         id: "sliderText" + i,
                         "class": "sliderText"
                     }, containerDiv);
-                    var hzLine = domContruct.create("div", {
+                    var hzLine = domConstruct.create("div", {
                         id: "hzline" + i,
                         "class": "hzline"
                     }, containerDiv);
@@ -285,36 +285,63 @@ define(
 
                     arrayUtil.forEach(layerParams.layers, function (layer, i) {
 
-                        var containerDiv = domContruct.create("div", {
+                      // If the layer has been configured to not be rendered, then return here
+                      // after removing its analysis layer from the app
+                      if (
+                        (layer.id === "activeFires" && !app.config.activeFiresIncluded) || (layer.id === "landCover" && !app.config.landCoverIncluded) ||
+                        (layer.id === "carbonLayer" && !app.config.biomassIncluded) || (layer.id === "intactForestLayer" && !app.config.iflIncluded)
+                      ) {
+
+                        // Remove the associated analysis layer
+                        switch (layer.id) {
+                          case "activeFires":
+                            domConstruct.destroy("fireAnalysis");
+                          break;
+                          case "landCover":
+                            domConstruct.destroy("landCoverAnalysis");
+                            domConstruct.destroy("landCoverCompAnalysis");
+                          break;
+                          case "carbonLayer":
+                            domConstruct.destroy("biomassAnalysis");
+                          break;
+                          case "intactForestLayer":
+                            domConstruct.destroy("iflAnalysis");
+                          break;
+                        }
+
+                        return;
+                      }
+
+                        var containerDiv = domConstruct.create("div", {
                             id: layerParams.idPrefix + "container" + i,
                             "class": "toggleContainer"
                         }, layerParams.container);
 
-                        var checkBoxDiv = domContruct.create("div", {
+                        var checkBoxDiv = domConstruct.create("div", {
                             id: layerParams.idPrefix + "checkBoxDiv" + i
                         }, containerDiv);
 
-                        var titleDiv = domContruct.create("div", {
+                        var titleDiv = domConstruct.create("div", {
                             id: layerParams.idPrefix + "sliderTitleDiv" + i,
                             "class": "sliderTitleDiv"
                         }, containerDiv);
 
-                        var sliderContainerDiv = domContruct.create("div", {
+                        var sliderContainerDiv = domConstruct.create("div", {
                             id: layerParams.idPrefix + "sliderContainerDiv" + i,
                             "class": "sliderContainer"
                         }, containerDiv);
 
-                        var sliderDiv = domContruct.create("div", {
+                        var sliderDiv = domConstruct.create("div", {
                             id: layerParams.idPrefix + "sliderDiv" + i
                         }, sliderContainerDiv);
 
-                        var sliderText = domContruct.create("div", {
+                        var sliderText = domConstruct.create("div", {
                             id: layerParams.idPrefix + "sliderText" + i,
                             "class": "sliderText"
                         }, containerDiv);
 
                         if (layer.toolsContainerId) {
-                            domContruct.create('div', {
+                            domConstruct.create('div', {
                                 'id': layer.toolsContainerId,
                                 'class': 'tools-container',
                                 'innerHTML': layer.toolContent,
@@ -322,7 +349,7 @@ define(
                             }, containerDiv);
                         }
 
-                        var hzLine = domContruct.create("div", {
+                        var hzLine = domConstruct.create("div", {
                             id: layerParams.idPrefix + "hzline" + i,
                             "class": "hzline"
                         }, containerDiv);
@@ -446,7 +473,7 @@ define(
                     ga('A.send', 'event', 'Event', 'Print Map', 'User clicked the Print Map button on the map.');
                 });
 
-                var loadingGif = domContruct.create("div", {
+                var loadingGif = domConstruct.create("div", {
                     id: "laodingGif",
                     "class": "header",
                 }, "printContent");
@@ -507,7 +534,7 @@ define(
 
 
                 }, "search").startup();
-                
+
                 on(dom.byId("searchButton"), "click", function() {
                     if (registry.byId('search').get('value').length > 0) {
                         topic.publish(toolsevents.searchPopup);
@@ -523,7 +550,7 @@ define(
                 });
 
                 //add the legend
-                var legendDiv = domContruct.create("div", {
+                var legendDiv = domConstruct.create("div", {
                     id: "legendDiv"
                 }, "legendCP");
                 o._legend = new legendDijit({
@@ -583,9 +610,9 @@ define(
                 });
 
                 topic.publish(toolsevents.UIcreationComplete);
-                
 
-            } //constructor   
+
+            } //constructor
 
         }); //end declare
 

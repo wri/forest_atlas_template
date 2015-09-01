@@ -152,6 +152,11 @@ define(
                         o._vm.featureDocuments = ko.observableArray([]);
                         o._vm.documentsUnavailable = ko.observable(translation.documentsUnavailable);
 
+                        o._vm.documentType = ko.observable(translation.documentType);
+                        o._vm.documentAuthor = ko.observable(translation.documentAuthor);
+                        o._vm.documentDate = ko.observable(translation.documentDate);
+                        o._vm.documentLink = ko.observable(translation.documentLink);
+
 
                         o._vm.changePopupTabs = function (model, evt) {
                             var target = evt.target ? evt.target : evt.srcElement;
