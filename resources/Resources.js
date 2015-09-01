@@ -1,4 +1,4 @@
-﻿define([], function () {
+define([], function () {
   "use strict";
 
     // TODO: This will later be broken into different sections based on what the user can configure in AGOL,
