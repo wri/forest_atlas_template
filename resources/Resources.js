@@ -1,35 +1,36 @@
-﻿define([], function() {
+﻿define([], function () {
+  "use strict";
 
     // TODO: This will later be broken into different sections based on what the user can configure in AGOL,
     // for now, its in Alphabetical order because its easier to make sure we are not missing any keys that are in AGOL
 
     var o = {
 
-        aboutLinkUrl: 'http://caf.forest-atlas.org',
+        aboutLinkUrl: "http://caf.forest-atlas.org",
 
-        country: 'CAF',
+        country: "CAF",
 
         countryFlagRight: 280,
 
         countryTextWidth: 260,
 
-        defaultLanguage: 'en',
+        defaultLanguage: "en",
 
-        defaultTitle: 'Forest Atlas of Central African Republic',
+        defaultTitle: "Forest Atlas of Central African Republic",
 
-        documentDirectory: 'http://caf.forest-atlas.org/resources/docs/',
+        documentDirectory: "http://caf.forest-atlas.org/resources/docs/",
 
-        documentMapserver: 'http://gis.forest-atlas.org/arcgis/rest/services/CAF/documents_administratifs/MapServer',
+        documentMapserver: "http://gis.forest-atlas.org/arcgis/rest/services/CAF/documents_administratifs/MapServer",
 
-        downloadDataUrl: 'http://caf-data.forest-atlas.org/',
+        downloadDataUrl: "http://caf-data.forest-atlas.org/",
 
-        flagLinkPath: 'http://caf.forest-atlas.org',
+        flagLinkPath: "http://caf.forest-atlas.org",
 
-        flagPath: 'app/images/CAF_flag_new.png',
+        flagPath: "app/images/CAF_flag.png",
 
-        flagTitle: 'Ministry of Water, Forests, Hunting and Fishing',
+        flagTitle: "Ministry of Water, Forests, Hunting and Fishing",
 
-        layersToShow: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19],
+        layersToHide: [],
 
         // Available Map Themes, These are completely controlled from the template, there are no default values
         // other then an empty array
@@ -37,19 +38,19 @@
 
         mapThemesAlternate: [],
 
-        maskMapUrl: 'http://gis.forest-atlas.wri/arcgis/rest/services/CAF/CAF_00_africa/MapServer',
+        maskMapUrl: "http://gis.forest-atlas.wri/arcgis/rest/services/CAF/country_mask/MapServer",
 
-        printURL: 'http://gis.forest-atlas.wri/arcgis/rest/services/CAF/CAFExportWebMap/GPServer/Export%20Web%20Map',
+        printURL: "http://gis.forest-atlas.wri/arcgis/rest/services/CAF/CAFExportWebMap/GPServer/Export%20Web%20Map",
 
-        secondLanguage: 'fr',
+        secondLanguage: "fr",
 
-        secondLanguageTitle: 'Atlas Forestier de la République Centrafricaine',
+        secondLanguageTitle: "Atlas Forestier de la République Centrafricaine",
 
-        secondLanguageFlagTitle: 'Ministère des Eaux, Forêts, Chasse et Pêche',
+        secondLanguageFlagTitle: "Ministère des Eaux, Forêts, Chasse et Pêche",
 
         useAdditionalLanguage: true,
 
-        webMapID: '2b990a56346c4d20950128132771d63b',
+        webMapID: "2b990a56346c4d20950128132771d63b",
 
         // NOW FOR THE LAYER SETTINGS
         // These are placeholders, they currently do nothing but they will soon control which layers/analysis types are visible
