@@ -1,10 +1,10 @@
 define([
-  'toolsmodel',
-  'toolsconfig',
-  'esri/urlUtils',
-  'dojo/_base/lang'
+  "toolsmodel",
+  "toolsconfig",
+  "esri/urlUtils",
+  "dojo/_base/lang"
 ], function (ToolsModel, ToolsConfig, urlUtils, lang) {
-  'use strict';
+  "use strict";
 
   // Just in case
   ToolsConfig.initialize();
@@ -41,7 +41,7 @@ define([
     */
     getCurrentDensityRange: function () {
       var densityValue = Model ? Model.tcdSelectorValue() : getDensityFromUrl();
-      return [0 , densityValue, densityValue, 101];
+      return [0, densityValue, densityValue, 101];
     },
 
     /**
@@ -57,7 +57,7 @@ define([
       densityRule.rasterFunctionArguments.Raster.rasterFunctionArguments.InputRanges = range;
       // Set rendering rule, it is a string so we need to parse it to prevent issues with escape characters
       densityRule.rasterFunctionArguments.Raster2 = JSON.parse(renderingRule);
-      densityRule.rasterFunctionArguments.Raster2.outputPixelType = 'U8';
+      densityRule.rasterFunctionArguments.Raster2.outputPixelType = "U8";
       return JSON.stringify(densityRule);
     }
 
