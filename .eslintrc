@@ -1,0 +1,21 @@
+{
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "$": true,
+    "app": true,
+    "alert": true,
+    "define": true,
+    "window": true,
+    "console": true,
+    "require": true,
+    "document": true,
+    "location": true
+  },
+  "rules": {
+    "camelcase": 0,
+    "no-console": 0,
+    "no-underscore-dangle": 0
+  }
+}

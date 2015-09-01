@@ -1,4 +1,4 @@
-﻿define([], function () {
+define([], function () {
   "use strict";
 
     // TODO: This will later be broken into different sections based on what the user can configure in AGOL,
@@ -6,7 +6,7 @@
 
     var o = {
 
-        aboutLinkUrl: "http://www.wri.org/our-work/project/congo-basin-forests/gabon#project-tabs",
+        aboutLinkUrl: "http://gab.forest-atlas.org/",
 
         country: "GAB",
 
@@ -18,11 +18,11 @@
 
         defaultTitle: "Forest Atlas of Gabon",
 
-        documentDirectory: "https://wri-public-data.s3.amazonaws.com/forest_atlas/cmr/doc_pdf/",
+        documentDirectory: "http://gab.forest-atlas.org/resources/docs/",
 
-        documentMapserver: "http://54.88.79.102/arcgis/rest/services/CMR/documents_administratifs/MapServer",
+        documentMapserver: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/documents_administratifs/MapServer",
 
-        downloadDataUrl: "http://data.globalforestwatch.org/",
+        downloadDataUrl: "http://gab-data.forest-atlas.org/",
 
         flagLinkPath: "http://www.eaux-forets.gouv.ga/",
 
@@ -30,7 +30,7 @@
 
         flagTitle: "Ministry of Forest, Environment and Protection of Natural Resources",
 
-        layersToHide: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19],
+        layersToHide: [5,6,7,8,12,13],
 
         // Available Map Themes, These are completely controlled from the template, there are no default values
         // other then an empty array
@@ -38,9 +38,9 @@
 
         mapThemesAlternate: [],
 
-        maskMapUrl: "http://gis-forest-atlas.wri.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer",
+        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer",
 
-        printURL: "http://gis-forestatlas.wri.org/arcgis/rest/services/GAB/GABExportWebMap/GPServer/Export%20Web%20Map",
+        printURL: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/GABExportWebMap/GPServer/Export%20Web%20Map",
 
         secondLanguage: "fr",
 

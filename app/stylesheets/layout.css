@@ -572,15 +572,22 @@ top:0px;
 }
 
 .feature-documents {
-	padding: 10px;
+	margin: 10px;
+	width: 380px;
 }
 
 .feature-documents a {
-	color: blue;
+	background: url('../images/download.png') no-repeat center bottom;
+	background-size: 16px;
+	padding-top: 5px;
+	display: block;
+	height: 16px;
+	width: 16px;
 }
 
-.feature-documents a:hover, .feature-documents a:active {
-	color: initial;
+.table-header {
+	font-weight: bold;
+	text-align: left;
 }
 
 /* Hide some elements earlier to prevent collisions with other elements */
