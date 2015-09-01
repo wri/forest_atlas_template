@@ -12,9 +12,9 @@
         },
         {
             "type": "string",
-            "fieldName": "layersToShow",
-            "label": "Default visible layers:",
-            "tooltip": "Enter the layers you want visible by default as a comma separated string of layer numbers.",
+            "fieldName": "layersToHide",
+            "label": "Default hidden layers:",
+            "tooltip": "Enter the layers you want hidden by default as a comma separated string of layer numbers.",
             "placeholder": "Ex.  0,1,2,3,6,9,12,13,14"
         },
         {
@@ -231,6 +231,10 @@
       "defaultLanguage": "en",
       "countryFlagRight": "280",
       "useAdditionalLanguage": true,
+      "activeFiresIncluded": true,
+      "landCoverIncluded": true,
+      "biomassIncluded": true,
+      "iflIncluded": true,
       "formaIncluded": false,
       "terraIncluded": false,
       "imazonIncluded": false,

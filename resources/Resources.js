@@ -1,4 +1,4 @@
-﻿define([], function () {
+define([], function () {
   "use strict";
 
     // TODO: This will later be broken into different sections based on what the user can configure in AGOL,
@@ -6,9 +6,9 @@
 
     var o = {
 
-        aboutLinkUrl: "http://gab.forest-atlas.org/",
+        aboutLinkUrl: "http://cod.forest-atlas.org/",
 
-        country: "GAB",
+        country: "COD",
 
         countryFlagRight: 280,
 
@@ -16,19 +16,19 @@
 
         defaultLanguage: "en",
 
-        defaultTitle: "Forest Atlas of Gabon",
+        defaultTitle: "Forest Atlas of Congo",
 
-        documentDirectory: "http://gab.forest-atlas.org/resources/docs/",
+        documentDirectory: "http://cog.forest-atlas.org/resources/docs/",
 
-        documentMapserver: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/documents_administratifs/MapServer",
+        documentMapserver: "http://gis.forest-atlas.org/arcgis/rest/services/COG/documents_administratifs/MapServer",
 
-        downloadDataUrl: "http://gab-data.forest-atlas.org/",
+        downloadDataUrl: "http://cog-data.forest-atlas.org/",
 
-        flagLinkPath: "http://www.eaux-forets.gouv.ga/",
+        flagLinkPath: "http://www.mefdd.cg/",
 
-        flagPath: "app/images/GAB_flag_new.png",
+        flagPath: "app/images/COG_flag.png",
 
-        flagTitle: "Ministry of Forest, Environment and Protection of Natural Resources",
+        flagTitle: "Ministry of Forest Economics and Sustainable Developement",
 
         layersToHide: [5,6,7,8,12,13],
 
@@ -38,19 +38,19 @@
 
         mapThemesAlternate: [],
 
-        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer",
+        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/COG/COG_00_africa/MapServer",
 
-        printURL: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/GABExportWebMap/GPServer/Export%20Web%20Map",
+        printURL: "http://gis.forest-atlas.org/arcgis/rest/services/COG/COGExportWebMap/GPServer/Export%20Web%20Map",
 
         secondLanguage: "fr",
 
-        secondLanguageTitle: "Atlas Forestier du Gabon",
+        secondLanguageTitle: "Atlas Forestier de la République du Congo",
 
-        secondLanguageFlagTitle: "Ministère de la Forêt, de l’Environnement et de la Protection des Ressources Naturelles",
+        secondLanguageFlagTitle: "Ministère de l’Économie Forestière et du Développement Durable",
 
         useAdditionalLanguage: true,
 
-        webMapID: "10db57b5316749478d5287155760fd14",
+        webMapID: "abb18c1bfdd74cc9982d6535d2451692",
 
         // NOW FOR THE LAYER SETTINGS
         // These are placeholders, they currently do nothing but they will soon control which layers/analysis types are visible
