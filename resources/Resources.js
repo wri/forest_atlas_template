@@ -28,15 +28,31 @@ define([], function () {
 
         flagPath: "app/images/GAB_flag_new.png",
 
-        flagTitle: "Ministry of Forest, Environment and Protection of Natural Resources",
+        flagTitle: "Ministry of Forest and Wildlife",
 
-        layersToHide: [5,6,7,8,12,13],
+        layersToHide: [5, 6, 7, 8, 12, 13],
 
-        // Available Map Themes, These are completely controlled from the template, there are no default values
-        // other then an empty array
-        mapThemes: [],
+        mapThemes: [
+          {
+            "label": "Forest Atlas of Democratic Republic of Congo",
+            "value": "http://wri.github.io/forest_atlas_template/?appid=edfa3967f09f4236ae9249dd82265687"
+          },
+          {
+            "label": "Forest Atlas of Equatorial Guinea",
+            "value": "http://wri.github.io/forest_atlas_template/?appid=c76d788b7487476bae4d09a4e933be19"
+          }
+        ],
 
-        mapThemesAlternate: [],
+        mapThemesAlternate: [
+          {
+            "label": "Testing Congo",
+            "value": "http://wri.github.io/forest_atlas_template/?appid=edfa3967f09f4236ae9249dd82265687"
+          },
+          {
+            "label": "Testing Guinea",
+            "value": "http://wri.github.io/forest_atlas_template/?appid=c76d788b7487476bae4d09a4e933be19"
+          }
+        ],
 
         maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer",
 
@@ -46,7 +62,7 @@ define([], function () {
 
         secondLanguageTitle: "Atlas Forestier du Gabon",
 
-        secondLanguageFlagTitle: "Ministère de la Forêt, de l’Environnement et de la Protection des Ressources Naturelles",
+        secondLanguageFlagTitle: "Ministère des Forêts et de la Faune",
 
         useAdditionalLanguage: true,
 

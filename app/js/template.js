@@ -33,11 +33,13 @@ define([
 					// appLanguages
 					// Add Default language with some default values
 					commonConfig.appLanguages = {};
-
 					// Make sure we have a default language set up, should be in Resources.js but just in case, use en as backup
 					if (!values.defaultLanguage) {
 						values.defaultLanguage = Resources.defaultLanguage || "en";
 					}
+
+					// export the default language
+					commonConfig.defaultLanguage = values.defaultLanguage;
 
 					commonConfig.appLanguages[values.defaultLanguage] = {
 						"title": values.defaultTitle,
