@@ -109,4 +109,5 @@ define([], function () {
     }
 
     return o;
+
 });

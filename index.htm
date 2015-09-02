@@ -323,7 +323,7 @@
 					<div class="results-container">
 						<div class="documents-results">
 							<div class="documents-not-available" data-bind='text: documentsUnavailable,visible: featureDocuments().length === 0'></div>
-							<table class='feature-documents'>
+							<table class='feature-documents' data-bind='visible: featureDocuments().length > 0'>
 								<thead class='table-header'>
 									<th data-bind="text: documentType"></th>
 									<th data-bind="text: documentAuthor"></th>
