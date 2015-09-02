@@ -426,7 +426,7 @@ define([], function() {
             treeCoverAnalysis: "Sélectionnez une analyse sur la perte de la couverture arborée ci-dessous:",
             otherAnalysisTypes: "Ou sélectionnez des analyses basées sur l'occupation du sol ou des feux actifs:",
 
-            about: "Au sujet de",
+            about: "Accueil",
             downloadData: "Télécharger des données",
             sources: "Sources",
             print: "Imprimer",
