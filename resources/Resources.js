@@ -28,7 +28,7 @@ define([], function () {
 
         flagPath: "app/images/GAB_flag_new.png",
 
-        flagTitle: "Ministry of Forest, Environment and Protection of Natural Resources",
+        flagTitle: "Ministry of Forest and Wildlife",
 
         layersToHide: [5, 6, 7, 8, 12, 13],
 
@@ -62,7 +62,7 @@ define([], function () {
 
         secondLanguageTitle: "Atlas Forestier du Gabon",
 
-        secondLanguageFlagTitle: "Ministère de la Forêt, de l’Environnement et de la Protection des Ressources Naturelles",
+        secondLanguageFlagTitle: "Ministère des Forêts et de la Faune",
 
         useAdditionalLanguage: true,
 
