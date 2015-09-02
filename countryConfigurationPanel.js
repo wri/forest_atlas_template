@@ -66,9 +66,21 @@
                 },
                 {
                     "type": "string",
+                    "fieldName": "flagTitle",
+                    "label": "Text next ot the flag:",
+                    "tooltip": "Enter the text that should appear to the right of the flag."
+                },
+                {
+                    "type": "string",
                     "fieldName": "secondLanguageTitle",
                     "label": "Application title in the second language:",
                     "tooltip": "Enter the title of the application in your second language."
+                },
+                {
+                    "type": "string",
+                    "fieldName": "secondLanguageFlagTitle",
+                    "label": "Text next ot the flag in the second language:",
+                    "tooltip": "Enter the text in your second language that should appear to the right of the flag."
                 }
             ]
         },
