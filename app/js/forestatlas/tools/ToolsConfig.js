@@ -2,8 +2,8 @@ define(
     ["declare"], function(declare) {
 
         // Labels need to match the range of bounds
-        var totalLossBounds = [1, 13];
-        var totalLossLabels = [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013];
+        var totalLossBounds = [1, 14];
+        var totalLossLabels = [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014];
 
         var iflBounds = [0, 1];
         var carbonBounds = [0, 9];
@@ -23,7 +23,7 @@ define(
                 o._config = {
 
                     // App URL, Map Themes will use this as a base path, this is where the templated application lives
-                    // appUrl: 'http://wri.github.io/forest_atlas_template/',
+                    // appUrl: "http://wri.github.io/forest_atlas_template/",
 
                     defaultLayerOpacity: 80,
                     /*0-100*/
@@ -37,9 +37,9 @@ define(
                                 id: "layerLabel"
                             },
                             attrs: [{
-                                id: 'layerLabel',
-                                attr: 'data-bind',
-                                value: '{text:tabLayersTitle}'
+                                id: "layerLabel",
+                                attr: "data-bind",
+                                value: "{text:tabLayersTitle}"
                             }]
                         },
                         {
@@ -47,13 +47,13 @@ define(
                             type: "div",
                             containerProps: {
                                 id: "closeLayersButton",
-                                'class': "close-layers-button"
+                                "class": "close-layers-button"
                             }
                             // ,
                             // attrs: [{
-                            //     id: 'closeLayersButton',
-                            //     attr: 'data-bind',
-                            //     value: '{text:closeButtonText}'
+                            //     id: "closeLayersButton",
+                            //     attr: "data-bind",
+                            //     value: "{text:closeButtonText}"
                             // }]
                         },
 
@@ -113,72 +113,72 @@ define(
                     // Extra Layers
 
                     forestLossLayers: {
-                        'idPrefix': 'loss_',
-                        'container': 'forestLossLayers',
-                        'layers': [
+                        "idPrefix": "loss_",
+                        "container": "forestLossLayers",
+                        "layers": [
                             {
-                                'id': 'forestCoverLoss',
-                                'textBinding': 'forestCoverLossLabel',
-                                'toolsContainerId': 'forestCoverControls',
-                                'toolContent': '<div class="forest-loss-toolbox">' +
-                                    '<table>' +
-                                        '<tr>' +
-                                            '<td><span data-bind="text: lossStartingYear"></span></td>' +
-                                            '<td><select id="lossStartYear" data-bind="options: forestLossYears"></select></td>' +
-                                            '<td rowspan="2"><div id="lossPlayButton" class="loss-play-button"></div></td>' +
-                                        '</tr>' +
-                                        '<tr>' +
-                                            '<td><span data-bind="text: lossEndingYear"></span></td>' +
-                                            '<td><select id="lossEndYear" data-bind="options: forestLossYears,value: forestLossYears()[forestLossYears().length - 1]"></select></td>' +
-                                        '</tr>' +
-                                    '</table>' +
-                                '</div>'
+                                "id": "forestCoverLoss",
+                                "textBinding": "forestCoverLossLabel",
+                                "toolsContainerId": "forestCoverControls",
+                                "toolContent": "<div class='forest-loss-toolbox'>" +
+                                    "<table>" +
+                                        "<tr>" +
+                                            "<td><span data-bind='text: lossStartingYear'></span></td>" +
+                                            "<td><select id='lossStartYear' data-bind='options: forestLossYears'></select></td>" +
+                                            "<td rowspan='2'><div id='lossPlayButton' class='loss-play-button'></div></td>" +
+                                        "</tr>" +
+                                        "<tr>" +
+                                            "<td><span data-bind='text: lossEndingYear'></span></td>" +
+                                            "<td><select id='lossEndYear' data-bind='options: forestLossYears,value: forestLossYears()[forestLossYears().length - 1]'></select></td>" +
+                                        "</tr>" +
+                                    "</table>" +
+                                "</div>"
                             },
                             {
-                                'id': 'forestGainLayer',
-                                'textBinding': 'treeCoverGainLabel'
+                                "id": "forestGainLayer",
+                                "textBinding": "treeCoverGainLabel"
                             },
                             {
-                                'id': 'activeFires',
-                                'textBinding': 'activeFiresLabel',
-                                'toolsContainerId': 'activeFiresControls',
-                                'toolContent': '<div class="fires-toolbox">' +
-                                    '<div id="firesWeek" class="active" data-bind="text: firesOneWeek"></div>' +
-                                    '<div id="fires72" data-bind="text: fires72Hours"></div>' +
-                                    '<div id="fires48" data-bind="text: fires48Hours"></div>' +
-                                    '<div id="fires24" data-bind="text: fires24Hours"></div>' +
-                                '</div>'
+                                "id": "activeFires",
+                                "textBinding": "activeFiresLabel",
+                                "toolsContainerId": "activeFiresControls",
+                                "toolContent": "<div class='fires-toolbox'>" +
+                                    "<div id='firesWeek' class='active' data-bind='text: firesOneWeek'></div>" +
+                                    "<div id='fires72' data-bind='text: fires72Hours'></div>" +
+                                    "<div id='fires48' data-bind='text: fires48Hours'></div>" +
+                                    "<div id='fires24' data-bind='text: fires24Hours'></div>" +
+                                "</div>"
                             }
                         ]
                     },
 
                     forestCoverLayers: {
-                        'idPrefix': 'cover_',
-                        'container': 'forestCoverLayers',
-                        'layers': [
+                        "idPrefix": "cover_",
+                        "container": "forestCoverLayers",
+                        "layers": [
                             {
-                                'id': 'treeCoverDensity',
-                                'textBinding': 'treeCoverDensityLabel',
-                                'toolsContainerId': 'treeCoverControls',
-                                'toolContent': '<div class="tree-cover-toolbox">' +
-                                    '<div class="tcd-selector-wrapper">' +
-                                        '<span class="tcd-selector-label" data-bind="text: tcdSelectorBegin"></span>' +
-                                        '<span class="tcd-selector-value" data-bind="text: tcdSelectorValue, click: canopyDensityClicked"></span>' +
-                                        '<span class="tcd-selector-label" data-bind="text: tcdSelectorEnd"></span>' +
-                                    '</div>' +
-                                '</div>'
+                                "id": "treeCoverDensity",
+                                "textBinding": "treeCoverDensityLabel",
+                                "toolsContainerId": "treeCoverControls",
+                                "toolContent": "<div class='tree-cover-toolbox'>" +
+                                    "<div class='tcd-selector-wrapper'>" +
+                                        "<span class='tcd-selector-label' data-bind='text: tcdSelectorBegin'></span>" +
+                                        "<span class='tcd-selector-value' data-bind='text: tcdSelectorValue, click: canopyDensityClicked'></span>" +
+                                        "<span class='tcd-selector-label' data-bind='text: tcdSelectorEnd'></span>" +
+                                    "</div>" +
+                                "</div>"
                             },
                             {
-                                'id': 'landCover',
-                                'textBinding': 'landCoverLabel'
+                                "id": "landCover",
+                                "textBinding": "landCoverLabel"
                             },
                             {
-                                'id': 'intactForestLayer',
-                                'textBinding': 'intactForestLayerLabel'
+                                "id": "intactForestLayer",
+                                "textBinding": "intactForestLayerLabel"
                             },
                             {
-                                'id': 'carbonLayer',
-                                'textBinding': 'carbonLayerLabel'
+                                "id": "carbonLayer",
+                                "textBinding": "carbonLayerLabel"
                             }
                         ]
                     },
@@ -187,8 +187,8 @@ define(
                     // Analysis Configurations
 
                     analysisConfig: {
-                        totalLossAnalysisUrl: 'http://gis-gfw.wri.org/arcgis/rest/services/GFW/analysis/ImageServer',
-                        clearanceAlertAnalysisUrl: 'http://gis-potico.wri.org/arcgis/rest/services/CommoditiesAnalyzer/GFWanalysis_wm/ImageServer',
+                        totalLossAnalysisUrl: "http://gis-gfw.wri.org/arcgis/rest/services/GFW/analysis/ImageServer",
+                        clearanceAlertAnalysisUrl: "http://gis-potico.wri.org/arcgis/rest/services/CommoditiesAnalyzer/GFWanalysis_wm/ImageServer",
 
                         treeCoverDensityRule: {
                             "rasterFunction": "Arithmetic",
@@ -226,14 +226,14 @@ define(
                         },
 
                         totalLoss: {
-                            rasterId: "$521", //12
+                            rasterId: "$530", //12
                             bounds: totalLossBounds,
                             labels: totalLossLabels,
                             mosaicRule: {
-                                "mosaicMethod" : "esriMosaicLockRaster",
-                                "lockRasterIds": [521],
-                                "ascending" : true,
-                                "mosaicOperation" : "MT_FIRST"
+                                "mosaicMethod": "esriMosaicLockRaster",
+                                "lockRasterIds": [530],
+                                "ascending": true,
+                                "mosaicOperation": "MT_FIRST"
                             },
                             totalLossTitle: ""
                         },
@@ -253,57 +253,57 @@ define(
                         },
 
                         clearanceBounds: {
-                            url: 'http://gis-potico.wri.org/arcgis/rest/services/CommoditiesAnalyzer/FORMA50/ImageServer',
+                            url: "http://gis-potico.wri.org/arcgis/rest/services/CommoditiesAnalyzer/FORMA50/ImageServer",
                             baseYearLabel: 13
                         },
 
                         fires: {
-                            url: 'http://gis-potico.wri.org/arcgis/rest/services/Fires/Global_Fires/MapServer'
+                            url: "http://gis-potico.wri.org/arcgis/rest/services/Fires/Global_Fires/MapServer"
                         },
 
                         ifl: {
-                            rasterId: '$9',
+                            rasterId: "$9",
                             bounds: iflBounds,
                             labels: ["Intact Forest"],
                             colors: ["#186513"],
                             title: "Annual Tree Cover Loss (in hectares) on Intact Forest Landscapes",
-                            titleKey: 'analysisIFLChartTitle',
-                            labelKey: 'intactForest'
+                            titleKey: "analysisIFLChartTitle",
+                            labelKey: "intactForest"
                         },
                         carbon: {
-                            rasterId: '$1',
+                            rasterId: "$1",
                             bounds: carbonBounds,
                             labels: ["0", "1 - 10", "11 - 20", "21- 35", "36 - 70", "71 - 100", "101 - 150", "151 - 200", "201 - 300", "Greater than 300"],
                             colors: ["#fdffcc", "#faeeb9", "#f6ddaa", "#f4ca99", "#f1bc8b", "#eca97a", "#e89c6f", "#e08b5e", "#db7c54", "#d56f4a"],
                             title: "Annual Tree Cover Loss (in hectares) on Forest Carbon Stocks (Mg C /Ha)",
-                            titleKey: 'analysisCSChartTitle',
-                            labelKey: 'carbonStock'
+                            titleKey: "analysisCSChartTitle",
+                            labelKey: "carbonStock"
                         },
                         landCover: {
-                            rasterId: '$523',
+                            rasterId: "$523",
                             bounds: landCoverBounds,
-                            labels: ['Dense moist forest', 'Submontane forest', 'Mountain forest', 'Edaphic forest', 'Mangrove', 'Forest-savanna mosaic', 'Rural complex and young secondary forest', 'Closed to open deciduous woodland', 'Savanna woodland-Tree savanna', 'Shrubland','Grassland','Aquatic grassland','Swamp grassland','Sparse vegetation','Mosaic cultivated areas/vegeatation( herbaceous or shrub)','Agriculture','Irrigated agriculture','Bare areas','Artificial surfaces and associated areas','Water Bodies'],
+                            labels: ["Dense moist forest", "Submontane forest", "Mountain forest", "Edaphic forest", "Mangrove", "Forest-savanna mosaic", "Rural complex and young secondary forest", "Closed to open deciduous woodland", "Savanna woodland-Tree savanna", "Shrubland", "Grassland", "Aquatic grassland", "Swamp grassland", "Sparse vegetation", "Mosaic cultivated areas/vegeatation( herbaceous or shrub)", "Agriculture", "Irrigated agriculture", "Bare areas", "Artificial surfaces and associated areas", "Water Bodies"],
                             colors: ["#3B823D", "#7CA079", "#AAB785", "#355936", "#5BBCF8", "#8BB94B", "#F0F979", "#7B8840", "#CABA4F", "#D3A162", "#FDCA76", "#C1E5DC", "#7AD3AB", "#F3F3AF", "#F6988F", "#FFFFF0", "#FFFFF0", "#A7A7A7", "#F83D48", "#353C92"],
-                            title: 'Annual Tree Cover Loss (in hectares) on Land Cover',
-                            titleKey: 'analysisLCChartTitle',
-                            labelKey: 'landCover',
+                            title: "Annual Tree Cover Loss (in hectares) on Land Cover",
+                            titleKey: "analysisLCChartTitle",
+                            labelKey: "landCover",
                             mosaicRule: {
-                                "mosaicMethod" : "esriMosaicLockRaster",
+                                "mosaicMethod": "esriMosaicLockRaster",
                                 "lockRasterIds": [3],
-                                "ascending" : true,
-                                "mosaicOperation" : "MT_FIRST"
+                                "ascending": true,
+                                "mosaicOperation": "MT_FIRST"
                             }
                         },
 
                         treeDensity: {
-                            rasterId: '$520',
-                            formaId: '$12',
+                            rasterId: "$520",
+                            formaId: "$12",
                             bounds: treeDensityBounds,
                             labels: ["31 - 50%", "51 - 74%", "75 - 100%"],
                             colors: ["#ccf1a5", "#859a59", "#4b5923"],
                             title: "Annual Tree Cover Loss (in hectares) on Tree Cover Density",
-                            titleKey: 'analysisTCDChartTitle',
-                            labelKey: 'treeDensity',
+                            titleKey: "analysisTCDChartTitle",
+                            labelKey: "treeDensity",
                             includeFormaIdInRemap: true,
                             rasterRemap: {
                                 "rasterFunction": "Remap",
@@ -316,36 +316,36 @@ define(
                             }
                         },
                         protectedArea: {
-                            rasterId: '$10',
+                            rasterId: "$10",
                             bounds: protectedAreaBounds,
                             labels: ["Protected Area"],
                             colors: ["#296eaa"],
                             title: "Annual Tree Cover Loss (in hectares) on Protected Areas"
                         },
                         primForest: {
-                            rasterId: '$519',
-                            formaId: '$11',
+                            rasterId: "$519",
+                            formaId: "$11",
                             labels: ["Primary Degraded", "Primary Intact"],
                             colors: ["#259F1F", "#186513"],
                             bounds: primForestBounds,
                             title: "Annual Tree Cover Loss (in hectares) in Primary Forests"
                         },
                         legal: {
-                            rasterId: '$7',
+                            rasterId: "$7",
                             bounds: legalBounds,
                             labels: ["Convertible Production Forest", "Limited Production Forest", "Non-forest", "Production Forest", "Protected Area"],
                             colors: ["rgb(230, 152, 0)", "rgb(116, 196, 118)", "rgb(255, 255, 190)", "rgb(199, 233, 192)", "rgb(35, 139, 69)"],
                             title: "Annual Tree Cover Loss (in hectares) on Legal Classifications"
                         },
                         peat: {
-                            rasterId: '$8',
+                            rasterId: "$8",
                             bounds: peatBounds,
                             labels: ["Peat"],
                             colors: ["#161D9C"],
                             title: "Annual Tree Cover Loss (in hectares) on Peat Lands"
                         },
                         rspo: {
-                            rasterId: '$5',
+                            rasterId: "$5",
                             bounds: rspoBounds,
                             lossBounds: [5, 12]
                         }
