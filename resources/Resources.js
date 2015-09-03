@@ -26,7 +26,7 @@ define([], function () {
 
         flagLinkPath: "http://www.guineaecuatorialpress.com/noticia.php?id=126&lang=en",
 
-        flagPath: "app/images/GNQ_flag_new.png",
+        flagPath: "app/images/GNQ_flag.png",
 
         flagTitle: "Ministry of Agriculture and Forestry",
 
@@ -38,11 +38,11 @@ define([], function () {
 
         mapThemesAlternate: [],
 
-        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/GNQ/GNQ_00_africa/MapServer",
+        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/GNQ/00_Africa/MapServer",
 
         printURL: "http://gis.forest-atlas.org/arcgis/rest/services/GNQ/GNQExportWebMap/GPServer/Export%20Web%20Map",
 
-        secondLanguage: "fr",
+        secondLanguage: "es",
 
         secondLanguageTitle: "Atlas Forestal de la República de Guinea Ecuatorial",
 
