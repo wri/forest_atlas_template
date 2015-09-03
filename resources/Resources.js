@@ -30,7 +30,7 @@ define([], function () {
 
         flagTitle: "Ministry of Forest Economics and Sustainable Developement",
 
-        layersToHide: [5,6,7,8,12,13],
+        layersToHide: [],
 
         // Available Map Themes, These are completely controlled from the template, there are no default values
         // other then an empty array
@@ -38,7 +38,7 @@ define([], function () {
 
         mapThemesAlternate: [],
 
-        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/COG/COG_00_africa/MapServer",
+        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/COG/country_mask/MapServer",
 
         printURL: "http://gis.forest-atlas.org/arcgis/rest/services/COG/COGExportWebMap/GPServer/Export%20Web%20Map",
 
