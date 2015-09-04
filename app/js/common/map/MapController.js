@@ -355,6 +355,7 @@ define([
                 queryTask.execute(esriQuery, function (res) {
                   var docs = [];
                   arrayUtil.forEach(res.features, function (feature) {
+                    console.dir(feature);
                     if (feature.attributes.url) {
                       docs.push({
                         name: feature.attributes.doc_titre || feature.attributes.url,

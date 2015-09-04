@@ -131,7 +131,7 @@ define(
                     var simplePointRenderer = new SimpleRenderer(higlightPointSymbol);
 
                     o._map.on("click", function(evt) {
-                        topic.publish(mapevents.clickCoordinates, evt);
+                      topic.publish(mapevents.clickCoordinates, evt);
                     });
 
                     connect.connect(o._map.infoWindow, 'onSetFeatures', function () {

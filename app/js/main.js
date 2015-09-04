@@ -41,7 +41,7 @@ define([
                 if (obj.init) {
                     delete obj.init;
                     query = ioQuery.objectToQuery(obj);
-                    initHash = query; //Go to User hash, 		
+                    initHash = query; //Go to User hash,
                 } else {
                     query = ioQuery.objectToQuery(obj);
                     initHash = query + "&init=y";
@@ -50,7 +50,7 @@ define([
             }
 
             hash(initHash); //Go to default hash
-            Helper.enableLayout();	
+            Helper.enableLayout();
 
         }
 
