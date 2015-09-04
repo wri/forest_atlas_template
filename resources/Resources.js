@@ -38,9 +38,9 @@
 
         mapThemesAlternate: [],
 
-        maskMapUrl: "http://gis.forest-atlas.wri/arcgis/rest/services/CAF/country_mask/MapServer",
+        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/CAF/country_mask/MapServer",
 
-        printURL: "http://gis.forest-atlas.wri/arcgis/rest/services/CAF/CAFExportWebMap/GPServer/Export%20Web%20Map",
+        printURL: "http://gis.forest-atlas.org/arcgis/rest/services/CAF/CAFExportWebMap/GPServer/Export%20Web%20Map",
 
         secondLanguage: "fr",
 
