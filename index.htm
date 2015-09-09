@@ -230,12 +230,11 @@
 				// This is necessary due to the way the original developer set up the project
 				// We need to inject some config options in Main and app.config needs
 				// to be available before Main is required
-				require(["root/main", "res/Resources"], function (Main, Resource) {
-
+				require(["root/main", "res/Resources", "dojo/_base/lang"], function (Main, Resource, lang) {
 					// Merge Resources in here and then remove all references of resources from the application
 					// Only merge in options that are undefined
-
 					var languages,
+							lang,
 							key;
 
 					if (hasAGOLConfig) {

@@ -25,6 +25,8 @@ define([
 				// Pull All Relevant Config Values Here
 				var commonConfig = {},
 					values = res.itemData && res.itemData.values,
+					additionalLanguageConfig,
+					defaultLanguageConfig,
 					language;
 
 				if (values) {
@@ -41,9 +43,12 @@ define([
 					// export the default language
 					commonConfig.defaultLanguage = values.defaultLanguage;
 
+					// Possible Defaults in case none are provided
+					defaultLanguageConfig = Resources.appLanguages && Resources.appLanguages[values.defaultLanguage];
+
 					commonConfig.appLanguages[values.defaultLanguage] = {
-						"title": values.defaultTitle,
-						"flagTitle": values.flagTitle,
+						"title": values.defaultTitle || (defaultLanguageConfig && defaultLanguageConfig.title) || "",
+						"flagTitle": values.flagTitle || (defaultLanguageConfig && defaultLanguageConfig.flagTitle) || "",
 						"default": true
 					};
 					// Add Additional Languages if configured to
@@ -52,9 +57,10 @@ define([
 
 					if (commonConfig.useAdditionalLanguage) {
 						language = values.secondLanguage || "fr";
+						additionalLanguageConfig = Resources.appLanguages && Resources.appLanguages[language];
 						commonConfig.appLanguages[language] = {
-							"title": values.secondLanguageTitle,
-							"flagTitle": values.secondLanguageFlagTitle
+							"title": values.secondLanguageTitle || (additionalLanguageConfig && additionalLanguageConfig.title) || "",
+							"flagTitle": values.secondLanguageFlagTitle || (additionalLanguageConfig && additionalLanguageConfig.flagTitle) || ""
 						};
 					}
 
@@ -81,6 +87,7 @@ define([
 					commonConfig.iflIncluded = values.iflIncluded === undefined ? true : values.iflIncluded;
 
 					// Document Related Urls
+					commonConfig.excludeDocumentsTab = values.excludeDocumentsTab;
 					commonConfig.documentDirectory = values.documentDirectory;
 					commonConfig.documentMapserver = values.documentMapserver;
 

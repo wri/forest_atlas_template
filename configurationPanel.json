@@ -50,6 +50,12 @@
             "tooltip": "Ex. http://data.globalforestwatch.org"
         },
         {
+            "type": "boolean",
+            "fieldName": "excludeDocumentsTab",
+            "label": "Do you want to remove the documents tab from the popup:",
+            "tooltip": "This is a tab in the popup, checking this will remove that tab and the documents feature."
+        },
+        {
             "type": "string",
             "fieldName": "documentMapserver",
             "label": "URL to Map Service containing documents:",

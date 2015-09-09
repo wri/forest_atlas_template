@@ -398,8 +398,16 @@ define(
 
                 generateUIForLayers(toolsconfig.forestLossLayers);
                 generateUIForLayers(toolsconfig.forestCoverLayers);
-
                 topic.publish(toolsevents.transparencyChange, mapLanguageLayerIds, app.config.defaultLayerTransparency, visLayersArr);
+
+                if (app.config.excludeDocumentsTab) {
+                  // Remove the dom elements associated to this tab
+                  var tab = document.getElementById("popupDocumentTab"),
+                      container = document.getElementById("popupDocument");
+
+                  if (tab) { tab.remove(); }
+                  if (container) { container.remove(); }
+                }
 
                 /* Add Print widget ----------------------------*/
                 print = new Dialog({

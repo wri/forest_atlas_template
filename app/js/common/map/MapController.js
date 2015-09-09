@@ -354,6 +354,7 @@ define([
 
                 queryTask.execute(esriQuery, function (res) {
                   var docs = [];
+                  console.dir(res.features);
                   arrayUtil.forEach(res.features, function (feature) {
                     if (feature.attributes.url) {
                       docs.push({
