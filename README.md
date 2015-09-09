@@ -12,7 +12,7 @@ Defaults for the configuration panels can be set in the bottom of the configurat
 3. simpleConfigurationPanel
 	* This is the simplest version of the config panel, it only allows for one language to be used in the application.  In the `Resources.js` file you need to make sure you set the `useAdditionalLanguage` property to false as the current setting is true and this setting is not controlled from this configuration panel.
 4. standardConfigurationPanel
-	* Coming Soon!!
+	* This is currently the same as the simpleConfigurationPanel but may change, use the simpleConfigurationPanel until this configuration is approved and finalized.
 
 ## User Guide
 <p>Add explanation of how to use when completed and in AGOL.</p>
