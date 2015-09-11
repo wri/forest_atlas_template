@@ -289,7 +289,7 @@ define(
                             labelKey: "landCover",
                             mosaicRule: {
                                 "mosaicMethod": "esriMosaicLockRaster",
-                                "lockRasterIds": [3],
+                                "lockRasterIds": [523],
                                 "ascending": true,
                                 "mosaicOperation": "MT_FIRST"
                             }
