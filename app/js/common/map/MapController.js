@@ -354,12 +354,11 @@ define([
 
                 queryTask.execute(esriQuery, function (res) {
                   var docs = [];
-                  console.dir(res.features);
                   arrayUtil.forEach(res.features, function (feature) {
                     if (feature.attributes.url) {
                       docs.push({
                         name: feature.attributes.doc_titre || feature.attributes.url,
-                        type: feature.attributes.type_ || "N/A",
+                        type: feature.attributes.desc_type || "N/A",
                         author: feature.attributes.auteur || "N/A",
                         year: feature.attributes.date_doc ? new Date(feature.attributes.date_doc).getFullYear() : "N/A",
                         url: docsUrl + encodeURIComponent(feature.attributes.url)
