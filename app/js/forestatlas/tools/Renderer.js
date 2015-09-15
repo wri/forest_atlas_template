@@ -328,10 +328,11 @@ define([
 
 			for (var i = 0, length = histograms.length; i < length; i++) {
 				if (histograms[i] !== 0) {
-					data.push([
-						labels[i],
-						histograms[i]
-					]);
+					data.push({
+						name: labels[i],
+						y: histograms[i],
+						color: colors[i]
+					});
 				}
 			}
 
@@ -359,7 +360,7 @@ define([
 				},
 				title: {
 					useHTML: true,
-					text: (!activeFeatureTitle ? title: null)
+					text: ( !activeFeatureTitle ? title : null)
 				},
 				plotOptions: {
 					pie: {
@@ -371,7 +372,6 @@ define([
 						}
 					}
 				},
-				colors: colors,
 				series: series,
 				credits: {
 					enabled: false
