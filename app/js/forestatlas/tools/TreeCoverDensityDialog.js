@@ -13,12 +13,12 @@ define([
 			// If slider has not been initialized, do so now
 			if (_slider === undefined) {
 				_slider = $("#tree-cover-slider").ionRangeSlider({
-				    values: [0, 10, 15, 20, 25, 30, 50, 75, 100],
-				    from_min: 1,
-				    from_max: 7,
-				    grid: true,
-				    from: 5,
-				    onFinish: self.updateTCDValue
+					values: [0, 10, 15, 20, 25, 30, 50, 75, 100],
+					from_min: 1,
+					from_max: 7,
+					grid: true,
+					from: 5,
+					onFinish: self.updateTCDValue
 				});
 			}
 
