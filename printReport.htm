@@ -377,21 +377,16 @@
 		        logo:false,
 		        basemap: queryObj.basemap
 		    });
+
 				domConstruct.create("span",{innerHTML:queryObj.title},reportTitle);
 
-
-				map.on("load",function(){
-					//map.setLevel(map.getLevel()-1);
-					//map.setExtent(extentsWM,true);
+				map.on("load",function () {
 					map.disableKeyboardNavigation();
 					map.disableMapNavigation();
 					map.disableRubberBandZoom();
 					map.disablePan();
-
 					getWebmap();
-
 				});
-
 
 				var getWebmap = function(){
 					var webmapInfo = "http://www.arcgis.com/sharing/rest/content/items/"+queryObj.webMap+"/data?f=json";
@@ -663,7 +658,7 @@
 				};
 
 
-				//var main = new Main();
+				// var main = new Main();
 			});//end require
 	</script>
 </head>

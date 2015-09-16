@@ -1,8 +1,8 @@
 define([
-	'topic',
-	'toolsmodel'
+	"topic",
+	"toolsmodel"
 ], function (topic, ToolsModel) {
-	'use strict';
+	"use strict";
 
 	var _slider;
 
@@ -22,11 +22,11 @@ define([
 				});
 			}
 
-			$('.tree-cover-dialog').addClass('active');
+			$(".tree-cover-dialog").addClass("active");
 		},
 
 		hide: function () {
-			$('.tree-cover-dialog').removeClass('active');
+			$(".tree-cover-dialog").removeClass("active");
 		},
 
 		/**
@@ -38,7 +38,7 @@ define([
 			var value = data.from_value;
 			if (value !== undefined) {
 				model.tcdSelectorValue(value);
-				topic.publish('updateTCDRenderingRule');
+				topic.publish("updateTCDRenderingRule");
 			}
 		}
 

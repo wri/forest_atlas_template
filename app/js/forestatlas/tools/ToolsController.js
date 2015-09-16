@@ -1047,7 +1047,7 @@ define(
                             break;
                     }
                 } else {
-                    basemapID = app.config.basemap;
+                    basemapID = "topo";
                 }
                 var url = layer.url;
                 var targetLayer = map.getLayer(mapmodel.currentActiveLayer().id);
