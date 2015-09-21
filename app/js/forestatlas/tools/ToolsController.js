@@ -734,12 +734,7 @@ define(
                 arrayUtil.forEach(map.layerIds, function(lid, index) {
 
                     // Only apply to ArcGIS Online Layers
-                    if (lid.search('online') === -1) {
-                        return;
-                    }
-
-
-                    if (map.getLayer(lid).supportsDynamicLayers === true) {
+                    if (map.getLayer(lid).supportsDynamicLayers === true && map.getLayer(lid).arcgisProps) {
                         dynamicLayersArray[index] = lid;
 
                         targetLayer = map.getLayer(lid);
@@ -838,11 +833,7 @@ define(
                 arrayUtil.forEach(map.layerIds, function(lid) {
 
                     // Only apply to ArcGIS Online Layers
-                    if (lid.toLowerCase().search('online') === -1) {
-                        return;
-                    }
-
-                    if (map.getLayer(lid).supportsDynamicLayers === true) {
+                    if (map.getLayer(lid).supportsDynamicLayers === true && map.getLayer(lid).arcgisProps) {
 
                         var targetLayer = map.getLayer(lid);
                         var out = [];
