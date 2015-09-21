@@ -50,7 +50,7 @@ define([], function () {
 
         useAdditionalLanguage: true,
 
-        webMapID: "7f24e4cfc66c420c98974bbf624bf003",
+        webMapID: "a6d99ea7fc0e40748744fd0ae37ef8c1",
 
         // NOW FOR THE LAYER SETTINGS
         // These are placeholders, they currently do nothing but they will soon control which layers/analysis types are visible
