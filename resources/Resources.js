@@ -1,9 +1,6 @@
 define([], function () {
   "use strict";
 
-    // TODO: This will later be broken into different sections based on what the user can configure in AGOL,
-    // for now, its in Alphabetical order because its easier to make sure we are not missing any keys that are in AGOL
-
     var o = {
 
         aboutLinkUrl: "http://cod.forest-atlas.org/",
@@ -17,6 +14,8 @@ define([], function () {
         defaultLanguage: "en",
 
         defaultTitle: "Forest Atlas of Democratic Republic of Congo",
+
+		excludeDocumentsTab: true,
 
         documentDirectory: "http://cod.forest-atlas.org/resources/docs/",
 
