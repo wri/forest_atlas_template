@@ -474,7 +474,7 @@ define(
                 if (active) {
 
                     // Update Legend for Image Service layers
-                    if (mapconfig[layerId].legendLayer) {
+                    if (mapconfig[layerId].hasOwnProperty('legendLayer')) {
                         layer = map.getLayer(mapconfig.legendLayer.id);
                         visibleLayers = layer.visibleLayers;
                         visibleLayers.push(mapconfig[layerId].legendLayer);
@@ -509,7 +509,7 @@ define(
                     }
 
                     // Update Legend for Image Service layers
-                    if (mapconfig[layerId].legendLayer) {
+                    if (mapconfig[layerId].hasOwnProperty('legendLayer')) {
                         layer = map.getLayer(mapconfig.legendLayer.id);
                         visibleLayers = layer.visibleLayers;
                         var index = arrayUtil.indexOf(visibleLayers, mapconfig[layerId].legendLayer);

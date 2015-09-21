@@ -77,7 +77,7 @@ define(
                     forestCoverLoss: {
                         url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestCover_lossyear/ImageServer',
                         id: 'forestCoverLoss',
-                        legendLayer: 11,
+                        legendLayer: 0,
                         defaultRange: [1, 13],
                         colormap: [[1, 219, 101, 152]],
                         rasterFunction: {
@@ -104,7 +104,7 @@ define(
                     treeCoverDensity: {
                         url: 'http://50.18.182.188:6080/arcgis/rest/services/TreeCover2000/ImageServer',
                         id: 'treeCoverDensity',
-                        legendLayer: 29,
+                        legendLayer: 2,
                         rasterFunction: {
                             "rasterFunction": "Colormap",
                             "rasterFunctionArguments": {
@@ -130,20 +130,20 @@ define(
                     forestGainLayer: {
                         url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestGain_2000_2012_map/MapServer',
                         id: 'forestGainLayer',
-                        legendLayer: 31
+                        legendLayer: 1
                     },
                     carbonLayer: {
-                        url: 'http://gis-potico.wri.org/arcgis/rest/services/CommoditiesAnalyzer/moremaps2_EN/MapServer',
+                        url: 'http://gis-gfw.wri.org/arcgis/rest/services/forest_cover/MapServer',
                         id: 'carbonLayer',
-                        defaultLayers: [23]
+                        defaultLayers: [1]
                     },
                     intactForestLayer: {
-                        url: 'http://gis-potico.wri.org/arcgis/rest/services/CommoditiesAnalyzer/moremaps2_EN/MapServer',
+                        url: 'http://gis-gfw.wri.org/arcgis/rest/services/forest_cover/MapServer',
                         id: 'intactForestLayer',
-                        defaultLayers: [24]
+                        defaultLayers: [0]
                     },
                     legendLayer: {
-                        url: 'http://gis-potico.wri.org/arcgis/rest/services/CommoditiesAnalyzer/moremaps2_EN/MapServer',
+                        url: 'http://gis-gfw.wri.org/arcgis/rest/services/legends/MapServer',
                         id: 'legendLayer',
                         defaultLayers: []
                     }
