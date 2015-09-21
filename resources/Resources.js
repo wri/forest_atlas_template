@@ -15,7 +15,7 @@ define([], function () {
 
         defaultTitle: "Forest Atlas of Democratic Republic of Congo",
 
-		excludeDocumentsTab: true,
+		excludeDocumentsTab: false,
 
         documentDirectory: "http://cod.forest-atlas.org/resources/docs/",
 
