@@ -58,7 +58,7 @@ define([], function() {
                 landCover: [ "Dense moist forest", "Submontane forest", "Mountain forest", "Edaphic forest", "Mangrove", "Forest-savanna mosaic", "Rural complex and young secondary forest", "Closed to open deciduous woodland", "Savanna woodland-Tree savanna", "Shrubland", "Grassland", "Aquatic grassland", "Swamp grassland", "Sparse vegetation", "Mosaic cultivated areas/vegeatation( herbaceous or shrub)", "Agriculture", "Irrigated agriculture", "Bare areas", "Artificial surfaces and associated areas", "Water Bodies"],
                 treeDensity: ["31 - 50%", "51 - 74%", "75 - 100%"],
                 intactForest: ["Intact Forest"],
-                carbonStock: ["0", "1 - 10", "11 - 20", "21- 35", "36 - 70", "71 - 100", "101 - 150", "151 - 200", "201 - 300", "Greater than 300"],
+                carbonStock: ["1 - 19", "20 - 79", "Greater than 80"],
                 activeFires: {
                     start: "There are",
                     active: "active fires",
@@ -213,7 +213,7 @@ define([], function() {
                 landCover: [ "Bosque húmedo", "Bosque premontano", "Bosque montano", "Bosque edáfico", "Bosque de mangle", "Mosaico sabana-bosque", "Copmlejo rural y bosque secondário joven", "Closed to open deciduous woodland", "Sabana arbolada", "Matorral", "Pradera", "Pradera aquática", "Pradera inundable", "Vegetación ralo", "Mosaico áreas cultivadas/ vegetación (herbáceo o matorral)", "Agricultura", "Agricultura irregada", "Áreas desnudas", "Superficies artificiales y áreas asociadas", "Cuerpos de agua"],
                 treeDensity: ["31 - 50%", "51 - 74%", "75 - 100%"],
                 intactForest: ["Bosque Intacto"],
-                carbonStock: ["0", "1 - 10", "11 - 20", "21- 35", "36 - 70", "71 - 100", "101 - 150", "151 - 200", "201 - 300", "Mayor de 300"],
+                carbonStock: ["1 - 19", "20 - 79", "Mayor de 80"],
                 activeFires: {
                     start: "Hay",
                     active: "incendios activos",
@@ -372,7 +372,7 @@ define([], function() {
                 landCover: [ "Forêt dense humide", "Forêt de transition", "Forêt de montagne", "Forêt édaphique", "Mangrove", "Mosaïque forêt-savane", "Complexe rural et forêt secondaire jeune", "Forêt sèche claire et/ou forêt sèche dense", "Savane boisée et/ou savane arborée", "Savane arbustive", "Savane herbeuse", "Prairie aquatique", "Prairie marécagueuse", "Faible couvert végétal", "Mosaïque terres cultivées/végétation naturelle (herbacée ou arbustive)", "Agriculture", "Agriculture irriguée", "Sans couvert végétal", "Villes et zones associées", "Eau"],
                 treeDensity: ["31 - 50%", "51 - 74%", "75 - 100%"],
                 intactForest: ["Forêt Intacte"],
-                carbonStock: ["0", "1 - 10", "11 - 20", "21- 35", "36 - 70", "71 - 100", "101 - 150", "151 - 200", "201 - 300", "Greater than 300"],
+                carbonStock: ["1 - 19", "20 - 79", "Greater than 80"],
                 activeFires: {
                     start: "Il y a eu",
                     active: "feux actifs",
@@ -528,7 +528,7 @@ define([], function() {
                 landCover: [ "Dense moist forest", "Submontane forest", "Mountain forest", "Edaphic forest", "Mangrove", "Forest-savanna mosaic", "Rural complex and young secondary forest", "Closed to open deciduous woodland", "Savanna woodland-Tree savanna", "Shrubland", "Grassland", "Aquatic grassland", "Swamp grassland", "Sparse vegetation", "Mosaic cultivated areas/vegeatation( herbaceous or shrub)", "Agriculture", "Irrigated agriculture", "Bare areas", "Artificial surfaces and associated areas", "Water Bodies"],
                 treeDensity: ["31 - 50%", "51 - 74%", "75 - 100%"],
                 intactForest: ["Intact Forest"],
-                carbonStock: ["0", "1 - 10", "11 - 20", "21- 35", "36 - 70", "71 - 100", "101 - 150", "151 - 200", "201 - 300", "Greater than 300"],
+                carbonStock: ["1 - 19", "20 - 79", "Greater than 80"],
                 activeFires: {
                     start: "There are",
                     active: "active fires",

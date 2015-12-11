@@ -6,7 +6,7 @@ define(
         var totalLossLabels = [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014];
 
         var iflBounds = [0, 1];
-        var carbonBounds = [0, 9];
+        var carbonBounds = [0, 2];
         var landCoverBounds = [1, 20];
         //var treeDensityBounds = [1, 1];
         var treeDensityBounds = [1, 3];
@@ -271,13 +271,23 @@ define(
                             labelKey: "intactForest"
                         },
                         carbon: {
-                            rasterId: "$1",
+                            rasterId: "$524",
                             bounds: carbonBounds,
-                            labels: ["0", "1 - 10", "11 - 20", "21- 35", "36 - 70", "71 - 100", "101 - 150", "151 - 200", "201 - 300", "Greater than 300"],
-                            colors: ["#fdffcc", "#faeeb9", "#f6ddaa", "#f4ca99", "#f1bc8b", "#eca97a", "#e89c6f", "#e08b5e", "#db7c54", "#d56f4a"],
+                            labels: ['1 - 19', '20 - 79', 'Greater than 80'],
+                            colors: ["#fdffcc", "#f1bc8b", "#d56f4a"],
                             title: "Annual Tree Cover Loss (in hectares) on Forest Carbon Stocks (Mg C /Ha)",
                             titleKey: "analysisCSChartTitle",
-                            labelKey: "carbonStock"
+                            labelKey: "carbonStock",
+                            formaId: '$15',
+                            rasterRemap: {
+                              'rasterFunction': 'Remap',
+                              'rasterFunctionArguments': {
+                                'InputRanges': [0, 20, 20, 80, 80, 370],
+                                'OutputValues': [0, 1, 2],
+                                'Raster': '$524',
+                                'AllowUnmatched': false
+                              }
+                            }
                         },
                         landCover: {
                             rasterId: "$523",
