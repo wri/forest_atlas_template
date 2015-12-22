@@ -365,6 +365,15 @@ define([
                       });
                     }
                   });
+
+                  //- Sort the documents by year
+                  docs.sort(function (a, b) {
+                    if (a.year === 'N/A') return 1
+                    if (a.year < b.year) return 1
+                    if (a.year > b.year) return -1
+                    return 0
+                  });
+
                   toolsModel.featureDocuments(docs);
                   domClass.add("documents-loader", "hidden");
                 }, function (err) {

@@ -330,12 +330,12 @@
 									<th data-bind="text: documentLink"></th>
 								</thead>
 								<tbody data-bind='foreach: featureDocuments'>
-									<tr>
+									<tr data-bind='attr: {title: name}'>
 										<td data-bind="text: type"></td>
 										<td data-bind="text: author"></td>
 										<td data-bind="text: year"></td>
 										<td>
-											<a data-bind='attr: {href: url, title: name}' target='_blank'>
+											<a data-bind='attr: {href: url}' target='_blank'>
 												<div class="download-icon"></div>
 											</a>
 										</td>

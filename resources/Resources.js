@@ -15,7 +15,9 @@ define([], function () {
 
         defaultTitle: "Forest Atlas of Gabon",
 
-        excludeDocumentsTab: true,
+        defaultLayerTransparency: 100,
+
+        excludeDocumentsTab: false,
 
         documentDirectory: "http://gab.forest-atlas.org/resources/docs/",
 
