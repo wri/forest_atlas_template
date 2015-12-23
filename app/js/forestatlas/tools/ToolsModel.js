@@ -1,6 +1,6 @@
 define(
-    ["declare", "ko", "dom", "topic", "toolsconfig", "memory", "number", "array", "root/languages", "query", "attr"],
-    function(declare, ko, dom, topic, Config, Memory, number, arrayUtil, languages, query, attr) {
+    ["declare", "mainmodel", "ko", "dom", "topic", "toolsconfig", "memory", "number", "array", "root/languages", "query", "attr", "toolsevents"],
+    function(declare, MainModel, ko, dom, topic, Config, Memory, number, arrayUtil, languages, query, attr, Events) {
         var o = declare(null, {
 
 
@@ -13,9 +13,9 @@ define(
                 o._dataModel = {};
 
 
-                require(["toolsevents", "mainmodel", "topic"],
+                require(["toolsevents"],
 
-                    function(Events, MainModel, topic) {
+                    function(Events) {
                         var mainmodel = MainModel.getVM();
                         var currentLanguage = mainmodel.currentLanguage();
 

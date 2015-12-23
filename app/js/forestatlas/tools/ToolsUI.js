@@ -44,8 +44,7 @@ define(
         "esrirequest",
         "tiledmap",
         "ko",
-        "connect",
-        "dojo/domReady!"
+        "connect"
     ], function (declare, topic, on, all, domConstruct, query, Query, FeatureLayer, Deferred, aspect, arrayUtil, registry, UIFactory, Config, Events, Model, MapConfig, InfoTemplate, dom, ready, attr, domClass, string, MapUI, MainModel, BasemapGallery, Graphic, arcgisUtils, legendDijit, Dialog, TooltipDialog, popup, PrintTemplate, HorizontalSlider, Scalebar, domStyle, contentPane, CheckBox, Memory, ComboBox, Print, LegendLayer, esriRequest, ArcGISTiledMapServiceLayer, knockout, connect) {
 
         var o = declare(null, {

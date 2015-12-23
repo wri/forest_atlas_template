@@ -16,8 +16,7 @@ define([
     "dijit/layout/BorderContainer",
     "dijit/TitlePane",
     "dijit/form/SimpleTextarea",
-    "dijit/Dialog",
-    "dojo/domReady!"
+    "dijit/Dialog"
 ], function(declare, mparser, mainevents, mainconfig, mainui, hashcontroller, hash, ioQuery, Helper) {
 
     return declare(null, {

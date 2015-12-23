@@ -1,0 +1,1 @@
+define(["dojo/on","dojo/topic","dojo/dom-geometry","dojo/_base/window"],function(o,i,n,t){var e,d=767,u=t.body(),a=function(){width=n.position(u).w,d>e&&width>d&&i.publish("changeLayout",!1),e>d&&width<d&&i.publish("changeLayout",!0),e=width};return{isMobile:function(){return n.position(u).w<d},enableLayout:function(){o(t.global,"resize",a)}}});

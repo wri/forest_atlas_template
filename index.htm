@@ -95,6 +95,13 @@
 		    ["maincontroller", "common/main/MainController"],
 		    ["mainmodel", "common/main/MainModel"],
 
+				// tools
+				['toolsconfig', 'atlas/tools/ToolsConfig'],
+		    ['toolsevents', 'atlas/tools/ToolsEvents'],
+		    ['toolsui', 'atlas/tools/ToolsUI'],
+		    ['toolsmodel', 'atlas/tools/ToolsModel'],
+		    ['toolscontroller', 'atlas/tools/ToolsController'],
+
 		    //Other Libraries
 		    ["ko", "common/lib/knockout221"],
 		   // ["resources","resources"],
@@ -202,64 +209,14 @@
 		    ["deferred",  "dojo/Deferred"],
 		    ["webMercatorUtils","esri/geometry/webMercatorUtils"],
 		    ["accordionContainer", "dijit/layout/AccordionContainer"]
-			]
+			],
+			deps: ['dojo/domReady!'],
+			callback: function () { require(['root/run']); }
     };
   </script>
 	<script type="text/javascript" src="http://js.arcgis.com/3.13"></script>
 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 	<script src="app/js/common/lib/ion.rangeSlider.min.js"></script>
-	<script type="text/javascript">
-
-		var app = {};
-
-		require(["root/template"],function(Template){
-
-			Template.getApplicationInformation().then(function (commonConfig) {
-				// If Config Options are Found, make them into the main config object
-				if (commonConfig) {
-					app.config = commonConfig;
-				}
-
-				launch(true);
-			}, function (error) {
-				launch(false);
-			});
-
-
-			function launch (hasAGOLConfig) {
-				// This is necessary due to the way the original developer set up the project
-				// We need to inject some config options in Main and app.config needs
-				// to be available before Main is required
-				require(["root/main", "res/Resources", "dojo/_base/lang"], function (Main, Resource, lang) {
-					// Merge Resources in here and then remove all references of resources from the application
-					// Only merge in options that are undefined
-					var languages,
-							lang,
-							key;
-
-					if (hasAGOLConfig) {
-						// Merge in the basics first
-						for (key in app.config) {
-							if (app.config[key] === undefined || app.config[key] === '') {
-								app.config[key] = Resource[key];
-							}
-						}
-
-					} else {
-						app.config = Resource;
-					}
-
-					if (app.config.useAdditionalLanguage === false) {
-						document.body.className += ' one-language';
-					}
-
-					// If app.config.defaultLanguage for some reason is not defined, default to english
-					if (app.config.defaultLanguage === undefined) { app.config.defaultLanguage = 'en'; }
-					var main = new Main(app.config.defaultLanguage);
-				});
-			}
-		});
-	</script>
 </head>
 <body class="tundra app">
 	<div id="customPopup">
