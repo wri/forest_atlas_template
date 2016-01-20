@@ -17,8 +17,11 @@ Defaults for the configuration panels can be set in the bottom of the configurat
 ## User Guide
 <p>Add explanation of how to use when completed and in AGOL.</p>
 
-## Requirements
-<p>Add Requirements to run the app, including which ones in the configuration panel will be necessary to make the app work correctly.</p>
+### Build
+1. Install [node.js](https://nodejs.org/en/)
+2. `npm install`
+3. `npm run dist`
+4. Built code will be available in the `www` directory
 
 ### Future Updates
 * Add documentation
