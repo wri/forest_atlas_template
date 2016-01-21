@@ -79,6 +79,9 @@ define(
                         o._vm.shareToolsVisible = ko.observable(false);
                         o._vm.showUploadTools = ko.observable(false);
 
+                        // Enable/Disable Restoration Module
+                        o._vm.resotrationModule = ko.observable(true);
+
 
                         // Items for Year Dropdown for forest cover loss layer
                         o._vm.forestLossYears = ko.observableArray([
