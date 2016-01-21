@@ -1,6 +1,6 @@
 define(
-    ["declare", "mainmodel", "ko", "dom", "topic", "toolsconfig", "memory", "number", "array", "root/languages", "query", "attr", "toolsevents"],
-    function(declare, MainModel, ko, dom, topic, Config, Memory, number, arrayUtil, languages, query, attr, Events) {
+    ["declare", "mainmodel", "ko", "dom", "topic", "toolsconfig", "memory", "number", "array", "root/languages", "query", "attr", "toolsevents", "root/analysis/ethiopiaConfig"],
+    function(declare, MainModel, ko, dom, topic, Config, Memory, number, arrayUtil, languages, query, attr, Events, ethiopiaConfig) {
         var o = declare(null, {
 
 
@@ -79,9 +79,9 @@ define(
                         o._vm.shareToolsVisible = ko.observable(false);
                         o._vm.showUploadTools = ko.observable(false);
 
-                        // Enable/Disable Restoration Module
+                        // Enable/Disable Restoration Module for Ethiopia Atlas
                         o._vm.resotrationModule = ko.observable(true);
-
+                        o._vm.resotrationModuleOptions = ko.observableArray(ethiopiaConfig.options);
 
                         // Items for Year Dropdown for forest cover loss layer
                         o._vm.forestLossYears = ko.observableArray([

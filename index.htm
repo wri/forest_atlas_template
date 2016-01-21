@@ -257,14 +257,9 @@
 								<!-- /ko -->
 								<!-- ko if: resotrationModule -->
 								<optgroup label='Restoration Potential'>
-									<option>Potential for agri:silviculture and agro:silvo:pastoralism</option>
-									<option>Potential for commercial plantation as buffer zone to protected areas and national forest priority areas</option>
-									<option>Potential for commercial plantation on bare soil and shrubland</option>
-									<option>Potential for establishing natural forest outside of cropland</option>
-									<option>Potential for restocking of degraded natural forest</option>
-									<option>Potential for silvo:pastoralism</option>
-									<option>Potential for tree:based buffer zone along river banks, lakes and reservoirs</option>
-									<option>Potential for woodlot</option>
+									<!-- ko foreach: resotrationModuleOptions -->
+									<option data-bind="attr: {value: id}, text: label"></option>
+									<!-- /ko -->
 								</optgroup>
 								<optgroup label='Other Analyses'>
 									<option data-bind="attr: {value: analysisLoss}, text: analysisLoss"></option>
