@@ -6,8 +6,14 @@ html
     meta(name='viewport', id='viewport', content='width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1')
     meta(http-equiv='X-UA-Compatible', content='IE=Edge')
     meta(charset='utf-8')
+
+    style
+      :stylus
+        @require 'css/critical'
+    link(rel='stylesheet', href='css/app.css?#{version}')
+    link(rel='stylesheet', href='http://js.arcgis.com/#{esriVersion}/esri/css/esri.css')
   body
-    #root.root
+    #root
     script.
       var base = location.href.replace(/\/[^/]+$/, '');
       var dojoConfig = {
@@ -27,7 +33,7 @@ html
           ['alt', 'vendor/alt/dist/alt.min'],
           ['react', 'vendor/react/react.min'],
           ['react-dom', 'vendor/react/react-dom.min'],
-          ['babel-polyfill', 'vendor/browser-polyfill']
+          ['babel-polyfill', 'vendor/babel-polyfill/browser-polyfill']
         ],
         deps: ['dojo/domReady!'],
         callback: function () {require(['js/main']);}
