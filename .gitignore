@@ -1,2 +1,9 @@
-.DS_Store
+# Ignore the build and dist directories
+build
+dist
+
+# Ignore these, just do it
 node_modules
+.DS_Store
+*.log
+*.swp
