@@ -81,6 +81,7 @@ define(
 
                         // Enable/Disable Restoration Module for Ethiopia Atlas
                         o._vm.resotrationModule = ko.observable(true);
+                        o._vm.restorationModuleType = ko.observable('restoration');
                         o._vm.resotrationModuleOptions = ko.observableArray(ethiopiaConfig.options);
 
                         // Items for Year Dropdown for forest cover loss layer
@@ -194,10 +195,18 @@ define(
                             require(['mapui', 'atlas/tools/Results', 'esri/tasks/query', 'esri/tasks/QueryTask'], function (MapUI, Results, EsriQuery, QueryTask) {
                                 var target = evt.target ? evt.target : evt.srcElement;
                                 var currentType = target.value; //target.getAttribute('data-class');
-                                model.currentAnalysisType(currentType);
                                 var infoWindow = MapUI.getMap().infoWindow;
                                 var activeFeature = infoWindow.getSelectedFeature();
+                                var options = {};
+                                var activeOption = target.options[target.selectedIndex];
 
+                                if (currentType === model.restorationModuleType()) {
+                                  options = {
+                                    index: +activeOption.getAttribute('data-option')
+                                  };
+                                }
+
+                                model.currentAnalysisType(currentType);
                                 if (activeFeature.attributes.OBJECTID) {
                                     var objectId = activeFeature.attributes.OBJECTID;
                                     var layer = activeFeature._layer;
@@ -211,13 +220,13 @@ define(
 
                                     queryTask.execute(esriQuery, function(featureSet) {
                                         if (featureSet.features.length > 0) {
-                                            Results.getResultsForType(currentType, featureSet.features[0]);
+                                            Results.getResultsForType(currentType, featureSet.features[0], options);
                                         } else {
-                                            Results.getResultsForType(currentType, activeFeature);
+                                            Results.getResultsForType(currentType, activeFeature, options);
                                         }
                                     });
                                 } else {
-                                    Results.getResultsForType(currentType, activeFeature);
+                                    Results.getResultsForType(currentType, activeFeature, options);
                                 }
 
                             });

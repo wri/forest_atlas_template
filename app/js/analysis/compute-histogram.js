@@ -9,7 +9,7 @@ define([
   * @param {object} content - Payload for the request
   * @return {deferred}
   */
-  var computeHistogram = function computeHistogram () {
+  var computeHistogram = function computeHistogram (url, content) {
     if (content.geometry) { content.geometry = JSON.stringify(content.geometry); }
     if (content.renderingRule) { content.renderingRule = JSON.stringify(content.renderingRule); }
     if (content.mosaicRule) { content.mosaicRule = JSON.stringify(content.mosaicRule); }
@@ -51,7 +51,7 @@ define([
   var ComputeHistogram = {
 
     multiplyRasters: function (rasterA, rasterB, geometry) {
-      return computeHistogram(analysisConfig.imageService, {
+      return computeHistogram(analysisConfig.imageServer, {
         renderingRule: Rules.getArithmeticRule(rasterA, rasterB, 3),
         geometry: geometry
       });

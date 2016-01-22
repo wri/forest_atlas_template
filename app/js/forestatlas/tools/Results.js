@@ -2,8 +2,9 @@ define([
 	'toolsmodel',
 	'dojo/dom-class',
 	'dojo/promise/all',
-	'atlas/tools/Fetcher'
-], function ( Model, domClass, all, Fetcher) {
+	'atlas/tools/Fetcher',
+	'root/analysis/restoration-analysis'
+], function ( Model, domClass, all, Fetcher, Restoration) {
 	'use strict';
 
 	var Results = {
@@ -19,8 +20,9 @@ define([
 		* Get Results for the provided type of analysis and graphic and render that into the Analysis Tab
 		* @param {string} type - Type of analysis to be performed
 		* @param {object} graphic - esri graphic, should be of type polygon
+		* @param {object} options - additional options for the analysis
 		*/
-		getResultsForType: function (type, graphic) {
+		getResultsForType: function (type, graphic, options) {
 			this.debug('Results >>> getResultsForType');
 
 			var viewModel = Model.getVM();
@@ -61,6 +63,10 @@ define([
 					this.getLandCoverComposition(graphic);
           ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Land Cover Composition.');
 				break;
+				case viewModel.restorationModuleType():
+					Restoration.performRestorationAnalysis(graphic, options.index);
+					ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed with the restoration module.');
+				break
 			}
 
 		},
