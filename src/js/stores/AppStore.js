@@ -6,15 +6,21 @@ class AppStore {
   constructor () {
 
     this.language = 'en';
+    this.settings = {};
 
     this.bindListeners({
-      setLanguage: appActions.setLanguage
+      setLanguage: appActions.setLanguage,
+      applySettings: appActions.applySettings
     });
 
   }
 
-  setLanguage (payload) {
-    this.language = payload.language;
+  setLanguage (language) {
+    this.language = language;
+  }
+
+  applySettings (settings) {
+    this.settings = settings;
   }
 
 }

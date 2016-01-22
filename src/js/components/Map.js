@@ -3,7 +3,6 @@ import MapStore from 'stores/MapStore';
 import React, {Component} from 'react';
 import {mapConfig} from 'js/config';
 
-
 export default class Map extends Component {
 
   constructor (props) {
@@ -12,8 +11,13 @@ export default class Map extends Component {
     MapStore.listen(this.storeDidUpdate);
   }
 
-  componentDidMount () {
-    mapActions.createMap(mapConfig);
+  componentDidUpdate (prevProps) {
+    const settings = this.props.settings;
+    if (prevProps.settings.webmap !== settings.webmap) {
+      //- defer is a hack to tell the action to wait for the dispatcher to finish dispatching the previous action
+      //- This has to be done because it it part of the path from a pervious dispatch
+      mapActions.createMap.defer(mapConfig.id, settings.webmap, mapConfig.options);
+    }
   }
 
   storeDidUpdate = () => {

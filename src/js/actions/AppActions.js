@@ -2,11 +2,8 @@ import dispatcher from 'js/dispatcher';
 
 class AppActions {
 
-  setLanguage (iso) {
-    return {
-      language: iso
-    };
-  }
+  setLanguage = (language) => language;
+  applySettings = (settings) => settings;
 
 }
 

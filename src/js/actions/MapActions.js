@@ -2,8 +2,13 @@ import dispatcher from 'js/dispatcher';
 
 class MapActions {
 
-  //- Straight through dispatch
-  createMap (mapConfig) { return mapConfig; }
+  createMap (id, webmap, options) {
+    return {
+      id: id,
+      webmap: webmap,
+      options: options
+    };
+  }
 
 }
 

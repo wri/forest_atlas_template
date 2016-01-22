@@ -1,6 +1,8 @@
+import appActions from 'actions/AppActions';
 import Header from 'components/Header';
 import AppStore from 'stores/AppStore';
 import React, {Component} from 'react';
+import template from 'utils/template';
 import Map from 'components/Map';
 
 export default class App extends Component {
@@ -11,6 +13,12 @@ export default class App extends Component {
     AppStore.listen(this.storeDidUpdate);
   }
 
+  componentDidMount() {
+    template.getAppInfo().then(settings => {
+      appActions.applySettings(settings);
+    });
+  }
+
   storeDidUpdate = () => {
     this.setState(AppStore.getState());
   };
@@ -18,8 +26,8 @@ export default class App extends Component {
   render () {
     return (
       <div className='root'>
-        <Header language={this.state.language} />
-        <Map language={this.state.language} />
+        <Header {...this.state} />
+        <Map {...this.state} />
       </div>
     );
   }

@@ -1,27 +1,25 @@
+import arcgisUtils from 'esri/arcgis/utils';
 import mapActions from 'actions/MapActions';
 import dispatcher from 'js/dispatcher';
-import EsriMap from 'esri/map';
-
-let map;
 
 class MapStore {
 
   constructor () {
 
-    this.loaded = false;
+    this.map = {};
 
     this.bindListeners({
       createMap: mapActions.createMap
     });
   }
 
-  createMap (mapConfig) {
-    brApp.debug('MapStore >>> createMap');
-    map = new EsriMap(mapConfig.id, mapConfig.options);
-    map.on('load', () => {
-      map.graphics.clear();
-      this.loaded = true;
+  createMap (settings) {
+    arcgisUtils.createMap(settings.webmap, settings.id, { mapOptions: settings.options }).then(response => {
+      this.map = response.map;
+      this.map.graphics.clear();
       this.emitChange();
+      //- Make the map a global in debug mode for easier debugging
+      if (brApp.debug) { brApp.map = this.map; }
     });
   }
 
