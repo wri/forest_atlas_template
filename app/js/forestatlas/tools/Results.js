@@ -29,6 +29,13 @@ define([
 
 			// Show the loader by removing the class hiding it
 			domClass.remove('analysis-loader', 'hidden');
+			// Hide the tree cover density tool if were in Resotration Analysis, otherwise make sure its visible
+			var tcdToolNode = document.querySelector('.analysis-selection-types .tcd-selector-wrapper');
+			if (type === viewModel.restorationModuleType()) {
+				domClass.add(tcdToolNode, 'hidden');
+			} else {
+				domClass.remove(tcdToolNode, 'hidden');
+			}
 
 			switch (type) {
 				case viewModel.analysisLoss():

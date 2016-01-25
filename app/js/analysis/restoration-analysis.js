@@ -92,10 +92,6 @@ define([
         console.log(KEYS.LAND_COVER, results[KEYS.LAND_COVER].histograms);
         console.log(KEYS.POPULATION, results[KEYS.POPULATION].histograms);
         console.log(KEYS.TREE_COVER, results[KEYS.TREE_COVER].histograms);
-        // TODO:
-        // 1. Remove No Data - Check
-        // 2. Remove Display results with > 30%
-        // 3. Remove data if no values are present - Check
       });
     }
 
