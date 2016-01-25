@@ -464,9 +464,17 @@ top:0px;
 	top: 50%;
 }
 
+#results-chart-container {
+	overflow: auto;
+}
+
 #analysis-chart {
 	height: 100%;
 	width: 98%; /* Give the labels a little extra padding */
+}
+
+.restoration-chart {
+	height: 150px;
 }
 
 .highcharts-title {
