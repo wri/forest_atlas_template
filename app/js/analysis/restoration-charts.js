@@ -1,5 +1,13 @@
 define(['root/analysis/constants'], function (KEYS) {
 
+  var generateErrorMarkup = function generateErrorMarkup (label) {
+    return (
+      '<section class="restoration-error">' +
+        '<div>There is no ' + label + ' data for this restoration option in this area.</div>' +
+      '</section>'
+    );
+  };
+
   return {
 
     prepareContainer: function (title, printOptions) {
@@ -14,17 +22,22 @@ define(['root/analysis/constants'], function (KEYS) {
     },
 
     makeChart: function (chartId, name, data) {
-      $('#' + chartId).highcharts({
-        chart: { type: 'bar' },
-        title: { text: null },
-        credits: { enabled: false },
-        exporting: { enabled: false },
-        xAxis: { categories: [name] },
-        yAxis: { title: { enabled: false } },
-        plotOptions: { series: { stacking: 'normal' } },
-        // Array of objects [ { name: '', data: [oneValue] } ]
-        series: data
-      });
+      // Only render the chart if data is present, otherwise remove the container
+      if (data.length > 0) {
+        $('#' + chartId).highcharts({
+          chart: { type: 'bar' },
+          title: { text: null },
+          credits: { enabled: false },
+          exporting: { enabled: false },
+          xAxis: { categories: [name] },
+          yAxis: { title: { enabled: false } },
+          plotOptions: { series: { stacking: 'normal' } },
+          // Array of objects [ { name: '', data: [oneValue] } ]
+          series: data
+        });
+      } else {
+        $('#' + chartId).append(generateErrorMarkup(name));
+      }
     }
 
   };

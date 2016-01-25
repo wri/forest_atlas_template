@@ -62,7 +62,7 @@ gulp.task('imagemin', function () {
 
 gulp.task('minify-html', function () {
   return gulp.src(config.html.src)
-    .pipe(htmlmin())
+    .pipe(htmlmin({ comments: true }))
     .pipe(minifyInline())
     .pipe(gulp.dest(config.html.dest));
 });
