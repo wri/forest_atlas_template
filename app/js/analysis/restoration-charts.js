@@ -32,6 +32,7 @@ define(['root/analysis/constants'], function (KEYS) {
           xAxis: { categories: [name] },
           yAxis: { title: { enabled: false } },
           plotOptions: { series: { stacking: 'normal' } },
+          tooltip: { valueSuffix: ' (HA)' },
           // Array of objects [ { name: '', data: [oneValue] } ]
           series: data
         });
