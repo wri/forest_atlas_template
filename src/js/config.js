@@ -6,7 +6,7 @@ const config = {
       force3DTransforms: true,
       showAttribution: false,
       fadeOnZoom: true,
-      // slider: false,
+      slider: false,
       logo: false
     }
   }

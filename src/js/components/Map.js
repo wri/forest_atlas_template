@@ -1,3 +1,6 @@
+import Controls from 'components/MapControls/ControlPanel';
+import InfoWindow from 'components/InfoPanel/InfoWindow';
+import InfoPanel from 'components/InfoPanel/InfoPanel';
 import mapActions from 'actions/MapActions';
 import MapStore from 'stores/MapStore';
 import React, {Component} from 'react';
@@ -25,10 +28,17 @@ export default class Map extends Component {
   };
 
   render () {
+    const {map} = this.state;
+    const infoWindow = map.infoWindow && map.infoWindow.isShowing ? <InfoWindow map={map} /> : undefined;
+    const showInfoPanel = (!!infoWindow);
+
     return (
       <div className='map-container'>
         <div id={mapConfig.id} className='map'>
-
+          <Controls map={this.state.map} />
+          <InfoPanel visible={showInfoPanel} >
+            {infoWindow}
+          </InfoPanel>
         </div>
       </div>
     );

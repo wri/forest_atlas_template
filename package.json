@@ -46,6 +46,7 @@
     "gulp-minify-inline": "^0.1.1",
     "gulp-plumber": "^1.0.1",
     "gulp-stylus": "^2.2.0",
-    "jstransformer-stylus": "^1.0.0"
+    "jstransformer-stylus": "^1.0.0",
+    "react-prerender": "0.0.3"
   }
 }

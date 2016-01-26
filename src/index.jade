@@ -2,10 +2,7 @@ doctype
 html
   head
     title #{defaultTitle}
-    meta(name='author', content='#{author}')
-    meta(name='viewport', id='viewport', content='width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1')
-    meta(http-equiv='X-UA-Compatible', content='IE=Edge')
-    meta(charset='utf-8')
+    include jade/meta.jade
 
     style
       :stylus
@@ -13,6 +10,7 @@ html
     link(rel='stylesheet', href='css/app.css?#{version}')
     link(rel='stylesheet', href='http://js.arcgis.com/#{esriVersion}/esri/css/esri.css')
   body
+    include jade/svg.jade
     #root
     script.
       var base = location.href.replace(/\/[^/]+$/, '');
