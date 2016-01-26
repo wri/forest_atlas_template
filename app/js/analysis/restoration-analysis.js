@@ -33,11 +33,12 @@ define([
   * Put data into the format highcharts wants, and then filter out any data with a value of 0
   * or data in the No Data category
   */
-  var formatData = function formatData (data, labels) {
+  var formatData = function formatData (data, labels, colors) {
     return data.map(function (datum, index) {
       return {
         name: labels[index],
-        data: [datum]
+        data: [datum],
+        color: colors[index]
       };
     }).filter(function (record) {
       return record.data[0] !== 0 && record.name !== 'No Data';
@@ -77,11 +78,11 @@ define([
         lcData = padResults(getCounts(results[KEYS.LAND_COVER].histograms), lcConfig.classes.length);
         popData = padResults(getCounts(results[KEYS.POPULATION].histograms), popConfig.classes.length);
         tcData = padResults(getCounts(results[KEYS.TREE_COVER].histograms), tcConfig.classes.length);
-        // Format the results into highcharts expected format { name, data }
-        slopeData = formatData(slopeData, slopeConfig.classes);
-        lcData = formatData(lcData, lcConfig.classes);
-        popData = formatData(popData, popConfig.classes);
-        tcData = formatData(tcData, tcConfig.classes);
+        // Format the results into highcharts expected format { name, data, color }
+        slopeData = formatData(slopeData, slopeConfig.classes, slopeConfig.colors);
+        lcData = formatData(lcData, lcConfig.classes, lcConfig.colors);
+        popData = formatData(popData, popConfig.classes, popConfig.colors);
+        tcData = formatData(tcData, tcConfig.classes, tcConfig.colors);
         // title, chartId, name for axis, data
         charts.makeChart(KEYS.SLOPE_CHART_ID, slopeConfig.name, slopeData);
         charts.makeChart(KEYS.LAND_COVER_CHART_ID, lcConfig.name, lcData);
