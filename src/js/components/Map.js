@@ -1,6 +1,7 @@
 import Controls from 'components/MapControls/ControlPanel';
 import InfoWindow from 'components/InfoPanel/InfoWindow';
 import InfoPanel from 'components/InfoPanel/InfoPanel';
+import arcgisUtils from 'esri/arcgis/utils';
 import mapActions from 'actions/MapActions';
 import MapStore from 'stores/MapStore';
 import React, {Component} from 'react';
@@ -10,6 +11,7 @@ export default class Map extends Component {
 
   constructor (props) {
     super(props);
+    this.map = {};
     this.state = MapStore.getState();
     MapStore.listen(this.storeDidUpdate);
   }
@@ -17,9 +19,7 @@ export default class Map extends Component {
   componentDidUpdate (prevProps) {
     const settings = this.props.settings;
     if (prevProps.settings.webmap !== settings.webmap) {
-      //- defer is a hack to tell the action to wait for the dispatcher to finish dispatching the previous action
-      //- This has to be done because it it part of the path from a pervious dispatch
-      mapActions.createMap.defer(mapConfig.id, settings.webmap, mapConfig.options);
+      this.createMap(settings);
     }
   }
 
@@ -27,15 +27,27 @@ export default class Map extends Component {
     this.setState(MapStore.getState());
   };
 
+  createMap = (settings) => {
+    arcgisUtils.createMap(settings.webmap, this.refs.map, { mapOptions: mapConfig.options }).then(response => {
+      this.map = response.map;
+      this.map.graphics.clear();
+      mapActions.mapUpdated();
+      //- Attach events I need for the info window
+      this.map.infoWindow.on('show, hide, set-features, selection-change', mapActions.mapUpdated);
+      //- Make the map a global in debug mode for easier debugging
+      if (brApp.debug) { brApp.map = this.map; }
+    });
+  };
+
   render () {
-    const {map} = this.state;
+    const map = this.map;
     const infoWindow = map.infoWindow && map.infoWindow.isShowing ? <InfoWindow map={map} /> : undefined;
     const showInfoPanel = (!!infoWindow);
 
     return (
       <div className='map-container'>
-        <div id={mapConfig.id} className='map'>
-          <Controls map={this.state.map} />
+        <div ref='map' className='map'>
+          <Controls map={this.map} />
           <InfoPanel visible={showInfoPanel} >
             {infoWindow}
           </InfoPanel>

@@ -2,12 +2,10 @@ import dispatcher from 'js/dispatcher';
 
 class MapActions {
 
-  createMap (id, webmap, options) {
-    return {
-      id: id,
-      webmap: webmap,
-      options: options
-    };
+  //- Action to notify the store the map has changed so we can rerender UI changes
+  //- if necessary
+  mapUpdated () {
+    return {};
   }
 
 }
