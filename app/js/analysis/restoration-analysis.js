@@ -14,7 +14,7 @@ define([
   * array as it contains the null?( or unmatched) values from the request
   */
   var getCounts = function getCounts (histograms) {
-    return histograms.length === 0 ? histograms : histograms[0].counts.slice(1);
+    return histograms.length === 0 ? histograms : histograms[0].counts;
   };
 
   /**
