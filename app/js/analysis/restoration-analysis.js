@@ -68,7 +68,7 @@ define([
 
       promises[KEYS.SLOPE] = computeHistogram.multiplyRasters(slopeConfig.id, rasterId, simplifiedGeometry);
       promises[KEYS.LAND_COVER] = computeHistogram.multiplyRasters(lcConfig.id, rasterId, simplifiedGeometry);
-      promises[KEYS.POPULATION] = computeHistogram.multiplyRasters(popConfig, rasterId, simplifiedGeometry);
+      promises[KEYS.POPULATION] = computeHistogram.multiplyRasters(popConfig.id, rasterId, simplifiedGeometry);
       promises[KEYS.TREE_COVER] = computeHistogram.multiplyRasters(tcConfig.id, rasterId, simplifiedGeometry);
 
       all(promises).always(function (results) {
