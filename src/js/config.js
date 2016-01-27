@@ -1,10 +1,10 @@
 const config = {
   map: {
-    id: 'map',
     options: {
       navigationMode: 'css-transforms',
       force3DTransforms: true,
       showAttribution: false,
+      smartNavigation: false,
       fadeOnZoom: true,
       slider: false,
       logo: false

@@ -11,7 +11,9 @@ export default class Header extends Component {
   render () {
     return (
       <div className='app-header'>
-        <div className='app-header__title'>{resources.defaultTitle}</div>
+        <div className='inner'>
+          <div className='app-header__title'>{resources.defaultTitle}</div>
+        </div>
       </div>
     );
   }

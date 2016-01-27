@@ -3,8 +3,8 @@ var autoprefixer = require('gulp-autoprefixer');
 var gulpPlumber = require('gulp-plumber');
 var browserSync = require('browser-sync');
 var imagemin = require('gulp-imagemin');
+var locals = require('./src/locals');
 var stylus = require('gulp-stylus');
-var locals = require('./locals');
 var jade = require('gulp-jade');
 var gulp = require('gulp');
 
@@ -26,7 +26,7 @@ var config = {
     dist: 'dist'
   },
   jade: {
-    watch: ['src/**/*.jade', 'src/css/critical.styl'],
+    watch: ['src/**/*.jade', 'build/css/critical.css'],
     src: ['src/index.jade'],
     build: 'build',
     dist: 'dist'

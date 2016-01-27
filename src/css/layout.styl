@@ -9,6 +9,14 @@ body
   padding 0
   margin 0
 
+.app-header
+  position absolute
+  height $headerHeight
+  display flex
+  width 100%
+  left 0
+  top 0
+
 .map-container
   position absolute
   top $headerHeight
@@ -16,4 +24,11 @@ body
   right 0
   left 0
 
-@require 'header'
+@media (max-width: 850px)
+  .app-header
+    top auto
+    bottom 0
+
+  .map-container
+    bottom $headerHeight
+    top 0
