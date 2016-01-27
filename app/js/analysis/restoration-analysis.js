@@ -85,6 +85,8 @@ define([
           return;
         }
 
+        console.log(results);
+
         // Get an array of data with the same length as the classes by parsing counts and padding the array with 0's
         slopeData = padResults(getCounts(results[KEYS.SLOPE].histograms), slopeConfig.classes.length);
         lcData = padResults(getCounts(results[KEYS.LAND_COVER].histograms), lcConfig.classes.length);

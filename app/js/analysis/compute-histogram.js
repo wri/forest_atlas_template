@@ -1,15 +1,41 @@
 define([
   'esri/request',
+  'dojo/Deferred',
   'root/analysis/analysisConfig'
-], function (esriRequest, analysisConfig) {
+], function (esriRequest, Deferred, analysisConfig) {
+
+  var INVALID_IMAGE_SIZE = 'The requested image exceeds the size limit.';
+
+  /**
+  * check if the error is for an invalid image size so we can retry the request with a
+  * larger pixel size
+  */
+  var errorIsInvalidImageSize = function errorIsInvalidImageSize (error) {
+    return (
+      error.code === 400 &&
+      error.details &&
+      error.details.length > 0 &&
+      error.details[0] === INVALID_IMAGE_SIZE
+    );
+  };
+
+  /**
+  * adjust the results based on the pixel size, if the pixel size is the default value of 100
+  * this returns the same value, if it is 500, it ocnverts the value to hectares
+  */
+  var pixelSizeMapper = function pixelSizeMapper (pixelSize) {
+    return function (value) {
+      return (value * Math.pow(pixelSize, 2)) / 10000;
+    }
+  };
 
   /**
   * Compute Histogram Wrapper
   * @param {string} url - Image Service Url
   * @param {object} content - Payload for the request
-  * @return {deferred}
+  * @return {prmoise}
   */
-  var computeHistogram = function computeHistogram (url, content) {
+  var computeHistogram = function computeHistogram (url, content, callback, errback) {
     if (content.geometry) { content.geometry = JSON.stringify(content.geometry); }
     if (content.renderingRule) { content.renderingRule = JSON.stringify(content.renderingRule); }
     if (content.mosaicRule) { content.mosaicRule = JSON.stringify(content.mosaicRule); }
@@ -18,13 +44,16 @@ define([
     content.pixelSize = content.pixelSize || 100;
     content.f = content.f || 'json';
 
-    return esriRequest({
+    esriRequest({
       url: url + '/computeHistograms',
       callbackParamName: 'callback',
       content: content,
       handleAs: 'json',
       timeout: 30000
-    }, { usePost: true });
+    }, { usePost: true }).then(
+      callback,
+      errback
+    );
   };
 
 
@@ -51,10 +80,35 @@ define([
   var ComputeHistogram = {
 
     multiplyRasters: function (rasterA, rasterB, geometry) {
-      return computeHistogram(analysisConfig.imageServer, {
+      var promise = new Deferred();
+      var pixelSize = 100;
+      var success = function success (results) {
+        if (results.histograms.length > 0 && pixelSize !== 100) {
+          results.histograms[0].counts = results.histograms[0].counts.map(pixelSizeMapper(pixelSize));
+        }
+        promise.resolve(results);
+      };
+      //- If the error is for an image exceeding the size limit, try increasing the pixel size
+      var failure = function failure (error) {
+        if (errorIsInvalidImageSize(error) && pixelSize !== 500) {
+          pixelSize = 500;
+          computeHistogram(analysisConfig.imageServer, {
+            renderingRule: Rules.getArithmeticRule(rasterA, rasterB, 3),
+            geometry: geometry,
+            pixelSize: pixelSize
+          }, success, failure);
+        } else {
+          promise.reject(error);
+        }
+      };
+
+      computeHistogram(analysisConfig.imageServer, {
         renderingRule: Rules.getArithmeticRule(rasterA, rasterB, 3),
-        geometry: geometry
-      });
+        geometry: geometry,
+        pixelSize: pixelSize
+      }, success, failure);
+
+      return promise;
     }
 
   };
