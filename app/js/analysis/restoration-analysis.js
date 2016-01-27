@@ -1,12 +1,13 @@
 define([
   'root/analysis/restoration-charts',
   'root/analysis/compute-histogram',
+  'esri/geometry/geometryEngine',
   'root/analysis/analysisConfig',
   'root/analysis/ethiopiaConfig',
   'root/analysis/constants',
   'dojo/promise/all',
   'dojo/dom-class'
-], function (charts, computeHistogram, analysisConfig, ethiopiaConfig, KEYS, all, domClass) {
+], function (charts, computeHistogram, geometryEngine, analysisConfig, ethiopiaConfig, KEYS, all, domClass) {
 
   /**
   * parse the counts from the histograms, remove the first value from the counts
@@ -63,16 +64,27 @@ define([
       var popData;
       var tcData;
 
-      promises[KEYS.SLOPE] = computeHistogram.multiplyRasters(slopeConfig.id, rasterId, geometry);
-      promises[KEYS.LAND_COVER] = computeHistogram.multiplyRasters(lcConfig.id, rasterId, geometry);
-      promises[KEYS.POPULATION] = computeHistogram.multiplyRasters(popConfig, rasterId, geometry);
-      promises[KEYS.TREE_COVER] = computeHistogram.multiplyRasters(tcConfig.id, rasterId, geometry);
+      var simplifiedGeometry = geometryEngine.simplify(geometry);
 
-      all(promises).then(function (results) {
+      promises[KEYS.SLOPE] = computeHistogram.multiplyRasters(slopeConfig.id, rasterId, simplifiedGeometry);
+      promises[KEYS.LAND_COVER] = computeHistogram.multiplyRasters(lcConfig.id, rasterId, simplifiedGeometry);
+      promises[KEYS.POPULATION] = computeHistogram.multiplyRasters(popConfig, rasterId, simplifiedGeometry);
+      promises[KEYS.TREE_COVER] = computeHistogram.multiplyRasters(tcConfig.id, rasterId, simplifiedGeometry);
+
+      all(promises).always(function (results) {
         // Hide the loader, prepare the containers by clearing the current one and putting 4 nodes in place
         // for the different types of analysis
         domClass.add('analysis-loader', 'hidden');
         charts.prepareContainer(config.name);
+
+        if (results.code && results.message) {
+          charts.showError(KEYS.SLOPE_CHART_ID, slopeConfig.name);
+          charts.showError(KEYS.LAND_COVER_CHART_ID, lcConfig.name);
+          charts.showError(KEYS.POPULATION_CHART_ID, popConfig.name);
+          charts.showError(KEYS.TREE_COVER_CHART_ID, tcConfig.name);
+          return;
+        }
+
         // Get an array of data with the same length as the classes by parsing counts and padding the array with 0's
         slopeData = padResults(getCounts(results[KEYS.SLOPE].histograms), slopeConfig.classes.length);
         lcData = padResults(getCounts(results[KEYS.LAND_COVER].histograms), lcConfig.classes.length);

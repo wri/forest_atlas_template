@@ -1,9 +1,17 @@
 define(['root/analysis/constants'], function (KEYS) {
 
+  var generateNoDataMarkup = function generateNoDataMarkup (label) {
+    return (
+      '<section class="restoration-nodata">' +
+        '<div>There is no ' + label + ' data for this restoration option in this area.</div>' +
+      '</section>'
+    );
+  };
+
   var generateErrorMarkup = function generateErrorMarkup (label) {
     return (
       '<section class="restoration-error">' +
-        '<div>There is no ' + label + ' data for this restoration option in this area.</div>' +
+        '<div>We are unable to complete your request at this time for ' + label + ' data. Please try again later.</div>' +
       '</section>'
     );
   };
@@ -19,6 +27,11 @@ define(['root/analysis/constants'], function (KEYS) {
       chartContainers += '<div id="' + KEYS.TREE_COVER_CHART_ID + '" class="restoration-chart"></div>';
       $('#' + container).replaceWith('<div id="' + container + '"></div>');
       $('#' + container).append(chartContainers);
+    },
+
+    showError: function (id, name) {
+      $('#' + id).addClass('error');
+      $('#' + id).append(generateErrorMarkup(name));
     },
 
     makeChart: function (chartId, name, data) {
@@ -37,7 +50,7 @@ define(['root/analysis/constants'], function (KEYS) {
           series: data
         });
       } else {
-        $('#' + chartId).append(generateErrorMarkup(name));
+        $('#' + chartId).append(generateNoDataMarkup(name));
       }
     }
 
