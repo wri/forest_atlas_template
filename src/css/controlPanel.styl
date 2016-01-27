@@ -5,20 +5,15 @@
   width 76px
 
 .control-panel__list
-  border-bottom 1px solid $lightGray
   flex-wrap wrap
   display flex
   padding 0
   margin 0
   & li
-    border-right 1px solid $lightGray
-    border-top 1px solid $lightGray
     box-sizing border-box
     display flex
     height 38px
     width 38px
-  & li:nth-child(odd)
-    border-left 1px solid $lightGray
   & li:active
     background $lightGrayHighlight
   & li:hover
@@ -34,3 +29,25 @@
 .control-panel__svg-icon--home
   height 21px
   width 21px
+
+@media (min-width: 1000px)
+  .control-panel__list
+    border-bottom 1px solid $lightGray
+    & li
+      border-right 1px solid $lightGray
+      border-top 1px solid $lightGray
+    & li:nth-child(odd)
+      border-left 1px solid $lightGray
+
+
+@media (max-width: 1000px)
+  .control-panel
+    width 38px
+
+  .control-panel__list
+    & li
+      border-bottom 1px solid $lightGray
+    & .control-panel__basemap-layers
+    & .control-panel__zoom-out
+    & .control-panel__zoom-in
+        display none
