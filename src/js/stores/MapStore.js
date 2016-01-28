@@ -1,3 +1,4 @@
+import tabKeys from 'constants/TabViewConstants';
 import mapActions from 'actions/MapActions';
 import dispatcher from 'js/dispatcher';
 
@@ -5,15 +6,20 @@ class MapStore {
 
   constructor () {
 
-    this.map = {};
+    this.activeTab = tabKeys.LAYERS;
 
     this.bindListeners({
-      mapUpdated: mapActions.mapUpdated
+      mapUpdated: mapActions.mapUpdated,
+      changeActiveTab: mapActions.changeActiveTab
     });
   }
 
   //- Empty method to force a dispatch
   mapUpdated () {}
+
+  changeActiveTab (payload) {
+    this.activeTab = payload.id;
+  }
 
 }
 

@@ -1,0 +1,25 @@
+.tab-buttons
+  width $tabViewWidth
+  background white
+  left 20px
+  top 20px
+
+.tab-buttons__header
+  display flex
+
+.tab-buttons__tab
+  border-left 1px solid $lightGray
+  align-items center
+  display flex
+  height 40px
+  flex-grow 1
+
+.tab-buttons__tab:active
+.tab-buttons__tab:hover
+  background white
+
+.tab-buttons__tab.inactive
+  background $lightGrayHighlight
+
+.tab-buttons__header .tab-buttons__tab:first-child
+  border-left none

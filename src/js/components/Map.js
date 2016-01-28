@@ -1,6 +1,6 @@
 import Controls from 'components/MapControls/ControlPanel';
-import InfoWindow from 'components/InfoPanel/InfoWindow';
-import InfoPanel from 'components/InfoPanel/InfoPanel';
+import TabButtons from 'components/TabPanel/TabButtons';
+import TabView from 'components/TabPanel/TabView';
 import arcgisUtils from 'esri/arcgis/utils';
 import mapActions from 'actions/MapActions';
 import MapStore from 'stores/MapStore';
@@ -13,6 +13,9 @@ export default class Map extends Component {
     super(props);
     this.map = {};
     this.state = MapStore.getState();
+  }
+
+  componentDidMount() {
     MapStore.listen(this.storeDidUpdate);
   }
 
@@ -31,7 +34,7 @@ export default class Map extends Component {
     arcgisUtils.createMap(settings.webmap, this.refs.map, { mapOptions: mapConfig.options }).then(response => {
       this.map = response.map;
       this.map.graphics.clear();
-      mapActions.mapUpdated();
+      // mapActions.mapUpdated();
       //- Attach events I need for the info window
       this.map.infoWindow.on('show, hide, set-features, selection-change', mapActions.mapUpdated);
       //- Make the map a global in debug mode for easier debugging
@@ -40,17 +43,12 @@ export default class Map extends Component {
   };
 
   render () {
-    const map = this.map;
-    const infoWindow = map.infoWindow && map.infoWindow.isShowing ? <InfoWindow map={map} /> : undefined;
-    const showInfoPanel = (!!infoWindow);
-
     return (
       <div className='map-container'>
         <div ref='map' className='map'>
           <Controls map={this.map} />
-          <InfoPanel visible={showInfoPanel} >
-            {infoWindow}
-          </InfoPanel>
+          <TabButtons activeTab={this.state.activeTab} />
+          <TabView map={this.map} {...this.state} />
         </div>
       </div>
     );

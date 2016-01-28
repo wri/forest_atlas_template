@@ -4,7 +4,7 @@ const config = {
       navigationMode: 'css-transforms',
       force3DTransforms: true,
       showAttribution: false,
-      smartNavigation: false,
+      // smartNavigation: false,
       fadeOnZoom: true,
       slider: false,
       logo: false
