@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 
 //- Parse Keys for easier access
 const {
+  OTHER,
   LAYERS,
   ANALYSIS,
   INFO_WINDOW
@@ -38,7 +39,7 @@ export default class TabButtons extends Component {
           <li className={this.getClassName(ANALYSIS)} data-value={ANALYSIS} onClick={this.changeTab}>
             <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: zoomInSvg }}/>
           </li>
-          <li className={this.getClassName(LAYERS)} data-value={LAYERS} onClick={this.changeTab}>
+          <li className={this.getClassName(OTHER)} data-value={OTHER} onClick={this.changeTab}>
             <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: zoomInSvg }}/>
           </li>
         </ul>

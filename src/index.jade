@@ -20,6 +20,7 @@ html
         cacheBust: '#{version}',
         packages: [
           { name: 'js', location: base + '/js' },
+          { name: 'i18n', location: base + '/i18n' },
           { name: 'vendor', location: base + '/vendor' },
           { name: 'utils', location: base + '/js/utils' },
           { name: 'stores', location: base + '/js/stores' },
@@ -29,6 +30,7 @@ html
         ],
         aliases: [
           ['alt', 'vendor/alt/dist/alt.min'],
+          ['strings', 'i18n/#{language}'],
           ['react', 'vendor/react/react.min'],
           ['react-dom', 'vendor/react/react-dom.min'],
           ['babel-polyfill', 'vendor/babel-polyfill/browser-polyfill']

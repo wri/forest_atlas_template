@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 
 //- Parse Keys for easier access
 const {
+  OTHER,
   LAYERS,
   ANALYSIS,
   INFO_WINDOW
@@ -33,8 +34,8 @@ export default class TabView extends Component {
         <div className={this.getClassName(ANALYSIS)}>
           Analysis Panel
         </div>
-        <div className={this.getClassName(LAYERS)}>
-          Same identifier as Layer Panel
+        <div className={this.getClassName(OTHER)}>
+          Other Panel
         </div>
       </div>
     );

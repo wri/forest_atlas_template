@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import resources from 'js/resources';
 
 export default class Header extends Component {
 
@@ -9,10 +8,14 @@ export default class Header extends Component {
   }
 
   render () {
+    const {
+      defaultTitle
+    } = this.props.settings;
+
     return (
       <div className='app-header'>
         <div className='inner'>
-          <div className='app-header__title'>{resources.defaultTitle}</div>
+          <div className='app-header__title'>{defaultTitle}</div>
         </div>
       </div>
     );
