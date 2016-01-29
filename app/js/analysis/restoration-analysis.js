@@ -85,8 +85,6 @@ define([
           return;
         }
 
-        console.log(results);
-
         // Get an array of data with the same length as the classes by parsing counts and padding the array with 0's
         slopeData = padResults(getCounts(results[KEYS.SLOPE].histograms), slopeConfig.classes.length);
         lcData = padResults(getCounts(results[KEYS.LAND_COVER].histograms), lcConfig.classes.length);
@@ -103,10 +101,10 @@ define([
         charts.makeChart(KEYS.POPULATION_CHART_ID, popConfig.name, popData);
         charts.makeChart(KEYS.TREE_COVER_CHART_ID, tcConfig.name, tcData);
         // Debugging
-        console.log(KEYS.SLOPE, results[KEYS.SLOPE].histograms);
-        console.log(KEYS.LAND_COVER, results[KEYS.LAND_COVER].histograms);
-        console.log(KEYS.POPULATION, results[KEYS.POPULATION].histograms);
-        console.log(KEYS.TREE_COVER, results[KEYS.TREE_COVER].histograms);
+        // console.log(KEYS.SLOPE, results[KEYS.SLOPE].histograms);
+        // console.log(KEYS.LAND_COVER, results[KEYS.LAND_COVER].histograms);
+        // console.log(KEYS.POPULATION, results[KEYS.POPULATION].histograms);
+        // console.log(KEYS.TREE_COVER, results[KEYS.TREE_COVER].histograms);
       });
     }
 
