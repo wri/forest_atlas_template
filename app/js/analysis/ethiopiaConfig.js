@@ -32,8 +32,8 @@ define([], function () {
       name: 'Potential for commercial plantation as buffer zone to national forest priority areas and protected areas'
     }, {
       id: '$9',
-      label: 'tree-based buffer zone along river, lakes and reservoirs',
-      name: 'Potential for tree-based buffer zone along river, lakes and reservoirs'
+      label: 'tree-based buffer zone along rivers, lakes and reservoirs',
+      name: 'Potential for tree-based buffer zone along rivers, lakes and reservoirs'
     }]
 
   };
