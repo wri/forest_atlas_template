@@ -10,14 +10,14 @@ define(['root/analysis/constants'], function (KEYS) {
 
   var slopeValues = [0, 1, 2 , 3];
   var slopeClasses = ['No Data', '<= 30%', '30 - 60%', '> 60%'];
-  var slopeColors = ['rgb(0, 0, 0)', 'rgb(255, 235, 175)', 'rgb(115, 76, 0)', 'rgb(168, 0, 0)'];
+  var slopeColors = ['rgb(0, 0, 0)', 'rgb(255, 235, 175)', 'rgb(115, 115, 0)', 'rgb(168, 0, 0)'];
 
   var treeCoverValues = [0, 1, 2, 3];
   var treeCoverClasses = ['No Data', '<= 10%', '10 - 30%', '> 30%'];
   var treeCoverColors = ['rgb(0, 0, 0)', 'rgb(180, 215, 158)', 'rgb(245, 245, 122)', 'rgb(205, 170, 102)'];
 
   var config = {
-    imageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/local_projections/ETH_Restoration/ImageServer',
+    imageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/local_projections/ETH_Restoration/ImageServer'
   };
 
   config[KEYS.TREE_COVER] = {
@@ -50,6 +50,29 @@ define(['root/analysis/constants'], function (KEYS) {
     values: slopeValues,
     classes: slopeClasses,
     colors: slopeColors
+  };
+
+  config[KEYS.SLOPE_BREAKDOWN] = {
+    id: '$11',
+    restorationOptionsId: '$13',
+    chartName: 'Slope',
+    slopeOptions: [
+      { label: '<= 30%', value: 1 },
+      { label: '30% - 60%', value: 2 },
+      { label: '> 60%', value: 3 }
+    ],
+    restorationOptions: [
+      { label: 'Option 1', tooltip: 'Potential for commercial plantation on bare soil and shrubland only' },
+      { label: 'Option 2', tooltip: 'Potential for agri-silviculture and agro-silvo-pastoralism, and woodlot' },
+      { label: 'Option 3', tooltip: 'Three or more restoration options identified as having potential' },
+      { label: 'Option 4', tooltip: 'Two restoration options identified as having potential' },
+      { label: 'Option 5', tooltip: 'Potential for establishing natural forest only' },
+      { label: 'Option 6', tooltip: 'Potential for restocking degraded natural forest only' },
+      { label: 'Option 7', tooltip: 'Potential for woodlot only' },
+      { label: 'Option 8', tooltip: 'Potential for tree-buffer zone along rivers, lakes and reservoirs only' },
+      { label: 'Option 9', tooltip: 'Potential for silvo-pastoralism only' },
+      { label: 'Option 10', tooltip: 'Potential for commercial plantation as buffer zone around (NF)PAs' }
+    ]
   };
 
   return config;

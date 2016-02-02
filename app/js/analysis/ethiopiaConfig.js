@@ -34,6 +34,10 @@ define([], function () {
       id: '$9',
       label: 'tree-based buffer zone along rivers, lakes and reservoirs',
       name: 'Potential for tree-based buffer zone along rivers, lakes and reservoirs'
+    }, {
+      id: '', // needed for knockout render function, not needed for analysis
+      label: 'slope analysis',
+      name: 'SLOPE'
     }]
 
   };

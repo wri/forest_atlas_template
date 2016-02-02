@@ -1,8 +1,9 @@
 define([
   'esri/request',
   'dojo/Deferred',
+  'root/analysis/rules',
   'root/analysis/analysisConfig'
-], function (esriRequest, Deferred, analysisConfig) {
+], function (esriRequest, Deferred, Rules, analysisConfig) {
 
   var INVALID_IMAGE_SIZE = 'The requested image exceeds the size limit.';
 
@@ -26,6 +27,17 @@ define([
   var pixelSizeMapper = function pixelSizeMapper (pixelSize) {
     return function (value) {
       return (value * Math.pow(pixelSize, 2)) / 10000;
+    }
+  };
+
+  /**
+  * Given a value, generate the input/output values necessary for the remap function
+  * valid values are 1, 2, or 3
+  */
+  var getSlopeInputOutputValues = function (value) {
+    return {
+      input: value === 3 ? [0, 3, 3, 3] : [0, value, value, value, value + 1, 3],
+      output: value === 3 ? [0, 1] : [0, 1, 0]
     }
   };
 
@@ -56,27 +68,6 @@ define([
     );
   };
 
-
-  var Rules = {
-    /**
-    * @param {string} rasterA - raster id, ex. '$530'
-    * @param {string} rasterB - raster id, ex. '$530'
-    * @param {number} operation - Enum representing which arithmetic operation to perform
-    * - Operation can be 1 (Add), 2 (Subtract), 3 (Multiply)
-    * @return {object} valid rendering rule for computeHistograms call
-    */
-    getArithmeticRule: function (rasterA, rasterB, operation) {
-      return {
-        'rasterFunction':'Arithmetic',
-        'rasterFunctionArguments': {
-          'Raster': rasterA,
-          'Raster2':rasterB,
-          'Operation': operation
-        }
-      };
-    }
-  };
-
   var ComputeHistogram = {
 
     multiplyRasters: function (rasterA, rasterB, geometry) {
@@ -104,8 +95,55 @@ define([
 
       computeHistogram(analysisConfig.imageServer, {
         renderingRule: Rules.getArithmeticRule(rasterA, rasterB, 3),
-        geometry: geometry,
-        pixelSize: pixelSize
+        pixelSize: pixelSize,
+        geometry: geometry
+      }, success, failure);
+
+      return promise;
+    },
+
+    /**
+    * @param {number} slopeValue - 1,2 or 3 are valid values (<=30, 30-60, >60)
+    * @param {string} slopeRaster - slope raster id
+    * @param {string} restorationOptionsId - restoration options raster id
+    * @param {Geometry} geometry - valid esri polygon
+    */
+    slopeBreakdownAnalysis: function (slopeValue, slopeRaster, restorationOptionsId, geometry) {
+      var promise = new Deferred(),
+          pixelSize = 100,
+          renderingRule,
+          values;
+
+      values = getSlopeInputOutputValues(slopeValue);
+      //- Get remap rule
+      renderingRule = Rules.getRemapRule(slopeRaster, values.input, values.output);
+      //- embed this as the first raster in arithmetic rule to get correct renderingRule
+      renderingRule = Rules.getArithmeticRule(renderingRule, restorationOptionsId, 3);
+
+      var success = function success (results) {
+        if (results.histograms.length > 0 && pixelSize !== 100) {
+          results.histograms[0].counts = results.histograms[0].counts.map(pixelSizeMapper(pixelSize));
+        }
+        promise.resolve(results);
+      };
+
+      var failure = function failure (error) {
+        if (errorIsInvalidImageSize(error) && pixelSize !== 500) {
+          pixelSize = 500;
+          computeHistogram(analysisConfig.imageServer, {
+            renderingRule: renderingRule,
+            geometry: geometry,
+            pixelSize: pixelSize
+          }, success, failure);
+        } else {
+          promise.reject(error);
+        }
+      };
+
+      computeHistogram(analysisConfig.imageServer, {
+        renderingRule: renderingRule,
+        pixelSize: pixelSize,
+        geometry: geometry
       }, success, failure);
 
       return promise;

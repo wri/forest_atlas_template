@@ -34,7 +34,7 @@ define(['root/analysis/constants'], function (KEYS) {
       $('#' + id).append(generateErrorMarkup(name));
     },
 
-    makeChart: function (chartId, name, data) {
+    makeStackedBarChart: function (chartId, name, data) {
       // Only render the chart if data is present, otherwise remove the container
       if (data.length > 0) {
         $('#' + chartId).highcharts({
@@ -46,6 +46,27 @@ define(['root/analysis/constants'], function (KEYS) {
           yAxis: { title: { enabled: false } },
           plotOptions: { series: { stacking: 'normal' } },
           tooltip: { valueSuffix: ' (HA)' },
+          // Array of objects [ { name: '', data: [oneValue] } ]
+          series: data
+        });
+      } else {
+        $('#' + chartId).append(generateNoDataMarkup(name));
+      }
+    },
+
+    /**
+    * labels is an array of labels for the y axis, although highcharts thinks its the X-axis (???)
+    */
+    makeBarChart: function (chartId, data, labels) {
+      // Only render the chart if data is present, otherwise remove the container
+      if (data.length > 0) {
+        $('#' + chartId).highcharts({
+          chart: { type: 'bar' },
+          title: { text: null },
+          credits: { enabled: false },
+          exporting: { enabled: false },
+          tooltip: { valueSuffix: ' (HA)' },
+          xAxis: { categories: labels, maxPadding: 0.5, useHTML: true },
           // Array of objects [ { name: '', data: [oneValue] } ]
           series: data
         });
