@@ -90,7 +90,58 @@ define([], function () {
 
         globcoverIncluded: false,
 
-        mangroveIncluded: false
+        mangroveIncluded: false,
+
+        // Restoration Options
+        restorationModule: true,
+
+        // restorationImageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/local_projections/ETH_Restoration/ImageServer',
+
+        restorationModuleOptions: [
+          {
+            id: '$6',
+            label: 'establishing natural forest outside of cropland'
+          }, {
+            id: '$7',
+            label: 'restocking of degraded natural forest'
+          }, {
+            id: '$3',
+            label: 'agri-silviculture and agro-silvo-pastoralism'
+          }, {
+            id: '$8',
+            label: 'silvo-pastoralism'
+          }, {
+            id: '$10',
+            label: 'woodlot'
+          }, {
+            id: '$5',
+            label: 'commercial plantation on bare soil and shrubland'
+          }, {
+            id: '$4',
+            label: 'commercial plantation as buffer zone to national forest priority areas and protected areas'
+          }, {
+            id: '$9',
+            label: 'tree-based buffer zone along rivers, lakes and reservoirs'
+          }, {
+            id: '$11',
+            label: 'slope analysis'
+          }
+        ],
+
+        slopeAnalysisRestorationOptionsId: '$13',
+
+        slopeAnalysisRestorationOptions: [
+          'Potential for commercial plantation on bare soil and shrubland only',
+          'Potential for agri-silviculture and agro-silvo-pastoralism, and woodlot',
+          'Three or more restoration options identified as having potential',
+          'Two restoration options identified as having potential',
+          'Potential for establishing natural forest only',
+          'Potential for restocking degraded natural forest only',
+          'Potential for woodlot only',
+          'Potential for tree-buffer zone along rivers, lakes and reservoirs only',
+          'Potential for silvo-pastoralism only',
+          'Potential for commercial plantation as buffer zone around (NF)PAs'
+        ]
 
     };
 

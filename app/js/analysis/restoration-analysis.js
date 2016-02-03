@@ -3,12 +3,11 @@ define([
   'root/analysis/compute-histogram',
   'esri/geometry/geometryEngine',
   'root/analysis/analysisConfig',
-  'root/analysis/ethiopiaConfig',
   'root/analysis/constants',
   'dojo/promise/all',
   'dojo/dom-class',
   'toolsmodel'
-], function (charts, computeHistogram, geometryEngine, analysisConfig, ethiopiaConfig, KEYS, all, domClass, Model) {
+], function (charts, computeHistogram, geometryEngine, analysisConfig, KEYS, all, domClass, Model) {
 
   /**
   * parse the counts from the histograms, remove the first value from the counts
@@ -50,17 +49,11 @@ define([
   return {
 
     performRestorationAnalysis: function (graphic, optionIndex) {
-      var config = ethiopiaConfig.options[optionIndex];
+      var viewModel = Model.getVM();
+      var config = viewModel.restorationModuleOptions()[optionIndex];
       var geometry = graphic.geometry;
       var rasterId = config.id;
       var promises = {};
-      //- If the optionIndex is for the slope analysis breakdown, call other analysis function
-      if (config.name === 'SLOPE') {
-        var slopeSelectNode = document.querySelector('.analysis-selection-types .slope-select');
-  			domClass.remove(slopeSelectNode, 'hidden');
-        this.performSlopeAnalysis(graphic);
-        return;
-      }
 
       // Individual Configs
       var slopeConfig = analysisConfig[KEYS.SLOPE];
@@ -73,6 +66,14 @@ define([
       var popData;
       var tcData;
 
+      //- If the optionIndex is for the slope analysis breakdown, call other analysis function
+      if (config.id === slopeConfig.id) {
+        var slopeSelectNode = document.querySelector('.analysis-selection-types .slope-select');
+  			domClass.remove(slopeSelectNode, 'hidden');
+        this.performSlopeAnalysis(graphic);
+        return;
+      }
+
       var simplifiedGeometry = geometryEngine.simplify(geometry);
 
       promises[KEYS.SLOPE] = computeHistogram.multiplyRasters(slopeConfig.id, rasterId, simplifiedGeometry);
@@ -84,7 +85,7 @@ define([
         // Hide the loader, prepare the containers by clearing the current one and putting 4 nodes in place
         // for the different types of analysis
         domClass.add('analysis-loader', 'hidden');
-        charts.prepareContainer(config.name);
+        charts.prepareContainer(viewModel.restorationModuleChartTitlePrefix() + config.label);
 
         if (results.code && results.message) {
           charts.showError(KEYS.SLOPE_CHART_ID, slopeConfig.name);
@@ -122,6 +123,7 @@ define([
       var simplifiedGeometry = geometryEngine.simplify(graphic.geometry);
       var viewModel = Model.getVM();
       var currentSlopeSelection = viewModel.slopeActiveOption();
+      var slopeOptions = app.config.slopeAnalysisRestorationOptions;
       var slopeOptionData;
 
       computeHistogram.slopeBreakdownAnalysis(
@@ -133,8 +135,10 @@ define([
         domClass.add('analysis-loader', 'hidden');
         // The first value is null values, second is no data, slice them out
         var slopeCounts = getCounts(results.histograms).slice(2);
-        var slopeOptionData = padResults(slopeCounts, slopeConfig.restorationOptions.length);
-        var labels = slopeConfig.restorationOptions.map(function (item) { return item.label; });
+        var slopeOptionData = padResults(slopeCounts, slopeOptions.length);
+        var labels = slopeOptions.map(function (item, index) {
+          return viewModel.slopeAnalysisRestorationOptionPrefix() + index;
+        });
         var data = [{
           name: slopeConfig.chartName,
           data: slopeOptionData
@@ -143,7 +147,7 @@ define([
         charts.makeBarChart(KEYS.SLOPE_BREAKDOWN_CHART_ID, data, labels);
         //- Generate Tooltips for the xAxis labels
         $('.highcharts-xaxis-labels text').each(function (index, element) {
-          var tooltip = slopeConfig.restorationOptions[index].tooltip;
+          var tooltip = slopeOptions[index];
           $('<title>' + tooltip + '</title>').prependTo(element);
           //- "Refresh" the svg
           $(element).html($(element).html());

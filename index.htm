@@ -246,7 +246,7 @@
 						<div class="analysis-selection-types">
 							<span class='analysis-selection-label'>Select Analysis:</span>
 							<select data-bind="event: {change: selectAnalysisType}" class='analysis-options-select'>
-								<!-- ko if: !resotrationModule() -->
+								<!-- ko if: !restorationModule() -->
 								<option data-bind="attr: {value: analysisLoss}, text: analysisLoss"></option>
 								<option data-bind="attr: {value: analysisGain}, text: analysisGain"></option>
 								<option id="landCoverAnalysis" data-bind="attr: {value: analysisLC}, text: analysisLC"></option>
@@ -255,9 +255,9 @@
 								<option id="fireAnalysis" data-bind="attr: {value: analysisFire}, text: analysisFire"></option>
 								<option id="landCoverCompAnalysis" data-bind="attr: {value: analysisLCComposition}, text: analysisLCComposition"></option>
 								<!-- /ko -->
-								<!-- ko if: resotrationModule -->
+								<!-- ko if: restorationModule -->
 								<optgroup label='Restoration potential for'>
-									<!-- ko foreach: resotrationModuleOptions -->
+									<!-- ko foreach: restorationModuleOptions -->
 									<option data-bind="attr: {'data-option': $index, value: $parent.restorationModuleType }, text: label"></option>
 									<!-- /ko -->
 								</optgroup>
@@ -277,7 +277,7 @@
 								<span class='tcd-selector-value' data-bind='text: tcdSelectorValue, click: canopyDensityClicked'></span>
 								<span class='tcd-selector-label' data-bind='text: tcdSelectorEnd'></span>
 							</div>
-							<!-- ko if: resotrationModule -->
+							<!-- ko if: restorationModule -->
 								<div class="slope-select">
 									<span class='slope-select-label' data-bind='text: slopeSelectDescription'></span>
 									<select data-bind="options: slopeAmountOptions, optionsText: 'label', value: slopeActiveOption, event: {change: selectSlopeAmount}">

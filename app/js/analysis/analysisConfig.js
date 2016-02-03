@@ -60,18 +60,6 @@ define(['root/analysis/constants'], function (KEYS) {
       { label: '<= 30%', value: 1 },
       { label: '30% - 60%', value: 2 },
       { label: '> 60%', value: 3 }
-    ],
-    restorationOptions: [
-      { label: 'Option 1', tooltip: 'Potential for commercial plantation on bare soil and shrubland only' },
-      { label: 'Option 2', tooltip: 'Potential for agri-silviculture and agro-silvo-pastoralism, and woodlot' },
-      { label: 'Option 3', tooltip: 'Three or more restoration options identified as having potential' },
-      { label: 'Option 4', tooltip: 'Two restoration options identified as having potential' },
-      { label: 'Option 5', tooltip: 'Potential for establishing natural forest only' },
-      { label: 'Option 6', tooltip: 'Potential for restocking degraded natural forest only' },
-      { label: 'Option 7', tooltip: 'Potential for woodlot only' },
-      { label: 'Option 8', tooltip: 'Potential for tree-buffer zone along rivers, lakes and reservoirs only' },
-      { label: 'Option 9', tooltip: 'Potential for silvo-pastoralism only' },
-      { label: 'Option 10', tooltip: 'Potential for commercial plantation as buffer zone around (NF)PAs' }
     ]
   };
 

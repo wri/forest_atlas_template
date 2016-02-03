@@ -3,6 +3,7 @@
   "values": {
       "defaultLanguage": "en",
       "countryFlagRight": "280",
+      "restorationAnalysis": false,
       "useAdditionalLanguage": false,
       "activeFiresIncluded": true,
       "landCoverIncluded": true,

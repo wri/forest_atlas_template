@@ -1,6 +1,6 @@
 define(
-    ["declare", "mainmodel", "ko", "dom", "topic", "toolsconfig", "memory", "number", "array", "root/languages", "query", "attr", "toolsevents", "root/analysis/ethiopiaConfig", "root/analysis/constants", "root/analysis/analysisConfig"],
-    function(declare, MainModel, ko, dom, topic, Config, Memory, number, arrayUtil, languages, query, attr, Events, ethiopiaConfig, KEYS, analysisConfig) {
+    ["declare", "mainmodel", "ko", "dom", "topic", "toolsconfig", "memory", "number", "array", "root/languages", "query", "attr", "toolsevents", "root/analysis/constants", "root/analysis/analysisConfig"],
+    function(declare, MainModel, ko, dom, topic, Config, Memory, number, arrayUtil, languages, query, attr, Events, KEYS, analysisConfig) {
         var o = declare(null, {
 
 
@@ -80,12 +80,16 @@ define(
                         o._vm.showUploadTools = ko.observable(false);
 
                         // Enable/Disable Restoration Module for Ethiopia Atlas
-                        o._vm.resotrationModule = ko.observable(true);
                         o._vm.restorationModuleType = ko.observable('restoration');
-                        o._vm.resotrationModuleOptions = ko.observableArray(ethiopiaConfig.options);
                         o._vm.slopeAmountOptions = ko.observableArray(analysisConfig[KEYS.SLOPE_BREAKDOWN].slopeOptions);
                         o._vm.slopeSelectDescription = ko.observable('Choose slope percent:');
+                        o._vm.restorationModuleChartTitlePrefix = ko.observable('Potential for ');
+                        o._vm.slopeAnalysisRestorationOptionPrefix = ko.observable('Option ');
                         o._vm.slopeActiveOption = ko.observable(analysisConfig[KEYS.SLOPE_BREAKDOWN].slopeOptions[0]);
+                        // These come from the resource file
+                        o._vm.restorationModule = ko.observable(app.config.restorationModule);
+                        o._vm.restorationModuleOptions = ko.observableArray(app.config.restorationModuleOptions);
+
 
                         // Items for Year Dropdown for forest cover loss layer
                         o._vm.forestLossYears = ko.observableArray([

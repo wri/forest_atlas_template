@@ -83,7 +83,7 @@
       ]
     },
     {
-      "category": "Layer Settings",
+      "category": "Layer and Analysis Settings",
       "fields": [
         {
           "type": "paragraph",
@@ -112,7 +112,16 @@
             "fieldName": "biomassIncluded",
             "label": "Above Ground Biomass",
             "tooltip": "Show Above Ground Biomass layer/analysis"
+        },
+
+
+        {
+          "type": "boolean",
+          "fieldName": "restorationAnalysis",
+          "label": "Would you like to include restoration analysis?",
+          "tooltip": "Would you like to include restoration analysis?"
         }
+
       ]
     }
   ],
@@ -124,6 +133,7 @@
       "landCoverIncluded": true,
       "biomassIncluded": true,
       "iflIncluded": true,
+      "restorationAnalysis": false,
       "aboutLinkUrl": "http://my.forest-atlas.org/",
       "downloadDataUrl": "http://data.globalforestwatch.org",
   }
