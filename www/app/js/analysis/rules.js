@@ -1,0 +1,1 @@
+define([],function(){return{getArithmeticRule:function(t,e,n){return{rasterFunction:"Arithmetic",rasterFunctionArguments:{Raster:t,Raster2:e,Operation:n}}},getRemapRule:function(t,e,n){return{rasterFunction:"Remap",rasterFunctionArguments:{InputRanges:e,OutputValues:n,Raster:t,AllowUnmatched:!1}}}}});
