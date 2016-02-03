@@ -67,6 +67,7 @@ define(['root/analysis/constants'], function (KEYS) {
           exporting: { enabled: false },
           tooltip: { valueSuffix: ' (HA)' },
           xAxis: { categories: labels, maxPadding: 0.5, useHTML: true },
+          yAxis: { title: { text: 'Hectares' } },
           // Array of objects [ { name: '', data: [oneValue] } ]
           series: data
         });

@@ -84,7 +84,7 @@ define(
                         o._vm.restorationModuleType = ko.observable('restoration');
                         o._vm.resotrationModuleOptions = ko.observableArray(ethiopiaConfig.options);
                         o._vm.slopeAmountOptions = ko.observableArray(analysisConfig[KEYS.SLOPE_BREAKDOWN].slopeOptions);
-                        o._vm.slopeSelectDescription = ko.observable('Choose how much slope to analyze:');
+                        o._vm.slopeSelectDescription = ko.observable('Choose slope percent:');
                         o._vm.slopeActiveOption = ko.observable(analysisConfig[KEYS.SLOPE_BREAKDOWN].slopeOptions[0]);
 
                         // Items for Year Dropdown for forest cover loss layer
