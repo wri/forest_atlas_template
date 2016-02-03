@@ -1,6 +1,6 @@
 define(
-    ["declare", "mainmodel", "ko", "dom", "topic", "toolsconfig", "memory", "number", "array", "root/languages", "query", "attr", "toolsevents", "root/analysis/ethiopiaConfig"],
-    function(declare, MainModel, ko, dom, topic, Config, Memory, number, arrayUtil, languages, query, attr, Events, ethiopiaConfig) {
+    ["declare", "mainmodel", "ko", "dom", "topic", "toolsconfig", "memory", "number", "array", "root/languages", "query", "attr", "toolsevents", "root/analysis/ethiopiaConfig", "root/analysis/constants", "root/analysis/analysisConfig"],
+    function(declare, MainModel, ko, dom, topic, Config, Memory, number, arrayUtil, languages, query, attr, Events, ethiopiaConfig, KEYS, analysisConfig) {
         var o = declare(null, {
 
 
@@ -83,6 +83,9 @@ define(
                         o._vm.resotrationModule = ko.observable(true);
                         o._vm.restorationModuleType = ko.observable('restoration');
                         o._vm.resotrationModuleOptions = ko.observableArray(ethiopiaConfig.options);
+                        o._vm.slopeAmountOptions = ko.observableArray(analysisConfig[KEYS.SLOPE_BREAKDOWN].slopeOptions);
+                        o._vm.slopeSelectDescription = ko.observable('Choose how much slope to analyze:');
+                        o._vm.slopeActiveOption = ko.observable(analysisConfig[KEYS.SLOPE_BREAKDOWN].slopeOptions[0]);
 
                         // Items for Year Dropdown for forest cover loss layer
                         o._vm.forestLossYears = ko.observableArray([
@@ -230,6 +233,20 @@ define(
                                 }
 
                             });
+                        };
+
+                        o._vm.selectSlopeAmount = function (model, evt) {
+                          require(['mapui', 'atlas/tools/Results'], function (MapUI, Results) {
+                            var infoWindow = MapUI.getMap().infoWindow;
+                            var activeFeature = infoWindow.getSelectedFeature();
+                            var target = document.querySelector('.analysis-options-select');
+                            var activeOption = target.options[target.selectedIndex];
+                            var options = {
+                              index: +activeOption.getAttribute('data-option')
+                            };
+
+                            Results.getResultsForType(model.currentAnalysisType(), activeFeature, options);
+                          });
                         };
 
                         o._vm.landsatYearChanged = function (thisModel, evt) {

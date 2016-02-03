@@ -30,7 +30,10 @@ define([
 			// Show the loader by removing the class hiding it
 			domClass.remove('analysis-loader', 'hidden');
 			// Hide the tree cover density tool if were in Resotration Analysis, otherwise make sure its visible
+			// Also hide the Slope options select, it will reshow itself in Restoration.performRestorationAnalysis();
 			var tcdToolNode = document.querySelector('.analysis-selection-types .tcd-selector-wrapper');
+			var slopeSelectNode = document.querySelector('.analysis-selection-types .slope-select');
+			domClass.add(slopeSelectNode, 'hidden');
 			if (type === viewModel.restorationModuleType()) {
 				domClass.add(tcdToolNode, 'hidden');
 			} else {

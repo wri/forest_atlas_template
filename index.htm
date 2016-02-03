@@ -277,6 +277,13 @@
 								<span class='tcd-selector-value' data-bind='text: tcdSelectorValue, click: canopyDensityClicked'></span>
 								<span class='tcd-selector-label' data-bind='text: tcdSelectorEnd'></span>
 							</div>
+							<!-- ko if: resotrationModule -->
+								<div class="slope-select">
+									<span class='slope-select-label' data-bind='text: slopeSelectDescription'></span>
+									<select data-bind="options: slopeAmountOptions, optionsText: 'label', value: slopeActiveOption, event: {change: selectSlopeAmount}">
+									</select>
+								</div>
+							<!-- /ko -->
 						</div>
 						<div id="analysis-loader" class="hidden">
 							<span class="loading-wheel"></span>

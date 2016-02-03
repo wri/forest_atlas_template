@@ -6,8 +6,9 @@ define([
   'root/analysis/ethiopiaConfig',
   'root/analysis/constants',
   'dojo/promise/all',
-  'dojo/dom-class'
-], function (charts, computeHistogram, geometryEngine, analysisConfig, ethiopiaConfig, KEYS, all, domClass) {
+  'dojo/dom-class',
+  'toolsmodel'
+], function (charts, computeHistogram, geometryEngine, analysisConfig, ethiopiaConfig, KEYS, all, domClass, Model) {
 
   /**
   * parse the counts from the histograms, remove the first value from the counts
@@ -55,6 +56,8 @@ define([
       var promises = {};
       //- If the optionIndex is for the slope analysis breakdown, call other analysis function
       if (config.name === 'SLOPE') {
+        var slopeSelectNode = document.querySelector('.analysis-selection-types .slope-select');
+  			domClass.remove(slopeSelectNode, 'hidden');
         this.performSlopeAnalysis(graphic);
         return;
       }
@@ -117,10 +120,12 @@ define([
     performSlopeAnalysis: function (graphic) {
       var slopeConfig = analysisConfig[KEYS.SLOPE_BREAKDOWN];
       var simplifiedGeometry = geometryEngine.simplify(graphic.geometry);
+      var viewModel = Model.getVM();
+      var currentSlopeSelection = viewModel.slopeActiveOption();
       var slopeOptionData;
 
       computeHistogram.slopeBreakdownAnalysis(
-        3,
+        currentSlopeSelection.value,
         slopeConfig.id,
         slopeConfig.restorationOptionsId,
         simplifiedGeometry

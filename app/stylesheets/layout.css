@@ -473,6 +473,18 @@ top:0px;
 	width: 98%; /* Give the labels a little extra padding */
 }
 
+.slope-select-label {
+	padding-left: 10px;
+}
+
+.slope-select select {
+	position: relative;
+	text-align: center;
+	display: inline;
+	width: 100px;
+	top: -2px;
+}
+
 .restoration-chart {
 	height: 135px;
 }
