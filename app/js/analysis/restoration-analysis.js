@@ -137,7 +137,7 @@ define([
         var slopeCounts = getCounts(results.histograms).slice(2);
         var slopeOptionData = padResults(slopeCounts, slopeOptions.length);
         var labels = slopeOptions.map(function (item, index) {
-          return viewModel.slopeAnalysisRestorationOptionPrefix() + index;
+          return viewModel.slopeAnalysisRestorationOptionPrefix() + (index + 1);
         });
         var data = [{
           name: slopeConfig.chartName,

@@ -93,7 +93,7 @@ define([], function () {
         mangroveIncluded: false,
 
         // Restoration Options
-        restorationModule: false,
+        restorationModule: true,
 
         // restorationImageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/local_projections/ETH_Restoration/ImageServer',
 
@@ -109,31 +109,31 @@ define([], function () {
         */
         restorationModuleOptions: [
           {
-            id: '$6',
+            id: '$9',
             label: 'establishing natural forest outside of cropland'
           }, {
-            id: '$7',
+            id: '$10',
             label: 'restocking of degraded natural forest'
           }, {
-            id: '$3',
+            id: '$6',
             label: 'agri-silviculture and agro-silvo-pastoralism'
           }, {
-            id: '$8',
+            id: '$11',
             label: 'silvo-pastoralism'
           }, {
-            id: '$10',
+            id: '$13',
             label: 'woodlot'
           }, {
-            id: '$5',
+            id: '$8',
             label: 'commercial plantation on bare soil and shrubland'
           }, {
-            id: '$4',
+            id: '$7',
             label: 'commercial plantation as buffer zone to national forest priority areas and protected areas'
           }, {
-            id: '$9',
+            id: '$12',
             label: 'tree-based buffer zone along rivers, lakes and reservoirs'
           }, {
-            id: '$11',
+            id: '$3',
             label: 'slope analysis'
           }
         ],
@@ -141,7 +141,7 @@ define([], function () {
         /**
         * This is the id that contains all the classes listed below
         */
-        slopeAnalysisRestorationOptionsId: '$13',
+        slopeAnalysisRestorationOptionsId: '$5',
 
         /** TODO: In the configuraiton panel, it should be noted that this is the order of the classes
         * in the image service, and also that these start at Value 2, 0 usually includes unmatched, 1 should
@@ -150,14 +150,14 @@ define([], function () {
         slopeAnalysisRestorationOptions: [
           'Potential for commercial plantation on bare soil and shrubland only',
           'Potential for agri-silviculture and agro-silvo-pastoralism, and woodlot',
-          'Three or more restoration options identified as having potential',
-          'Two restoration options identified as having potential',
           'Potential for establishing natural forest only',
           'Potential for restocking degraded natural forest only',
           'Potential for woodlot only',
-          'Potential for tree-buffer zone along rivers, lakes and reservoirs only',
           'Potential for silvo-pastoralism only',
-          'Potential for commercial plantation as buffer zone around (NF)PAs'
+          'Potential for tree-buffer zone along rivers, lakes and reservoirs only',
+          'Potential for commercial plantation as buffer zone around (NF)PAs',
+          'Two restoration options identified as having potential',
+          'Three or more restoration options identified as having potential'
         ]
 
     };

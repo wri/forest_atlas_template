@@ -20,14 +20,6 @@ define(['root/analysis/constants'], function (KEYS) {
     imageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/local_projections/ETH_Restoration/ImageServer'
   };
 
-  config[KEYS.TREE_COVER] = {
-    id: '$12',
-    name: '% Tree Cover',
-    values: treeCoverValues,
-    classes: treeCoverClasses,
-    colors: treeCoverColors
-  };
-
   config[KEYS.LAND_COVER] = {
     id: '$1',
     name: 'Land Cover',
@@ -45,16 +37,24 @@ define(['root/analysis/constants'], function (KEYS) {
   };
 
   config[KEYS.SLOPE] = {
-    id: '$11',
+    id: '$3',
     name: 'Slope',
     values: slopeValues,
     classes: slopeClasses,
     colors: slopeColors
   };
 
+  config[KEYS.TREE_COVER] = {
+    id: '$4',
+    name: '% Tree Cover',
+    values: treeCoverValues,
+    classes: treeCoverClasses,
+    colors: treeCoverColors
+  };
+
   config[KEYS.SLOPE_BREAKDOWN] = {
-    id: '$11',
-    restorationOptionsId: '$13',
+    id: '$3',
+    restorationOptionsId: '$5',
     chartName: 'Slope',
     slopeOptions: [
       { label: '<= 30%', value: 1 },
