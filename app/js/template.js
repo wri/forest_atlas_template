@@ -7,6 +7,22 @@ define([
 	"res/Resources"
 ], function (urlUtils, Deferred, all, arcgisUtils, arrayUtils, Resources) {
 	"use strict";
+
+	/**
+	* Check is the restoration options are valid
+	*/
+	var checkRestorationOptions = function checkRestorationOptions (option) {
+		return option !== '' && option !== undefined && option.split(',').length === 2;
+	};
+
+	var mapRestorationOptionsToConfig = function mapRestorationOptionsToConfig (option) {
+		var data = options.split(',');
+		return {
+			label: data[0],
+			id: data[1].replace(/ /g, '')
+		};
+	};
+
 	return {
 
 		getApplicationInformation: function () {
@@ -91,6 +107,49 @@ define([
 					commonConfig.documentDirectory = values.documentDirectory;
 					commonConfig.documentMapserver = values.documentMapserver;
 
+					// Restoration Module Options
+					commonConfig.restorationModule = values.restorationModule || false;
+
+					// Create an easy to read array for the app from the configured values
+					commonConfig.restorationModuleOptions = [];
+
+					if (checkRestorationOptions(values.restorationModuleOption1)) {
+						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption1));
+					}
+
+					if (checkRestorationOptions(values.restorationModuleOption2)) {
+						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption2));
+					}
+
+					if (checkRestorationOptions(values.restorationModuleOption3)) {
+						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption3));
+					}
+
+					if (checkRestorationOptions(values.restorationModuleOption4)) {
+						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption4));
+					}
+
+					if (checkRestorationOptions(values.restorationModuleOption5)) {
+						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption5));
+					}
+
+					if (checkRestorationOptions(values.restorationModuleOption6)) {
+						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption6));
+					}
+
+					if (checkRestorationOptions(values.restorationModuleOption7)) {
+						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption7));
+					}
+
+					if (checkRestorationOptions(values.restorationModuleOption8)) {
+						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption8));
+					}
+
+					if (checkRestorationOptions(values.restorationModuleOption9)) {
+						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption9));
+					}
+
+
 					// Map Theme Options
 					// Only set this value if the configuration options are matching and correct, else set it to an empty array
 					var themeNames = values.mapThemes && values.mapThemes.split(",") || [];
@@ -121,8 +180,8 @@ define([
 					commonConfig.mapThemesAlternate = alternateThemes;
 
 					// Other Values not configurable, set them to undefined as they will get pulled from resources later
-					commonConfig.geometryServiceURL = undefined;
 					commonConfig.basemap = undefined;
+					commonConfig.geometryServiceURL = undefined;
 					commonConfig.defaultLayerTransparency = undefined;
 
 				}

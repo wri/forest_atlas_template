@@ -93,10 +93,20 @@ define([], function () {
         mangroveIncluded: false,
 
         // Restoration Options
-        restorationModule: true,
+        restorationModule: false,
 
         // restorationImageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/local_projections/ETH_Restoration/ImageServer',
 
+        // May Also need Tree Cover, Slope, Land Cover, Population ids
+        // We need to standardize some of this, allowing configuration of these may open the door for
+        // configuring classes, values, and colors for each one, and they would have to be in a specific order
+        // This will make the potential for error extremely high as this is too many options to configure in too specific
+        // of an order
+
+        /**
+        * These are the options configured for the restoration module, the labels will be prefixed with
+        * 'Potential for ', id should be the raster id in the service
+        */
         restorationModuleOptions: [
           {
             id: '$6',
@@ -128,8 +138,15 @@ define([], function () {
           }
         ],
 
+        /**
+        * This is the id that contains all the classes listed below
+        */
         slopeAnalysisRestorationOptionsId: '$13',
 
+        /** TODO: In the configuraiton panel, it should be noted that this is the order of the classes
+        * in the image service, and also that these start at Value 2, 0 usually includes unmatched, 1 should
+        * be no data, so the below could look like [nulls, No Data, Potential for commercial .., .., etc.]
+        */
         slopeAnalysisRestorationOptions: [
           'Potential for commercial plantation on bare soil and shrubland only',
           'Potential for agri-silviculture and agro-silvo-pastoralism, and woodlot',
