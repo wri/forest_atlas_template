@@ -31,7 +31,8 @@ define([], function () {
 
         flagTitle: "Ministry of Forest and Wildlife",
 
-        layersToHide: [5, 6, 7, 8, 12, 13],
+        layersToHide: [6, 7, 8, 12, 13],
+        // layersToHide: [5, 6, 7, 8, 12, 13],
 
         mapThemes: [
           {
