@@ -112,48 +112,50 @@ define([
 					commonConfig.restorationImageServer = values.restorationImageServer;
 
 					// Create an easy to read array for the app from the configured values
-					commonConfig.restorationModuleOptions = [];
-
 					if (checkRestorationOptions(values.restorationModuleOption1)) {
+						commonConfig.restorationModuleOptions = [];
 						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption1));
-					}
 
-					if (checkRestorationOptions(values.restorationModuleOption2)) {
-						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption2));
-					}
+						if (checkRestorationOptions(values.restorationModuleOption2)) {
+							commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption2));
+						}
 
-					if (checkRestorationOptions(values.restorationModuleOption3)) {
-						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption3));
-					}
+						if (checkRestorationOptions(values.restorationModuleOption3)) {
+							commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption3));
+						}
 
-					if (checkRestorationOptions(values.restorationModuleOption4)) {
-						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption4));
-					}
+						if (checkRestorationOptions(values.restorationModuleOption4)) {
+							commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption4));
+						}
 
-					if (checkRestorationOptions(values.restorationModuleOption5)) {
-						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption5));
-					}
+						if (checkRestorationOptions(values.restorationModuleOption5)) {
+							commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption5));
+						}
 
-					if (checkRestorationOptions(values.restorationModuleOption6)) {
-						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption6));
-					}
+						if (checkRestorationOptions(values.restorationModuleOption6)) {
+							commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption6));
+						}
 
-					if (checkRestorationOptions(values.restorationModuleOption7)) {
-						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption7));
-					}
+						if (checkRestorationOptions(values.restorationModuleOption7)) {
+							commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption7));
+						}
 
-					if (checkRestorationOptions(values.restorationModuleOption8)) {
-						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption8));
-					}
+						if (checkRestorationOptions(values.restorationModuleOption8)) {
+							commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption8));
+						}
 
-					if (checkRestorationOptions(values.restorationModuleOption9)) {
-						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption9));
+						if (checkRestorationOptions(values.restorationModuleOption9)) {
+							commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption9));
+						}
+
+					} else {
+						commonConfig.restorationModuleOptions = undefined;
 					}
 
 					if (values.slopeAnalysisRestorationOptions) {
 						commonConfig.slopeAnalysisRestorationOptions = values.slopeAnalysisRestorationOptions.split(',');
 					} else {
-						commonConfig.slopeAnalysisRestorationOptions = [];
+						commonConfig.slopeAnalysisRestorationOptions = undefined;
 					}
 
 					// Map Theme Options

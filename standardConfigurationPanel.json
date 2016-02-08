@@ -120,7 +120,7 @@
       "fields": [
         {
           "type": "boolean",
-          "fieldName": "restorationAnalysis",
+          "fieldName": "restorationModule",
           "label": "Would you like to include restoration analysis? If no, you can skip the rest of this section",
           "tooltip": "Would you like to include restoration analysis? If no, you can skip the rest of this section"
         },
@@ -201,8 +201,8 @@
       "landCoverIncluded": true,
       "biomassIncluded": true,
       "iflIncluded": true,
-      "restorationAnalysis": false,
+      "restorationModule": false,
       "aboutLinkUrl": "http://my.forest-atlas.org/",
-      "downloadDataUrl": "http://data.globalforestwatch.org",
+      "downloadDataUrl": "http://data.globalforestwatch.org"
   }
 }
