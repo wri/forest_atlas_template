@@ -294,17 +294,27 @@ define(
                         // Remove the associated analysis layer
                         switch (layer.id) {
                           case "activeFires":
-                            domConstruct.destroy("fireAnalysis");
+                            query('.fireAnalysis').forEach(function (node) {
+                              domConstruct.destroy(node);
+                            });
                           break;
                           case "landCover":
-                            domConstruct.destroy("landCoverAnalysis");
-                            domConstruct.destroy("landCoverCompAnalysis");
+                            query('.landCoverAnalysis').forEach(function (node) {
+                              domConstruct.destroy(node);
+                            });
+                            query('.landCoverCompAnalysis').forEach(function (node) {
+                              domConstruct.destroy(node);
+                            });
                           break;
                           case "carbonLayer":
-                            domConstruct.destroy("biomassAnalysis");
+                            query('.biomassAnalysis').forEach(function (node) {
+                              domConstruct.destroy(node);
+                            });
                           break;
                           case "intactForestLayer":
-                            domConstruct.destroy("iflAnalysis");
+                            query('.iflAnalysis').forEach(function (node) {
+                              domConstruct.destroy(node);
+                            });
                           break;
                         }
 
