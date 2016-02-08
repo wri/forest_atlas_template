@@ -94,9 +94,9 @@ define([], function () {
         mangroveIncluded: false,
 
         // Restoration Options
-        restorationModule: true,
+        restorationModule: false,
 
-        // restorationImageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/local_projections/ETH_Restoration/ImageServer',
+        restorationImageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/local_projections/ETH_Restoration/ImageServer',
 
         // May Also need Tree Cover, Slope, Land Cover, Population ids
         // We need to standardize some of this, allowing configuration of these may open the door for
@@ -138,11 +138,6 @@ define([], function () {
             label: 'slope analysis'
           }
         ],
-
-        /**
-        * This is the id that contains all the classes listed below
-        */
-        slopeAnalysisRestorationOptionsId: '$5',
 
         /** TODO: In the configuraiton panel, it should be noted that this is the order of the classes
         * in the image service, and also that these start at Value 2, 0 usually includes unmatched, 1 should

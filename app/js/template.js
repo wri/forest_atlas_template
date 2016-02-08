@@ -109,6 +109,7 @@ define([
 
 					// Restoration Module Options
 					commonConfig.restorationModule = values.restorationModule || false;
+					commonConfig.restorationImageServer = values.restorationImageServer;
 
 					// Create an easy to read array for the app from the configured values
 					commonConfig.restorationModuleOptions = [];
@@ -149,6 +150,11 @@ define([
 						commonConfig.restorationModuleOptions.push(mapRestorationOptionsToConfig(values.restorationModuleOption9));
 					}
 
+					if (values.slopeAnalysisRestorationOptions) {
+						commonConfig.slopeAnalysisRestorationOptions = values.slopeAnalysisRestorationOptions.split(',');
+					} else {
+						commonConfig.slopeAnalysisRestorationOptions = [];
+					}
 
 					// Map Theme Options
 					// Only set this value if the configuration options are matching and correct, else set it to an empty array

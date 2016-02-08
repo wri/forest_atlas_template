@@ -126,6 +126,12 @@
         },
         {
           "type": "string",
+          "fieldName": "restorationImageServer",
+          "label": "Please enter the URL for the ImageServer to be used in the restoration analysis?",
+          "tooltip": "Please enter the URL for the ImageServer to be used in the restoration analysis?"
+        },
+        {
+          "type": "string",
           "fieldName": "restorationModuleOption1",
           "label": "Please enter the name of the option followed by a , and the Raster Id. All options will be prefixed in the app with 'Potential for '",
           "tooltip": "Example: slope analysis, $11"
@@ -177,6 +183,12 @@
           "fieldName": "restorationModuleOption9",
           "label": "Please enter the name of the option followed by a , and the Raster Id. All options will be prefixed in the app with 'Potential for '",
           "tooltip": "Example: slope analysis, $11"
+        },
+        {
+          "type": "string",
+          "fieldName": "slopeAnalysisRestorationOptions",
+          "label": "Please enter the names of the options in your slope analysis in the order of the values in the data as a comma separated list:",
+          "tooltip": "Please enter the names of the options in your slope analysis in the order of the values in the data as a comma separated list:"
         }
       ]
     }

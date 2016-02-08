@@ -17,7 +17,7 @@ define(['root/analysis/constants'], function (KEYS) {
   var treeCoverColors = ['rgb(0, 0, 0)', 'rgb(180, 215, 158)', 'rgb(245, 245, 122)', 'rgb(205, 170, 102)'];
 
   var config = {
-    imageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/local_projections/ETH_Restoration/ImageServer'
+    imageServer: app.config.restorationImageServer
   };
 
   config[KEYS.LAND_COVER] = {
