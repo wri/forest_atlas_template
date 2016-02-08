@@ -6,7 +6,7 @@ define([
 ], function (ToolsModel, ToolsConfig, urlUtils, lang) {
   "use strict";
 
-  // Just in case
+  // Just in case, sometimes breaks if this is not initialized
   ToolsConfig.initialize();
 
   var analysisConfig = ToolsConfig.getConfig().analysisConfig;

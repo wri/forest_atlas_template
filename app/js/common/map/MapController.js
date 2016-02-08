@@ -265,6 +265,7 @@ define([
                     var selected = infoWindow.getSelectedFeature();
                     var viewModel = Model.getVM();
                     var activeTab = viewModel.popupActiveTab();
+                    var options = {};
 
                     // If selected feature has a custom title use it, otherwise take whatever is in the infowindow
                     var title = selected.attributes.Custom_Title || infoWindow._title.innerHTML;
@@ -274,11 +275,17 @@ define([
                     domStyle.set("results-chart-container", "top", analysisTypesContainer.offsetHeight + "px");
                     query("#results-header .title")[0].innerHTML = title;
 
+                    var target = document.querySelector('.analysis-options-select');
+                    var activeOption = target.options[target.selectedIndex];
+                    if (viewModel.currentAnalysisType() === viewModel.restorationModuleType()) {
+                      options = {
+                        index: +activeOption.getAttribute('data-option')
+                      };
+                    }
 
                     // IdentifyTask is still generalizing features, may have to go to server and get new features
                     // as we get slightly different results based on the generalization which is recalculated at
                     // every zoom level
-
                     if (selected.attributes.OBJECTID) {
                         var objectId = selected.attributes.OBJECTID;
                         var layer = selected._layer;
@@ -292,13 +299,13 @@ define([
 
                         queryTask.execute(esriQuery, function(featureSet) {
                             if (featureSet.features.length > 0) {
-                                Results.getResultsForType(viewModel.currentAnalysisType(), featureSet.features[0]);
+                                Results.getResultsForType(viewModel.currentAnalysisType(), featureSet.features[0], options);
                             } else {
-                                Results.getResultsForType(viewModel.currentAnalysisType(), selected);
+                                Results.getResultsForType(viewModel.currentAnalysisType(), selected, options);
                             }
                         });
                     } else {
-                        Results.getResultsForType(viewModel.currentAnalysisType(), selected);
+                        Results.getResultsForType(viewModel.currentAnalysisType(), selected, options);
                     }
 
                     // MAY NOT BE NEEDED

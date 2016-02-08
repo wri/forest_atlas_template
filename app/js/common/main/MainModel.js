@@ -10,9 +10,9 @@ define(
                 var id = domID;
                 o._vm = {};
 
-                require(["ko", "mainconfig", "dom", "topic", "mainevents", "keyscontroller", "root/languages"],
+                require(["ko", "mainconfig", "dom", "topic", "mainevents", "root/languages"],
 
-                    function(ko, Config, dom, topic, Events, keyscontroller, languages) {
+                    function(ko, Config, dom, topic, Events, languages) {
 
                         var mainconfig = Config.getConfig();
                         var mainevents = Events.getEvents();

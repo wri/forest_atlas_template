@@ -464,9 +464,58 @@ top:0px;
 	top: 50%;
 }
 
+#results-chart-container {
+	overflow: auto;
+}
+
 #analysis-chart {
 	height: 100%;
 	width: 98%; /* Give the labels a little extra padding */
+}
+
+.slope-select-label {
+	padding-left: 10px;
+}
+
+.slope-select select {
+	position: relative;
+	text-align: center;
+	display: inline;
+	width: 100px;
+	left: 5px;
+	top: -2px;
+}
+
+.restoration-chart {
+	height: 135px;
+}
+
+.restoration-chart.error {
+	height: auto;
+}
+
+.restoration-chart-title {
+	font-weight: bold;
+	margin-left: 5px;
+	font-size: 16px;
+}
+
+.restoration-nodata {
+	border: 3px solid rgb(240, 171, 0);
+	text-align: center;
+	padding: 10px 20px;
+	margin: 30px auto;
+	font-size: 18px;
+	width: 200px;
+}
+
+.restoration-error {
+	border: 3px solid rgb(240, 0, 0);
+	text-align: center;
+	padding: 10px 20px;
+	margin: 30px auto;
+	font-size: 18px;
+	width: 200px;
 }
 
 .highcharts-title {

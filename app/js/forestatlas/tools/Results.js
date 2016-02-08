@@ -2,8 +2,9 @@ define([
 	'toolsmodel',
 	'dojo/dom-class',
 	'dojo/promise/all',
-	'atlas/tools/Fetcher'
-], function ( Model, domClass, all, Fetcher) {
+	'atlas/tools/Fetcher',
+	'root/analysis/restoration-analysis'
+], function ( Model, domClass, all, Fetcher, Restoration) {
 	'use strict';
 
 	var Results = {
@@ -19,14 +20,28 @@ define([
 		* Get Results for the provided type of analysis and graphic and render that into the Analysis Tab
 		* @param {string} type - Type of analysis to be performed
 		* @param {object} graphic - esri graphic, should be of type polygon
+		* @param {object} options - additional options for the analysis
 		*/
-		getResultsForType: function (type, graphic) {
+		getResultsForType: function (type, graphic, options) {
 			this.debug('Results >>> getResultsForType');
 
 			var viewModel = Model.getVM();
 
 			// Show the loader by removing the class hiding it
 			domClass.remove('analysis-loader', 'hidden');
+
+			if (viewModel.restorationModule()) {
+				// Hide the tree cover density tool if were in Resotration Analysis, otherwise make sure its visible
+				// Also hide the Slope options select, it will reshow itself in Restoration.performRestorationAnalysis();
+				var tcdToolNode = document.querySelector('.analysis-selection-types .tcd-selector-wrapper');
+				var slopeSelectNode = document.querySelector('.analysis-selection-types .slope-select');
+				domClass.add(slopeSelectNode, 'hidden');
+				if (type === viewModel.restorationModuleType()) {
+					domClass.add(tcdToolNode, 'hidden');
+				} else {
+					domClass.remove(tcdToolNode, 'hidden');
+				}
+			}
 
 			switch (type) {
 				case viewModel.analysisLoss():
@@ -61,6 +76,10 @@ define([
 					this.getLandCoverComposition(graphic);
           ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Land Cover Composition.');
 				break;
+				case viewModel.restorationModuleType():
+					Restoration.performRestorationAnalysis(graphic, options.index);
+					ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed with the restoration module.');
+				break
 			}
 
 		},

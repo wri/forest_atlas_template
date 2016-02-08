@@ -1,6 +1,6 @@
 define(
-    ["declare", "ko", "dom", "topic", "toolsconfig", "memory", "number", "array", "root/languages", "query", "attr"],
-    function(declare, ko, dom, topic, Config, Memory, number, arrayUtil, languages, query, attr) {
+    ["declare", "mainmodel", "ko", "dom", "topic", "toolsconfig", "memory", "number", "array", "root/languages", "query", "attr", "toolsevents", "root/analysis/constants", "root/analysis/analysisConfig"],
+    function(declare, MainModel, ko, dom, topic, Config, Memory, number, arrayUtil, languages, query, attr, Events, KEYS, analysisConfig) {
         var o = declare(null, {
 
 
@@ -13,9 +13,9 @@ define(
                 o._dataModel = {};
 
 
-                require(["toolsevents", "mainmodel", "topic"],
+                require(["toolsevents"],
 
-                    function(Events, MainModel, topic) {
+                    function(Events) {
                         var mainmodel = MainModel.getVM();
                         var currentLanguage = mainmodel.currentLanguage();
 
@@ -78,6 +78,17 @@ define(
                         o._vm.analyzeToolsVisible = ko.observable(false);
                         o._vm.shareToolsVisible = ko.observable(false);
                         o._vm.showUploadTools = ko.observable(false);
+
+                        // Enable/Disable Restoration Module for Ethiopia Atlas
+                        o._vm.restorationModuleType = ko.observable('restoration');
+                        o._vm.slopeAmountOptions = ko.observableArray(analysisConfig[KEYS.SLOPE_BREAKDOWN].slopeOptions);
+                        o._vm.slopeSelectDescription = ko.observable('Choose slope percent:');
+                        o._vm.restorationModuleChartTitlePrefix = ko.observable('Potential for ');
+                        o._vm.slopeAnalysisRestorationOptionPrefix = ko.observable('Option ');
+                        o._vm.slopeActiveOption = ko.observable(analysisConfig[KEYS.SLOPE_BREAKDOWN].slopeOptions[0]);
+                        // These come from the resource file
+                        o._vm.restorationModule = ko.observable(app.config.restorationModule);
+                        o._vm.restorationModuleOptions = ko.observableArray(app.config.restorationModuleOptions);
 
 
                         // Items for Year Dropdown for forest cover loss layer
@@ -191,10 +202,18 @@ define(
                             require(['mapui', 'atlas/tools/Results', 'esri/tasks/query', 'esri/tasks/QueryTask'], function (MapUI, Results, EsriQuery, QueryTask) {
                                 var target = evt.target ? evt.target : evt.srcElement;
                                 var currentType = target.value; //target.getAttribute('data-class');
-                                model.currentAnalysisType(currentType);
                                 var infoWindow = MapUI.getMap().infoWindow;
                                 var activeFeature = infoWindow.getSelectedFeature();
+                                var options = {};
+                                var activeOption = target.options[target.selectedIndex];
 
+                                if (currentType === model.restorationModuleType()) {
+                                  options = {
+                                    index: +activeOption.getAttribute('data-option')
+                                  };
+                                }
+
+                                model.currentAnalysisType(currentType);
                                 if (activeFeature.attributes.OBJECTID) {
                                     var objectId = activeFeature.attributes.OBJECTID;
                                     var layer = activeFeature._layer;
@@ -208,16 +227,30 @@ define(
 
                                     queryTask.execute(esriQuery, function(featureSet) {
                                         if (featureSet.features.length > 0) {
-                                            Results.getResultsForType(currentType, featureSet.features[0]);
+                                            Results.getResultsForType(currentType, featureSet.features[0], options);
                                         } else {
-                                            Results.getResultsForType(currentType, activeFeature);
+                                            Results.getResultsForType(currentType, activeFeature, options);
                                         }
                                     });
                                 } else {
-                                    Results.getResultsForType(currentType, activeFeature);
+                                    Results.getResultsForType(currentType, activeFeature, options);
                                 }
 
                             });
+                        };
+
+                        o._vm.selectSlopeAmount = function (model, evt) {
+                          require(['mapui', 'atlas/tools/Results'], function (MapUI, Results) {
+                            var infoWindow = MapUI.getMap().infoWindow;
+                            var activeFeature = infoWindow.getSelectedFeature();
+                            var target = document.querySelector('.analysis-options-select');
+                            var activeOption = target.options[target.selectedIndex];
+                            var options = {
+                              index: +activeOption.getAttribute('data-option')
+                            };
+
+                            Results.getResultsForType(model.currentAnalysisType(), activeFeature, options);
+                          });
                         };
 
                         o._vm.landsatYearChanged = function (thisModel, evt) {
