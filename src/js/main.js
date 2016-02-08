@@ -1,4 +1,6 @@
 import App from 'components/App';
+import LayerModal from 'components/modals/LayerModal';
+// import ShareModal from 'components/modals/ShareModal';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import 'babel-polyfill';
@@ -6,7 +8,14 @@ import 'babel-polyfill';
 if (!_babelPolyfill) { console.log('Missing Babel Polyfill.  May experience some weirdness in IE < 9.'); }
 
 window.brApp = {
-  debug: location.search.slice(1).search('debug') > -1
+  // debug: location.search.slice(1).search('debug') > -1
+  debugEnabled: true,
+  debug: function (message) {
+    if (this.debugEnabled) {
+      var print = typeof message === 'string' ? console.log : console.dir;
+      print.apply(console, [message]);
+    }
+  }
 };
 
 // Shim for rAF with timeout for callback
@@ -25,6 +34,8 @@ let configureApp = () => {
 
 let initializeApp = () => {
   ReactDOM.render(<App />, document.getElementById('root'));
+  ReactDOM.render(<LayerModal />, document.getElementById('layer-modal'));
+  // ReactDOM.render(<ShareModal />, document.getElementById('share-modal'));
 };
 
 initializeApp();

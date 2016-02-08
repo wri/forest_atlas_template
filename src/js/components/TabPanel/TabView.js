@@ -1,3 +1,4 @@
+import LayerPanel from 'components/LayerPanel/LayerPanel';
 import InfoWindow from 'components/InfoPanel/InfoWindow';
 import tabKeys from 'constants/TabViewConstants';
 import React, {Component} from 'react';
@@ -26,7 +27,7 @@ export default class TabView extends Component {
     return (
       <div className='tab-view map-component custom-scroll shadow'>
         <div className={this.getClassName(LAYERS)}>
-          Layer Panel
+          <LayerPanel loaded={map.loaded} />
         </div>
         <div className={this.getClassName(INFO_WINDOW)}>
           {infoWindow}

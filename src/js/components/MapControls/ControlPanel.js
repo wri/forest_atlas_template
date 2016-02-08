@@ -29,11 +29,11 @@ export default class ControlPanel extends Component {
     return (
       <div className='control-panel map-component shadow'>
         <ul className='control-panel__list'>
-          <li className='control-panel__zoom-in pointer' title='Zoom In' onClick={this.zoomIn}>
-            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: zoomInSvg }}/>
-          </li>
           <li className='control-panel__zoom-out pointer' title='Zoom Out' onClick={this.zoomOut}>
             <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: zoomOutSvg }}/>
+          </li>
+          <li className='control-panel__zoom-in pointer' title='Zoom In' onClick={this.zoomIn}>
+            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: zoomInSvg }}/>
           </li>
           <li className='control-panel__share-map pointer' title='Share' onClick={this.share}>
             <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: shareSvg }}/>

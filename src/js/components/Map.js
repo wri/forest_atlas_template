@@ -1,6 +1,7 @@
 import Controls from 'components/MapControls/ControlPanel';
 import TabButtons from 'components/TabPanel/TabButtons';
 import TabView from 'components/TabPanel/TabView';
+import Legend from 'components/LegendPanel/LegendPanel';
 import arcgisUtils from 'esri/arcgis/utils';
 import mapActions from 'actions/MapActions';
 import MapStore from 'stores/MapStore';
@@ -39,6 +40,9 @@ export default class Map extends Component {
       this.map.infoWindow.on('show, hide, set-features, selection-change', mapActions.mapUpdated);
       //- Make the map a global in debug mode for easier debugging
       if (brApp.debug) { brApp.map = this.map; }
+
+      // DRS TODO:  how to make this work without having .createLayers() use brApp.map?
+      mapActions.createLayers();
     });
   };
 
@@ -49,6 +53,7 @@ export default class Map extends Component {
           <Controls map={this.map} />
           <TabButtons activeTab={this.state.activeTab} />
           <TabView map={this.map} {...this.state} />
+          <Legend />
         </div>
       </div>
     );
