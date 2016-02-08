@@ -133,55 +133,55 @@
         {
           "type": "string",
           "fieldName": "restorationModuleOption1",
-          "label": "Please enter the name of the option followed by a , and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
           "tooltip": "Example: slope analysis, 11"
         },
         {
           "type": "string",
           "fieldName": "restorationModuleOption2",
-          "label": "Please enter the name of the option followed by a , and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
           "tooltip": "Example: slope analysis, 11"
         },
         {
           "type": "string",
           "fieldName": "restorationModuleOption3",
-          "label": "Please enter the name of the option followed by a , and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
           "tooltip": "Example: slope analysis, 11"
         },
         {
           "type": "string",
           "fieldName": "restorationModuleOption4",
-          "label": "Please enter the name of the option followed by a , and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
           "tooltip": "Example: slope analysis, 11"
         },
         {
           "type": "string",
           "fieldName": "restorationModuleOption5",
-          "label": "Please enter the name of the option followed by a , and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
           "tooltip": "Example: slope analysis, 11"
         },
         {
           "type": "string",
           "fieldName": "restorationModuleOption6",
-          "label": "Please enter the name of the option followed by a , and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
           "tooltip": "Example: slope analysis, 11"
         },
         {
           "type": "string",
           "fieldName": "restorationModuleOption7",
-          "label": "Please enter the name of the option followed by a , and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
           "tooltip": "Example: slope analysis, 11"
         },
         {
           "type": "string",
           "fieldName": "restorationModuleOption8",
-          "label": "Please enter the name of the option followed by a , and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
           "tooltip": "Example: slope analysis, 11"
         },
         {
           "type": "string",
           "fieldName": "restorationModuleOption9",
-          "label": "Please enter the name of the option followed by a , and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
           "tooltip": "Example: slope analysis, 11"
         },
         {

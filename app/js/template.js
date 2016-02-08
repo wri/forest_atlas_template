@@ -16,7 +16,7 @@ define([
 	};
 
 	var mapRestorationOptionsToConfig = function mapRestorationOptionsToConfig (option) {
-		var data = option.split(',');
+		var data = option.split(';');
 		var id = data[1].replace(/ /g, '');
 
 		return {
