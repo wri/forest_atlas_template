@@ -282,7 +282,7 @@ define(
                 */
                 function generateUIForLayers (layerParams) {
 
-                    arrayUtil.forEach(layerParams.layers, function (layer, i) {
+                    layerParams.layers = arrayUtil.filter(layerParams.layers, function (layer, i) {
 
                       // If the layer has been configured to not be rendered, then return here
                       // after removing its analysis layer from the app
@@ -318,8 +318,16 @@ define(
                           break;
                         }
 
-                        return;
+                        return false;
                       }
+
+                      return true;
+
+                    });
+
+                    console.log(layerParams.layers);
+
+                    arrayUtil.forEach(layerParams.layers, function (layer, i) {
 
                         var containerDiv = domConstruct.create("div", {
                             id: layerParams.idPrefix + "container" + i,
