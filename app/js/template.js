@@ -12,16 +12,15 @@ define([
 	* Check is the restoration options are valid
 	*/
 	var checkRestorationOptions = function checkRestorationOptions (option) {
-		return option !== '' && option !== undefined && option.split(',').length === 2;
+		return option !== '' && option !== undefined && option.split(';').length === 2;
 	};
 
 	var mapRestorationOptionsToConfig = function mapRestorationOptionsToConfig (option) {
 		var data = option.split(';');
-		var id = data[1].replace(/ /g, '');
 
 		return {
 			label: data[0],
-			id: '$' + id
+			id: '$' + data[1].replace(/ /g, '')
 		};
 	};
 
