@@ -16,10 +16,12 @@ define([
 	};
 
 	var mapRestorationOptionsToConfig = function mapRestorationOptionsToConfig (option) {
-		var data = options.split(',');
+		var data = option.split(',');
+		var id = data[1].replace(/ /g, '');
+
 		return {
 			label: data[0],
-			id: data[1].replace(/ /g, '')
+			id: '$' + id
 		};
 	};
 
