@@ -156,6 +156,12 @@ define([
 
 					if (values.slopeAnalysisRestorationOptions) {
 						commonConfig.slopeAnalysisRestorationOptions = values.slopeAnalysisRestorationOptions.split(',');
+						//- Add an option for slope
+						if (commonConfig.restorationModuleOptions === undefined) { commonConfig.restorationModuleOptions = []; }
+						commonConfig.restorationModuleOptions.push({
+							label: 'slope analysis',
+							id: '$3'
+						});
 					} else {
 						commonConfig.slopeAnalysisRestorationOptions = undefined;
 					}

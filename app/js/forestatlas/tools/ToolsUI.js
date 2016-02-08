@@ -325,8 +325,6 @@ define(
 
                     });
 
-                    console.log(layerParams.layers);
-
                     arrayUtil.forEach(layerParams.layers, function (layer, i) {
 
                         var containerDiv = domConstruct.create("div", {
