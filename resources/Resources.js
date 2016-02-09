@@ -96,7 +96,7 @@ define([], function () {
         // Restoration Options
         restorationModule: false,
 
-        restorationImageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/local_projections/ETH_Restoration/ImageServer',
+        restorationImageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/country_data/ETH_Restoration/ImageServer',
 
         // May Also need Tree Cover, Slope, Land Cover, Population ids
         // We need to standardize some of this, allowing configuration of these may open the door for
