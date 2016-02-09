@@ -282,7 +282,7 @@ define(
                 */
                 function generateUIForLayers (layerParams) {
 
-                    arrayUtil.forEach(layerParams.layers, function (layer, i) {
+                    layerParams.layers = arrayUtil.filter(layerParams.layers, function (layer, i) {
 
                       // If the layer has been configured to not be rendered, then return here
                       // after removing its analysis layer from the app
@@ -294,22 +294,38 @@ define(
                         // Remove the associated analysis layer
                         switch (layer.id) {
                           case "activeFires":
-                            domConstruct.destroy("fireAnalysis");
+                            query('.fireAnalysis').forEach(function (node) {
+                              domConstruct.destroy(node);
+                            });
                           break;
                           case "landCover":
-                            domConstruct.destroy("landCoverAnalysis");
-                            domConstruct.destroy("landCoverCompAnalysis");
+                            query('.landCoverAnalysis').forEach(function (node) {
+                              domConstruct.destroy(node);
+                            });
+                            query('.landCoverCompAnalysis').forEach(function (node) {
+                              domConstruct.destroy(node);
+                            });
                           break;
                           case "carbonLayer":
-                            domConstruct.destroy("biomassAnalysis");
+                            query('.biomassAnalysis').forEach(function (node) {
+                              domConstruct.destroy(node);
+                            });
                           break;
                           case "intactForestLayer":
-                            domConstruct.destroy("iflAnalysis");
+                            query('.iflAnalysis').forEach(function (node) {
+                              domConstruct.destroy(node);
+                            });
                           break;
                         }
 
-                        return;
+                        return false;
                       }
+
+                      return true;
+
+                    });
+
+                    arrayUtil.forEach(layerParams.layers, function (layer, i) {
 
                         var containerDiv = domConstruct.create("div", {
                             id: layerParams.idPrefix + "container" + i,

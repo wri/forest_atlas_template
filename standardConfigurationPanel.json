@@ -83,7 +83,7 @@
       ]
     },
     {
-      "category": "Layer Settings",
+      "category": "Layer and Analysis Settings",
       "fields": [
         {
           "type": "paragraph",
@@ -114,6 +114,83 @@
             "tooltip": "Show Above Ground Biomass layer/analysis"
         }
       ]
+    },
+    {
+      "category": "Restoration Module options",
+      "fields": [
+        {
+          "type": "boolean",
+          "fieldName": "restorationModule",
+          "label": "Would you like to include restoration analysis? If no, you can skip the rest of this section",
+          "tooltip": "Would you like to include restoration analysis? If no, you can skip the rest of this section"
+        },
+        {
+          "type": "string",
+          "fieldName": "restorationImageServer",
+          "label": "Please enter the URL for the ImageServer to be used in the restoration analysis?",
+          "tooltip": "Please enter the URL for the ImageServer to be used in the restoration analysis?"
+        },
+        {
+          "type": "string",
+          "fieldName": "restorationModuleOption1",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "tooltip": "Example: slope analysis, 11"
+        },
+        {
+          "type": "string",
+          "fieldName": "restorationModuleOption2",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "tooltip": "Example: slope analysis, 11"
+        },
+        {
+          "type": "string",
+          "fieldName": "restorationModuleOption3",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "tooltip": "Example: slope analysis, 11"
+        },
+        {
+          "type": "string",
+          "fieldName": "restorationModuleOption4",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "tooltip": "Example: slope analysis, 11"
+        },
+        {
+          "type": "string",
+          "fieldName": "restorationModuleOption5",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "tooltip": "Example: slope analysis, 11"
+        },
+        {
+          "type": "string",
+          "fieldName": "restorationModuleOption6",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "tooltip": "Example: slope analysis, 11"
+        },
+        {
+          "type": "string",
+          "fieldName": "restorationModuleOption7",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "tooltip": "Example: slope analysis, 11"
+        },
+        {
+          "type": "string",
+          "fieldName": "restorationModuleOption8",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "tooltip": "Example: slope analysis, 11"
+        },
+        {
+          "type": "string",
+          "fieldName": "restorationModuleOption9",
+          "label": "Please enter the name of the option followed by a ; and the Raster Id. All options will be prefixed in the app with 'Potential for '",
+          "tooltip": "Example: slope analysis, 11"
+        },
+        {
+          "type": "string",
+          "fieldName": "slopeAnalysisRestorationOptions",
+          "label": "Please enter the names of the options in your slope analysis in the order of the values in the data as a comma separated list:",
+          "tooltip": "Please enter the names of the options in your slope analysis in the order of the values in the data as a comma separated list:"
+        }
+      ]
     }
   ],
   "values": {
@@ -124,7 +201,8 @@
       "landCoverIncluded": true,
       "biomassIncluded": true,
       "iflIncluded": true,
+      "restorationModule": false,
       "aboutLinkUrl": "http://my.forest-atlas.org/",
-      "downloadDataUrl": "http://data.globalforestwatch.org",
+      "downloadDataUrl": "http://data.globalforestwatch.org"
   }
 }

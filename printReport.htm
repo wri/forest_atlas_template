@@ -355,8 +355,8 @@
 	<script type="text/javascript">
 		require(["dojo/io-query","esri/map","esri/config","esri/geometry/Extent","esri/layers/ArcGISDynamicMapServiceLayer","esri/layers/LayerDrawingOptions",
 			"esri/layers/ImageParameters","dojo/_base/array","esri/tasks/QueryTask","esri/tasks/query","dojo/dom-construct","esri/graphic","esri/symbols/SimpleMarkerSymbol",
-			"esri/symbols/SimpleFillSymbol","esri/symbols/SimpleLineSymbol","dojo/_base/Color","dojo/number","dojo/_base/config","esri/request","esri/lang","esri/geometry/Polygon","dojo/domReady!"],
-			function(ioQuery,Map,esriConfig,Extent,ArcGISDynamicMapServiceLayer,LayerDrawingOptions,ImageParameters,arrayUtil,QueryTask,Query,domConstruct,Graphic,SimpleMarkerSymbol,SimpleFillSymbol,SimpleLineSymbol,Color,dojoNumber,dojoConfig,esriRequest,esriLang, Polygon){
+			"esri/symbols/SimpleFillSymbol","esri/symbols/SimpleLineSymbol","dojo/_base/Color","dojo/number","dojo/_base/config","esri/request","esri/lang","esri/geometry/Polygon","identityManager", "dojo/domReady!"],
+			function(ioQuery,Map,esriConfig,Extent,ArcGISDynamicMapServiceLayer,LayerDrawingOptions,ImageParameters,arrayUtil,QueryTask,Query,domConstruct,Graphic,SimpleMarkerSymbol,SimpleFillSymbol,SimpleLineSymbol,Color,dojoNumber,dojoConfig,esriRequest,esriLang, Polygon, identityManager){
 
 				esriConfig.defaults.io.corsEnabledServers.push("http://gis-forest-atlas.wri.org/");
 				esriConfig.defaults.io.corsEnabledServers.push("http://gis-potico.wri.org");

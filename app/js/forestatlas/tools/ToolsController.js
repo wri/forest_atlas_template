@@ -622,7 +622,7 @@ define(
 
                                 var feature = result.feature;
                                 data.push({
-                                    name: result.value + " | " + result.layerName + ": " + nameValue,
+                                    name: result.value + " | " + result.layerName + (nameValue ? ": " + nameValue : ''),
                                     id: "result" + index,
                                     layerId: layerId,
                                     feature: feature,

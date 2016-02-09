@@ -4,8 +4,7 @@
   "description": "WRI Forest Atlas Template for use in ArcGIS Online",
   "main": "gulpfile.js",
   "scripts": {
-    "dist": "rm -rf www; gulp dist;",
-    "optimizeApp": "r.js -o app.build.js"
+    "dist": "rm -rf www; gulp dist;"
   },
   "repository": {
     "type": "git",

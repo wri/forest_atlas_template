@@ -246,20 +246,44 @@
 						<div class="analysis-selection-types">
 							<span class='analysis-selection-label'>Select Analysis:</span>
 							<select data-bind="event: {change: selectAnalysisType}" class='analysis-options-select'>
+								<!-- ko if: !restorationModule() -->
 								<option data-bind="attr: {value: analysisLoss}, text: analysisLoss"></option>
 								<option data-bind="attr: {value: analysisGain}, text: analysisGain"></option>
-								<option id="landCoverAnalysis" data-bind="attr: {value: analysisLC}, text: analysisLC"></option>
-								<!-- <option data-bind="attr: {value: analysisTCD}, text: analysisTCD"></option> -->
-								<option id="biomassAnalysis" data-bind="attr: {value: analysisCS}, text: analysisCS"></option>
-								<option id="iflAnalysis" data-bind="attr: {value: analysisIFL}, text: analysisIFL"></option>
-								<option id="fireAnalysis" data-bind="attr: {value: analysisFire}, text: analysisFire"></option>
-								<option id="landCoverCompAnalysis" data-bind="attr: {value: analysisLCComposition}, text: analysisLCComposition"></option>
+								<option id="landCoverAnalysis" class='landCoverAnalysis' data-bind="attr: {value: analysisLC}, text: analysisLC"></option>
+								<option id="biomassAnalysis" class='biomassAnalysis' data-bind="attr: {value: analysisCS}, text: analysisCS"></option>
+								<option id="iflAnalysis" class='iflAnalysis' data-bind="attr: {value: analysisIFL}, text: analysisIFL"></option>
+								<option id="fireAnalysis" class='fireAnalysis' data-bind="attr: {value: analysisFire}, text: analysisFire"></option>
+								<option id="landCoverCompAnalysis" class='landCoverCompAnalysis' data-bind="attr: {value: analysisLCComposition}, text: analysisLCComposition"></option>
+								<!-- /ko -->
+								<!-- ko if: restorationModule -->
+								<optgroup label='Restoration potential for'>
+									<!-- ko foreach: restorationModuleOptions -->
+									<option data-bind="attr: {'data-option': $index, value: $parent.restorationModuleType }, text: label"></option>
+									<!-- /ko -->
+								</optgroup>
+								<optgroup label='Other Analyses'>
+									<option selected='selected' data-bind="attr: {value: analysisLoss}, text: analysisLoss"></option>
+									<option data-bind="attr: {value: analysisGain}, text: analysisGain"></option>
+									<option id="landCoverAnalysis" class='landCoverAnalysis' data-bind="attr: {value: analysisLC}, text: analysisLC"></option>
+									<option id="biomassAnalysis" class='biomassAnalysis' data-bind="attr: {value: analysisCS}, text: analysisCS"></option>
+									<option id="iflAnalysis" class='iflAnalysis' data-bind="attr: {value: analysisIFL}, text: analysisIFL"></option>
+									<option id="fireAnalysis" class='fireAnalysis' data-bind="attr: {value: analysisFire}, text: analysisFire"></option>
+									<option id="landCoverCompAnalysis" class='landCoverCompAnalysis' data-bind="attr: {value: analysisLCComposition}, text: analysisLCComposition"></option>
+								</optgroup>
+								<!-- /ko -->
 							</select>
 							<div class='tcd-selector-wrapper'>
 								<span class='tcd-selector-label' data-bind='text: tcdSelectorBegin'></span>
 								<span class='tcd-selector-value' data-bind='text: tcdSelectorValue, click: canopyDensityClicked'></span>
 								<span class='tcd-selector-label' data-bind='text: tcdSelectorEnd'></span>
 							</div>
+							<!-- ko if: restorationModule -->
+								<div class="slope-select">
+									<span class='slope-select-label' data-bind='text: slopeSelectDescription'></span>
+									<select data-bind="options: slopeAmountOptions, optionsText: 'label', value: slopeActiveOption, event: {change: selectSlopeAmount}">
+									</select>
+								</div>
+							<!-- /ko -->
 						</div>
 						<div id="analysis-loader" class="hidden">
 							<span class="loading-wheel"></span>

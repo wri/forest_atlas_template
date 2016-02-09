@@ -31,7 +31,8 @@ define([], function () {
 
         flagTitle: "Ministry of Forest and Wildlife",
 
-        layersToHide: [5, 6, 7, 8, 12, 13],
+        layersToHide: [6, 7, 8, 12, 13],
+        // layersToHide: [5, 6, 7, 8, 12, 13],
 
         mapThemes: [
           {
@@ -55,7 +56,8 @@ define([], function () {
           }
         ],
 
-        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer",
+        maskMapUrl: "http://gis-stage.wri.org/arcgis/rest/services/Ethiopia/Africa_mask/MapServer",
+        // maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer",
 
         printURL: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/GABExportWebMap/GPServer/Export%20Web%20Map",
 
@@ -67,7 +69,8 @@ define([], function () {
 
         useAdditionalLanguage: true,
 
-        webMapID: "10db57b5316749478d5287155760fd14",
+        webMapID: "fa499ab4cc9e4a308411b64c9ab2b749",
+        // webMapID: "10db57b5316749478d5287155760fd14",
 
         // NOW FOR THE LAYER SETTINGS
         // These are placeholders, they currently do nothing but they will soon control which layers/analysis types are visible
@@ -88,7 +91,70 @@ define([], function () {
 
         globcoverIncluded: false,
 
-        mangroveIncluded: false
+        mangroveIncluded: false,
+
+        // Restoration Options
+        restorationModule: false,
+
+        restorationImageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/country_data/ETH_Restoration/ImageServer',
+
+        // May Also need Tree Cover, Slope, Land Cover, Population ids
+        // We need to standardize some of this, allowing configuration of these may open the door for
+        // configuring classes, values, and colors for each one, and they would have to be in a specific order
+        // This will make the potential for error extremely high as this is too many options to configure in too specific
+        // of an order
+
+        /**
+        * These are the options configured for the restoration module, the labels will be prefixed with
+        * 'Potential for ', id should be the raster id in the service
+        */
+        restorationModuleOptions: [
+          {
+            id: '$9',
+            label: 'establishing natural forest outside of cropland'
+          }, {
+            id: '$10',
+            label: 'restocking of degraded natural forest'
+          }, {
+            id: '$6',
+            label: 'agri-silviculture and agro-silvo-pastoralism'
+          }, {
+            id: '$11',
+            label: 'silvo-pastoralism'
+          }, {
+            id: '$13',
+            label: 'woodlot'
+          }, {
+            id: '$8',
+            label: 'commercial plantation on bare soil and shrubland'
+          }, {
+            id: '$7',
+            label: 'commercial plantation as buffer zone to national forest priority areas and protected areas'
+          }, {
+            id: '$12',
+            label: 'tree-based buffer zone along rivers, lakes and reservoirs'
+          }, {
+            id: '$3',
+            label: 'slope analysis'
+          }
+        ],
+
+        /** TODO: In the configuraiton panel, it should be noted that this is the order of the classes
+        * in the image service, and also that these start at Value 2, 0 usually includes unmatched, 1 should
+        * be no data, so the below could look like [nulls, No Data, Potential for commercial .., .., etc.]
+        */
+        slopeAnalysisRestorationOptions: [
+          'Potential for commercial plantation on bare soil and shrubland only',
+          'Potential for agri-silviculture and agro-silvo-pastoralism, and woodlot',
+          'Potential for establishing natural forest only',
+          'Potential for restocking degraded natural forest only',
+          'Potential for woodlot only',
+          'Potential for silvo-pastoralism only',
+          'Potential for tree-buffer zone along rivers, lakes and reservoirs only',
+          'Potential for commercial plantation as buffer zone around (NF)PAs',
+          'Two restoration options identified as having potential',
+          'Three or more restoration options identified as having potential'
+        ]
 
     };
 

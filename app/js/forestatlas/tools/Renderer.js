@@ -271,7 +271,7 @@ define([
 			if (lossHistograms) { lossHistograms.shift(); }
 
 			gainTotal = gainHistograms ? gainHistograms[1] : 'N/A';
-			lossTotal = lossHistograms ? lossHistograms.reduce(function (a, b) { return a + b; }) : 'N/A';
+			lossTotal = lossHistograms ? lossHistograms.reduce(function (a, b) { return a + b; }, 0) : 'N/A';
 
 			gainTotal = number.format(gainTotal);
 			lossTotal = number.format(lossTotal);
