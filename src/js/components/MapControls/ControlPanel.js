@@ -1,4 +1,7 @@
-import React, {Component} from 'react';
+import React, {
+  Component,
+  PropTypes
+} from 'react';
 
 
 //- SVG Elements
@@ -10,18 +13,22 @@ const homeSvg = '<use xlink:href="#icon-home" />';
 
 export default class ControlPanel extends Component {
 
+  static contextTypes = {
+    map: PropTypes.object.isRequired
+  };
+
   zoomIn = () => {
-    let {map} = this.props;
+    let {map} = this.context;
     map.setZoom(map.getZoom() + 1);
   };
 
   zoomOut = () => {
-    let {map} = this.props;
+    let {map} = this.context;
     map.setZoom(map.getZoom() - 1);
   };
 
   goHome = () => {
-    let {map} = this.props;
+    let {map} = this.context;
     map.setExtent(map._params.extent);
   };
 
@@ -53,7 +60,3 @@ export default class ControlPanel extends Component {
   }
 
 }
-
-ControlPanel.propTypes = {
-  map: React.PropTypes.object.isRequired
-};

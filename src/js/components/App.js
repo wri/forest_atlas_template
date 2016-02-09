@@ -1,11 +1,25 @@
 import appActions from 'actions/AppActions';
 import Header from 'components/Header';
 import AppStore from 'stores/AppStore';
-import React, {Component} from 'react';
 import template from 'utils/template';
 import Map from 'components/Map';
+import React, {
+  Component,
+  PropTypes
+} from 'react';
 
 export default class App extends Component {
+
+  static childContextTypes = {
+    language: PropTypes.string
+  };
+
+  getChildContext = () => {
+    return {
+      language: this.state.language
+    };
+  };
+
 
   constructor (props) {
     super(props);

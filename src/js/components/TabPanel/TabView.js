@@ -1,7 +1,10 @@
 import LayerPanel from 'components/LayerPanel/LayerPanel';
 import InfoWindow from 'components/InfoPanel/InfoWindow';
 import tabKeys from 'constants/TabViewConstants';
-import React, {Component} from 'react';
+import React, {
+  Component,
+  PropTypes
+} from 'react';
 
 //- Parse Keys for easier access
 const {
@@ -13,14 +16,16 @@ const {
 
 export default class TabView extends Component {
 
+  static contextTypes = {
+    map: PropTypes.object.isRequired
+  };
+
   getClassName = (id) => {
     return `tab-view__content ${id === this.props.activeTab ? 'selected' : ''}`;
   };
 
   render () {
-    let {
-      map
-    } = this.props;
+    let {map} = this.context;
 
     const infoWindow = map.infoWindow && map.infoWindow.isShowing ? <InfoWindow map={map} /> : undefined;
 
@@ -45,6 +50,5 @@ export default class TabView extends Component {
 }
 
 TabView.propTypes = {
-  map: React.PropTypes.object.isRequired,
   activeTab: React.PropTypes.string.isRequired
 };

@@ -2,12 +2,17 @@ import layerActions from 'actions/LayerActions';
 import modalActions from 'actions/ModalActions';
 import LayersHelper from 'helpers/LayersHelper';
 import LayerTransparency from './LayerTransparency';
-import React from 'react';
+import React, { PropTypes } from 'react';
+import text from 'js/languages';
 
 // Info Icon Markup for innerHTML
 let useSvg = '<use xlink:href="#shape-info" />';
 
 export default class LayerCheckbox extends React.Component {
+
+  static contextTypes = {
+    language: PropTypes.string.isRequired
+  };
 
   componentDidUpdate(prevProps) {
     if (prevProps.checked !== this.props.checked) {
@@ -24,13 +29,16 @@ export default class LayerCheckbox extends React.Component {
   }
 
   render() {
-    let layer = this.props.layer;
+    let {layer} = this.props;
+    let {language} = this.context;
+    let label = text[language][layer.label];
+    let sublabel = text[language][layer.sublabel];
 
     return (
       <div className={`layer-checkbox relative ${layer.className}${this.props.checked ? ' active' : ''}${layer.disabled ? ' disabled' : ''}`} >
         <span onClick={this.toggleLayer.bind(this)} className='toggle-switch pointer'><span/></span>
-        <span onClick={this.toggleLayer.bind(this)} className='layer-checkbox-label pointer'>{layer.label}</span>
-        {!layer.sublabel ? null : <div className='layer-checkbox-sublabel'>{layer.sublabel}</div>}
+        <span onClick={this.toggleLayer.bind(this)} className='layer-checkbox-label pointer'>{label}</span>
+        {!sublabel ? null : <div className='layer-checkbox-sublabel'>{sublabel}</div>}
         <span className='info-icon pointer' onClick={this.showInfo.bind(this)}>
           <svg dangerouslySetInnerHTML={{ __html: useSvg }}/>
         </span>

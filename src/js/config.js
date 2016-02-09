@@ -1,5 +1,5 @@
 import layerKeys from 'constants/LayerConstants';
-import strings from 'strings';
+import stringKeys from 'constants/StringKeys';
 
 const config = {
   map: {
@@ -37,8 +37,8 @@ const config = {
       type: 'image',
       visible: true,
       group: 'landCoverDynamics',
-      label: strings.LOSS_LABEL,
-      sublabel: strings.LOSS_SUB_LABEL,
+      label: stringKeys.LOSS_LABEL,
+      sublabel: stringKeys.LOSS_SUB_LABEL,
       url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestCover_lossyear/ImageServer',
       className: '',
       colormap: [[1, 219, 101, 152]],
@@ -51,8 +51,8 @@ const config = {
       type: 'tiled',
       visible: true,
       group: 'landCoverDynamics',
-      label: strings.GAIN_LABEL,
-      sublabel: strings.GAIN_SUB_LABEL,
+      label: stringKeys.GAIN_LABEL,
+      sublabel: stringKeys.GAIN_SUB_LABEL,
       className: '',
       url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestGain_2000_2012_map/MapServer'
     },
@@ -61,8 +61,8 @@ const config = {
       order: 5,
       type: 'dynamic',
       group: 'landCoverDynamics',
-      label: strings.ACTIVE_FIRES_LABEL,
-      sublabel: strings.ACTIVE_FIRES_SUB_LABEL,
+      label: stringKeys.ACTIVE_FIRES_LABEL,
+      sublabel: stringKeys.ACTIVE_FIRES_SUB_LABEL,
       url: 'http://gis-potico.wri.org/arcgis/rest/services/Fires/Global_Fires/MapServer',
       className: '',
       layerIds: [0, 1, 2, 3]
@@ -72,8 +72,8 @@ const config = {
       order: 3,
       type: 'image',
       group: 'landCover',
-      label: strings.TREE_COVER_LABEL,
-      sublabel: strings.TREE_COVER_SUB_LABEL,
+      label: stringKeys.TREE_COVER_LABEL,
+      sublabel: stringKeys.TREE_COVER_SUB_LABEL,
       url: 'http://50.18.182.188:6080/arcgis/rest/services/TreeCover2000/ImageServer',
       colormap: [[1, 174, 203, 107]],
       inputRange: [30, 101],
@@ -87,7 +87,7 @@ const config = {
       order: 4,
       type: 'dynamic',
       group: 'landCover',
-      label: strings.LAND_COVER_LABEL,
+      label: stringKeys.LAND_COVER_LABEL,
       className: '',
       layerIds: [0]
     }
@@ -219,4 +219,3 @@ export const layerPanelText = config.layerPanel;
 export const layerInformation = config.layerInformation;
 export const modalText = config.modals;
 export const errors = config.errors;
-
