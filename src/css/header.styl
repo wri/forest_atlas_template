@@ -2,10 +2,13 @@
   line-height $headerHeight
   font-size 24px
 
-@media (min-width: 1000px)
-  .app-header
-    border-bottom 2px solid $goldTheme
+@require 'navigation'
 
-@media (max-width: 1000px)
-  .app-header
-    border-top 2px solid $goldTheme
+//- Comps show no bottom border
+// @media (min-width: 1000px)
+//   .app-header
+//     border-bottom 2px solid $goldTheme
+//
+// @media (max-width: 1000px)
+//   .app-header
+//     border-top 2px solid $goldTheme

@@ -1,5 +1,6 @@
 //- Keys to all the strings in languages.js
 export default {
+  //- Layer Labels
   GAIN_LABEL: 'GAIN_LABEL',
   GAIN_SUB_LABEL: 'GAIN_SUB_LABEL',
   LOSS_LABEL: 'LOSS_LABEL',
@@ -10,5 +11,9 @@ export default {
   TREE_COVER_SUB_LABEL: 'TREE_COVER_SUB_LABEL',
   LAND_COVER_LABEL: 'LAND_COVER_LABEL',
   IFL_LABEL: 'IFL_LABEL',
-  CARBON_LABEL: 'CARBON_LABEL'
+  CARBON_LABEL: 'CARBON_LABEL',
+  //- Navigation Items
+  NAV_ABOUT: 'NAV_ABOUT',
+  NAV_DOWNLOAD: 'NAV_DOWNLOAD',
+  NAV_MAP_THEMES: 'NAV_MAP_THEMES'
 };

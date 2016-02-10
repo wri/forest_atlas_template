@@ -1,0 +1,51 @@
+.app-header__nav
+  margin auto 0 auto auto
+  display flex
+
+.app-header__nav-list
+  height $headerHeight
+  font-size 14px
+  display flex
+
+.app-header__nav-link
+.app-header__nav-option
+  text-transform uppercase
+  align-items center
+  position relative
+  padding 0 5px
+  display flex
+
+.app-header__nav-option
+  border-bottom 3px solid white
+  margin-top 3px
+
+.app-header__nav-option:hover
+.app-header__nav-option.active
+  border-bottom 3px solid $goldTheme
+
+.app-header__nav-separator
+  background-color black
+  margin 0 5px
+  height 50px
+  float left
+  width 1px
+
+.app-header__theme-list
+  border-top 3px solid $goldTheme
+  transform translate(-50%, 0)
+  background-color white
+  position absolute
+  min-width 175px
+  display none
+  z-index 10
+  top $headerHeight - 3px
+  left 50%
+
+.app-header__nav-link--map-themes:hover
+  & .app-header__theme-list
+    display block
+
+.app-header__theme
+  border-bottom 1px solid $lightGray
+  text-align center
+  padding 10px

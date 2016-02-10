@@ -13,6 +13,9 @@ strings.en[keys.LOSS_LABEL] = 'Tree cover loss';
 strings.en[keys.LOSS_SUB_LABEL] = '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)';
 strings.en[keys.IFL_LABEL] = 'Intact forest loss';
 strings.en[keys.CARBON_LABEL] = 'Above ground biomass';
+strings.en[keys.NAV_ABOUT] = 'About';
+strings.en[keys.NAV_DOWNLOAD] = 'Download Data';
+strings.en[keys.NAV_MAP_THEMES] = 'Map Themes';
 //- French
 strings.fr[keys.LAND_COVER_LABEL] = 'Land cover';
 strings.fr[keys.ACTIVE_FIRES_LABEL] = 'Active fires';
@@ -25,6 +28,9 @@ strings.fr[keys.LOSS_LABEL] = 'Tree cover loss';
 strings.fr[keys.LOSS_SUB_LABEL] = '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)';
 strings.fr[keys.IFL_LABEL] = 'Intact forest loss';
 strings.fr[keys.CARBON_LABEL] = 'Above ground biomass';
+strings.fr[keys.NAV_ABOUT] = 'About';
+strings.fr[keys.NAV_DOWNLOAD] = 'Download Data';
+strings.fr[keys.NAV_MAP_THEMES] = 'Map Themes';
 //- Spanish
 strings.es[keys.LAND_COVER_LABEL] = 'Land cover';
 strings.es[keys.ACTIVE_FIRES_LABEL] = 'Active fires';
@@ -37,6 +43,9 @@ strings.es[keys.LOSS_LABEL] = 'Tree cover loss';
 strings.es[keys.LOSS_SUB_LABEL] = '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)';
 strings.es[keys.IFL_LABEL] = 'Intact forest loss';
 strings.es[keys.CARBON_LABEL] = 'Above ground biomass';
+strings.es[keys.NAV_ABOUT] = 'About';
+strings.es[keys.NAV_DOWNLOAD] = 'Download Data';
+strings.es[keys.NAV_MAP_THEMES] = 'Map Themes';
 //- Portugese
 strings.pt[keys.LAND_COVER_LABEL] = 'Land cover';
 strings.pt[keys.ACTIVE_FIRES_LABEL] = 'Active fires';
@@ -49,5 +58,8 @@ strings.pt[keys.LOSS_LABEL] = 'Tree cover loss';
 strings.pt[keys.LOSS_SUB_LABEL] = '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)';
 strings.pt[keys.IFL_LABEL] = 'Intact forest loss';
 strings.pt[keys.CARBON_LABEL] = 'Above ground biomass';
+strings.pt[keys.NAV_ABOUT] = 'About';
+strings.pt[keys.NAV_DOWNLOAD] = 'Download Data';
+strings.pt[keys.NAV_MAP_THEMES] = 'Map Themes';
 
 export { strings as default };

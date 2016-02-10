@@ -14,6 +14,10 @@ const config = {
     }
   },
 
+  urls: {
+    liveSite: 'http://wri.github.io/forest_atlas_template/'
+  },
+
   /**
   * Layer Config Options, brackets are optional
   * if type is anything other than graphic and the layer is not disabled, it must have a url
@@ -219,3 +223,4 @@ export const layerPanelText = config.layerPanel;
 export const layerInformation = config.layerInformation;
 export const modalText = config.modals;
 export const errors = config.errors;
+export const urls = config.urls;

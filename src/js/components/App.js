@@ -11,12 +11,14 @@ import React, {
 export default class App extends Component {
 
   static childContextTypes = {
-    language: PropTypes.string
+    language: PropTypes.string,
+    settings: PropTypes.object
   };
 
   getChildContext = () => {
     return {
-      language: this.state.language
+      language: this.state.language,
+      settings: this.state.settings
     };
   };
 
@@ -40,7 +42,7 @@ export default class App extends Component {
   render () {
     return (
       <div className='root'>
-        <Header {...this.state} />
+        <Header />
         <Map {...this.state} />
       </div>
     );

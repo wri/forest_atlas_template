@@ -1,21 +1,37 @@
-import React, {Component} from 'react';
+import Navigation from 'components/Navigation/Navigation';
+import React, {
+  Component,
+  PropTypes
+} from 'react';
 
 export default class Header extends Component {
 
-  constructor (props) {
-    super(props);
-
-  }
+  static contextTypes = {
+    language: PropTypes.string.isRequired,
+    settings: PropTypes.object.isRequired
+  };
 
   render () {
     const {
-      defaultTitle
-    } = this.props.settings;
+      language,
+      settings
+    } = this.context;
+
+    let {labels} = settings,
+        title;
+
+    if (labels) {
+      let text = labels[language];
+      title = text.title;
+    } else {
+      title = '';
+    }
 
     return (
       <div className='app-header'>
-        <div className='inner'>
-          <div className='app-header__title'>{defaultTitle}</div>
+        <div className='inner flex'>
+          <div className='app-header__title'>{title}</div>
+          <Navigation />
         </div>
       </div>
     );

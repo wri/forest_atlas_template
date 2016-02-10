@@ -21,6 +21,7 @@ class AppStore {
 
   applySettings (settings) {
     this.settings = settings;
+    this.language = settings.defaultLanguage;
   }
 
 }
