@@ -36,10 +36,10 @@ export default class Navigation extends Component {
       <nav className='app-header__nav'>
         <ul className='app-header__nav-list'>
           <li className='app-header__nav-link pointer'>
-            <a href={settings.aboutLinkUrl}>{text[language][keys.NAV_ABOUT]}</a>
+            <a target='_blank' href={settings.aboutLinkUrl}>{text[language][keys.NAV_ABOUT]}</a>
           </li>
           <li className='app-header__nav-link pointer'>
-            <a href={settings.downloadDataUrl}>{text[language][keys.NAV_DOWNLOAD]}</a>
+            <a target='_blank' href={settings.downloadDataUrl}>{text[language][keys.NAV_DOWNLOAD]}</a>
           </li>
           {ThemeComponent}
         </ul>

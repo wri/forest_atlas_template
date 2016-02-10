@@ -1,3 +1,4 @@
+import AnalysisPanel from 'components/AnalysisPanel/AnalysisPanel';
 import LayerPanel from 'components/LayerPanel/LayerPanel';
 import InfoWindow from 'components/InfoPanel/InfoWindow';
 import tabKeys from 'constants/TabViewConstants';
@@ -8,7 +9,7 @@ import React, {
 
 //- Parse Keys for easier access
 const {
-  OTHER,
+  DOCUMENTS,
   LAYERS,
   ANALYSIS,
   INFO_WINDOW
@@ -38,10 +39,10 @@ export default class TabView extends Component {
           {infoWindow}
         </div>
         <div className={this.getClassName(ANALYSIS)}>
-          Analysis Panel
+          <AnalysisPanel />
         </div>
-        <div className={this.getClassName(OTHER)}>
-          Other Panel
+        <div className={this.getClassName(DOCUMENTS)}>
+          Documents Panel
         </div>
       </div>
     );

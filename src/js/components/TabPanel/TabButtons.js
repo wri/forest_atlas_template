@@ -4,13 +4,16 @@ import React, {Component} from 'react';
 
 //- Parse Keys for easier access
 const {
-  OTHER,
+  DOCUMENTS,
   LAYERS,
   ANALYSIS,
   INFO_WINDOW
 } = tabKeys;
 
 const zoomInSvg = '<use xlink:href="#icon-plus" />';
+const dataSvg = '<use xlink:href="#icon-data" />';
+const layersSvg = '<use xlink:href="#icon-basemap" />';
+const analysisSvg = '<use xlink:href="#icon-analysis" />';
 
 export default class TabButtons extends Component {
 
@@ -31,15 +34,15 @@ export default class TabButtons extends Component {
       <nav className='tab-buttons map-component'>
         <ul className='tab-buttons__header'>
           <li className={this.getClassName(LAYERS)} data-value={LAYERS} onClick={this.changeTab}>
-            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: zoomInSvg }}/>
-          </li>
-          <li className={this.getClassName(INFO_WINDOW)} data-value={INFO_WINDOW} onClick={this.changeTab}>
-            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: zoomInSvg }}/>
+            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: layersSvg }}/>
           </li>
           <li className={this.getClassName(ANALYSIS)} data-value={ANALYSIS} onClick={this.changeTab}>
-            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: zoomInSvg }}/>
+            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: analysisSvg }}/>
           </li>
-          <li className={this.getClassName(OTHER)} data-value={OTHER} onClick={this.changeTab}>
+          <li className={this.getClassName(INFO_WINDOW)} data-value={INFO_WINDOW} onClick={this.changeTab}>
+            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: dataSvg }}/>
+          </li>
+          <li className={this.getClassName(DOCUMENTS)} data-value={DOCUMENTS} onClick={this.changeTab}>
             <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: zoomInSvg }}/>
           </li>
         </ul>
