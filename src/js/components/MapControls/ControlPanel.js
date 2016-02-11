@@ -10,6 +10,7 @@ const zoomOutSvg = '<use xlink:href="#icon-minus" />';
 const shareSvg = '<use xlink:href="#icon-share" />';
 const basemapSvg = '<use xlink:href="#icon-basemap" />';
 const homeSvg = '<use xlink:href="#icon-home" />';
+const searchSvg = '<use xlink:href="#icon-control-search" />';
 
 export default class ControlPanel extends Component {
 
@@ -32,6 +33,14 @@ export default class ControlPanel extends Component {
     map.setExtent(map._params.extent);
   };
 
+  search = () => {
+
+  };
+
+  share = () => {
+
+  };
+
   render () {
     return (
       <div className='control-panel map-component shadow'>
@@ -51,8 +60,8 @@ export default class ControlPanel extends Component {
           <li className='control-panel__basemap-layers pointer' title='Basemaps' onClick={this.toggleBasemapGallery}>
             <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: basemapSvg }}/>
           </li>
-          <li className='control-panel__locate-me pointer' title='Locate Me' onClick={this.locateMe}>
-            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: '' }}/>
+          <li className='control-panel__locate-me pointer' title='Search' onClick={this.search}>
+            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: searchSvg }}/>
           </li>
         </ul>
       </div>
