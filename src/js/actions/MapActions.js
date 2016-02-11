@@ -4,8 +4,9 @@ import layerFactory from 'helpers/LayerFactory';
 class MapActions {
   //- Action to notify the store the map has changed so we can rerender UI changes
   //- if necessary
-  mapUpdated () {
-    return {};
+  mapUpdated (e) {
+    console.log('MapActions', e);
+    return e;
   }
 
   changeActiveTab (tabId) {

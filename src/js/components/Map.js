@@ -54,6 +54,7 @@ export default class Map extends Component {
       this.map = response.map;
       this.map.graphics.clear();
       mapActions.mapUpdated();
+      this.map.infoWindow.set('popupWindow', false);
       //- Attach events I need for the info window
       this.map.infoWindow.on('show, hide, set-features, selection-change', mapActions.mapUpdated);
       //- Make the map a global in debug mode for easier debugging
