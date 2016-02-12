@@ -18,6 +18,31 @@ const config = {
     liveSite: 'http://wri.github.io/forest_atlas_template/'
   },
 
+  upload: {
+    portal: 'http://www.arcgis.com/sharing/rest/content/features/generate',
+    shapefileParams: (name, spatialReference, extentWidth, mapWidth) => {
+      return {
+        'name': name,
+        'generalize': true,
+        'targetSr': spatialReference,
+        'maxRecordCount': 1000,
+        'reducePrecision': true,
+        'numberOfDigitsAfterDecimal': 0,
+        'enforceInputFileSizeLimit': true,
+        'enforceOutputJsonSizeLimit': true,
+        'maxAllowableOffset': extentWidth / mapWidth
+      };
+    },
+    shapefileContent: (params, filetype) => {
+      return {
+        'publishParameters': params,
+        'callback.html': 'textarea',
+        'filetype': filetype,
+        'f': 'json'
+      };
+    }
+  },
+
   /**
   * Layer Config Options, brackets are optional
   * if type is anything other than graphic and the layer is not disabled, it must have a url
@@ -219,6 +244,7 @@ const config = {
 
 export const mapConfig = config.map;
 export const layerConfig = config.layers;
+export const uploadConfig = config.upload;
 export const layerPanelText = config.layerPanel;
 export const layerInformation = config.layerInformation;
 export const modalText = config.modals;
