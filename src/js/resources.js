@@ -75,30 +75,15 @@ export default {
   * - Add any extra layer params as needed, check LayerFactory to see which ones are supported and feel free to add more if necessary
   * - type should be what the layer contructor expects, these are directly passed to Esri JavaScript layer constructors
   */
-  layers: [
-    {
+  layers: {
+    en: [{
       id: 'TREE_COVER_LOSS',
       order: 1,
       type: 'image',
       visible: true,
-      group: {
-        'en': 'Land Cover Dynamics',
-        'fr': 'Land Cover Dynamics',
-        'es': 'Land Cover Dynamics',
-        'pt': 'Land Cover Dynamics'
-      },
-      label: {
-        'en': 'Tree cover loss',
-        'fr': 'Tree cover loss',
-        'es': 'Tree cover loss',
-        'pt': 'Tree cover loss'
-      },
-      sublabel: {
-        'en': '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)',
-        'fr': '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)',
-        'es': '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)',
-        'pt': '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)'
-      },
+      group: 'Land Cover Dynamics',
+      label: 'Tree cover loss',
+      sublabel: '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)',
       url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestCover_lossyear/ImageServer',
       colormap: [[1, 219, 101, 152]],
       inputRange: [1, 15],
@@ -109,48 +94,18 @@ export default {
       order: 2,
       type: 'tiled',
       visible: true,
-      group: {
-        'en': 'Land Cover Dynamics',
-        'fr': 'Land Cover Dynamics',
-        'es': 'Land Cover Dynamics',
-        'pt': 'Land Cover Dynamics'
-      },
-      label: {
-        'en': 'Tree cover gain',
-        'fr': 'Tree cover gain',
-        'es': 'Tree cover gain',
-        'pt': 'Tree cover gain'
-      },
-      sublabel: {
-        'en': '(12 years, 30m, global, Hansen/UMD/Google/USGS/NASA)',
-        'fr': '(12 years, 30m, global, Hansen/UMD/Google/USGS/NASA)',
-        'es': '(12 years, 30m, global, Hansen/UMD/Google/USGS/NASA)',
-        'pt': '(12 years, 30m, global, Hansen/UMD/Google/USGS/NASA)'
-      },
+      group: 'Land Cover Dynamics',
+      label: 'Tree cover gain',
+      sublabel: '(12 years, 30m, global, Hansen/UMD/Google/USGS/NASA)',
       url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestGain_2000_2012_map/MapServer'
     },
     {
       id: 'ACTIVE_FIRES',
       order: 5,
       type: 'dynamic',
-      group: {
-        'en': 'Land Cover Dynamics',
-        'fr': 'Land Cover Dynamics',
-        'es': 'Land Cover Dynamics',
-        'pt': 'Land Cover Dynamics'
-      },
-      label: {
-        'en': 'Active fires',
-        'fr': 'Active fires',
-        'es': 'Active fires',
-        'pt': 'Active fires'
-      },
-      sublabel: {
-        'en': '(daily, 1km, global, NASA)',
-        'fr': '(daily, 1km, global, NASA)',
-        'es': '(daily, 1km, global, NASA)',
-        'pt': '(daily, 1km, global, NASA)'
-      },
+      group: 'Land Cover Dynamics',
+      label: 'Active fires',
+      sublabel: '(daily, 1km, global, NASA)',
       url: 'http://gis-potico.wri.org/arcgis/rest/services/Fires/Global_Fires/MapServer',
       layerIds: [0, 1, 2, 3]
     },
@@ -158,24 +113,9 @@ export default {
       id: 'TREE_COVER',
       order: 3,
       type: 'image',
-      group: {
-        'en': 'Land Cover',
-        'fr': 'Land Cover',
-        'es': 'Land Cover',
-        'pt': 'Land Cover'
-      },
-      label: {
-        'en': 'Tree cover',
-        'fr': 'Tree cover',
-        'es': 'Tree cover',
-        'pt': 'Tree cover'
-      },
-      sublabel: {
-        'en': '(year 2000, 30m global, Hansen/UMD/Google/USGS/NASA)',
-        'fr': '(year 2000, 30m global, Hansen/UMD/Google/USGS/NASA)',
-        'es': '(year 2000, 30m global, Hansen/UMD/Google/USGS/NASA)',
-        'pt': '(year 2000, 30m global, Hansen/UMD/Google/USGS/NASA)'
-      },
+      group: 'Land Cover',
+      label: 'Tree cover',
+      sublabel: '(year 2000, 30m global, Hansen/UMD/Google/USGS/NASA)',
       url: 'http://50.18.182.188:6080/arcgis/rest/services/TreeCover2000/ImageServer',
       colormap: [[1, 174, 203, 107]],
       inputRange: [30, 101],
@@ -187,20 +127,175 @@ export default {
       id: 'LAND_COVER',
       order: 4,
       type: 'dynamic',
-      group: {
-        'en': 'Land Cover',
-        'fr': 'Land Cover',
-        'es': 'Land Cover',
-        'pt': 'Land Cover'
-      },
-      label: {
-        'en': 'Land cover',
-        'fr': 'Land cover',
-        'es': 'Land cover',
-        'pt': 'Land cover'
-      },
+      group: 'Land Cover',
+      label: 'Land cover',
       layerIds: [0]
-    }
-  ]
+    }],
+    fr: [{
+      id: 'TREE_COVER_LOSS',
+      order: 1,
+      type: 'image',
+      visible: true,
+      group: 'Land Cover Dynamics',
+      label: 'Tree cover loss',
+      sublabel: '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)',
+      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestCover_lossyear/ImageServer',
+      colormap: [[1, 219, 101, 152]],
+      inputRange: [1, 15],
+      outputRange: [1]
+    },
+    {
+      id: 'TREE_COVER_GAIN',
+      order: 2,
+      type: 'tiled',
+      visible: true,
+      group: 'Land Cover Dynamics',
+      label: 'Tree cover gain',
+      sublabel: '(12 years, 30m, global, Hansen/UMD/Google/USGS/NASA)',
+      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestGain_2000_2012_map/MapServer'
+    },
+    {
+      id: 'ACTIVE_FIRES',
+      order: 5,
+      type: 'dynamic',
+      group: 'Land Cover Dynamics',
+      label: 'Active fires',
+      sublabel: '(daily, 1km, global, NASA)',
+      url: 'http://gis-potico.wri.org/arcgis/rest/services/Fires/Global_Fires/MapServer',
+      layerIds: [0, 1, 2, 3]
+    },
+    {
+      id: 'TREE_COVER',
+      order: 3,
+      type: 'image',
+      group: 'Land Cover',
+      label: 'Tree cover',
+      sublabel: '(year 2000, 30m global, Hansen/UMD/Google/USGS/NASA)',
+      url: 'http://50.18.182.188:6080/arcgis/rest/services/TreeCover2000/ImageServer',
+      colormap: [[1, 174, 203, 107]],
+      inputRange: [30, 101],
+      outputRange: [1],
+      visible: true,
+      opacity: 0.8
+    },
+    {
+      id: 'LAND_COVER',
+      order: 4,
+      type: 'dynamic',
+      group: 'Land Cover',
+      label: 'Land cover',
+      layerIds: [0]
+    }],
+    es: [{
+      id: 'TREE_COVER_LOSS',
+      order: 1,
+      type: 'image',
+      visible: true,
+      group: 'Land Cover Dynamics',
+      label: 'Tree cover loss',
+      sublabel: '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)',
+      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestCover_lossyear/ImageServer',
+      colormap: [[1, 219, 101, 152]],
+      inputRange: [1, 15],
+      outputRange: [1]
+    },
+    {
+      id: 'TREE_COVER_GAIN',
+      order: 2,
+      type: 'tiled',
+      visible: true,
+      group: 'Land Cover Dynamics',
+      label: 'Tree cover gain',
+      sublabel: '(12 years, 30m, global, Hansen/UMD/Google/USGS/NASA)',
+      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestGain_2000_2012_map/MapServer'
+    },
+    {
+      id: 'ACTIVE_FIRES',
+      order: 5,
+      type: 'dynamic',
+      group: 'Land Cover Dynamics',
+      label: 'Active fires',
+      sublabel: '(daily, 1km, global, NASA)',
+      url: 'http://gis-potico.wri.org/arcgis/rest/services/Fires/Global_Fires/MapServer',
+      layerIds: [0, 1, 2, 3]
+    },
+    {
+      id: 'TREE_COVER',
+      order: 3,
+      type: 'image',
+      group: 'Land Cover',
+      label: 'Tree cover',
+      sublabel: '(year 2000, 30m global, Hansen/UMD/Google/USGS/NASA)',
+      url: 'http://50.18.182.188:6080/arcgis/rest/services/TreeCover2000/ImageServer',
+      colormap: [[1, 174, 203, 107]],
+      inputRange: [30, 101],
+      outputRange: [1],
+      visible: true,
+      opacity: 0.8
+    },
+    {
+      id: 'LAND_COVER',
+      order: 4,
+      type: 'dynamic',
+      group: 'Land Cover',
+      label: 'Land cover',
+      layerIds: [0]
+    }],
+    pt: [{
+      id: 'TREE_COVER_LOSS',
+      order: 1,
+      type: 'image',
+      visible: true,
+      group: 'Land Cover Dynamics',
+      label: 'Tree cover loss',
+      sublabel: '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)',
+      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestCover_lossyear/ImageServer',
+      colormap: [[1, 219, 101, 152]],
+      inputRange: [1, 15],
+      outputRange: [1]
+    },
+    {
+      id: 'TREE_COVER_GAIN',
+      order: 2,
+      type: 'tiled',
+      visible: true,
+      group: 'Land Cover Dynamics',
+      label: 'Tree cover gain',
+      sublabel: '(12 years, 30m, global, Hansen/UMD/Google/USGS/NASA)',
+      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestGain_2000_2012_map/MapServer'
+    },
+    {
+      id: 'ACTIVE_FIRES',
+      order: 5,
+      type: 'dynamic',
+      group: 'Land Cover Dynamics',
+      label: 'Active fires',
+      sublabel: '(daily, 1km, global, NASA)',
+      url: 'http://gis-potico.wri.org/arcgis/rest/services/Fires/Global_Fires/MapServer',
+      layerIds: [0, 1, 2, 3]
+    },
+    {
+      id: 'TREE_COVER',
+      order: 3,
+      type: 'image',
+      group: 'Land Cover',
+      label: 'Tree cover',
+      sublabel: '(year 2000, 30m global, Hansen/UMD/Google/USGS/NASA)',
+      url: 'http://50.18.182.188:6080/arcgis/rest/services/TreeCover2000/ImageServer',
+      colormap: [[1, 174, 203, 107]],
+      inputRange: [30, 101],
+      outputRange: [1],
+      visible: true,
+      opacity: 0.8
+    },
+    {
+      id: 'LAND_COVER',
+      order: 4,
+      type: 'dynamic',
+      group: 'Land Cover',
+      label: 'Land cover',
+      layerIds: [0]
+    }]
+  }
 
 };

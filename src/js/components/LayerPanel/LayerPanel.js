@@ -39,17 +39,17 @@ export default class LayerPanel extends React.Component {
 
   render() {
     const {settings, language} = this.context;
-    const layers = settings.layers || [];
+    const layers = settings.layers && settings.layers[language] || [];
     let groups = [];
     //- Get a unique list of groups
     layers.forEach((layer) => {
-      if (groups.indexOf(layer.group[language]) === -1) {
-        groups.push(layer.group[language]);
+      if (groups.indexOf(layer.group) === -1) {
+        groups.push(layer.group);
       }
     });
     //- Create the layerGroup components
     let layerGroups = groups.map((group) => {
-      return this.renderLayerGroup(group, layers, language);
+      return this.renderLayerGroup(group, layers);
     });
 
     return (
@@ -62,9 +62,8 @@ export default class LayerPanel extends React.Component {
   checkboxMap (group) {
     return layer => {
       let activeLayers = this.state.activeLayers;
-      const {language} = this.context;
       // Exclude Layers not part of this group
-      if (layer.group[language] !== group) { return null; }
+      if (layer.group !== group) { return null; }
       // TODO: Remove once current layer panel design is approved
       // If it is just a label, render the grop label
       // if (layer.isGroupLabel) { return <div key={layer.id} className='layer-group-label'>{layer.label}</div>; }
