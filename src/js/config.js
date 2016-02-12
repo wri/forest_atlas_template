@@ -18,84 +18,6 @@ const config = {
     liveSite: 'http://wri.github.io/forest_atlas_template/'
   },
 
-  /**
-  * Layer Config Options, brackets are optional
-  * if type is anything other than graphic and the layer is not disabled, it must have a url
-  * id - {string} - layer Id, must be unique
-  * [order] - {number} - determines layer order on map, 1 is the bottom and higher numbers on top
-  * type - {string} - layer type (dynamic, image, feature, tiled, webtiled)
-  * [label] - {string} - label in the layer list in the UI
-  * [group] - {string} - group in the UI, either 'watershed' (curr. Know Your Watershed in UI) or 'watershedRisk (curr. Identifie Watershed Risks in UI)'
-  * - No group means it won't show in the UI
-  * [url] - {string} - Url for the map service, if present the app will attempt to add to the map via the LayerFactory,
-  * [disabled] - {boolean} - grey the checkbox out in the UI and prevent user from using it
-  * - can also be updated dynamically if a layer fails to be added to the map to block the user from interacting with a down service
-  * [miscellaneous layer params], layerIds, opacity, colormap, inputRange, outputRange
-  * - Add any extra layer params as needed, check LayerFactory to see which ones are supported and feel free to add more if necessary
-  * - type should be what the layer contructor expects, these are directly passed to Esri JavaScript layer constructors
-  */
-  layers: [
-    {
-      id: layerKeys.LOSS,
-      order: 1,
-      type: 'image',
-      visible: true,
-      group: 'landCoverDynamics',
-      label: stringKeys.LOSS_LABEL,
-      sublabel: stringKeys.LOSS_SUB_LABEL,
-      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestCover_lossyear/ImageServer',
-      className: '',
-      colormap: [[1, 219, 101, 152]],
-      inputRange: [1, 15],
-      outputRange: [1]
-    },
-    {
-      id: layerKeys.GAIN,
-      order: 2,
-      type: 'tiled',
-      visible: true,
-      group: 'landCoverDynamics',
-      label: stringKeys.GAIN_LABEL,
-      sublabel: stringKeys.GAIN_SUB_LABEL,
-      className: '',
-      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestGain_2000_2012_map/MapServer'
-    },
-    {
-      id: layerKeys.ACTIVE_FIRES,
-      order: 5,
-      type: 'dynamic',
-      group: 'landCoverDynamics',
-      label: stringKeys.ACTIVE_FIRES_LABEL,
-      sublabel: stringKeys.ACTIVE_FIRES_SUB_LABEL,
-      url: 'http://gis-potico.wri.org/arcgis/rest/services/Fires/Global_Fires/MapServer',
-      className: '',
-      layerIds: [0, 1, 2, 3]
-    },
-    {
-      id: layerKeys.TREE_COVER,
-      order: 3,
-      type: 'image',
-      group: 'landCover',
-      label: stringKeys.TREE_COVER_LABEL,
-      sublabel: stringKeys.TREE_COVER_SUB_LABEL,
-      url: 'http://50.18.182.188:6080/arcgis/rest/services/TreeCover2000/ImageServer',
-      colormap: [[1, 174, 203, 107]],
-      inputRange: [30, 101],
-      outputRange: [1],
-      visible: true,
-      className: '',
-      opacity: 0.8
-    },
-    {
-      id: layerKeys.LAND_COVER,
-      order: 4,
-      type: 'dynamic',
-      group: 'landCover',
-      label: stringKeys.LAND_COVER_LABEL,
-      className: '',
-      layerIds: [0]
-    }
-  ],
   layerPanel: {
     landCoverDynamics: 'Land Cover Dynamics',
     landCover: 'Land Cover',
@@ -218,7 +140,6 @@ const config = {
 };
 
 export const mapConfig = config.map;
-export const layerConfig = config.layers;
 export const layerPanelText = config.layerPanel;
 export const layerInformation = config.layerInformation;
 export const modalText = config.modals;

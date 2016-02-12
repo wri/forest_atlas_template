@@ -8,13 +8,16 @@ import LayerCheckbox from 'components/LayerPanel/LayerCheckbox';
 // import LossControls from 'components/LayerPanel/LossControls';
 import LayerGroup from 'components/LayerPanel/LayerGroup';
 // import DamsLegend from 'components/LayerPanel/DamsLegend';
-import {layerConfig, layerPanelText} from 'js/config';
 import mapStore from 'stores/MapStore';
 // import layersHelper from 'js/helpers/LayersHelper';
-import layerKeys from 'js/constants/LayerConstants';
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 export default class LayerPanel extends React.Component {
+
+  static contextTypes = {
+    language: PropTypes.string.isRequired,
+    settings: PropTypes.object.isRequired
+  };
 
   constructor (props) {
     super(props);
@@ -26,15 +29,32 @@ export default class LayerPanel extends React.Component {
     this.setState(mapStore.getState());
   }
 
+  renderLayerGroup = (group, layers) => {
+    return (
+      <LayerGroup key={group} activeLayers={this.state.activeLayers} label={group}>
+        {layers.map(this.checkboxMap(group), this)}
+      </LayerGroup>
+    );
+  };
+
   render() {
+    const {settings, language} = this.context;
+    const layers = settings.layers || [];
+    let groups = [];
+    //- Get a unique list of groups
+    layers.forEach((layer) => {
+      if (groups.indexOf(layer.group[language]) === -1) {
+        groups.push(layer.group[language]);
+      }
+    });
+    //- Create the layerGroup components
+    let layerGroups = groups.map((group) => {
+      return this.renderLayerGroup(group, layers, language);
+    });
+
     return (
       <div className={`layer-panel custom-scroll`}>
-        <LayerGroup activeLayers={this.state.activeLayers} label={layerPanelText.landCoverDynamics}>
-          {layerConfig.map(this.checkboxMap('landCoverDynamics'), this)}
-        </LayerGroup>
-        <LayerGroup activeLayers={this.state.activeLayers} label={layerPanelText.landCover}>
-          {layerConfig.map(this.checkboxMap('landCover'), this)}
-        </LayerGroup>
+        {layerGroups}
       </div>
     );
   }
@@ -42,8 +62,9 @@ export default class LayerPanel extends React.Component {
   checkboxMap (group) {
     return layer => {
       let activeLayers = this.state.activeLayers;
+      const {language} = this.context;
       // Exclude Layers not part of this group
-      if (layer.group !== group) { return null; }
+      if (layer.group[language] !== group) { return null; }
       // TODO: Remove once current layer panel design is approved
       // If it is just a label, render the grop label
       // if (layer.isGroupLabel) { return <div key={layer.id} className='layer-group-label'>{layer.label}</div>; }

@@ -12,9 +12,9 @@ export default class MapThemes extends Component {
     language: PropTypes.string.isRequired
   };
 
-  renderThemeList = (theme) => {
+  renderThemeList = (theme, index) => {
     return (
-      <li className='app-header__theme'>
+      <li key={index} className='app-header__theme'>
         <a target='_blank' href={theme.url}>{theme.label}</a>
       </li>
     );

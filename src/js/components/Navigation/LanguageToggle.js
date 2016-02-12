@@ -27,6 +27,7 @@ export default class LanguageToggle extends Component {
   createListButton = (currentLanguage, isocode) => {
     return (
       <li
+        key={isocode}
         className={`app-header__nav-option pointer ${currentLanguage === isocode ? 'active' : ''}`}
         onClick={this.toggleLanguage}
         data-lang={isocode}>

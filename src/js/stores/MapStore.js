@@ -1,5 +1,4 @@
 import tabKeys from 'constants/TabViewConstants';
-import {layerConfig} from 'js/config';
 import mapActions from 'actions/MapActions';
 import layerActions from 'actions/LayerActions';
 import dispatcher from 'js/dispatcher';
@@ -9,11 +8,12 @@ class MapStore {
   constructor () {
 
     this.activeTab = tabKeys.LAYERS;
-    this.activeLayers = layerConfig.filter(l => l.visible && l.group).map(l => l.id);
-    this.allLayers = layerConfig;
+    this.activeLayers = [];
+    this.allLayers = [];
 
     this.bindListeners({
       mapUpdated: mapActions.mapUpdated,
+      createLayers: mapActions.createLayers,
       changeActiveTab: mapActions.changeActiveTab,
       addActiveLayer: layerActions.addActiveLayer,
       removeActiveLayer: layerActions.removeActiveLayer,
@@ -43,6 +43,11 @@ class MapStore {
 
   //- Empty method to force a dispatch
   mapUpdated () {}
+
+  createLayers (layers) {
+    this.activeLayers = layers.filter((layer) => layer.visible).map((layer) => layer.id);
+    this.allLayers = layers;
+  }
 
   changeActiveTab (payload) {
     this.activeTab = payload.id;
