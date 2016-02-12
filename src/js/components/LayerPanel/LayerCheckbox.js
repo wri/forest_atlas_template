@@ -2,16 +2,12 @@ import layerActions from 'actions/LayerActions';
 import modalActions from 'actions/ModalActions';
 import LayersHelper from 'helpers/LayersHelper';
 import LayerTransparency from './LayerTransparency';
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 // Info Icon Markup for innerHTML
 let useSvg = '<use xlink:href="#shape-info" />';
 
 export default class LayerCheckbox extends React.Component {
-
-  static contextTypes = {
-    language: PropTypes.string.isRequired
-  };
 
   componentDidUpdate(prevProps) {
     if (prevProps.checked !== this.props.checked) {
@@ -29,9 +25,7 @@ export default class LayerCheckbox extends React.Component {
 
   render() {
     let {layer} = this.props;
-    let {language} = this.context;
-    let label = layer.label[language];
-    let sublabel = layer.sublabel ? layer.sublabel[language] : '';
+    let {label, sublabel} = layer;
 
     return (
       <div className={`layer-checkbox relative ${layer.className}${this.props.checked ? ' active' : ''}${layer.disabled ? ' disabled' : ''}`} >

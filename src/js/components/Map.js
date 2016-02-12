@@ -13,6 +13,10 @@ import React, {
 
 export default class Map extends Component {
 
+  static contextTypes = {
+    language: PropTypes.string.isRequired
+  };
+
   static childContextTypes = {
     map: PropTypes.object
   };
@@ -45,6 +49,7 @@ export default class Map extends Component {
   };
 
   createMap = (settings) => {
+    const {language} = this.context;
     arcgisUtils.createMap(settings.webmap, this.refs.map, { mapOptions: mapConfig.options }).then(response => {
       this.map = response.map;
       this.map.graphics.clear();
@@ -58,7 +63,7 @@ export default class Map extends Component {
       * someUtil.addWebmapLayers(settings.layers, response.map);
       * It could create layer config from the webmap layers and push it into settings.layers
       */
-      mapActions.createLayers(this.map, settings.layers);
+      mapActions.createLayers(this.map, settings.layers[language]);
     });
   };
 
