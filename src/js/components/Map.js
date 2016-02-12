@@ -54,8 +54,11 @@ export default class Map extends Component {
       //- Make the map a global in debug mode for easier debugging
       if (brApp.debug) { brApp.map = this.map; }
 
-      // DRS TODO:  how to make this work without having .createLayers() use brApp.map?
-      mapActions.createLayers();
+      /** TODO: Add some kind of transformer here, something like this
+      * someUtil.addWebmapLayers(settings.layers, response.map);
+      * It could create layer config from the webmap layers and push it into settings.layers
+      */
+      mapActions.createLayers(this.map, settings.layers);
     });
   };
 

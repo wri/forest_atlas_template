@@ -1,8 +1,8 @@
 import arcgisUtils from 'esri/arcgis/utils';
 import {getUrlParams} from 'utils/params';
 import Deferred from 'dojo/Deferred';
-import resources from 'js/resources';
 import lang from 'dojo/_base/lang';
+import resources from 'resources';
 import {urls} from 'js/config';
 
 export default {
@@ -23,46 +23,45 @@ export default {
 
     arcgisUtils.getItem(appid).then(res => {
 
-      let agolValues = res.itemData && res.itemData.values,
-          settings = {};
+      let agolValues = res.itemData && res.itemData.values;
 
       //- If we dont have agol settings, save the defaults, else merge them in
       if (!agolValues) {
         promise.resolve(resources);
       } else {
         //- This will merge all the settings in, but some things need a little massaging
-        lang.mixin(settings, resources, agolValues);
+        lang.mixin(resources, agolValues);
 
         //- LANGUAGE SETTINGS START
-        settings.labels = {};
-        settings.labels[settings.defaultLanguage] = {
-          title: settings.defaultTitle,
-          flagTitle: settings.flagTitle
+        resources.labels = {};
+        resources.labels[resources.defaultLanguage] = {
+          title: resources.defaultTitle,
+          flagTitle: resources.flagTitle
         };
         //- parse map themes for default laguage if present
-        let names = settings.mapThemes ? settings.mapThemes.split(',') : [];
-        let appids = settings.mapThemeIds ? settings.mapThemeIds.split(',') : [];
+        let names = resources.mapThemes ? resources.mapThemes.split(',') : [];
+        let appids = resources.mapThemeIds ? resources.mapThemeIds.split(',') : [];
         if (names.length === appids.length && names.length > 0) {
-          settings.labels[settings.defaultLanguage].themes = [];
+          resources.labels[resources.defaultLanguage].themes = [];
           names.forEach((name, i) => {
-            settings.labels[settings.defaultLanguage].themes.push({
+            resources.labels[resources.defaultLanguage].themes.push({
               label: name.trim(),
               url: `${urls.liveSite}?appid=${appids[i].trim()}`
             });
           });
         }
         //- Add content for second language if configured
-        if (settings.useAdditionalLanguage) {
-          settings.labels[settings.secondLanguage] = {
-            title: settings.secondLanguageTitle,
-            flagTitle: settings.secondLanguageFlagTitle
+        if (resources.useAdditionalLanguage) {
+          resources.labels[resources.secondLanguage] = {
+            title: resources.secondLanguageTitle,
+            flagTitle: resources.secondLanguageFlagTitle
           };
           //- parse map themes for second laguage if present
-          let secondNames = settings.mapThemesAlternate ? settings.mapThemesAlternate.split(',') : [];
+          let secondNames = resources.mapThemesAlternate ? resources.mapThemesAlternate.split(',') : [];
           if (secondNames.length === appids.length && names.length > 0) {
-            settings.labels[settings.secondLanguage].themes = [];
+            resources.labels[resources.secondLanguage].themes = [];
             secondNames.forEach((name, i) => {
-              settings.labels[settings.secondLanguage].themes.push({
+              resources.labels[resources.secondLanguage].themes.push({
                 label: name.trim(),
                 url: `${urls.liveSite}?appid=${appids[i].trim()}`
               });
@@ -71,7 +70,9 @@ export default {
         }
         //- LANGUAGE SETTINGS END
 
-        promise.resolve(settings);
+        //- TODO: Remove Layers from resources.layers if configured
+
+        promise.resolve(resources);
       }
 
     }, err => {
