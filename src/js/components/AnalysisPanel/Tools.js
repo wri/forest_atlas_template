@@ -102,7 +102,9 @@ export default class Tools extends Component {
       this.setState({ isUploading: false });
       if (response.featureCollection) {
         let graphics = geometryUtils.generatePolygonsFromUpload(response.featureCollection);
-        console.log(graphics);
+        graphics.forEach((graphic) => {
+          map.graphics.add(graphic);
+        });
       } else {
         console.error('No feature collection present in the file');
       }
