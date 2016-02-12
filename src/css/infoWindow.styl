@@ -1,0 +1,32 @@
+.infoWindow
+  color $darkGray
+  height 100%
+  
+  .source-row dt
+  .source-row dd
+    font-size 16px
+    text-transform none
+  
+  .feature-controls
+    border-top 1px solid #888
+    margin-top 6px
+    padding-top 4px
+
+  .feature-controls
+    height 30px
+
+  .attribute-display
+    // max-height calc(100% - 150px)
+    // max-height calc(100% - 60px)
+    max-height 180px
+    // height 80%
+    overflow-y auto
+  
+  .arrow
+    cursor pointer
+    float right
+  .arrow.right
+    margin-left 1em;
+  .arrow.disabled
+    color $lightGray
+    cursor default

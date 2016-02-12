@@ -10,6 +10,7 @@ class MapStore {
     this.activeTab = tabKeys.LAYERS;
     this.activeLayers = [];
     this.allLayers = [];
+    this.selectedFeatures = [];
 
     this.bindListeners({
       mapUpdated: mapActions.mapUpdated,
@@ -41,8 +42,10 @@ class MapStore {
     }
   }
 
-  //- Empty method to force a dispatch
-  mapUpdated () {}
+  mapUpdated (e) {
+    console.log('MapStore::mapUpdated', e);
+    this.selectedFeatures = e.target.features || [];
+  }
 
   createLayers (layers) {
     this.activeLayers = layers.filter((layer) => layer.visible).map((layer) => layer.id);
@@ -54,7 +57,6 @@ class MapStore {
   }
 
   changeOpacity (parameters) {
-    // console.log('MapStore >>> changeOpacity', this.allLayers);
     let layer = this.allLayers.filter(l => l.id === parameters.layerId);
     console.log('MapStore >>> found a layer?', layer, parameters.layerId);
     if ( layer[0] ) {
