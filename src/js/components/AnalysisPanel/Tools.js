@@ -46,7 +46,6 @@ export default class Tools extends Component {
         toolbar.deactivate();
         this.setState({ drawButtonActive: false });
         let graphic = geometryUtils.generateDrawnPolygon(evt.geometry);
-        console.log(graphic);
         map.graphics.add(graphic);
       });
     }
@@ -101,10 +100,15 @@ export default class Tools extends Component {
 
     request.upload(uploadConfig.portal, content, this.refs.upload).then((response) => {
       this.setState({ isUploading: false });
-      console.log(response);
+      if (response.featureCollection) {
+        let graphics = geometryUtils.generatePolygonsFromUpload(response.featureCollection);
+        console.log(graphics);
+      } else {
+        console.error('No feature collection present in the file');
+      }
     }, (error) => {
       this.setState({ isUploading: false });
-      console.dir(error);
+      console.error(error);
     });
 
   };
