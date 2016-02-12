@@ -1,4 +1,5 @@
 import scaleUtils from 'esri/geometry/scaleUtils';
+import geometryUtils from 'utils/geometryUtils';
 import keys from 'constants/StringKeys';
 import {uploadConfig} from 'js/config';
 import Loader from 'components/Loader';
@@ -42,9 +43,11 @@ export default class Tools extends Component {
     if (!toolbar && map.loaded) {
       toolbar = new Draw(map);
       toolbar.on('draw-end', (evt) => {
-        console.dir(evt.geometry);
         toolbar.deactivate();
         this.setState({ drawButtonActive: false });
+        let graphic = geometryUtils.generateDrawnPolygon(evt.geometry);
+        console.log(graphic);
+        map.graphics.add(graphic);
       });
     }
   }
