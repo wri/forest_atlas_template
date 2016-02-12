@@ -20,6 +20,15 @@ export default class InfoWindow extends Component {
     this.setState({ features: currentState.selectedFeatures });
   }
 
+  attribute (item) {
+    return (
+      <dl className='source-row'>
+        <dt>{item.label}</dt>
+        <dd>{item.value}</dd>
+      </dl>
+    );
+  }
+
   previous () {
     this.props.map.infoWindow.selectPrevious();
   }
@@ -31,30 +40,31 @@ export default class InfoWindow extends Component {
   render () {
     let {infoWindow} = this.props.map;
     let selectedFeature, selectedIndex = 0;
+    let attributes = [];
 
     if ( infoWindow && infoWindow.getSelectedFeature ) {
       selectedFeature = infoWindow.getSelectedFeature();
       selectedIndex = infoWindow.selectedIndex;
     }
-    // let content = (selectedFeature) ? selectedFeature.getContent().innerHTML : 'Click the map to select a feature.';
-    let content;
     console.log('InfoWindow render', selectedFeature);
     if ( selectedFeature ) {
-      content = ['<tr><td colspan=2><strong>Layer:  ' + selectedFeature._layer.name + '</strong></td></tr>'];
-      for ( let attr in selectedFeature.attributes ) {
-        content.push('<tr><td>' + attr + '</td><td>' + selectedFeature.attributes[attr] + '</td></tr>');
-      }
-      content = content.join('');
+      attributes = Object.keys(selectedFeature.attributes);
+      attributes = attributes.map((a) => { 
+        return { label: a, value: selectedFeature.attributes[a] }
+      });
+      // content = ['<tr><td colspan=2><strong>Layer:  ' + selectedFeature._layer.name + '</strong></td></tr>'];
+      // for ( let attr in selectedFeature.attributes ) {
+      //   content.push('<tr><td>' + attr + '</td><td>' + selectedFeature.attributes[attr] + '</td></tr>');
+      // }
+      // content = content.join('');
     } else {
-      content = '<tr><td>No features selected. Click the map to make a selection.</td></tr>';
+      attributes = [{ label: 'No features selected. Click the map to make a selection.', value: '' }];
     }
     // console.log('InfoWindow render, content is', content);
     return (
       <div className='infoWindow'>
         <div className='attribute-display custom-scroll'>
-          <table>
-            <tbody dangerouslySetInnerHTML={{ __html: content}}></tbody>
-          </table>
+          {attributes.map(this.attribute)}
         </div>
         <div className={`feature-controls ${this.state.features.length ? '' : 'hidden'}`}>
           <span>{this.state.features.length} features selected.</span>
