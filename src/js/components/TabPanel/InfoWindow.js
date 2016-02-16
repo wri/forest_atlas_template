@@ -58,8 +58,8 @@ export default class InfoWindow extends Component {
     }
     return (
       <div className='infoWindow'>
-        <div className='layer-name'>
-          {layerName}
+        <div className={`layer-name ${this.state.features.length ? '' : 'hidden'}`}>
+          Layer:  {layerName}
         </div>
         <div className='attribute-display custom-scroll'>
           {attributes.map(this.attribute)}
