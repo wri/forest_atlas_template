@@ -29,6 +29,7 @@ strings.en[keys.ANALYSIS_OR] = 'Or';
 strings.en[keys.ANALYSIS_DRAW_INSTRUCTIONS] = 'Draw in the map the area you want to analyze';
 strings.en[keys.ANALYSIS_DRAW_BUTTON] = 'Start drawing';
 strings.en[keys.ANALYSIS_SHAPEFILE_UPLOAD] = 'or drop a custom shapefile here';
+strings.en[keys.ANALYSIS_SELECT_TYPE] = 'Select Analysis:';
 
 //- NOTE: French
 strings.fr[keys.LAND_COVER_LABEL] = 'Land cover';
@@ -57,7 +58,7 @@ strings.fr[keys.ANALYSIS_OR] = 'Or';
 strings.fr[keys.ANALYSIS_DRAW_INSTRUCTIONS] = 'Draw in the map the area you want to analyze';
 strings.fr[keys.ANALYSIS_DRAW_BUTTON] = 'Start drawing';
 strings.fr[keys.ANALYSIS_SHAPEFILE_UPLOAD] = 'or drop a custom shapefile here';
-
+strings.en[keys.ANALYSIS_SELECT_TYPE] = 'Select Analysis:';
 
 //- NOTE: Spanish
 strings.es[keys.LAND_COVER_LABEL] = 'Land cover';
@@ -86,7 +87,7 @@ strings.es[keys.ANALYSIS_OR] = 'Or';
 strings.es[keys.ANALYSIS_DRAW_INSTRUCTIONS] = 'Draw in the map the area you want to analyze';
 strings.es[keys.ANALYSIS_DRAW_BUTTON] = 'Start drawing';
 strings.es[keys.ANALYSIS_SHAPEFILE_UPLOAD] = 'or drop a custom shapefile here';
-
+strings.en[keys.ANALYSIS_SELECT_TYPE] = 'Select Analysis:';
 
 //- NOTE: Portugese
 strings.pt[keys.LAND_COVER_LABEL] = 'Land cover';
@@ -115,5 +116,6 @@ strings.pt[keys.ANALYSIS_OR] = 'Or';
 strings.pt[keys.ANALYSIS_DRAW_INSTRUCTIONS] = 'Draw in the map the area you want to analyze';
 strings.pt[keys.ANALYSIS_DRAW_BUTTON] = 'Start drawing';
 strings.pt[keys.ANALYSIS_SHAPEFILE_UPLOAD] = 'or drop a custom shapefile here';
+strings.en[keys.ANALYSIS_SELECT_TYPE] = 'Select Analysis:';
 
 export { strings as default };

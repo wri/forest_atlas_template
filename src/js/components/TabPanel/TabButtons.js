@@ -10,7 +10,7 @@ const {
   INFO_WINDOW
 } = tabKeys;
 
-const zoomInSvg = '<use xlink:href="#icon-plus" />';
+const documentsSvg = '<use xlink:href="#icon-documents" />';
 const dataSvg = '<use xlink:href="#icon-data" />';
 const layersSvg = '<use xlink:href="#icon-basemap" />';
 const analysisSvg = '<use xlink:href="#icon-analysis" />';
@@ -43,7 +43,7 @@ export default class TabButtons extends Component {
             <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: dataSvg }}/>
           </li>
           <li className={this.getClassName(DOCUMENTS)} data-value={DOCUMENTS} onClick={this.changeTab}>
-            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: zoomInSvg }}/>
+            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: documentsSvg }}/>
           </li>
         </ul>
       </nav>

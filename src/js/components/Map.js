@@ -55,7 +55,7 @@ export default class Map extends Component {
       this.map.graphics.clear();
       mapActions.mapUpdated();
       //- Attach events I need for the info window
-      this.map.infoWindow.on('show, hide, selection-change', mapActions.mapUpdated);
+      this.map.infoWindow.on('show, hide, selection-change', mapActions.setSelectedFeature);
       //- Make the map a global in debug mode for easier debugging
       if (brApp.debug) { brApp.map = this.map; }
 

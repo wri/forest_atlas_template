@@ -39,7 +39,7 @@ export default class TabView extends Component {
           {infoWindow}
         </div>
         <div className={this.getClassName(ANALYSIS)}>
-          <AnalysisPanel {...this.state} />
+          <AnalysisPanel {...this.props} />
         </div>
         <div className={this.getClassName(DOCUMENTS)}>
           Documents Panel

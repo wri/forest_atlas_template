@@ -14,6 +14,13 @@ class MapActions {
     };
   }
 
+  setSelectedFeature (evt) {
+    let {target} = evt;
+    return {
+      feature: target.isShowing ? target.getSelectedFeature() : undefined
+    };
+  }
+
   createLayers (map, layers) {
     brApp.debug('MapActions >>> createLayers');
     //- Remove layers from config that have no url unless they are of type graphic(which have no url)

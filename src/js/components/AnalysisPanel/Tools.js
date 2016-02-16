@@ -1,5 +1,6 @@
 import scaleUtils from 'esri/geometry/scaleUtils';
 import geometryUtils from 'utils/geometryUtils';
+import graphicsUtils from 'esri/graphicsUtils';
 import keys from 'constants/StringKeys';
 import {uploadConfig} from 'js/config';
 import Loader from 'components/Loader';
@@ -89,10 +90,10 @@ export default class Tools extends Component {
       isUploading: true
     });
 
-    let extent = scaleUtils.getExtentForScale(map, 40000);
-    let type = file.type === TYPE.ZIP ? TYPE.SHAPEFILE : TYPE.GEOJSON;
-    let params = uploadConfig.shapefileParams(file.name, map.spatialReference, extent.getWidth(), map.width);
-    let content = uploadConfig.shapefileContent(JSON.stringify(params), type);
+    const extent = scaleUtils.getExtentForScale(map, 40000);
+    const type = file.type === TYPE.ZIP ? TYPE.SHAPEFILE : TYPE.GEOJSON;
+    const params = uploadConfig.shapefileParams(file.name, map.spatialReference, extent.getWidth(), map.width);
+    const content = uploadConfig.shapefileContent(JSON.stringify(params), type);
 
     // the upload input needs to have the file associated to it
     let input = this.refs.fileInput;
@@ -101,7 +102,9 @@ export default class Tools extends Component {
     request.upload(uploadConfig.portal, content, this.refs.upload).then((response) => {
       this.setState({ isUploading: false });
       if (response.featureCollection) {
-        let graphics = geometryUtils.generatePolygonsFromUpload(response.featureCollection);
+        const graphics = geometryUtils.generatePolygonsFromUpload(response.featureCollection);
+        const graphicsExtent = graphicsUtils.graphicsExtent(graphics);
+        map.setExtent(graphicsExtent, true);
         graphics.forEach((graphic) => {
           map.graphics.add(graphic);
         });

@@ -1,4 +1,5 @@
 import Instructions from 'components/AnalysisPanel/Instructions';
+import Analysis from 'components/AnalysisPanel/Analysis';
 import Tools from 'components/AnalysisPanel/Tools';
 import React, {
   Component,
@@ -13,10 +14,18 @@ export default class AnalysisPanel extends Component {
   };
 
   render () {
+    const {selectedFeature} = this.props;
+    let content;
+
+    if (selectedFeature !== undefined) {
+      content = [<Analysis selectedFeature={selectedFeature} />];
+    } else {
+      content = [<Instructions />, <Tools />];
+    }
+
     return (
       <div className='analysis-panel custom-scroll'>
-        <Instructions />
-        <Tools />
+        {content}
       </div>
     );
   }
