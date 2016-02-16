@@ -84,7 +84,7 @@ export default {
       group: 'Land Cover Dynamics',
       label: 'Tree cover loss',
       sublabel: '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)',
-      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestCover_lossyear/ImageServer',
+      url: 'http://gis-treecover.wri.org/arcgis/rest/services/ForestCover_lossyear/ImageServer',
       colormap: [[1, 219, 101, 152]],
       inputRange: [1, 15],
       outputRange: [1]
@@ -97,7 +97,7 @@ export default {
       group: 'Land Cover Dynamics',
       label: 'Tree cover gain',
       sublabel: '(12 years, 30m, global, Hansen/UMD/Google/USGS/NASA)',
-      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestGain_2000_2012_map/MapServer'
+      url: 'http://gis-treecover.wri.org/arcgis/rest/services/ForestGain_2000_2012_map/MapServer'
     },
     {
       id: 'ACTIVE_FIRES',
@@ -116,7 +116,7 @@ export default {
       group: 'Land Cover',
       label: 'Tree cover',
       sublabel: '(year 2000, 30m global, Hansen/UMD/Google/USGS/NASA)',
-      url: 'http://50.18.182.188:6080/arcgis/rest/services/TreeCover2000/ImageServer',
+      url: 'http://gis-treecover.wri.org/arcgis/rest/services/TreeCover2000/ImageServer',
       colormap: [[1, 174, 203, 107]],
       inputRange: [30, 101],
       outputRange: [1],
@@ -139,7 +139,7 @@ export default {
       group: 'Land Cover Dynamics',
       label: 'Tree cover loss',
       sublabel: '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)',
-      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestCover_lossyear/ImageServer',
+      url: 'http://gis-treecover.wri.org/arcgis/rest/services/ForestCover_lossyear/ImageServer',
       colormap: [[1, 219, 101, 152]],
       inputRange: [1, 15],
       outputRange: [1]
@@ -152,7 +152,7 @@ export default {
       group: 'Land Cover Dynamics',
       label: 'Tree cover gain',
       sublabel: '(12 years, 30m, global, Hansen/UMD/Google/USGS/NASA)',
-      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestGain_2000_2012_map/MapServer'
+      url: 'http://gis-treecover.wri.org/arcgis/rest/services/ForestGain_2000_2012_map/MapServer'
     },
     {
       id: 'ACTIVE_FIRES',
@@ -171,7 +171,7 @@ export default {
       group: 'Land Cover',
       label: 'Tree cover',
       sublabel: '(year 2000, 30m global, Hansen/UMD/Google/USGS/NASA)',
-      url: 'http://50.18.182.188:6080/arcgis/rest/services/TreeCover2000/ImageServer',
+      url: 'http://gis-treecover.wri.org/arcgis/rest/services/TreeCover2000/ImageServer',
       colormap: [[1, 174, 203, 107]],
       inputRange: [30, 101],
       outputRange: [1],
@@ -194,7 +194,7 @@ export default {
       group: 'Land Cover Dynamics',
       label: 'Tree cover loss',
       sublabel: '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)',
-      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestCover_lossyear/ImageServer',
+      url: 'http://gis-treecover.wri.org/arcgis/rest/services/ForestCover_lossyear/ImageServer',
       colormap: [[1, 219, 101, 152]],
       inputRange: [1, 15],
       outputRange: [1]
@@ -207,7 +207,7 @@ export default {
       group: 'Land Cover Dynamics',
       label: 'Tree cover gain',
       sublabel: '(12 years, 30m, global, Hansen/UMD/Google/USGS/NASA)',
-      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestGain_2000_2012_map/MapServer'
+      url: 'http://gis-treecover.wri.org/arcgis/rest/services/ForestGain_2000_2012_map/MapServer'
     },
     {
       id: 'ACTIVE_FIRES',
@@ -226,7 +226,7 @@ export default {
       group: 'Land Cover',
       label: 'Tree cover',
       sublabel: '(year 2000, 30m global, Hansen/UMD/Google/USGS/NASA)',
-      url: 'http://50.18.182.188:6080/arcgis/rest/services/TreeCover2000/ImageServer',
+      url: 'http://gis-treecover.wri.org/arcgis/rest/services/TreeCover2000/ImageServer',
       colormap: [[1, 174, 203, 107]],
       inputRange: [30, 101],
       outputRange: [1],
@@ -249,7 +249,7 @@ export default {
       group: 'Land Cover Dynamics',
       label: 'Tree cover loss',
       sublabel: '(annual, 30m, global, Hansen/UMD/Google/USGS/NASA)',
-      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestCover_lossyear/ImageServer',
+      url: 'http://gis-treecover.wri.org/arcgis/rest/services/ForestCover_lossyear/ImageServer',
       colormap: [[1, 219, 101, 152]],
       inputRange: [1, 15],
       outputRange: [1]
@@ -262,7 +262,7 @@ export default {
       group: 'Land Cover Dynamics',
       label: 'Tree cover gain',
       sublabel: '(12 years, 30m, global, Hansen/UMD/Google/USGS/NASA)',
-      url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestGain_2000_2012_map/MapServer'
+      url: 'http://gis-treecover.wri.org/arcgis/rest/services/ForestGain_2000_2012_map/MapServer'
     },
     {
       id: 'ACTIVE_FIRES',
@@ -281,7 +281,7 @@ export default {
       group: 'Land Cover',
       label: 'Tree cover',
       sublabel: '(year 2000, 30m global, Hansen/UMD/Google/USGS/NASA)',
-      url: 'http://50.18.182.188:6080/arcgis/rest/services/TreeCover2000/ImageServer',
+      url: 'http://gis-treecover.wri.org/arcgis/rest/services/TreeCover2000/ImageServer',
       colormap: [[1, 174, 203, 107]],
       inputRange: [30, 101],
       outputRange: [1],
