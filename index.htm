@@ -258,8 +258,11 @@
 								<!-- ko if: restorationModule -->
 								<optgroup label='Restoration potential for'>
 									<!-- ko foreach: restorationModuleOptions -->
-									<option data-bind="attr: {'data-option': $index, value: $parent.restorationModuleType }, text: label"></option>
+									<option data-bind="attr: {'data-id': id, value: $parent.restorationModuleType }, text: label"></option>
 									<!-- /ko -->
+								</optgroup>
+								<optgroup label="Potential according to slope">
+									<option data-id='$3' data-bind='attr: {value: restorationModuleType}'>Potential according to slope</option>
 								</optgroup>
 								<optgroup label='Other Analyses'>
 									<option selected='selected' data-bind="attr: {value: analysisLoss}, text: analysisLoss"></option>

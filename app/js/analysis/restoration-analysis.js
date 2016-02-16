@@ -46,13 +46,18 @@ define([
     });
   };
 
+  var getObject = function getObject (array, key, value) {
+    return array.filter(function (item) {
+      return item[key] === value;
+    })[0];
+  };
+
   return {
 
-    performRestorationAnalysis: function (graphic, optionIndex) {
+    performRestorationAnalysis: function (graphic, rasterId) {
       var viewModel = Model.getVM();
-      var config = viewModel.restorationModuleOptions()[optionIndex];
       var geometry = graphic.geometry;
-      var rasterId = config.id;
+      var config = getObject(viewModel.restorationModuleOptions(), 'id', rasterId);
       var promises = {};
 
       // Individual Configs
@@ -66,8 +71,8 @@ define([
       var popData;
       var tcData;
 
-      //- If the optionIndex is for the slope analysis breakdown, call other analysis function
-      if (config.id === slopeConfig.id) {
+      //- If the rasterId is for the slope analysis breakdown, call other analysis function
+      if (rasterId === slopeConfig.id) {
         var slopeSelectNode = document.querySelector('.analysis-selection-types .slope-select');
   			domClass.remove(slopeSelectNode, 'hidden');
         this.performSlopeAnalysis(graphic);

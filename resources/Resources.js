@@ -133,9 +133,6 @@ define([], function () {
           }, {
             id: '$12',
             label: 'tree-based buffer zone along rivers, lakes and reservoirs'
-          }, {
-            id: '$3',
-            label: 'slope analysis'
           }
         ],
 
