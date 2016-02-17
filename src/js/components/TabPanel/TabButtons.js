@@ -36,11 +36,11 @@ export default class TabButtons extends Component {
           <li className={this.getClassName(LAYERS)} data-value={LAYERS} onClick={this.changeTab}>
             <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: layersSvg }}/>
           </li>
-          <li className={this.getClassName(ANALYSIS)} data-value={ANALYSIS} onClick={this.changeTab}>
-            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: analysisSvg }}/>
-          </li>
           <li className={this.getClassName(INFO_WINDOW)} data-value={INFO_WINDOW} onClick={this.changeTab}>
             <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: dataSvg }}/>
+          </li>
+          <li className={this.getClassName(ANALYSIS)} data-value={ANALYSIS} onClick={this.changeTab}>
+            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: analysisSvg }}/>
           </li>
           <li className={this.getClassName(DOCUMENTS)} data-value={DOCUMENTS} onClick={this.changeTab}>
             <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: documentsSvg }}/>

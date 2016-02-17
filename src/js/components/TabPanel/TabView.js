@@ -1,6 +1,6 @@
 import AnalysisPanel from 'components/AnalysisPanel/AnalysisPanel';
 import LayerPanel from 'components/LayerPanel/LayerPanel';
-import InfoWindow from 'components/InfoPanel/InfoWindow';
+import InfoWindow from 'components/TabPanel/InfoWindow';
 import tabKeys from 'constants/TabViewConstants';
 import React, {
   Component,
@@ -28,7 +28,7 @@ export default class TabView extends Component {
   render () {
     let {map} = this.context;
 
-    const infoWindow = map.infoWindow && map.infoWindow.isShowing ? <InfoWindow map={map} /> : undefined;
+    // const infoWindow = map.infoWindow && map.infoWindow.isShowing ? <InfoWindow map={map} /> : undefined;
 
     return (
       <div className='tab-view map-component custom-scroll shadow'>
@@ -36,7 +36,7 @@ export default class TabView extends Component {
           <LayerPanel loaded={map.loaded} />
         </div>
         <div className={this.getClassName(INFO_WINDOW)}>
-          {infoWindow}
+          <InfoWindow map={map} />
         </div>
         <div className={this.getClassName(ANALYSIS)}>
           <AnalysisPanel {...this.props} />

@@ -54,8 +54,14 @@ export default class Map extends Component {
       this.map = response.map;
       this.map.graphics.clear();
       mapActions.mapUpdated();
+      this.map.infoWindow.set('popupWindow', false);
       //- Attach events I need for the info window
-      this.map.infoWindow.on('show, hide, selection-change', mapActions.setSelectedFeature);
+      //- TODO: Discuss with Derek about the best way to handle this, one of our components
+      //- could infer the information from props passed into it
+      this.map.infoWindow.on('show, hide, selection-change', (evt) => {
+        mapActions.setSelectedFeature(evt);
+        mapActions.mapUpdated(evt);
+      });
       //- Make the map a global in debug mode for easier debugging
       if (brApp.debug) { brApp.map = this.map; }
 

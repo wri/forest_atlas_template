@@ -1,3 +1,4 @@
+import mapStore from 'stores/MapStore';
 import React from 'react';
 
 let closeSymbolCode = 9660,
@@ -7,7 +8,14 @@ export default class LegendPanel extends React.Component {
   
   constructor (props) {
     super(props);
-    this.state = { open: false };
+    mapStore.listen(this.storeUpdated.bind(this));
+    this.state = { 
+      open: false 
+    };
+  }
+
+  storeUpdated () {
+    console.log('LegendPanel::storeUpdated', mapStore.getState());
   }
 
   render () {

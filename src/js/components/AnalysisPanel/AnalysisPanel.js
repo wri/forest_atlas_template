@@ -17,6 +17,8 @@ export default class AnalysisPanel extends Component {
     const {selectedFeature} = this.props;
     let content;
 
+    console.log(this.props);
+
     if (selectedFeature !== undefined) {
       content = [<Analysis selectedFeature={selectedFeature} />];
     } else {
