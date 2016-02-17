@@ -40,7 +40,7 @@ export default class InfoWindow extends Component {
   render () {
     let {infoWindow} = this.props.map;
     let selectedFeature, selectedIndex = 0;
-    let attributes = [];
+    let layerName, attributes = [];
 
     if ( infoWindow && infoWindow.getSelectedFeature ) {
       selectedFeature = infoWindow.getSelectedFeature();
@@ -52,17 +52,15 @@ export default class InfoWindow extends Component {
       attributes = attributes.map((a) => { 
         return { label: a, value: selectedFeature.attributes[a] }
       });
-      // content = ['<tr><td colspan=2><strong>Layer:  ' + selectedFeature._layer.name + '</strong></td></tr>'];
-      // for ( let attr in selectedFeature.attributes ) {
-      //   content.push('<tr><td>' + attr + '</td><td>' + selectedFeature.attributes[attr] + '</td></tr>');
-      // }
-      // content = content.join('');
+      layerName = selectedFeature._layer.name;
     } else {
       attributes = [{ label: 'No features selected. Click the map to make a selection.', value: '' }];
     }
-    // console.log('InfoWindow render, content is', content);
     return (
       <div className='infoWindow'>
+        <div className={`layer-name ${this.state.features.length ? '' : 'hidden'}`}>
+          Layer:  {layerName}
+        </div>
         <div className='attribute-display custom-scroll'>
           {attributes.map(this.attribute)}
         </div>
