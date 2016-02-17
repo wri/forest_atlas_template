@@ -30,8 +30,64 @@ export default {
   secondLanguageTitle: 'Forest Atlas of Cameroon',
   defaultLanguage: 'en',
   useAdditionalLanguage: true,
-  iflIncluded: true,
   layersToHide: '0,1,2',
+  iflIncluded: true,
+  biomassIncluded: true,
+  landCoverIncluded: true,
+  activeFiresIncluded: true,
+  restorationModule: false,
+  restorationImageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/country_data/ETH_Restoration/ImageServer',
+  restorationModuleOptions: [
+    {
+      id: '$9',
+      label: 'establishing natural forest outside of cropland'
+    }, {
+      id: '$10',
+      label: 'restocking of degraded natural forest'
+    }, {
+      id: '$6',
+      label: 'agri-silviculture and agro-silvo-pastoralism'
+    }, {
+      id: '$11',
+      label: 'silvo-pastoralism'
+    }, {
+      id: '$13',
+      label: 'woodlot'
+    }, {
+      id: '$8',
+      label: 'commercial plantation on bare soil and shrubland'
+    }, {
+      id: '$7',
+      label: 'commercial plantation as buffer zone to national forest priority areas and protected areas'
+    }, {
+      id: '$12',
+      label: 'tree-based buffer zone along rivers, lakes and reservoirs'
+    }
+  ],
+  slopeAnalysisRestorationOptions: [
+    'Potential for commercial plantation on bare soil and shrubland only',
+    'Potential for agri-silviculture and agro-silvo-pastoralism, and woodlot',
+    'Potential for establishing natural forest only',
+    'Potential for restocking degraded natural forest only',
+    'Potential for woodlot only',
+    'Potential for silvo-pastoralism only',
+    'Potential for tree-buffer zone along rivers, lakes and reservoirs only',
+    'Potential for commercial plantation as buffer zone around (NF)PAs',
+    'Two restoration options identified as having potential',
+    'Three or more restoration options identified as having potential'
+  ],
+  slopeAnalysisRestorationColors: [
+    '#EAC7FD',
+    '#FDB22E',
+    '#587E0F',
+    '#D29374',
+    '#F5D08B',
+    '#B1B124',
+    '#1AB090',
+    '#AF0F8F',
+    '#D9FEC7',
+    '#FFFE89'
+  ],
 
   // Built in template.js for applications, these are defaults, do not modify structure
   labels: {

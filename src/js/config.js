@@ -1,3 +1,4 @@
+import analysisKeys from 'constants/AnalysisConstants';
 import layerKeys from 'constants/LayerConstants';
 import stringKeys from 'constants/StringKeys';
 
@@ -42,6 +43,9 @@ const config = {
       };
     }
   },
+
+  // These are defined below, Keys are used from AnalysisConstants
+  analysis: {},
 
   layerPanel: {
     landCoverDynamics: 'Land Cover Dynamics',
@@ -184,8 +188,18 @@ const config = {
   }
 };
 
+//- Configure Analysis here
+config.analysis[analysisKeys.TC_LOSS] = { 'hey': 'foo' };
+config.analysis[analysisKeys.TC_LOSS_GAIN] = {};
+config.analysis[analysisKeys.INTACT_LOSS] = {};
+config.analysis[analysisKeys.BIO_LOSS] = {};
+config.analysis[analysisKeys.LC_LOSS] = {};
+config.analysis[analysisKeys.LCC] = {};
+config.analysis[analysisKeys.FIRES] = {};
+
 export const mapConfig = config.map;
 export const uploadConfig = config.upload;
+export const analysisConfig = config.analysis;
 export const layerPanelText = config.layerPanel;
 export const layerInformation = config.layerInformation;
 export const modalText = config.modals;

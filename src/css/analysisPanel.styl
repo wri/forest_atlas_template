@@ -61,5 +61,32 @@
   padding 0
   margin 0
 
-.analysis-results__select-container
+.analysis-results__select-label
+  font-size 14px
   margin 5px 0
+  color black
+
+.analysis-results__select-style
+  border 1px solid $lightGray
+  padding-left 5px
+  line-height 2em
+  font-size 13px
+  color black
+  height 2em
+  width 100%
+
+.analysis-results__select-style:after
+  position absolute
+  content '\25BC'
+  font-size 10px
+  right 5px
+  top 2px
+
+.analysis-results__select
+  -webkit-appearance none
+  position absolute
+  height 100%
+  width 100%
+  opacity 0
+  left 0
+  top 0

@@ -1,3 +1,4 @@
+import analysisKeys from 'constants/AnalysisConstants';
 import keys from 'constants/StringKeys';
 
 const strings = { en: {}, fr: {}, es: {}, pt: {} };
@@ -29,7 +30,47 @@ strings.en[keys.ANALYSIS_OR] = 'Or';
 strings.en[keys.ANALYSIS_DRAW_INSTRUCTIONS] = 'Draw in the map the area you want to analyze';
 strings.en[keys.ANALYSIS_DRAW_BUTTON] = 'Start drawing';
 strings.en[keys.ANALYSIS_SHAPEFILE_UPLOAD] = 'or drop a custom shapefile here';
-strings.en[keys.ANALYSIS_SELECT_TYPE] = 'Select Analysis:';
+strings.en[keys.ANALYSIS_SELECT_TYPE_LABEL] = 'Select Analysis:';
+//- Group and value should not be modified, Group labels are configured below
+strings.en[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
+  { label: 'Potential according to slope',
+    value: analysisKeys.SLOPE,
+    group: keys.ANALYSIS_GROUP_SLOPE
+  },
+  { label: 'Tree cover loss',
+    value: analysisKeys.TC_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Total tree cover loss/gain',
+    value: analysisKeys.TC_LOSS_GAIN,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Land cover loss',
+    value: analysisKeys.LC_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Biomass loss',
+    value: analysisKeys.BIO_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Intact forest loss',
+    value: analysisKeys.INTACT_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Active fires',
+    value: analysisKeys.FIRES,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Land cover composition',
+    value: analysisKeys.LCC,
+    group: keys.ANALYSIS_GROUP_OTHER
+  }
+];
+strings.en[keys.ANALYSIS_GROUP_RESTORATION] = 'Restoration potential for';
+strings.en[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to slope';
+strings.en[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
+
+
 
 //- NOTE: French
 strings.fr[keys.LAND_COVER_LABEL] = 'Land cover';
@@ -58,7 +99,46 @@ strings.fr[keys.ANALYSIS_OR] = 'Or';
 strings.fr[keys.ANALYSIS_DRAW_INSTRUCTIONS] = 'Draw in the map the area you want to analyze';
 strings.fr[keys.ANALYSIS_DRAW_BUTTON] = 'Start drawing';
 strings.fr[keys.ANALYSIS_SHAPEFILE_UPLOAD] = 'or drop a custom shapefile here';
-strings.en[keys.ANALYSIS_SELECT_TYPE] = 'Select Analysis:';
+strings.en[keys.ANALYSIS_SELECT_TYPE_LABEL] = 'Select Analysis:';
+//- Group and value should not be modified, Group labels are configured below
+strings.en[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
+  { label: 'Potential according to slope',
+    value: analysisKeys.SLOPE,
+    group: keys.ANALYSIS_GROUP_SLOPE
+  },
+  { label: 'Tree cover loss',
+    value: analysisKeys.TC_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Total tree cover loss/gain',
+    value: analysisKeys.TC_LOSS_GAIN,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Land cover loss',
+    value: analysisKeys.LC_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Biomass loss',
+    value: analysisKeys.BIO_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Intact forest loss',
+    value: analysisKeys.INTACT_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Active fires',
+    value: analysisKeys.FIRES,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Land cover composition',
+    value: analysisKeys.LCC,
+    group: keys.ANALYSIS_GROUP_OTHER
+  }
+];
+strings.en[keys.ANALYSIS_GROUP_RESTORATION] = 'Restoration potential for';
+strings.en[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to slope';
+strings.en[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
+
 
 //- NOTE: Spanish
 strings.es[keys.LAND_COVER_LABEL] = 'Land cover';
@@ -87,7 +167,46 @@ strings.es[keys.ANALYSIS_OR] = 'Or';
 strings.es[keys.ANALYSIS_DRAW_INSTRUCTIONS] = 'Draw in the map the area you want to analyze';
 strings.es[keys.ANALYSIS_DRAW_BUTTON] = 'Start drawing';
 strings.es[keys.ANALYSIS_SHAPEFILE_UPLOAD] = 'or drop a custom shapefile here';
-strings.en[keys.ANALYSIS_SELECT_TYPE] = 'Select Analysis:';
+strings.en[keys.ANALYSIS_SELECT_TYPE_LABEL] = 'Select Analysis:';
+//- Group and value should not be modified, Group labels are configured below
+strings.en[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
+  { label: 'Potential according to slope',
+    value: analysisKeys.SLOPE,
+    group: keys.ANALYSIS_GROUP_SLOPE
+  },
+  { label: 'Tree cover loss',
+    value: analysisKeys.TC_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Total tree cover loss/gain',
+    value: analysisKeys.TC_LOSS_GAIN,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Land cover loss',
+    value: analysisKeys.LC_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Biomass loss',
+    value: analysisKeys.BIO_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Intact forest loss',
+    value: analysisKeys.INTACT_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Active fires',
+    value: analysisKeys.FIRES,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Land cover composition',
+    value: analysisKeys.LCC,
+    group: keys.ANALYSIS_GROUP_OTHER
+  }
+];
+strings.en[keys.ANALYSIS_GROUP_RESTORATION] = 'Restoration potential for';
+strings.en[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to slope';
+strings.en[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
+
 
 //- NOTE: Portugese
 strings.pt[keys.LAND_COVER_LABEL] = 'Land cover';
@@ -116,6 +235,45 @@ strings.pt[keys.ANALYSIS_OR] = 'Or';
 strings.pt[keys.ANALYSIS_DRAW_INSTRUCTIONS] = 'Draw in the map the area you want to analyze';
 strings.pt[keys.ANALYSIS_DRAW_BUTTON] = 'Start drawing';
 strings.pt[keys.ANALYSIS_SHAPEFILE_UPLOAD] = 'or drop a custom shapefile here';
-strings.en[keys.ANALYSIS_SELECT_TYPE] = 'Select Analysis:';
+strings.en[keys.ANALYSIS_SELECT_TYPE_LABEL] = 'Select Analysis:';
+//- Group and value should not be modified, Group labels are configured below
+strings.en[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
+  { label: 'Potential according to slope',
+    value: analysisKeys.SLOPE,
+    group: keys.ANALYSIS_GROUP_SLOPE
+  },
+  { label: 'Tree cover loss',
+    value: analysisKeys.TC_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Total tree cover loss/gain',
+    value: analysisKeys.TC_LOSS_GAIN,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Land cover loss',
+    value: analysisKeys.LC_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Biomass loss',
+    value: analysisKeys.BIO_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Intact forest loss',
+    value: analysisKeys.INTACT_LOSS,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Active fires',
+    value: analysisKeys.FIRES,
+    group: keys.ANALYSIS_GROUP_OTHER
+  },
+  { label: 'Land cover composition',
+    value: analysisKeys.LCC,
+    group: keys.ANALYSIS_GROUP_OTHER
+  }
+];
+strings.en[keys.ANALYSIS_GROUP_RESTORATION] = 'Restoration potential for';
+strings.en[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to slope';
+strings.en[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
+
 
 export { strings as default };

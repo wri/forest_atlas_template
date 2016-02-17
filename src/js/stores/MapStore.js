@@ -1,3 +1,4 @@
+import analysisKeys from 'constants/AnalysisConstants';
 import tabKeys from 'constants/TabViewConstants';
 import mapActions from 'actions/MapActions';
 import layerActions from 'actions/LayerActions';
@@ -12,11 +13,13 @@ class MapStore {
     this.allLayers = [];
     // this.selectedFeature = undefined;
     this.selectedFeatures = [];
+    this.activeAnalysisType = analysisKeys.TC_LOSS;
 
     this.bindListeners({
       mapUpdated: mapActions.mapUpdated,
       createLayers: mapActions.createLayers,
       changeActiveTab: mapActions.changeActiveTab,
+      setAnalysisType: mapActions.setAnalysisType,
       // setSelectedFeature: mapActions.setSelectedFeature,
       addActiveLayer: layerActions.addActiveLayer,
       removeActiveLayer: layerActions.removeActiveLayer,
@@ -56,6 +59,10 @@ class MapStore {
 
   changeActiveTab (payload) {
     this.activeTab = payload.id;
+  }
+
+  setAnalysisType (payload) {
+    this.activeAnalysisType = payload.type;
   }
 
   // setSelectedFeature (payload) {

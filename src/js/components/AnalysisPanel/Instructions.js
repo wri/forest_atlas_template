@@ -11,9 +11,9 @@ export default class Instructions extends Component {
     language: PropTypes.string.isRequired
   };
 
-  renderInstructionList = (instruction) => {
+  renderInstructionList = (instruction, index) => {
     return (
-      <li>{instruction}</li>
+      <li key={index}>{instruction}</li>
     );
   };
 

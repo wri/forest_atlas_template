@@ -15,6 +15,12 @@ class MapActions {
     };
   }
 
+  setAnalysisType (evt) {
+    return {
+      type: evt.target.value
+    };
+  }
+
   // setSelectedFeature (evt) {
   //   let {target} = evt;
   //   return {

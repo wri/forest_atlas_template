@@ -1,3 +1,6 @@
+import AnalysisTypeSelect from 'components/AnalysisPanel/AnalysisTypeSelect';
+import performAnalysis from 'utils/performAnalysis';
+import tabKeys from 'constants/TabViewConstants';
 import keys from 'constants/StringKeys';
 import text from 'js/languages';
 import React, {
@@ -11,10 +14,27 @@ export default class Analysis extends Component {
     language: PropTypes.string.isRequired
   };
 
-  componentDidUpdate(prevProps) {
-    const {selectedFeature} = this.props;
-    if (selectedFeature !== prevProps.selectedFeature) {
+  componentDidMount() {
+    const {
+      selectedFeature,
+      activeTab,
+      activeAnalysisType
+    } = this.props;
 
+    if (selectedFeature && activeTab === tabKeys.ANALYSIS) {
+      performAnalysis(activeAnalysisType, selectedFeature, 30);
+    }
+  }
+
+  componentDidUpdate() {
+    const {
+      selectedFeature,
+      activeTab,
+      activeAnalysisType
+    } = this.props;
+
+    if (selectedFeature && activeTab === tabKeys.ANALYSIS) {
+      performAnalysis(activeAnalysisType, selectedFeature, 30);
     }
   }
 
@@ -25,11 +45,12 @@ export default class Analysis extends Component {
     return (
       <div className='analysis-results'>
         <h3 className='analysis-results__title'>
-          {selectedFeature.getTitle()}
+          {selectedFeature.getTitle ? selectedFeature.getTitle() : ''}
         </h3>
-        <div className='analysis-results__select-container'>
-          <div className=''>{text[language][keys.ANALYSIS_SELECT_TYPE]}</div>
+        <div className='analysis-results__select-label'>
+          {text[language][keys.ANALYSIS_SELECT_TYPE_LABEL]}
         </div>
+        <AnalysisTypeSelect {...this.props} />
       </div>
     );
   }
@@ -37,5 +58,5 @@ export default class Analysis extends Component {
 }
 
 Analysis.propTypes = {
-  feature: PropTypes.object.isRequired
+  selectedFeature: PropTypes.object.isRequired
 };

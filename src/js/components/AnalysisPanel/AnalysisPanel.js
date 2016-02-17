@@ -24,9 +24,9 @@ export default class AnalysisPanel extends Component {
     }
 
     if (selectedFeature !== undefined) {
-      content = [<Analysis selectedFeature={selectedFeature} />];
+      content = <Analysis selectedFeature={selectedFeature} {...this.props} />;
     } else {
-      content = [<Instructions />, <Tools />];
+      content = [<Instructions key='instructions' />, <Tools key='tools' />];
     }
 
     return (
