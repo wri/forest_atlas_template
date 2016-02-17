@@ -35,12 +35,12 @@ export default class LayerCheckbox extends React.Component {
         <span className='info-icon pointer' onClick={this.showInfo.bind(this)}>
           <svg dangerouslySetInnerHTML={{ __html: useSvg }}/>
         </span>
-        <LayerTransparency layer={layer} visible={this.props.checked}></LayerTransparency>
         {!this.props.children ? null :
-          <div className={`layer-content-container ${this.props.checked ? '' : 'hidden'}`}>
+          <div className={`layer-content-container flex ${this.props.checked ? '' : 'hidden'}`}>
             {this.props.children}
           </div>
         }
+        <LayerTransparency layer={layer} visible={this.props.checked}></LayerTransparency>
       </div>
     );
   }

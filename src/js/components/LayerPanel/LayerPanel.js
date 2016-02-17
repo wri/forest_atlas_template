@@ -4,8 +4,8 @@
 // import DensityDisplay from 'components/LayerPanel/DensityDisplay';
 // import WetlandsLegend from 'components/LayerPanel/WetlandsLegend';
 import LayerCheckbox from 'components/LayerPanel/LayerCheckbox';
-// import FiresControls from 'components/LayerPanel/FiresControls';
-// import LossControls from 'components/LayerPanel/LossControls';
+import FiresControls from 'components/LayerPanel/FiresControls';
+import LossControls from 'components/LayerPanel/LossControls';
 import LayerGroup from 'components/LayerPanel/LayerGroup';
 // import DamsLegend from 'components/LayerPanel/DamsLegend';
 import mapStore from 'stores/MapStore';
@@ -68,8 +68,8 @@ export default class LayerPanel extends React.Component {
       // If it is just a label, render the grop label
       // if (layer.isGroupLabel) { return <div key={layer.id} className='layer-group-label'>{layer.label}</div>; }
       // Some layers have legends or tools and they should be rendered inside the layer checkbox
-      // let childComponent;
-      // switch (layer.id) {
+      let childComponent;
+      switch (layer.id) {
       //   case KEYS.waterStress:
       //     childComponent = <WaterStressLegend url={layer.url} layerIds={layer.layerIds} />;
       //     break;
@@ -79,12 +79,12 @@ export default class LayerPanel extends React.Component {
       //   case KEYS.majorDams:
       //     childComponent = <DamsLegend url={layer.url} layerIds={layer.layerIds} />;
       //     break;
-      //   case KEYS.activeFires:
-      //     childComponent = <FiresControls loaded={this.props.loaded} {...this.state} />;
-      //     break;
-      //   case KEYS.loss:
-      //     childComponent = <LossControls loaded={this.props.loaded} {...this.state} />;
-      //     break;
+        case 'ACTIVE_FIRES':
+          childComponent = <FiresControls loaded={this.props.loaded} {...this.state} />;
+          break;
+        case 'TREE_COVER_LOSS':
+          childComponent = <LossControls loaded={this.props.loaded} {...this.state} />;
+          break;
       //   case KEYS.treeCover:
       //     childComponent = <DensityDisplay {...this.state} />;
       //     break;
@@ -94,15 +94,15 @@ export default class LayerPanel extends React.Component {
       //   case KEYS.wetlands:
       //     childComponent = <WetlandsLegend url={layer.url} layerIds={layer.layerIds} />;
       //     break;
-      //   default:
-      //     childComponent = null;
-      // }
+        default:
+          childComponent = null;
+      }
 
-      // return <LayerCheckbox key={layer.id} layer={layer} checked={activeLayers.indexOf(layer.id) > -1}>
-        // {childComponent}
-      // </LayerCheckbox>;
       return <LayerCheckbox key={layer.id} layer={layer} checked={activeLayers.indexOf(layer.id) > -1}>
+        {childComponent}
       </LayerCheckbox>;
+      // return <LayerCheckbox key={layer.id} layer={layer} checked={activeLayers.indexOf(layer.id) > -1}>
+      // </LayerCheckbox>;
 
     };
   }
