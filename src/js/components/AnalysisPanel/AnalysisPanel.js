@@ -14,10 +14,14 @@ export default class AnalysisPanel extends Component {
   };
 
   render () {
-    const {selectedFeature} = this.props;
+    const {map} = this.context;
+    let selectedFeature;
     let content;
 
-    console.log(this.props);
+    //- Infer the selected feature from the info window
+    if (map.infoWindow && map.infoWindow.getSelectedFeature()) {
+      selectedFeature = map.infoWindow.getSelectedFeature();
+    }
 
     if (selectedFeature !== undefined) {
       content = [<Analysis selectedFeature={selectedFeature} />];

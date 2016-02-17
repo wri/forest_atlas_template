@@ -15,12 +15,12 @@ class MapActions {
     };
   }
 
-  setSelectedFeature (evt) {
-    let {target} = evt;
-    return {
-      feature: target.getSelectedFeature ? target.getSelectedFeature() : undefined
-    };
-  }
+  // setSelectedFeature (evt) {
+  //   let {target} = evt;
+  //   return {
+  //     feature: target.getSelectedFeature ? target.getSelectedFeature() : undefined
+  //   };
+  // }
 
   createLayers (map, layers) {
     brApp.debug('MapActions >>> createLayers');

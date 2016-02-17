@@ -10,14 +10,14 @@ class MapStore {
     this.activeTab = tabKeys.LAYERS;
     this.activeLayers = [];
     this.allLayers = [];
-    this.selectedFeature = undefined;
+    // this.selectedFeature = undefined;
     this.selectedFeatures = [];
 
     this.bindListeners({
       mapUpdated: mapActions.mapUpdated,
       createLayers: mapActions.createLayers,
       changeActiveTab: mapActions.changeActiveTab,
-      setSelectedFeature: mapActions.setSelectedFeature,
+      // setSelectedFeature: mapActions.setSelectedFeature,
       addActiveLayer: layerActions.addActiveLayer,
       removeActiveLayer: layerActions.removeActiveLayer,
       changeOpacity: layerActions.changeOpacity
@@ -58,9 +58,9 @@ class MapStore {
     this.activeTab = payload.id;
   }
 
-  setSelectedFeature (payload) {
-    this.selectedFeature = payload.feature;
-  }
+  // setSelectedFeature (payload) {
+  //   this.selectedFeature = payload.feature;
+  // }
 
   changeOpacity (parameters) {
     let layer = this.allLayers.filter(l => l.id === parameters.layerId);
