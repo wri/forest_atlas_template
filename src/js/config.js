@@ -2,6 +2,8 @@ import analysisKeys from 'constants/AnalysisConstants';
 import layerKeys from 'constants/LayerConstants';
 import stringKeys from 'constants/StringKeys';
 
+const analysisImageService = 'http://gis-gfw.wri.org/arcgis/rest/services/GFW/analysis/ImageServer';
+
 const config = {
   map: {
     options: {
@@ -14,6 +16,8 @@ const config = {
       logo: false
     }
   },
+
+  corsServers: [analysisImageService],
 
   urls: {
     liveSite: 'http://wri.github.io/forest_atlas_template/'
@@ -43,9 +47,6 @@ const config = {
       };
     }
   },
-
-  // These are defined below, Keys are used from AnalysisConstants
-  analysis: {},
 
   layerPanel: {
     landCoverDynamics: 'Land Cover Dynamics',
@@ -185,6 +186,18 @@ const config = {
       twitterUrl: url => `https://twitter.com/share?url=${url}&via=gfw-water`,
       facebookUrl: url => `https://www.facebook.com/sharer.php?u=${url}`
     }
+  },
+
+  //- Analysis for individual layers are defined below so we can use common keys
+  //- Generic config is here
+  analysis: {
+    imageService: analysisImageService,
+    pixelSize: 100,
+    tcd: {
+      id: '$520',
+      outputValues: [0, 1],
+      inputRanges: (density) => [0, +density, +density, 101]
+    }
   }
 };
 
@@ -194,7 +207,10 @@ config.analysis[analysisKeys.TC_LOSS_GAIN] = {};
 config.analysis[analysisKeys.INTACT_LOSS] = {};
 config.analysis[analysisKeys.BIO_LOSS] = {};
 config.analysis[analysisKeys.LC_LOSS] = {};
-config.analysis[analysisKeys.LCC] = {};
+
+config.analysis[analysisKeys.LCC] = {
+  lockRaster: 523
+};
 
 config.analysis[analysisKeys.FIRES] = {
   url: 'http://gis-potico.wri.org/arcgis/rest/services/Fires/Global_Fires/MapServer/4'
@@ -203,6 +219,7 @@ config.analysis[analysisKeys.FIRES] = {
 export const mapConfig = config.map;
 export const uploadConfig = config.upload;
 export const analysisConfig = config.analysis;
+export const corsServers = config.corsServers;
 export const layerPanelText = config.layerPanel;
 export const layerInformation = config.layerInformation;
 export const modalText = config.modals;

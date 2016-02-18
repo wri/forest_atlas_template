@@ -1,6 +1,8 @@
 import App from 'components/App';
 import LayerModal from 'components/modals/LayerModal';
 // import ShareModal from 'components/modals/ShareModal';
+import {corsServers} from 'js/config';
+import esriConfig from 'esri/config';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import 'babel-polyfill';
@@ -29,7 +31,7 @@ window.requestAnimationFrame = (function () {
 })();
 
 let configureApp = () => {
-
+  corsServers.forEach((server) => { esriConfig.defaults.io.corsEnabledServers.push(server); });
 };
 
 let initializeApp = () => {

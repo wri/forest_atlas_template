@@ -67,6 +67,7 @@ export default class Analysis extends Component {
       case analysisKeys.FIRES:
       return <FiresBadge count={results.fireCount} />;
       case analysisKeys.LCC:
+      console.log(results.counts);
       return null;
       case analysisKeys.SLOPE:
       return null;

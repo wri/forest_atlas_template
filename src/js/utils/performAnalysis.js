@@ -10,12 +10,6 @@ const restorationAnalysis = () => {
   return promise;
 };
 
-const compositionAnalysis = () => {
-  const promise = new Deferred();
-  promise.resolve(true);
-  return promise;
-};
-
 const slopeAnalysis = () => {
   const promise = new Deferred();
   promise.resolve(true);
@@ -38,23 +32,21 @@ const lossAnalysis = () => {
 
 
 /**
-* @param {string} analysisKey - Value from Analysis Select, also key to options in config
+* @param {string} analysisType - Value from Analysis Select, also key to options in config
 * @param {Graphic} feature - Esri feature
 * @param {number} canopyDensity - Tree Cover Canopy density setting
 * @return {promise}
 */
-export default function performAnalysis (analysisKey, feature, canopyDensity) {
-  const config = analysisConfig[analysisKey];
+export default function performAnalysis (analysisType, feature, canopyDensity) {
+  const config = analysisConfig[analysisType];
   let promise = new Deferred();
 
-  switch (analysisKey) {
+  switch (analysisType) {
     case analysisKeys.FIRES:
       analysisUtils.getFireCount(config.url, feature).then(promise.resolve);
     break;
     case analysisKeys.LCC:
-      compositionAnalysis(config, feature, canopyDensity).then((response) => {
-        promise.resolve(response);
-      });
+      analysisUtils.getMosaic(config.lockRaster, feature).then(promise.resolve);
     break;
     case analysisKeys.SLOPE:
       slopeAnalysis(config, feature, canopyDensity).then((response) => {
