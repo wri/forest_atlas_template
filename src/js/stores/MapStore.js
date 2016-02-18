@@ -14,7 +14,6 @@ class MapStore {
     // this.selectedFeature = undefined;
     this.selectedFeatures = [];
     this.activeAnalysisType = analysisKeys.TC_LOSS;
-    this.analysisResults = undefined;
 
     this.bindListeners({
       mapUpdated: mapActions.mapUpdated,

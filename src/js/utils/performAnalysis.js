@@ -2,7 +2,6 @@ import analysisKeys from 'constants/AnalysisConstants';
 import analysisUtils from 'utils/analysisUtils';
 import {analysisConfig} from 'js/config';
 import Deferred from 'dojo/Deferred';
-import request from 'utils/request';
 import all from 'dojo/promise/all';
 
 const restorationAnalysis = () => {
@@ -50,9 +49,7 @@ export default function performAnalysis (analysisKey, feature, canopyDensity) {
 
   switch (analysisKey) {
     case analysisKeys.FIRES:
-      request.getFireCount(config.url, feature).then((response) => {
-        promise.resolve(analysisUtils.formatFireResults(response));
-      });
+      analysisUtils.getFireCount(config.url, feature).then(promise.resolve);
     break;
     case analysisKeys.LCC:
       compositionAnalysis(config, feature, canopyDensity).then((response) => {
