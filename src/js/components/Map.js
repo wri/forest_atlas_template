@@ -56,7 +56,7 @@ export default class Map extends Component {
       mapActions.mapUpdated();
       this.map.infoWindow.set('popupWindow', false);
       //- Attach events I need for the info window
-      this.map.infoWindow.on('show, hide, selection-change', (evt) => {
+      this.map.infoWindow.on('show, hide, set-features, selection-change', (evt) => {
         // mapActions.setSelectedFeature(evt);
         mapActions.mapUpdated(evt);
       });
