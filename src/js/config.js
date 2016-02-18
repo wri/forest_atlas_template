@@ -216,7 +216,8 @@ config.analysis[analysisKeys.BIO_LOSS] = {};
 config.analysis[analysisKeys.LC_LOSS] = {};
 
 config.analysis[analysisKeys.LCC] = {
-  lockRaster: 523
+  lockRaster: 523,
+  colors: ['#3B823D', '#7CA079', '#AAB785', '#355936', '#5BBCF8', '#8BB94B', '#F0F979', '#7B8840', '#CABA4F', '#D3A162', '#FDCA76', '#C1E5DC', '#7AD3AB', '#F3F3AF', '#F6988F', '#FFFFF0', '#FFFFF0', '#A7A7A7', '#F83D48', '#353C92']
 };
 
 config.analysis[analysisKeys.FIRES] = {

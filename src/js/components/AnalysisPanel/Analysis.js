@@ -1,8 +1,10 @@
 import AnalysisTypeSelect from 'components/AnalysisPanel/AnalysisTypeSelect';
+import CompositionPieChart from 'components/AnalysisPanel/CompositionPieChart';
 import FiresBadge from 'components/AnalysisPanel/FiresBadge';
 import analysisKeys from 'constants/AnalysisConstants';
 import performAnalysis from 'utils/performAnalysis';
 import tabKeys from 'constants/TabViewConstants';
+import {analysisConfig} from 'js/config';
 import keys from 'constants/StringKeys';
 import Loader from 'components/Loader';
 import text from 'js/languages';
@@ -62,13 +64,15 @@ export default class Analysis extends Component {
     }
   }
 
-  renderResults = (type, results) => {
+  renderResults = (type, results, language) => {
     switch (type) {
       case analysisKeys.FIRES:
-      return <FiresBadge count={results.fireCount} />;
+        return <FiresBadge count={results.fireCount} />;
       case analysisKeys.LCC:
-      console.log(results.counts);
-      return null;
+        return < CompositionPieChart
+          counts={results.counts}
+          colors={analysisConfig[type].colors}
+          labels={text[language][keys.ANALYSIS_LCC_LABELS]} />;
       case analysisKeys.SLOPE:
       return null;
       case analysisKeys.TC_LOSS_GAIN:
@@ -91,7 +95,8 @@ export default class Analysis extends Component {
     let chart;
 
     if (results) {
-      chart = this.renderResults(activeAnalysisType, results);
+      console.log(results);
+      chart = this.renderResults(activeAnalysisType, results, language);
     }
 
     return (

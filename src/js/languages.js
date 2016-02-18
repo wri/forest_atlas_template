@@ -32,7 +32,7 @@ strings.en[keys.ANALYSIS_DRAW_BUTTON] = 'Start drawing';
 strings.en[keys.ANALYSIS_SHAPEFILE_UPLOAD] = 'or drop a custom shapefile here';
 strings.en[keys.ANALYSIS_SELECT_TYPE_LABEL] = 'Select Analysis:';
 //- Chart Labels in the Analysis
-strings.en[keys.ANALYSIS_LAND_COVER_LABELS] = ['Dense moist forest', 'Submontane forest', 'Mountain forest', 'Edaphic forest', 'Mangrove', 'Forest-savanna mosaic', 'Rural complex and young secondary forest', 'Closed to open deciduous woodland', 'Savanna woodland-Tree savanna', 'Shrubland', 'Grassland', 'Aquatic grassland', 'Swamp grassland', 'Sparse vegetation', 'Mosaic cultivated areas/vegeatation( herbaceous or shrub)', 'Agriculture', 'Irrigated agriculture', 'Bare areas', 'Artificial surfaces and associated areas', 'Water Bodies'];
+strings.en[keys.ANALYSIS_LCC_LABELS] = ['Dense moist forest', 'Submontane forest', 'Mountain forest', 'Edaphic forest', 'Mangrove', 'Forest-savanna mosaic', 'Rural complex and young secondary forest', 'Closed to open deciduous woodland', 'Savanna woodland-Tree savanna', 'Shrubland', 'Grassland', 'Aquatic grassland', 'Swamp grassland', 'Sparse vegetation', 'Mosaic cultivated areas/vegeatation( herbaceous or shrub)', 'Agriculture', 'Irrigated agriculture', 'Bare areas', 'Artificial surfaces and associated areas', 'Water Bodies'];
 strings.en[keys.ANALYSIS_FIRES_PRE] = 'There are';
 strings.en[keys.ANALYSIS_FIRES_ACTIVE] = 'active fires';
 strings.en[keys.ANALYSIS_FIRES_POST] = 'in the last 7 days';
@@ -106,7 +106,7 @@ strings.fr[keys.ANALYSIS_DRAW_BUTTON] = 'Start drawing';
 strings.fr[keys.ANALYSIS_SHAPEFILE_UPLOAD] = 'or drop a custom shapefile here';
 strings.fr[keys.ANALYSIS_SELECT_TYPE_LABEL] = 'Select Analysis:';
 //- Chart Labels in the Analysis
-strings.fr[keys.ANALYSIS_LAND_COVER_LABELS] = ['Dense moist forest', 'Submontane forest', 'Mountain forest', 'Edaphic forest', 'Mangrove', 'Forest-savanna mosaic', 'Rural complex and young secondary forest', 'Closed to open deciduous woodland', 'Savanna woodland-Tree savanna', 'Shrubland', 'Grassland', 'Aquatic grassland', 'Swamp grassland', 'Sparse vegetation', 'Mosaic cultivated areas/vegeatation( herbaceous or shrub)', 'Agriculture', 'Irrigated agriculture', 'Bare areas', 'Artificial surfaces and associated areas', 'Water Bodies'];
+strings.fr[keys.ANALYSIS_LCC_LABELS] = ['Dense moist forest', 'Submontane forest', 'Mountain forest', 'Edaphic forest', 'Mangrove', 'Forest-savanna mosaic', 'Rural complex and young secondary forest', 'Closed to open deciduous woodland', 'Savanna woodland-Tree savanna', 'Shrubland', 'Grassland', 'Aquatic grassland', 'Swamp grassland', 'Sparse vegetation', 'Mosaic cultivated areas/vegeatation( herbaceous or shrub)', 'Agriculture', 'Irrigated agriculture', 'Bare areas', 'Artificial surfaces and associated areas', 'Water Bodies'];
 strings.fr[keys.ANALYSIS_FIRES_PRE] = 'There are';
 strings.fr[keys.ANALYSIS_FIRES_ACTIVE] = 'active fires';
 strings.fr[keys.ANALYSIS_FIRES_POST] = 'in the last 7 days';
@@ -179,7 +179,7 @@ strings.es[keys.ANALYSIS_DRAW_BUTTON] = 'Start drawing';
 strings.es[keys.ANALYSIS_SHAPEFILE_UPLOAD] = 'or drop a custom shapefile here';
 strings.es[keys.ANALYSIS_SELECT_TYPE_LABEL] = 'Select Analysis:';
 //- Chart Labels in the Analysis
-strings.es[keys.ANALYSIS_LAND_COVER_LABELS] = ['Dense moist forest', 'Submontane forest', 'Mountain forest', 'Edaphic forest', 'Mangrove', 'Forest-savanna mosaic', 'Rural complex and young secondary forest', 'Closed to open deciduous woodland', 'Savanna woodland-Tree savanna', 'Shrubland', 'Grassland', 'Aquatic grassland', 'Swamp grassland', 'Sparse vegetation', 'Mosaic cultivated areas/vegeatation( herbaceous or shrub)', 'Agriculture', 'Irrigated agriculture', 'Bare areas', 'Artificial surfaces and associated areas', 'Water Bodies'];
+strings.es[keys.ANALYSIS_LCC_LABELS] = ['Dense moist forest', 'Submontane forest', 'Mountain forest', 'Edaphic forest', 'Mangrove', 'Forest-savanna mosaic', 'Rural complex and young secondary forest', 'Closed to open deciduous woodland', 'Savanna woodland-Tree savanna', 'Shrubland', 'Grassland', 'Aquatic grassland', 'Swamp grassland', 'Sparse vegetation', 'Mosaic cultivated areas/vegeatation( herbaceous or shrub)', 'Agriculture', 'Irrigated agriculture', 'Bare areas', 'Artificial surfaces and associated areas', 'Water Bodies'];
 strings.es[keys.ANALYSIS_FIRES_PRE] = 'There are';
 strings.es[keys.ANALYSIS_FIRES_ACTIVE] = 'active fires';
 strings.es[keys.ANALYSIS_FIRES_POST] = 'in the last 7 days';
@@ -252,7 +252,7 @@ strings.pt[keys.ANALYSIS_DRAW_BUTTON] = 'Start drawing';
 strings.pt[keys.ANALYSIS_SHAPEFILE_UPLOAD] = 'or drop a custom shapefile here';
 strings.pt[keys.ANALYSIS_SELECT_TYPE_LABEL] = 'Select Analysis:';
 //- Chart Labels in the Analysis
-strings.pt[keys.ANALYSIS_LAND_COVER_LABELS] = ['Dense moist forest', 'Submontane forest', 'Mountain forest', 'Edaphic forest', 'Mangrove', 'Forest-savanna mosaic', 'Rural complex and young secondary forest', 'Closed to open deciduous woodland', 'Savanna woodland-Tree savanna', 'Shrubland', 'Grassland', 'Aquatic grassland', 'Swamp grassland', 'Sparse vegetation', 'Mosaic cultivated areas/vegeatation( herbaceous or shrub)', 'Agriculture', 'Irrigated agriculture', 'Bare areas', 'Artificial surfaces and associated areas', 'Water Bodies'];
+strings.pt[keys.ANALYSIS_LCC_LABELS] = ['Dense moist forest', 'Submontane forest', 'Mountain forest', 'Edaphic forest', 'Mangrove', 'Forest-savanna mosaic', 'Rural complex and young secondary forest', 'Closed to open deciduous woodland', 'Savanna woodland-Tree savanna', 'Shrubland', 'Grassland', 'Aquatic grassland', 'Swamp grassland', 'Sparse vegetation', 'Mosaic cultivated areas/vegeatation( herbaceous or shrub)', 'Agriculture', 'Irrigated agriculture', 'Bare areas', 'Artificial surfaces and associated areas', 'Water Bodies'];
 strings.pt[keys.ANALYSIS_FIRES_PRE] = 'There are';
 strings.pt[keys.ANALYSIS_FIRES_ACTIVE] = 'active fires';
 strings.pt[keys.ANALYSIS_FIRES_POST] = 'in the last 7 days';

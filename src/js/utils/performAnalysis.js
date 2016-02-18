@@ -25,7 +25,7 @@ const gainAnalysis = () => {
 const lossAnalysis = () => {
   const promise = new Deferred();
   setTimeout(() => {
-    promise.resolve('Hello');
+    promise.resolve(true);
   }, 500);
   return promise;
 };

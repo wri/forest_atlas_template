@@ -36,7 +36,7 @@ let configureApp = () => {
 };
 
 let lazyloadAssets = () => {
-  loadJS(assetUrls.jQuery);
+  // loadJS(assetUrls.jQuery);
   loadJS(assetUrls.highcharts);
   loadJS(assetUrls.highchartsMore);
 };
