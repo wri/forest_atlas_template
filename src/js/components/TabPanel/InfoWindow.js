@@ -1,24 +1,15 @@
 import mapStore from 'stores/MapStore';
-import React, {Component} from 'react';
+import React, {
+  Component,
+  PropTypes
+} from 'react';
 
 export default class InfoWindow extends Component {
 
-  constructor(props) {
-    super(props);
-
-    mapStore.listen(this.storeUpdated.bind(this));
-    let defaultState = mapStore.getState();
-    // console.log('InfoWindow::ctor, defaultState', defaultState);
-    this.state = {
-      features: defaultState.selectedFeatures
-    };
-  }
-
-  storeUpdated () {
-    let currentState = mapStore.getState();
-    // console.log('InfoWindow::storeUpdated', currentState);
-    this.setState({ features: currentState.selectedFeatures });
-  }
+  static contextTypes = {
+    language: PropTypes.string.isRequired,
+    map: PropTypes.object.isRequired
+  };
 
   attribute (item) {
     return (
@@ -39,14 +30,15 @@ export default class InfoWindow extends Component {
 
   render () {
     let {infoWindow} = this.props.map;
+    let count = 0;
     let selectedFeature, selectedIndex = 0;
     let layerName, attributes = [];
 
     if ( infoWindow && infoWindow.getSelectedFeature ) {
+      count = infoWindow.count;
       selectedFeature = infoWindow.getSelectedFeature();
       selectedIndex = infoWindow.selectedIndex;
     }
-    console.log('InfoWindow render', selectedFeature);
     if ( selectedFeature ) {
       attributes = Object.keys(selectedFeature.attributes);
       attributes = attributes.map((a) => {
@@ -58,15 +50,15 @@ export default class InfoWindow extends Component {
     }
     return (
       <div className='infoWindow'>
-        <div className={`layer-name ${this.state.features.length ? '' : 'hidden'}`}>
+        <div className={`layer-name ${selectedFeature ? '' : 'hidden'}`}>
           Layer:  {layerName}
         </div>
         <div className='attribute-display custom-scroll'>
           {attributes.map(this.attribute)}
         </div>
-        <div className={`feature-controls ${this.state.features.length ? '' : 'hidden'}`}>
-          <span>{this.state.features.length} features selected.</span>
-          <span className={`arrow right ${selectedIndex < this.state.features.length-1 ? '' : 'disabled'}`} onClick={this.next.bind(this)}>Next</span>
+        <div className={`feature-controls ${selectedFeature ? '' : 'hidden'}`}>
+          <span>{count} features selected.</span>
+          <span className={`arrow right ${selectedIndex < count-1 ? '' : 'disabled'}`} onClick={this.next.bind(this)}>Next</span>
           <span className={`arrow left ${selectedIndex > 0 ? '' : 'disabled'}`} onClick={this.previous.bind(this)}>Prev</span>
         </div>
       </div>
