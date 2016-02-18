@@ -141,6 +141,16 @@ const request = {
       content: content,
       handleAs: 'json'
     });
+  },
+
+  getFireCount (url, feature) {
+    const queryTask = new QueryTask(url);
+    let query = new Query();
+    query.geometry = feature.geometry;
+    query.returnGeometry = false;
+    query.outFields = [''];
+    query.where = '1 = 1';
+    return queryTask.execute(query);
   }
 
 };

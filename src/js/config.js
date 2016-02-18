@@ -189,13 +189,16 @@ const config = {
 };
 
 //- Configure Analysis here
-config.analysis[analysisKeys.TC_LOSS] = { 'hey': 'foo' };
+config.analysis[analysisKeys.TC_LOSS] = {};
 config.analysis[analysisKeys.TC_LOSS_GAIN] = {};
 config.analysis[analysisKeys.INTACT_LOSS] = {};
 config.analysis[analysisKeys.BIO_LOSS] = {};
 config.analysis[analysisKeys.LC_LOSS] = {};
 config.analysis[analysisKeys.LCC] = {};
-config.analysis[analysisKeys.FIRES] = {};
+
+config.analysis[analysisKeys.FIRES] = {
+  url: 'http://gis-potico.wri.org/arcgis/rest/services/Fires/Global_Fires/MapServer/4'
+};
 
 export const mapConfig = config.map;
 export const uploadConfig = config.upload;
