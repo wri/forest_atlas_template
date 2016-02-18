@@ -1,7 +1,8 @@
 import App from 'components/App';
 import LayerModal from 'components/modals/LayerModal';
 // import ShareModal from 'components/modals/ShareModal';
-import {corsServers} from 'js/config';
+import {corsServers, assetUrls} from 'js/config';
+import {loadJS} from 'utils/loaders';
 import esriConfig from 'esri/config';
 import ReactDOM from 'react-dom';
 import React from 'react';
@@ -34,11 +35,18 @@ let configureApp = () => {
   corsServers.forEach((server) => { esriConfig.defaults.io.corsEnabledServers.push(server); });
 };
 
+let lazyloadAssets = () => {
+  loadJS(assetUrls.jQuery);
+  loadJS(assetUrls.highcharts);
+  loadJS(assetUrls.highchartsMore);
+};
+
 let initializeApp = () => {
   ReactDOM.render(<App />, document.getElementById('root'));
   ReactDOM.render(<LayerModal />, document.getElementById('layer-modal'));
   // ReactDOM.render(<ShareModal />, document.getElementById('share-modal'));
 };
 
-initializeApp();
 configureApp();
+initializeApp();
+lazyloadAssets();

@@ -19,6 +19,13 @@ const config = {
 
   corsServers: [analysisImageService],
 
+  // Note these will need to be copied in with the bulid script since they are not part of the main bundle
+  assets: {
+    jQuery: 'vendor/jquery/dist/jquery.min.js',
+    highcharts: '//code.highcharts.com/highcharts.js',
+    highchartsMore: '//code.highcharts.com/highcharts-more.js'
+  },
+
   urls: {
     liveSite: 'http://wri.github.io/forest_atlas_template/'
   },
@@ -217,6 +224,7 @@ config.analysis[analysisKeys.FIRES] = {
 };
 
 export const mapConfig = config.map;
+export const assetUrls = config.assets;
 export const uploadConfig = config.upload;
 export const analysisConfig = config.analysis;
 export const corsServers = config.corsServers;
