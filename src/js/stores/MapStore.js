@@ -3,6 +3,7 @@ import tabKeys from 'constants/TabViewConstants';
 import mapActions from 'actions/MapActions';
 import layerActions from 'actions/LayerActions';
 import dispatcher from 'js/dispatcher';
+import {layerPanelText} from 'js/config';
 
 class MapStore {
 
@@ -14,6 +15,9 @@ class MapStore {
     // this.selectedFeature = undefined;
     this.selectedFeatures = [];
     this.activeAnalysisType = analysisKeys.TC_LOSS;
+    this.lossFromSelectIndex = 0;
+    this.lossToSelectIndex = layerPanelText.lossOptions.length - 1;
+    this.firesSelectIndex = layerPanelText.firesOptions.length - 1;
 
     this.bindListeners({
       mapUpdated: mapActions.mapUpdated,

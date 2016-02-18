@@ -131,6 +131,7 @@ let LayersHelper = {
   */
   updateFiresLayerDefinitions (optionIndex, dontRefresh) {
     brApp.debug('LayersHelper >>> updateFiresLayerDefinitions');
+    return;
     let value = layerPanelText.firesOptions[optionIndex].value || 1; // 1 is the default value, means last 24 hours
     let queryString = this.generateFiresQuery(value);
     let firesLayer = brApp.map.getLayer(KEYS.activeFires);
@@ -148,6 +149,7 @@ let LayersHelper = {
   */
   updateLossLayerDefinitions (fromIndex, toIndex) {
     brApp.debug('LayersHelper >>> updateLossLayerDefinitions');
+    return;
     let fromValue = layerPanelText.lossOptions[fromIndex].value;
     let toValue = layerPanelText.lossOptions[toIndex].value;
     let layerConfig = utils.getObject(layersConfig, 'id', KEYS.loss);
@@ -165,6 +167,7 @@ let LayersHelper = {
   */
   updateTreeCoverDefinitions (densityValue) {
     brApp.debug('LayersHelper >>> updateTreeCoverDefinitions');
+    return;
     let layerConfig = utils.getObject(layersConfig, 'id', KEYS.treeCover);
     let rasterFunction = rasterFuncs.getColormapRemap(layerConfig.colormap, [densityValue, layerConfig.inputRange[1]], layerConfig.outputRange);
     let layer = brApp.map.getLayer(KEYS.treeCover);
