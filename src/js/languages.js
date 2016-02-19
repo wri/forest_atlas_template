@@ -36,6 +36,10 @@ strings.en[keys.ANALYSIS_LCC_LABELS] = ['Dense moist forest', 'Submontane forest
 strings.en[keys.ANALYSIS_FIRES_PRE] = 'There are';
 strings.en[keys.ANALYSIS_FIRES_ACTIVE] = 'active fires';
 strings.en[keys.ANALYSIS_FIRES_POST] = 'in the last 7 days';
+strings.en[keys.ANALYSIS_TOTAL_LOSS_LABEL] = 'Total tree cover loss';
+strings.en[keys.ANALYSIS_TOTAL_LOSS_RANGE] = '(2001 - 2014):';
+strings.en[keys.ANALYSIS_TOTAL_GAIN_LABEL] = 'Total tree cover gained';
+strings.en[keys.ANALYSIS_TOTAL_GAIN_RANGE] = '(2001 - 2012):';
 //- Group and value should not be modified, Group labels are configured below
 strings.en[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
   { label: 'Potential according to slope',
@@ -110,6 +114,10 @@ strings.fr[keys.ANALYSIS_LCC_LABELS] = ['Dense moist forest', 'Submontane forest
 strings.fr[keys.ANALYSIS_FIRES_PRE] = 'There are';
 strings.fr[keys.ANALYSIS_FIRES_ACTIVE] = 'active fires';
 strings.fr[keys.ANALYSIS_FIRES_POST] = 'in the last 7 days';
+strings.fr[keys.ANALYSIS_TOTAL_LOSS_LABEL] = 'Total tree cover loss';
+strings.fr[keys.ANALYSIS_TOTAL_LOSS_RANGE] = '(2001 - 2014):';
+strings.fr[keys.ANALYSIS_TOTAL_GAIN_LABEL] = 'Total tree cover gained';
+strings.fr[keys.ANALYSIS_TOTAL_GAIN_RANGE] = '(2001 - 2012):';
 //- Group and value should not be modified, Group labels are configured below
 strings.fr[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
   { label: 'Potential according to slope',
@@ -183,6 +191,10 @@ strings.es[keys.ANALYSIS_LCC_LABELS] = ['Dense moist forest', 'Submontane forest
 strings.es[keys.ANALYSIS_FIRES_PRE] = 'There are';
 strings.es[keys.ANALYSIS_FIRES_ACTIVE] = 'active fires';
 strings.es[keys.ANALYSIS_FIRES_POST] = 'in the last 7 days';
+strings.es[keys.ANALYSIS_TOTAL_LOSS_LABEL] = 'Total tree cover loss';
+strings.es[keys.ANALYSIS_TOTAL_LOSS_RANGE] = '(2001 - 2014):';
+strings.es[keys.ANALYSIS_TOTAL_GAIN_LABEL] = 'Total tree cover gained';
+strings.es[keys.ANALYSIS_TOTAL_GAIN_RANGE] = '(2001 - 2012):';
 //- Group and value should not be modified, Group labels are configured below
 strings.es[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
   { label: 'Potential according to slope',
@@ -256,6 +268,10 @@ strings.pt[keys.ANALYSIS_LCC_LABELS] = ['Dense moist forest', 'Submontane forest
 strings.pt[keys.ANALYSIS_FIRES_PRE] = 'There are';
 strings.pt[keys.ANALYSIS_FIRES_ACTIVE] = 'active fires';
 strings.pt[keys.ANALYSIS_FIRES_POST] = 'in the last 7 days';
+strings.pt[keys.ANALYSIS_TOTAL_LOSS_LABEL] = 'Total tree cover loss';
+strings.pt[keys.ANALYSIS_TOTAL_LOSS_RANGE] = '(2001 - 2014):';
+strings.pt[keys.ANALYSIS_TOTAL_GAIN_LABEL] = 'Total tree cover gained';
+strings.pt[keys.ANALYSIS_TOTAL_GAIN_RANGE] = '(2001 - 2012):';
 //- Group and value should not be modified, Group labels are configured below
 strings.pt[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
   { label: 'Potential according to slope',

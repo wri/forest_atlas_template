@@ -91,14 +91,13 @@ export default class Analysis extends Component {
     switch (type) {
       case analysisKeys.FIRES:
         return <FiresBadge count={results.fireCount} />;
+      case analysisKeys.TC_LOSS_GAIN:
+        return <LossGainBadge lossCounts={results.lossCounts} gainCounts={results.gainCounts} />;
       case analysisKeys.LCC:
-        return < CompositionPieChart
+        return <CompositionPieChart
           counts={results.counts}
           colors={analysisConfig[type].colors}
           labels={text[language][keys.ANALYSIS_LCC_LABELS]} />;
-      case analysisKeys.TC_LOSS_GAIN:
-        console.log(results);
-        return <LossGainBadge lossCounts={results.lossCounts} gainCounts={results.gainCounts} />;
       case analysisKeys.TC_LOSS:
         return <BarChart
           counts={results.counts}
