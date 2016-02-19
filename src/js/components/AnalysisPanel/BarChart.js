@@ -2,24 +2,11 @@
 import React, {PropTypes, Component} from 'react';
 
 let chart;
-const generatePieChart = (el, labels, colors, counts) => {
-  let data = [];
-
-  counts.forEach((count, index) => {
-    //- If its not zero, add in value, label, and color
-    if (count) {
-      data.push({
-        color: colors[index],
-        name: labels[index],
-        y: count
-      });
-    }
-  });
+const generateBarChart = (el, labels, colors, counts) => {
 
   let series = [{
-    type: 'pie',
     name: 'Testing',
-    data: data
+    data: counts
   }];
 
   if (chart) { chart.destroy(); }
@@ -27,21 +14,17 @@ const generatePieChart = (el, labels, colors, counts) => {
   chart = new Highcharts.Chart({
     chart: {
       renderTo: el,
-      plotBackgroundColor: null,
-			plotBorderWidth: null,
-			plotShadow: false,
-			type: 'pie'
+			type: 'bar'
     },
     title: { text: null },
-    plotOptions: {
-      pie: {
-        allowPointSelect: true,
-        showInLegend: true,
-        cursor: 'pointer',
-        dataLabels: { enabled: false }
-      }
+    xAxis: {
+      categories: labels,
+      maxPadding: 0.5,
+      title: { text: null }
     },
+    yAxis: { title: { text: null }},
     series: series,
+    colors: colors,
     credits: { enabled: false }
   });
 };
@@ -50,7 +33,7 @@ export default class CompositionPieChart extends Component {
   componentDidMount() {
     const {labels, colors, counts} = this.props;
     const element = this.refs.chart;
-    generatePieChart(element, labels, colors, counts);
+    generateBarChart(element, labels, colors, counts);
   }
 
   render () {

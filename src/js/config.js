@@ -209,11 +209,21 @@ const config = {
 };
 
 //- Configure Analysis here
-config.analysis[analysisKeys.TC_LOSS] = {};
-config.analysis[analysisKeys.TC_LOSS_GAIN] = {};
 config.analysis[analysisKeys.INTACT_LOSS] = {};
 config.analysis[analysisKeys.BIO_LOSS] = {};
 config.analysis[analysisKeys.LC_LOSS] = {};
+
+config.analysis[analysisKeys.TC_LOSS_GAIN] = {
+  lossRaster: '$530',
+  gainRaster: '$527'
+};
+
+config.analysis[analysisKeys.TC_LOSS] = {
+  raster: '$530',
+  colors: ['#cf5188'],
+  // TODO: Generate these dynamically
+  labels: [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014]
+};
 
 config.analysis[analysisKeys.LCC] = {
   lockRaster: 523,

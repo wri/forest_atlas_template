@@ -1,6 +1,8 @@
 import AnalysisTypeSelect from 'components/AnalysisPanel/AnalysisTypeSelect';
 import CompositionPieChart from 'components/AnalysisPanel/CompositionPieChart';
+import LossGainBadge from 'components/AnalysisPanel/LossGainBadge';
 import FiresBadge from 'components/AnalysisPanel/FiresBadge';
+import BarChart from 'components/AnalysisPanel/BarChart';
 import analysisKeys from 'constants/AnalysisConstants';
 import performAnalysis from 'utils/performAnalysis';
 import tabKeys from 'constants/TabViewConstants';
@@ -42,19 +44,19 @@ export default class Analysis extends Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  //- Test this as it will need to be tweaked, ideally when we receive new props,
+  //- We want to reset state to default before our render pass
+  componentWillReceiveProps(nextProps) {
     const {
       selectedFeature,
       activeTab,
       activeAnalysisType
-    } = this.props;
+    } = nextProps;
 
-    //- If the feature, analysis type, or the tab changed to this one, reset defaults and get results
-    //- make sure to be careful changing this if, we dont want an infinite loop
     if (
-      (selectedFeature !== prevProps.selectedFeature ||
-      activeAnalysisType !== prevProps.activeAnalysisType ||
-      activeTab !== prevProps.activeTab) &&
+      (selectedFeature !== this.props.selectedFeature ||
+      activeAnalysisType !== this.props.activeAnalysisType ||
+      activeTab !== this.props.activeTab) &&
       activeTab === tabKeys.ANALYSIS
     ) {
       this.setState(getDefaultState());
@@ -63,6 +65,27 @@ export default class Analysis extends Component {
       });
     }
   }
+
+  // componentDidUpdate(prevProps) {
+  //   const {
+  //     selectedFeature,
+  //     activeTab,
+  //     activeAnalysisType
+  //   } = this.props;
+  //
+  //   //- If the feature, analysis type, or the tab changed to this one, reset defaults and get results
+  //   //- make sure to be careful changing this if, we dont want an infinite loop
+  //   if (
+  //     (selectedFeature !== prevProps.selectedFeature ||
+  //     activeAnalysisType !== prevProps.activeAnalysisType ||
+  //     activeTab !== prevProps.activeTab) &&
+  //     activeTab === tabKeys.ANALYSIS
+  //   ) {
+  //     performAnalysis(activeAnalysisType, selectedFeature, 30).then((results) => {
+  //       this.setState({ results: results, isLoading: false });
+  //     });
+  //   }
+  // }
 
   renderResults = (type, results, language) => {
     switch (type) {
@@ -73,14 +96,19 @@ export default class Analysis extends Component {
           counts={results.counts}
           colors={analysisConfig[type].colors}
           labels={text[language][keys.ANALYSIS_LCC_LABELS]} />;
-      case analysisKeys.SLOPE:
-      return null;
       case analysisKeys.TC_LOSS_GAIN:
-      return null;
+        console.log(results);
+        return <LossGainBadge lossCounts={results.lossCounts} gainCounts={results.gainCounts} />;
       case analysisKeys.TC_LOSS:
+        return <BarChart
+          counts={results.counts}
+          colors={analysisConfig[type].colors}
+          labels={analysisConfig[type].labels} />;
       case analysisKeys.LC_LOSS:
       case analysisKeys.BIO_LOSS:
       case analysisKeys.INTACT_LOSS:
+      return null;
+      case analysisKeys.SLOPE:
       return null;
       //- This should only be the restoration analysis, since its value is a plain rasterId
       default:
@@ -95,7 +123,6 @@ export default class Analysis extends Component {
     let chart;
 
     if (results) {
-      console.log(results);
       chart = this.renderResults(activeAnalysisType, results, language);
     }
 

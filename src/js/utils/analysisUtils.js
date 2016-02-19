@@ -32,8 +32,9 @@ const formatters = {
   getCounts: (response, pixelSize) => {
     let {histograms} = response;
     let counts = histograms && histograms.length === 1 ? histograms[0].counts : [];
+    //- Normalize the results based on the pixelSize, then remove the first count as it is nulls
     return {
-      counts: counts.map((value) => ((value * Math.pow(pixelSize, 2) / 10000)))
+      counts: counts.map((value) => ((value * Math.pow(pixelSize, 2) / 10000))).slice(1)
     };
   }
 };
@@ -112,6 +113,35 @@ export default {
     return promise;
   },
 
+  getCountsWithDensity: (rasterId, feature, canopyDensity) => {
+    const promise = new Deferred();
+    const tcd = analysisConfig.tcd;
+    const densityRule = rules.remap(tcd.id, tcd.inputRanges(canopyDensity), tcd.outputValues);
+    const {imageService, pixelSize} = analysisConfig;
+
+    let content = {
+      pixelSize: pixelSize,
+      geometry: feature.geometry,
+      renderingRule: rules.arithmetic(densityRule, rasterId, OP_MULTIPLY)
+    };
+
+    const success = (response) => {
+      promise.resolve(formatters.getCounts(response, content.pixelSize));
+    };
+
+    const failure = (error) => {
+      if (errorIsInvalidImageSize(error) && content.pixelSize !== 500) {
+        content.pixelSize = 500;
+        computeHistogram(imageService, content, success, failure);
+      } else {
+        promise.resolve(error);
+      }
+    };
+
+    computeHistogram(imageService, content, success, failure);
+    return promise;
+  },
+
   getMosaic: (lockRaster, feature) => {
     const promise = new Deferred();
     const {imageService, pixelSize} = analysisConfig;
@@ -136,6 +166,18 @@ export default {
 
     computeHistogram(imageService, content, success, failure);
     return promise;
+  },
+
+  getCrossedWithLoss: () => {
+
+  },
+
+  getSlope: () => {
+
+  },
+
+  getRestoration: () => {
+
   }
 
 };
