@@ -94,7 +94,7 @@ define([], function () {
         mangroveIncluded: false,
 
         // Restoration Options
-        restorationModule: true,
+        restorationModule: false,
 
         restorationImageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/country_data/ETH_Restoration/ImageServer',
 
