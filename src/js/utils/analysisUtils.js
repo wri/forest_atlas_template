@@ -3,6 +3,8 @@ import {analysisConfig} from 'js/config';
 import esriRequest from 'esri/request';
 import Query from 'esri/tasks/query';
 import Deferred from 'dojo/Deferred';
+import lang from 'dojo/_base/lang';
+import all from 'dojo/promise/all';
 
 const INVALID_IMAGE_SIZE = 'The requested image exceeds the size limit.';
 const OP_MULTIPLY = 3;
@@ -95,13 +97,23 @@ const computeHistogram = (url, content, success, fail) => {
   content.pixelSize = content.pixelSize || 100;
   content.f = content.f || 'json';
 
-  esriRequest({
-    url: `${url}/computeHistograms`,
-    callbackParamName: 'callback',
-    content: content,
-    handleAs: 'json',
-    timeout: 30000
-  }, { usePost: true}).then(success, fail);
+  if (success && fail) {
+    esriRequest({
+      url: `${url}/computeHistograms`,
+      callbackParamName: 'callback',
+      content: content,
+      handleAs: 'json',
+      timeout: 30000
+    }, { usePost: true}).then(success, fail);
+  } else {
+    return esriRequest({
+      url: `${url}/computeHistograms`,
+      callbackParamName: 'callback',
+      content: content,
+      handleAs: 'json',
+      timeout: 30000
+    }, { usePost: true});
+  }
 };
 
 export default {
@@ -221,8 +233,36 @@ export default {
     return promise;
   },
 
-  getRestoration: () => {
+  getRestoration: (url, rasterId, feature) => {
+    const promise = new Deferred();
+    const {pixelSize, restoration} = analysisConfig;
+    const content = { pixelSize: pixelSize, geometry: feature.geometry };
+    //- Generate rendering rules for all the options
+    const lcContent = lang.delegate(content, {renderingRule: rules.arithmetic(restoration.landCoverId, rasterId, OP_MULTIPLY)});
+    const tcContent = lang.delegate(content, {renderingRule: rules.arithmetic(restoration.treeCoverId, rasterId, OP_MULTIPLY)});
+    const popContent = lang.delegate(content, {renderingRule: rules.arithmetic(restoration.populationId, rasterId, OP_MULTIPLY)});
+    const slopeContent = lang.delegate(content, {renderingRule: rules.arithmetic(restoration.slopeId, rasterId, OP_MULTIPLY)});
 
+    all([
+      computeHistogram(url, lcContent),
+      computeHistogram(url, tcContent),
+      computeHistogram(url, popContent),
+      computeHistogram(url, slopeContent)
+    ]).always((results) => {
+      //- getCounts slices the first value, I need to slice the no data value as well
+      if (!results.error) {
+        promise.resolve({
+          landCover: formatters.getCounts(results[0], content.pixelSize).counts.slice(1),
+          treeCover: formatters.getCounts(results[1], content.pixelSize).counts.slice(1),
+          population: formatters.getCounts(results[2], content.pixelSize).counts.slice(1),
+          slope: formatters.getCounts(results[3], content.pixelSize).counts.slice(1)
+        });
+      } else {
+        promise.resolve(results);
+      }
+    });
+
+    return promise;
   }
 
 };

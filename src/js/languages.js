@@ -41,6 +41,9 @@ strings.en[keys.ANALYSIS_TOTAL_LOSS_RANGE] = '(2001 - 2014):';
 strings.en[keys.ANALYSIS_TOTAL_GAIN_LABEL] = 'Total tree cover gained';
 strings.en[keys.ANALYSIS_TOTAL_GAIN_RANGE] = '(2001 - 2012):';
 strings.en[keys.ANALYSIS_SLOPE_OPTION] = 'Option #';
+strings.en[keys.ANALYSIS_RESTORATION_LC_LABELS] = [
+  'No Data', 'Forestland', 'Grassland', 'Cropland', 'Wetland and Waterbodies', 'Settlement', 'Bare soil'
+];
 //- Group and value should not be modified, Group labels are configured below
 strings.en[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
   { label: 'Potential according to slope',
@@ -120,6 +123,9 @@ strings.fr[keys.ANALYSIS_TOTAL_LOSS_RANGE] = '(2001 - 2014):';
 strings.fr[keys.ANALYSIS_TOTAL_GAIN_LABEL] = 'Total tree cover gained';
 strings.fr[keys.ANALYSIS_TOTAL_GAIN_RANGE] = '(2001 - 2012):';
 strings.fr[keys.ANALYSIS_SLOPE_OPTION] = 'Option #';
+strings.fr[keys.ANALYSIS_RESTORATION_LC_LABELS] = [
+  'No Data', 'Forestland', 'Grassland', 'Cropland', 'Wetland and Waterbodies', 'Settlement', 'Bare soil'
+];
 //- Group and value should not be modified, Group labels are configured below
 strings.fr[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
   { label: 'Potential according to slope',
@@ -198,6 +204,9 @@ strings.es[keys.ANALYSIS_TOTAL_LOSS_RANGE] = '(2001 - 2014):';
 strings.es[keys.ANALYSIS_TOTAL_GAIN_LABEL] = 'Total tree cover gained';
 strings.es[keys.ANALYSIS_TOTAL_GAIN_RANGE] = '(2001 - 2012):';
 strings.es[keys.ANALYSIS_SLOPE_OPTION] = 'Option #';
+strings.es[keys.ANALYSIS_RESTORATION_LC_LABELS] = [
+  'No Data', 'Forestland', 'Grassland', 'Cropland', 'Wetland and Waterbodies', 'Settlement', 'Bare soil'
+];
 //- Group and value should not be modified, Group labels are configured below
 strings.es[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
   { label: 'Potential according to slope',
@@ -276,6 +285,9 @@ strings.pt[keys.ANALYSIS_TOTAL_LOSS_RANGE] = '(2001 - 2014):';
 strings.pt[keys.ANALYSIS_TOTAL_GAIN_LABEL] = 'Total tree cover gained';
 strings.pt[keys.ANALYSIS_TOTAL_GAIN_RANGE] = '(2001 - 2012):';
 strings.pt[keys.ANALYSIS_SLOPE_OPTION] = 'Option #';
+strings.pt[keys.ANALYSIS_RESTORATION_LC_LABELS] = [
+  'No Data', 'Forestland', 'Grassland', 'Cropland', 'Wetland and Waterbodies', 'Settlement', 'Bare soil'
+];
 //- Group and value should not be modified, Group labels are configured below
 strings.pt[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
   { label: 'Potential according to slope',

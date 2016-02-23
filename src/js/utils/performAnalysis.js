@@ -12,6 +12,7 @@ import all from 'dojo/promise/all';
 * @return {promise}
 */
 export default function performAnalysis (analysisType, feature, canopyDensity, settings) {
+  const url = settings.restorationImageServer;
   const config = analysisConfig[analysisType];
   let promise = new Deferred();
 
@@ -26,9 +27,7 @@ export default function performAnalysis (analysisType, feature, canopyDensity, s
       analysisUtils.getCountsWithDensity(config.raster, feature, canopyDensity).then(promise.resolve);
     break;
     case analysisKeys.SLOPE:
-      const url = settings.restorationImageServer;
-      const {id, restoration} = config;
-      analysisUtils.getSlope(url, 1, id, restoration, feature).then(promise.resolve);
+      analysisUtils.getSlope(url, 1, config.id, config.restoration, feature).then(promise.resolve);
     break;
     case analysisKeys.TC_LOSS_GAIN:
       all([
@@ -46,9 +45,11 @@ export default function performAnalysis (analysisType, feature, canopyDensity, s
     case analysisKeys.INTACT_LOSS:
       promise.resolve(true);
     break;
-    //- This should only be the restoration analysis, since its value is a plain rasterId
+    //- This should only be the restoration analysis, since analysisType is a rasterId
     default:
-      console.log(analysisType);
+      analysisUtils.getRestoration(url, analysisType, feature).then((results) => {
+        console.log(results);
+      });
       promise.resolve(true);
     break;
   }

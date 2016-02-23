@@ -196,7 +196,7 @@ const config = {
   },
 
   //- Analysis for individual layers are defined below so we can use common keys
-  //- Generic config is here
+  //- Generic/Modules config is here
   analysis: {
     imageService: analysisImageService,
     pixelSize: 100,
@@ -205,7 +205,20 @@ const config = {
       outputValues: [0, 1],
       inputRanges: (density) => [0, +density, +density, 101]
     },
-
+    restoration: {
+      treeCoverId: '$4',
+      treeCoverClasses: ['No Data', '<= 10%', '10 - 30%', '> 30%'],
+      treeCoverColors: ['rgb(0, 0, 0)', 'rgb(180, 215, 158)', 'rgb(245, 245, 122)', 'rgb(205, 170, 102)'],
+      populationId: '$2',
+      populationClasses: ['No Data', '<= 20', '20 - 50', '50 - 150', '150 - 500', '> 500'],
+      populationColors: ['rgb(0, 0, 0)', 'rgb(255, 255, 128)', 'rgb(250, 209, 85)', 'rgb(242, 167, 46)', 'rgb(173, 83, 19)', 'rgb(107, 0, 0)'],
+      slopeId: '$3',
+      slopeClasses: ['No Data', '<= 30%', '30 - 60%', '> 60%'],
+      slopeColors: ['rgb(0, 0, 0)', 'rgb(255, 235, 175)', 'rgb(115, 115, 0)', 'rgb(168, 0, 0)'],
+      landCoverId: '$1',
+      // landCoverClasses: [], // In the js/languages file
+      landCoverColors: ['rgb(0, 0, 0)', 'rgb(0, 174, 0)', 'rgb(255, 255, 0)', 'rgb(255, 155, 190)', 'rgb(0, 238, 238)', 'rgb(255, 0, 0)', 'rgb(255, 255, 188)']
+    }
   }
 };
 
