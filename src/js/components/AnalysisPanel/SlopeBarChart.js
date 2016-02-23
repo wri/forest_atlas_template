@@ -22,11 +22,23 @@ const generateBarChart = (el, labels, colors, counts, tooltips) => {
       maxPadding: 0.5,
       title: { text: null }
     },
-    yAxis: { title: { text: null }},
+    yAxis: { title: { text: 'Hectares' }},
+    tooltip: { valueSuffix: ' (HA)' }, //formatter: function () { console.log(tooltips[this.point.index]); }
+    plotOptions: { bar: { colorByPoint: true, colors: colors } },
     series: series,
-    colors: colors,
     credits: { enabled: false }
   });
+
+  //- Query Chart SVG elements and add titles to them
+  const textNodes = document.querySelectorAll('.highcharts-xaxis-labels text');
+  let title;
+  for (var i = 0; i < textNodes.length; i++) {
+    title = document.createElement('title');
+    title.innerHTML = tooltips[i];
+    textNodes[i].insertBefore(title, textNodes[i].firstChild);
+    //- "Refresh" the Text node
+    textNodes[i].innerHTML = textNodes[i].innerHTML;
+  }
 };
 
 export default class SlopeBarChart extends Component {
@@ -46,5 +58,6 @@ export default class SlopeBarChart extends Component {
 SlopeBarChart.propTypes = {
   counts: PropTypes.array.isRequried,
   labels: PropTypes.array.isRequried,
-  colors: PropTypes.array.isRequried
+  colors: PropTypes.array.isRequried,
+  tooltips: PropTypes.array.isRequried
 };

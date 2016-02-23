@@ -1,6 +1,7 @@
 import AnalysisTypeSelect from 'components/AnalysisPanel/AnalysisTypeSelect';
 import CompositionPieChart from 'components/AnalysisPanel/CompositionPieChart';
 import LossGainBadge from 'components/AnalysisPanel/LossGainBadge';
+import SlopeBarChart from 'components/AnalysisPanel/SlopeBarChart';
 import FiresBadge from 'components/AnalysisPanel/FiresBadge';
 import BarChart from 'components/AnalysisPanel/BarChart';
 import analysisKeys from 'constants/AnalysisConstants';
@@ -96,7 +97,7 @@ export default class Analysis extends Component {
         const colors = settings.slopeAnalysisRestorationColors;
         const tooltips = settings.slopeAnalysisRestorationOptions;
         //- Need a new chart to handle these values correctly
-        return <BarChart counts={counts} colors={colors} labels={labels} tooltips={tooltips} />;
+        return <SlopeBarChart counts={counts} colors={colors} labels={labels} tooltips={tooltips} />;
       default:
       //- This should only be the restoration analysis, since its value is a plain rasterId
       return null;
