@@ -204,7 +204,8 @@ const config = {
       id: '$520',
       outputValues: [0, 1],
       inputRanges: (density) => [0, +density, +density, 101]
-    }
+    },
+
   }
 };
 
@@ -212,6 +213,16 @@ const config = {
 config.analysis[analysisKeys.INTACT_LOSS] = {};
 config.analysis[analysisKeys.BIO_LOSS] = {};
 config.analysis[analysisKeys.LC_LOSS] = {};
+
+config.analysis[analysisKeys.SLOPE] = {
+  id: '$3',
+  restoration: '$5',
+  slopeOptions: [
+    { label: '<= 30%', value: 1 },
+    { label: '30% - 60%', value: 2 },
+    { label: '> 60%', value: 3 }
+  ]
+};
 
 config.analysis[analysisKeys.TC_LOSS_GAIN] = {
   lossRaster: '$530',

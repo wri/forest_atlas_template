@@ -21,6 +21,17 @@ const errorIsInvalidImageSize = function errorIsInvalidImageSize (error) {
 };
 
 /**
+* Given a value, generate the input/output values necessary for the remap function
+* valid values are 1, 2, or 3
+*/
+const getSlopeInputOutputValues = function (value) {
+  return {
+    input: value === 3 ? [0, 3, 3, 3] : [0, value, value, value, value + 1, 3],
+    output: value === 3 ? [0, 1] : [0, 1, 0]
+  };
+};
+
+/**
 * Group of formatting functions for results
 */
 const formatters = {
@@ -172,8 +183,42 @@ export default {
 
   },
 
-  getSlope: () => {
+  getSlope: (url, slopeValue, raster, restorationId, feature) => {
+    const values = getSlopeInputOutputValues(slopeValue);
+    const {pixelSize} = analysisConfig;
+    const promise = new Deferred();
+    //- Get rendering rule
+    const renderingRule = rules.arithmetic(
+      rules.remap(raster, values.input, values.output),
+      restorationId,
+      OP_MULTIPLY
+    );
 
+    let content = {
+      pixelSize: pixelSize,
+      geometry: feature.geometry,
+      renderingRule: renderingRule
+    };
+
+    const success = (response) => {
+      //- get the counts and remove the no data value, which is the first value
+      let counts = formatters.getCounts(response, content.pixelSize).counts;
+      promise.resolve({
+        counts: counts.slice(1)
+      });
+    };
+
+    const failure = (error) => {
+      if (errorIsInvalidImageSize(error) && content.pixelSize !== 500) {
+        content.pixelSize = 500;
+        computeHistogram(url, content, success, failure);
+      } else {
+        promise.resolve(error);
+      }
+    };
+
+    computeHistogram(url, content, success, failure);
+    return promise;
   },
 
   getRestoration: () => {

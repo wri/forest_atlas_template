@@ -8,9 +8,10 @@ import all from 'dojo/promise/all';
 * @param {string} analysisType - Value from Analysis Select, also key to options in config
 * @param {Graphic} feature - Esri feature
 * @param {number} canopyDensity - Tree Cover Canopy density setting
+* @param {object} settings - Application settings from resources.js
 * @return {promise}
 */
-export default function performAnalysis (analysisType, feature, canopyDensity) {
+export default function performAnalysis (analysisType, feature, canopyDensity, settings) {
   const config = analysisConfig[analysisType];
   let promise = new Deferred();
 
@@ -25,7 +26,9 @@ export default function performAnalysis (analysisType, feature, canopyDensity) {
       analysisUtils.getCountsWithDensity(config.raster, feature, canopyDensity).then(promise.resolve);
     break;
     case analysisKeys.SLOPE:
-      promise.resolve(true);
+      const url = settings.restorationImageServer;
+      const {id, restoration} = config;
+      analysisUtils.getSlope(url, 1, id, restoration, feature).then(promise.resolve);
     break;
     case analysisKeys.TC_LOSS_GAIN:
       all([
@@ -45,6 +48,7 @@ export default function performAnalysis (analysisType, feature, canopyDensity) {
     break;
     //- This should only be the restoration analysis, since its value is a plain rasterId
     default:
+      console.log(analysisType);
       promise.resolve(true);
     break;
   }

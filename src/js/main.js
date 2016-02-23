@@ -1,6 +1,7 @@
 import App from 'components/App';
 import LayerModal from 'components/modals/LayerModal';
 // import ShareModal from 'components/modals/ShareModal';
+import IdentityManager from 'esri/IdentityManager';
 import {corsServers, assetUrls} from 'js/config';
 import {loadJS} from 'utils/loaders';
 import esriConfig from 'esri/config';

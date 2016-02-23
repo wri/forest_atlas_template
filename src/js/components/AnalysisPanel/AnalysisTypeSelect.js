@@ -42,7 +42,7 @@ export default class AnalysisTypeSelect extends Component {
     if (settings.restorationModule) {
       settings.restorationModuleOptions.forEach((restorationOption) => {
         this.options.unshift({
-          value: restorationOption.value,
+          value: restorationOption.id,
           label: restorationOption.label,
           group: keys.ANALYSIS_GROUP_RESTORATION
         });

@@ -25,7 +25,8 @@ const getDefaultState = () => {
 export default class Analysis extends Component {
 
   static contextTypes = {
-    language: PropTypes.string.isRequired
+    language: PropTypes.string.isRequired,
+    settings: PropTypes.object.isRequired
   };
 
   state = getDefaultState();
@@ -38,7 +39,8 @@ export default class Analysis extends Component {
     } = this.props;
 
     if (selectedFeature && activeTab === tabKeys.ANALYSIS) {
-      performAnalysis(activeAnalysisType, selectedFeature, 30).then((results) => {
+      const {settings} = this.context;
+      performAnalysis(activeAnalysisType, selectedFeature, 30, settings).then((results) => {
         this.setState({ results: results, isLoading: false });
       });
     }
@@ -60,34 +62,15 @@ export default class Analysis extends Component {
       activeTab === tabKeys.ANALYSIS
     ) {
       this.setState(getDefaultState());
-      performAnalysis(activeAnalysisType, selectedFeature, 30).then((results) => {
+      const {settings} = this.context;
+      performAnalysis(activeAnalysisType, selectedFeature, 30, settings).then((results) => {
         this.setState({ results: results, isLoading: false });
       });
     }
   }
 
-  // componentDidUpdate(prevProps) {
-  //   const {
-  //     selectedFeature,
-  //     activeTab,
-  //     activeAnalysisType
-  //   } = this.props;
-  //
-  //   //- If the feature, analysis type, or the tab changed to this one, reset defaults and get results
-  //   //- make sure to be careful changing this if, we dont want an infinite loop
-  //   if (
-  //     (selectedFeature !== prevProps.selectedFeature ||
-  //     activeAnalysisType !== prevProps.activeAnalysisType ||
-  //     activeTab !== prevProps.activeTab) &&
-  //     activeTab === tabKeys.ANALYSIS
-  //   ) {
-  //     performAnalysis(activeAnalysisType, selectedFeature, 30).then((results) => {
-  //       this.setState({ results: results, isLoading: false });
-  //     });
-  //   }
-  // }
-
   renderResults = (type, results, language) => {
+    const {settings} = this.context;
     switch (type) {
       case analysisKeys.FIRES:
         return <FiresBadge count={results.fireCount} />;
@@ -108,9 +91,14 @@ export default class Analysis extends Component {
       case analysisKeys.INTACT_LOSS:
       return null;
       case analysisKeys.SLOPE:
-      return null;
-      //- This should only be the restoration analysis, since its value is a plain rasterId
+        const {counts} = results;
+        const labels = counts.map((v, index) => text[language][keys.ANALYSIS_SLOPE_OPTION] + (index + 1));
+        const colors = settings.slopeAnalysisRestorationColors;
+        const tooltips = settings.slopeAnalysisRestorationOptions;
+        //- Need a new chart to handle these values correctly
+        return <BarChart counts={counts} colors={colors} labels={labels} tooltips={tooltips} />;
       default:
+      //- This should only be the restoration analysis, since its value is a plain rasterId
       return null;
     }
   };
