@@ -29,7 +29,7 @@ const generateBarChart = (el, labels, colors, counts) => {
   });
 };
 
-export default class CompositionPieChart extends Component {
+export default class BarChart extends Component {
   componentDidMount() {
     const {labels, colors, counts} = this.props;
     const element = this.refs.chart;
@@ -43,7 +43,7 @@ export default class CompositionPieChart extends Component {
   }
 }
 
-CompositionPieChart.propTypes = {
+BarChart.propTypes = {
   counts: PropTypes.array.isRequried,
   labels: PropTypes.array.isRequried,
   colors: PropTypes.array.isRequried
