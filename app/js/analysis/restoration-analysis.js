@@ -46,13 +46,18 @@ define([
     });
   };
 
+  var getObject = function getObject (array, key, value) {
+    return array.filter(function (item) {
+      return item[key] === value;
+    })[0];
+  };
+
   return {
 
-    performRestorationAnalysis: function (graphic, optionIndex) {
+    performRestorationAnalysis: function (graphic, rasterId) {
       var viewModel = Model.getVM();
-      var config = viewModel.restorationModuleOptions()[optionIndex];
       var geometry = graphic.geometry;
-      var rasterId = config.id;
+      var config = getObject(viewModel.restorationModuleOptions(), 'id', rasterId);
       var promises = {};
 
       // Individual Configs
@@ -66,8 +71,8 @@ define([
       var popData;
       var tcData;
 
-      //- If the optionIndex is for the slope analysis breakdown, call other analysis function
-      if (config.id === slopeConfig.id) {
+      //- If the rasterId is for the slope analysis breakdown, call other analysis function
+      if (rasterId === slopeConfig.id) {
         var slopeSelectNode = document.querySelector('.analysis-selection-types .slope-select');
   			domClass.remove(slopeSelectNode, 'hidden');
         this.performSlopeAnalysis(graphic);
@@ -87,14 +92,6 @@ define([
         domClass.add('analysis-loader', 'hidden');
         charts.prepareContainer(viewModel.restorationModuleChartTitlePrefix() + config.label);
 
-        if (results.code && results.message) {
-          charts.showError(KEYS.SLOPE_CHART_ID, slopeConfig.name);
-          charts.showError(KEYS.LAND_COVER_CHART_ID, lcConfig.name);
-          charts.showError(KEYS.POPULATION_CHART_ID, popConfig.name);
-          charts.showError(KEYS.TREE_COVER_CHART_ID, tcConfig.name);
-          return;
-        }
-
         // Get an array of data with the same length as the classes by parsing counts and padding the array with 0's
         slopeData = padResults(getCounts(results[KEYS.SLOPE].histograms), slopeConfig.classes.length);
         lcData = padResults(getCounts(results[KEYS.LAND_COVER].histograms), lcConfig.classes.length);
@@ -105,16 +102,21 @@ define([
         lcData = formatData(lcData, lcConfig.classes, lcConfig.colors);
         popData = formatData(popData, popConfig.classes, popConfig.colors);
         tcData = formatData(tcData, tcConfig.classes, tcConfig.colors);
+
+        if ((results.code && results.message) ||
+          slopeData.length === 0 ||
+          lcData.length === 0 ||
+          popData.length === 0 ||
+          tcData.length === 0
+        ) {
+          charts.showRestorationError(KEYS.CHART_ID);
+          return;
+        }
         // title, chartId, name for axis, data
         charts.makeStackedBarChart(KEYS.SLOPE_CHART_ID, slopeConfig.name, slopeData);
         charts.makeStackedBarChart(KEYS.LAND_COVER_CHART_ID, lcConfig.name, lcData);
         charts.makeStackedBarChart(KEYS.POPULATION_CHART_ID, popConfig.name, popData);
         charts.makeStackedBarChart(KEYS.TREE_COVER_CHART_ID, tcConfig.name, tcData);
-        // Debugging
-        // console.log(KEYS.SLOPE, results[KEYS.SLOPE].histograms);
-        // console.log(KEYS.LAND_COVER, results[KEYS.LAND_COVER].histograms);
-        // console.log(KEYS.POPULATION, results[KEYS.POPULATION].histograms);
-        // console.log(KEYS.TREE_COVER, results[KEYS.TREE_COVER].histograms);
       });
     },
 
@@ -124,6 +126,7 @@ define([
       var viewModel = Model.getVM();
       var currentSlopeSelection = viewModel.slopeActiveOption();
       var slopeOptions = app.config.slopeAnalysisRestorationOptions;
+      var slopeColors = app.config.slopeAnalysisRestorationColors;
       var slopeOptionData;
 
       computeHistogram.slopeBreakdownAnalysis(
@@ -144,7 +147,7 @@ define([
           data: slopeOptionData
         }];
 
-        charts.makeBarChart(KEYS.SLOPE_BREAKDOWN_CHART_ID, data, labels);
+        charts.makeBarChart(KEYS.CHART_ID, data, labels, slopeColors);
         //- Generate Tooltips for the xAxis labels
         $('.highcharts-xaxis-labels text').each(function (index, element) {
           var tooltip = slopeOptions[index];

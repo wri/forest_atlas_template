@@ -209,7 +209,7 @@ define(
 
                                 if (currentType === model.restorationModuleType()) {
                                   options = {
-                                    index: +activeOption.getAttribute('data-option')
+                                    rasterId: activeOption.getAttribute('data-id')
                                   };
                                 }
 

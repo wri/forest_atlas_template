@@ -187,8 +187,8 @@
         {
           "type": "string",
           "fieldName": "slopeAnalysisRestorationOptions",
-          "label": "Please enter the names of the options in your slope analysis in the order of the values in the data as a comma separated list:",
-          "tooltip": "Please enter the names of the options in your slope analysis in the order of the values in the data as a comma separated list:"
+          "label": "Please enter the names of the options in your slope analysis in the order of the values in the data as a semi-colon separated list:",
+          "tooltip": "Please enter the names of the options in your slope analysis in the order of the values in the data as a semi-colon separated list:"
         }
       ]
     }

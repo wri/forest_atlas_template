@@ -279,7 +279,7 @@ define([
                     var activeOption = target.options[target.selectedIndex];
                     if (viewModel.currentAnalysisType() === viewModel.restorationModuleType()) {
                       options = {
-                        index: +activeOption.getAttribute('data-option')
+                        rasterId: activeOption.getAttribute('data-id')
                       };
                     }
 

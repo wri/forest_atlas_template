@@ -133,9 +133,6 @@ define([], function () {
           }, {
             id: '$12',
             label: 'tree-based buffer zone along rivers, lakes and reservoirs'
-          }, {
-            id: '$3',
-            label: 'slope analysis'
           }
         ],
 
@@ -154,6 +151,19 @@ define([], function () {
           'Potential for commercial plantation as buffer zone around (NF)PAs',
           'Two restoration options identified as having potential',
           'Three or more restoration options identified as having potential'
+        ],
+
+        slopeAnalysisRestorationColors: [
+          '#EAC7FD',
+          '#FDB22E',
+          '#587E0F',
+          '#D29374',
+          '#F5D08B',
+          '#B1B124',
+          '#1AB090',
+          '#AF0F8F',
+          '#D9FEC7',
+          '#FFFE89'
         ]
 
     };

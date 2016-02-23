@@ -11,6 +11,6 @@ define({
   LAND_COVER_CHART_ID: 'land-cover-chart',
   POPULATION_CHART_ID: 'population-chart',
   SLOPE_CHART_ID: 'slope-chart',
-  SLOPE_BREAKDOWN_CHART_ID: 'analysis-chart'
+  CHART_ID: 'analysis-chart'
 
 });

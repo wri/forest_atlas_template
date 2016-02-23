@@ -461,66 +461,94 @@ define([
     	var self = this;
     	csvExportAdded = true;
 
-    	function prepareCSV () {
-    		// This is the context of the specific chart the user is on
-    		var featureName = document.querySelector('#results-header .title').innerHTML,
-						type = this.options.chart.type,
-						title = self.cleanTitle(featureName) + ' - ',
-    				series = this.series,
-    				csvStrings = [],
-    				headers = [],
-    				values = [],
-    				finalOutput;
+			require(['toolsmodel'], function (toolsmodel) {
+				var vm = toolsmodel.getVM();
 
-    		// 1) Push in title
-    		// 2) Add the headers and then add them to the CSV Strings array
-				// 3) Start formatting the values
+				function prepareCSV () {
+	    		// This is the context of the specific chart the user is on
+	    		var featureName = document.querySelector('#results-header .title').innerHTML,
+							type = this.options.chart.type,
+							title = self.cleanTitle(featureName) + ' - ',
+							userOptions = this.userOptions,
+	    				series = this.series,
+	    				csvStrings = [],
+	    				headers = [],
+	    				values = [],
+	    				finalOutput,
+							slopeOptions;
 
-    		if (type === "pie") {
+	    		// 1) Push in title
+	    		// 2) Add the headers and then add them to the CSV Strings array
+					// 3) Start formatting the values
 
-    			title += series[0].name;
-    			csvStrings.push(title + '\r\n');
+	    		if (type === "pie") {
 
-    			headers = ['category', 'value'];
-    			csvStrings.push(headers.join(','));
+	    			title += series[0].name;
+	    			csvStrings.push(title + '\r\n');
 
-    			arrayUtils.forEach(series[0].data, function (item) {
-    				csvStrings.push(item.name + ',' + item.y);
-    			});
+	    			headers = ['category', 'value'];
+	    			csvStrings.push(headers.join(','));
 
-    			finalOutput = csvStrings.join('\r\n');
+	    			arrayUtils.forEach(series[0].data, function (item) {
+	    				csvStrings.push(item.name + ',' + item.y);
+	    			});
 
-    		} else {
+	    			finalOutput = csvStrings.join('\r\n');
 
-    			title += this.title.textStr;
-    			csvStrings.push(title);
+	    		} else if (userOptions && userOptions.analysis === 'SLOPE_POTENTIAL') {
 
-    			headers = arrayUtils.map(series, function (serie) { return serie.name; });
-    			headers.unshift('year');
-    			csvStrings.push(headers.join(','));
+						slopeOptions = app.config.slopeAnalysisRestorationOptions;
+						slopeSelectedPercent = vm.slopeActiveOption().label;
+						title += this.title ? this.title.textStr : '';
+	    			csvStrings.push(title);
 
-    			arrayUtils.forEach(this.xAxis[0].categories, function (xAxisLabel, index) {
-    				values.push(xAxisLabel);
-    				arrayUtils.forEach(series, function (serie) {
-    					values.push(serie.yData[index]);
-    				});
-    				csvStrings.push(values.join(','));
-    				values = [];
-    			});
+	    			headers = ['Potential according to slope', slopeSelectedPercent]
+	    			csvStrings.push(headers.join(','));
 
-    			finalOutput = csvStrings.join('\r\n');
+	    			arrayUtils.forEach(this.xAxis[0].categories, function (xAxisLabel, index) {
+	    				values.push(slopeOptions[index].replace(',', ''));
+	    				arrayUtils.forEach(series, function (serie) {
+	    					values.push(serie.yData[index]);
+	    				});
+	    				csvStrings.push(values.join(','));
+	    				values = [];
+	    			});
 
-    		}
+	    			finalOutput = csvStrings.join('\r\n');
 
-    		if (finalOutput) {
-    			self.downloadCSV(finalOutput);
-    		}
+					} else {
 
-    	}
+	    			title += this.title ? this.title.textStr : '';
+	    			csvStrings.push(title);
 
-    	Highcharts.getOptions().exporting.buttons.contextButton.menuItems.push({
-			    text: 'Download CSV file',
-			    onclick: prepareCSV
+	    			headers = arrayUtils.map(series, function (serie) { return serie.name; });
+	    			headers.unshift('year');
+	    			csvStrings.push(headers.join(','));
+
+	    			arrayUtils.forEach(this.xAxis[0].categories, function (xAxisLabel, index) {
+	    				values.push(xAxisLabel);
+	    				arrayUtils.forEach(series, function (serie) {
+	    					values.push(serie.yData[index]);
+	    				});
+	    				csvStrings.push(values.join(','));
+	    				values = [];
+	    			});
+
+	    			finalOutput = csvStrings.join('\r\n');
+
+	    		}
+
+	    		if (finalOutput) {
+	    			self.downloadCSV(finalOutput);
+	    		}
+
+	    	}
+
+				Highcharts.getOptions().exporting.buttons.contextButton.menuItems.push({
+				    text: 'Download CSV file',
+				    onclick: prepareCSV
+				});
+
 			});
 
     },

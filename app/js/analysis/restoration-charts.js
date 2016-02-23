@@ -11,7 +11,7 @@ define(['root/analysis/constants'], function (KEYS) {
   var generateErrorMarkup = function generateErrorMarkup (label) {
     return (
       '<section class="restoration-error">' +
-        '<div>We are unable to complete your request at this time for ' + label + ' data. Please try again later.</div>' +
+        '<div>' + label + '</div>' +
       '</section>'
     );
   };
@@ -27,6 +27,13 @@ define(['root/analysis/constants'], function (KEYS) {
       chartContainers += '<div id="' + KEYS.TREE_COVER_CHART_ID + '" class="restoration-chart"></div>';
       $('#' + container).replaceWith('<div id="' + container + '"></div>');
       $('#' + container).append(chartContainers);
+    },
+
+    showRestorationError: function (id) {
+      $('#' + id).empty();
+      $('#' + id).append(
+        generateErrorMarkup('Area not meeting criteria for potential/No data')
+      );
     },
 
     showError: function (id, name) {
@@ -49,27 +56,27 @@ define(['root/analysis/constants'], function (KEYS) {
           // Array of objects [ { name: '', data: [oneValue] } ]
           series: data
         });
-      } else {
-        $('#' + chartId).append(generateNoDataMarkup(name));
       }
     },
 
     /**
     * labels is an array of labels for the y axis, although highcharts thinks its the X-axis (???)
     */
-    makeBarChart: function (chartId, data, labels) {
+    makeBarChart: function (chartId, data, labels, colors) {
       // Only render the chart if data is present, otherwise remove the container
       if (data.length > 0) {
         $('#' + chartId).highcharts({
-          chart: { type: 'bar' },
+          chart: { type: 'bar', marginTop: 30 },
           title: { text: null },
           credits: { enabled: false },
-          exporting: { enabled: false },
+          exporting: { enabled: true },
           tooltip: { valueSuffix: ' (HA)' },
           xAxis: { categories: labels, maxPadding: 0.5, useHTML: true },
           yAxis: { title: { text: 'Hectares' } },
+          plotOptions: { bar: { colorByPoint: true, colors: colors } },
           // Array of objects [ { name: '', data: [oneValue] } ]
-          series: data
+          series: data,
+          analysis: 'SLOPE_POTENTIAL'
         });
       } else {
         $('#' + chartId).append(generateNoDataMarkup(name));

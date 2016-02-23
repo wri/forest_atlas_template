@@ -77,7 +77,7 @@ define([
           ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed Land Cover Composition.');
 				break;
 				case viewModel.restorationModuleType():
-					Restoration.performRestorationAnalysis(graphic, options.index);
+					Restoration.performRestorationAnalysis(graphic, options.rasterId);
 					ga('A.send', 'event', 'Event', 'Analysis', 'User analyzed with the restoration module.');
 				break
 			}

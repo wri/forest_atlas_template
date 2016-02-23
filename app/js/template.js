@@ -154,7 +154,7 @@ define([
 					}
 
 					if (values.slopeAnalysisRestorationOptions) {
-						commonConfig.slopeAnalysisRestorationOptions = values.slopeAnalysisRestorationOptions.split(',');
+						commonConfig.slopeAnalysisRestorationOptions = values.slopeAnalysisRestorationOptions.split(';');
 						//- Add an option for slope
 						if (commonConfig.restorationModuleOptions === undefined) { commonConfig.restorationModuleOptions = []; }
 						commonConfig.restorationModuleOptions.push({
