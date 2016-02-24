@@ -7,6 +7,9 @@ import React, {
   PropTypes
 } from 'react';
 
+const aboutSvg = '<use xlink:href="#icon-h-about" />';
+const myGFWSvg = '<use xlink:href="#icon-h-mygfw" />';
+const downloadSvg = '<use xlink:href="#icon-download" />';
 
 export default class Navigation extends Component {
 
@@ -15,12 +18,12 @@ export default class Navigation extends Component {
     settings: PropTypes.object.isRequired
   };
 
-  renderMapThemes = (isocode, settings) => {
+  renderMapThemes = (language, settings) => {
     let shouldRender = settings.labels &&
-                       settings.labels[isocode] &&
-                       settings.labels[isocode].themes !== undefined;
+                       settings.labels[language] &&
+                       settings.labels[language].themes !== undefined;
 
-    return shouldRender ? <MapThemes themes={settings.labels[isocode].themes} /> : undefined;
+    return shouldRender ? <MapThemes themes={settings.labels[language].themes} /> : undefined;
   };
 
   render () {
@@ -36,12 +39,24 @@ export default class Navigation extends Component {
       <nav className='app-header__nav'>
         <ul className='app-header__nav-list'>
           <li className='app-header__nav-link pointer'>
-            <a target='_blank' href={settings.aboutLinkUrl}>{text[language][keys.NAV_ABOUT]}</a>
+            <a target='_blank' href={settings.aboutLinkUrl}>
+              <svg className='svg-icon__nav' dangerouslySetInnerHTML={{ __html: aboutSvg }}/>
+              {text[language][keys.NAV_ABOUT]}
+            </a>
           </li>
           <li className='app-header__nav-link pointer'>
-            <a target='_blank' href={settings.downloadDataUrl}>{text[language][keys.NAV_DOWNLOAD]}</a>
+            <a target='_blank' href={settings.downloadDataUrl}>
+              <svg className='svg-icon__nav' dangerouslySetInnerHTML={{ __html: downloadSvg }}/>
+              {text[language][keys.NAV_DOWNLOAD]}
+            </a>
           </li>
           {ThemeComponent}
+          <li className='app-header__nav-link pointer'>
+            <a target='_blank' href='javascript:void(0)'>
+              <svg className='svg-icon__nav' dangerouslySetInnerHTML={{ __html: myGFWSvg }}/>
+              {text[language][keys.NAV_MY_GFW]}
+            </a>
+          </li>
         </ul>
         {LanguageComponent}
       </nav>

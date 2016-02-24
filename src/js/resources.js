@@ -3,6 +3,7 @@
 export default {
 
   defaultTitle: 'Forest Atlas of Cameroon',
+  subtitle: 'Application subtitle',
   // webmap: 'fa499ab4cc9e4a308411b64c9ab2b749',
   webmap: '49092330b20d425790b367ade0f8ef06',
   country: 'CMR',
@@ -99,6 +100,7 @@ export default {
   labels: {
     'en': {
       'title': 'Forest Atlas of Cameroon',
+      'subtitle': 'Appplication subtitle',
       'flagTitle': 'Ministry of Forestry and Wildlife',
       'themes': [{
         'label': 'Forest Atlas of Democratic Republic of Congo',
@@ -110,6 +112,7 @@ export default {
     },
     'fr': {
       'title': 'Atlas Forestier du Cameroon',
+      'subtitle': 'Appplication subtitle',
       'flagTitle': 'Ministère des Forêts et de la Faune',
       'themes': [{
         'label': 'Testing Congo',

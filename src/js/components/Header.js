@@ -18,19 +18,24 @@ export default class Header extends Component {
     } = this.context;
 
     let {labels} = settings,
-        title;
+        title, subtitle;
 
     if (labels) {
       let text = labels[language];
       title = text.title;
+      subtitle = text.subtitle;
     } else {
       title = '';
+      subtitle = '';
     }
 
     return (
       <div className='app-header'>
         <div className='inner flex'>
-          <div className='app-header__title'>{title}</div>
+          <div className='app-header__title-container'>
+            <div className='app-header__title'>{title}</div>
+            <div className='app-header__subtitle'>{subtitle}</div>
+          </div>
           <Navigation />
         </div>
       </div>

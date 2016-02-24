@@ -36,6 +36,7 @@ export default {
         resources.labels = {};
         resources.labels[resources.defaultLanguage] = {
           title: resources.defaultTitle,
+          subtitle: resources.subtitle,
           flagTitle: resources.flagTitle
         };
         //- parse map themes for default laguage if present
@@ -54,6 +55,7 @@ export default {
         if (resources.useAdditionalLanguage) {
           resources.labels[resources.secondLanguage] = {
             title: resources.secondLanguageTitle,
+            subtitle: resources.alternativeLanguageSubtitle,
             flagTitle: resources.secondLanguageFlagTitle
           };
           //- parse map themes for second laguage if present
