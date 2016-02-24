@@ -23,7 +23,7 @@ export default class MapThemes extends Component {
   render () {
     const {language} = this.context;
     const {themes} = this.props;
-    //- className should be the same as in Navigation component under app-header__nav-list
+
     return (
       <li className='app-header__nav-link app-header__nav-link--map-themes pointer'>
         {text[language][keys.NAV_MAP_THEMES]}

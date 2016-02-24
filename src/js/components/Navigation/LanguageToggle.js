@@ -1,8 +1,12 @@
 import appActions from 'actions/AppActions';
+import keys from 'constants/StringKeys';
+import text from 'js/languages';
 import React, {
   Component,
   PropTypes
 } from 'react';
+
+const languageSvg = '<use xlink:href="#icon-h-language" />';
 
 const getLanguageLabel = (isocode) => {
   switch (isocode) {
@@ -24,14 +28,14 @@ export default class LanguageToggle extends Component {
     settings: PropTypes.object.isRequired
   };
 
-  createListButton = (currentLanguage, isocode) => {
+  createListButton = (currentLanguage, language) => {
     return (
       <li
-        key={isocode}
-        className={`app-header__nav-option pointer ${currentLanguage === isocode ? 'active' : ''}`}
+        key={language}
+        className={`app-header__language pointer ${currentLanguage === language ? 'active' : ''}`}
         onClick={this.toggleLanguage}
-        data-lang={isocode}>
-        {getLanguageLabel(isocode)}
+        data-lang={language}>
+        {getLanguageLabel(language)}
       </li>
     );
   };
@@ -56,12 +60,13 @@ export default class LanguageToggle extends Component {
     }
 
     return (
-      <div className='app-header__nav-options'>
-        <div className='app-header__nav-separator' />
-        <ul className='app-header__nav-list'>
+      <li className='app-header__nav-link app-header__nav-link--language pointer'>
+        <svg className='svg-icon__nav' dangerouslySetInnerHTML={{ __html: languageSvg }}/>
+        {text[language][keys.NAV_LANGUAGE]}
+        <ul className='app-header__language-list shadow pointer'>
           {languageButtons}
         </ul>
-      </div>
+      </li>
     );
   }
 

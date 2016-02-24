@@ -20,6 +20,7 @@ strings.en[keys.NAV_ABOUT] = 'About';
 strings.en[keys.NAV_DOWNLOAD] = 'Download Data';
 strings.en[keys.NAV_MAP_THEMES] = 'Map Themes';
 strings.en[keys.NAV_MY_GFW] = 'Log in to my GFW';
+strings.en[keys.NAV_LANGUAGE] = 'Select Language';
 //- Documents
 strings.en[keys.DOCS_INSTRUCTIONS] = 'Select an area of interest to see if there are any related documents';
 strings.en[keys.DOCS_NOT_AVAILABLE] = 'There are no documents available for this area';
@@ -111,6 +112,7 @@ strings.fr[keys.NAV_ABOUT] = 'About';
 strings.fr[keys.NAV_DOWNLOAD] = 'Download Data';
 strings.fr[keys.NAV_MAP_THEMES] = 'Map Themes';
 strings.fr[keys.NAV_MY_GFW] = 'Log in to my GFW';
+strings.fr[keys.NAV_LANGUAGE] = 'Select Language';
 //- Documents
 strings.fr[keys.DOCS_INSTRUCTIONS] = 'Select an area of interest to see if there are any related documents';
 strings.fr[keys.DOCS_NOT_AVAILABLE] = 'There are no documents available for this area';
@@ -201,6 +203,7 @@ strings.es[keys.NAV_ABOUT] = 'About';
 strings.es[keys.NAV_DOWNLOAD] = 'Download Data';
 strings.es[keys.NAV_MAP_THEMES] = 'Map Themes';
 strings.es[keys.NAV_MY_GFW] = 'Log in to my GFW';
+strings.es[keys.NAV_LANGUAGE] = 'Select Language';
 //- Documents
 strings.es[keys.DOCS_INSTRUCTIONS] = 'Select an area of interest to see if there are any related documents';
 strings.es[keys.DOCS_NOT_AVAILABLE] = 'There are no documents available for this area';
@@ -291,6 +294,7 @@ strings.pt[keys.NAV_ABOUT] = 'About';
 strings.pt[keys.NAV_DOWNLOAD] = 'Download Data';
 strings.pt[keys.NAV_MAP_THEMES] = 'Map Themes';
 strings.pt[keys.NAV_MY_GFW] = 'Log in to my GFW';
+strings.pt[keys.NAV_LANGUAGE] = 'Select Language';
 //- Documents
 strings.pt[keys.DOCS_INSTRUCTIONS] = 'Select an area of interest to see if there are any related documents';
 strings.pt[keys.DOCS_NOT_AVAILABLE] = 'There are no documents available for this area';

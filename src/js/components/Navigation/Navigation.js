@@ -57,8 +57,8 @@ export default class Navigation extends Component {
               {text[language][keys.NAV_MY_GFW]}
             </a>
           </li>
+          {LanguageComponent}
         </ul>
-        {LanguageComponent}
       </nav>
     );
   }
