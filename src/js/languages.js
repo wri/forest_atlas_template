@@ -19,6 +19,13 @@ strings.en[keys.CARBON_LABEL] = 'Above ground biomass';
 strings.en[keys.NAV_ABOUT] = 'About';
 strings.en[keys.NAV_DOWNLOAD] = 'Download Data';
 strings.en[keys.NAV_MAP_THEMES] = 'Map Themes';
+//- Documents
+strings.en[keys.DOCS_INSTRUCTIONS] = 'Select an area of interest to see if there are any related documents';
+strings.en[keys.DOCS_NOT_AVAILABLE] = 'There are no documents available for this area';
+strings.en[keys.DOCS_TYPE] = 'Type';
+strings.en[keys.DOCS_AUTHOR] = 'Author';
+strings.en[keys.DOCS_YEAR] = 'Year';
+strings.en[keys.DOCS_PDF] = 'PDF';
 //- Analysis
 strings.en[keys.ANALYSIS_INSTRUCTION_HEADER] = 'Analyze a shape on the map';
 strings.en[keys.ANALYSIS_INSTRUCTION_LIST] = [
@@ -102,6 +109,13 @@ strings.fr[keys.CARBON_LABEL] = 'Above ground biomass';
 strings.fr[keys.NAV_ABOUT] = 'About';
 strings.fr[keys.NAV_DOWNLOAD] = 'Download Data';
 strings.fr[keys.NAV_MAP_THEMES] = 'Map Themes';
+//- Documents
+strings.fr[keys.DOCS_INSTRUCTIONS] = 'Select an area of interest to see if there are any related documents';
+strings.fr[keys.DOCS_NOT_AVAILABLE] = 'There are no documents available for this area';
+strings.fr[keys.DOCS_TYPE] = 'Type';
+strings.fr[keys.DOCS_AUTHOR] = 'Author';
+strings.fr[keys.DOCS_YEAR] = 'Year';
+strings.fr[keys.DOCS_PDF] = 'PDF';
 //- Analysis
 strings.fr[keys.ANALYSIS_INSTRUCTION_HEADER] = 'Analyze a shape on the map';
 strings.fr[keys.ANALYSIS_INSTRUCTION_LIST] = [
@@ -184,6 +198,13 @@ strings.es[keys.CARBON_LABEL] = 'Above ground biomass';
 strings.es[keys.NAV_ABOUT] = 'About';
 strings.es[keys.NAV_DOWNLOAD] = 'Download Data';
 strings.es[keys.NAV_MAP_THEMES] = 'Map Themes';
+//- Documents
+strings.es[keys.DOCS_INSTRUCTIONS] = 'Select an area of interest to see if there are any related documents';
+strings.es[keys.DOCS_NOT_AVAILABLE] = 'There are no documents available for this area';
+strings.es[keys.DOCS_TYPE] = 'Type';
+strings.es[keys.DOCS_AUTHOR] = 'Author';
+strings.es[keys.DOCS_YEAR] = 'Year';
+strings.es[keys.DOCS_PDF] = 'PDF';
 //- Analysis
 strings.es[keys.ANALYSIS_INSTRUCTION_HEADER] = 'Analyze a shape on the map';
 strings.es[keys.ANALYSIS_INSTRUCTION_LIST] = [
@@ -266,6 +287,13 @@ strings.pt[keys.CARBON_LABEL] = 'Above ground biomass';
 strings.pt[keys.NAV_ABOUT] = 'About';
 strings.pt[keys.NAV_DOWNLOAD] = 'Download Data';
 strings.pt[keys.NAV_MAP_THEMES] = 'Map Themes';
+//- Documents
+strings.pt[keys.DOCS_INSTRUCTIONS] = 'Select an area of interest to see if there are any related documents';
+strings.pt[keys.DOCS_NOT_AVAILABLE] = 'There are no documents available for this area';
+strings.pt[keys.DOCS_TYPE] = 'Type';
+strings.pt[keys.DOCS_AUTHOR] = 'Author';
+strings.pt[keys.DOCS_YEAR] = 'Year';
+strings.pt[keys.DOCS_PDF] = 'PDF';
 //- Analysis
 strings.pt[keys.ANALYSIS_INSTRUCTION_HEADER] = 'Analyze a shape on the map';
 strings.pt[keys.ANALYSIS_INSTRUCTION_LIST] = [

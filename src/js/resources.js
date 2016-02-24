@@ -23,19 +23,24 @@ export default {
   countryFlagRight: 280,
   mapThemesAlternate: 'Testing Congo, Testing Guinea',
   englishIsDefault: false,
-  documentMapserver: 'http://54.88.79.102/arcgis/rest/services/CMR/documents_administratifs/MapServer',
-  documentDirectory: 'https://wri-public-data.s3.amazonaws.com/forest_atlas/cmr/doc_pdf/',
   secondLanguage: 'fr',
   mapThemesOtherLanguage: 'Congo, Guinea',
   secondLanguageFlagTitle: 'Ministère des Forêts et de la Faune',
   secondLanguageTitle: 'Forest Atlas of Cameroon',
   defaultLanguage: 'en',
   useAdditionalLanguage: true,
-  layersToHide: '0,1,2',
+  // layersToHide: '0,1,2',
   iflIncluded: true,
   biomassIncluded: true,
   landCoverIncluded: true,
   activeFiresIncluded: true,
+
+  //- Documents Options
+  includeDocumentsTab: true,
+  documentDirectory: 'https://wri-public-data.s3.amazonaws.com/forest_atlas/cmr/doc_pdf/',
+  documentMapServer: 'http://54.88.79.102/arcgis/rest/services/CMR/documents_administratifs/MapServer',
+
+  //- Restoration Options
   restorationModule: false,
   restorationImageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/country_data/ETH_Restoration/ImageServer',
   restorationModuleOptions: [
@@ -90,7 +95,7 @@ export default {
     '#FFFE89'
   ],
 
-  // Built in template.js for applications, these are defaults, do not modify structure
+  //- Built in template.js for applications, these are defaults, do not modify structure
   labels: {
     'en': {
       'title': 'Forest Atlas of Cameroon',
@@ -117,7 +122,7 @@ export default {
   },
 
   /**
-  * Layer Config Options, brackets are optional
+  * Layer Config Options, [brackets] = optional
   * if type is anything other than graphic and the layer is not disabled, it must have a url
   * id - {string} - layer Id, must be unique
   * type - {string} - layer type (dynamic, image, feature, tiled, webtiled)

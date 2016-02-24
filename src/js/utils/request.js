@@ -151,6 +151,16 @@ const request = {
     query.returnGeometry = true;
     query.maxAllowableOffset = 0;
     return task.execute(query);
+  },
+
+  queryTaskByGeometry (url, geometry) {
+    const task = new QueryTask(url);
+    const query = new Query();
+    query.returnGeometry = false;
+    query.maxAllowableOffset = 0;
+    query.geometry = geometry;
+    query.outFields = ['*'];
+    return task.execute(query);
   }
 
 };

@@ -1,6 +1,6 @@
 import tabKeys from 'constants/TabViewConstants';
 import mapActions from 'actions/MapActions';
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 
 //- Parse Keys for easier access
 const {
@@ -17,6 +17,10 @@ const analysisSvg = '<use xlink:href="#icon-analysis" />';
 
 export default class TabButtons extends Component {
 
+  static contextTypes = {
+    settings: PropTypes.object.isRequired
+  };
+
   changeTab = (evt) => {
     const {currentTarget} = evt;
     const id = currentTarget.getAttribute('data-value');
@@ -30,6 +34,8 @@ export default class TabButtons extends Component {
   };
 
   render () {
+    const {settings} = this.context;
+
     return (
       <nav className='tab-buttons map-component'>
         <ul className='tab-buttons__header'>
@@ -42,9 +48,11 @@ export default class TabButtons extends Component {
           <li className={this.getClassName(ANALYSIS)} data-value={ANALYSIS} onClick={this.changeTab}>
             <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: analysisSvg }}/>
           </li>
-          <li className={this.getClassName(DOCUMENTS)} data-value={DOCUMENTS} onClick={this.changeTab}>
-            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: documentsSvg }}/>
-          </li>
+          {!settings.includeDocumentsTab ? null :
+            <li className={this.getClassName(DOCUMENTS)} data-value={DOCUMENTS} onClick={this.changeTab}>
+              <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: documentsSvg }}/>
+            </li>
+          }
         </ul>
       </nav>
     );

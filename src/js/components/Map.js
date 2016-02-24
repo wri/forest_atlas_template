@@ -57,8 +57,12 @@ export default class Map extends Component {
       this.map.infoWindow.set('popupWindow', false);
       //- Attach events I need for the info window
       this.map.infoWindow.on('show, hide, set-features, selection-change', (evt) => {
-        // mapActions.setSelectedFeature(evt);
         mapActions.mapUpdated(evt);
+      });
+      //- When custom features are clicked, apply them to the info window, this will trigger above event
+      this.map.graphics.on('click', (evt) => {
+        evt.stopPropagation();
+        this.map.infoWindow.setFeatures([evt.graphic]);
       });
       //- Make the map a global in debug mode for easier debugging
       if (brApp.debug) { brApp.map = this.map; }
