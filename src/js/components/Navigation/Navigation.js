@@ -52,7 +52,7 @@ export default class Navigation extends Component {
           </li>
           {ThemeComponent}
           <li className='app-header__nav-link pointer'>
-            <a target='_blank' href='javascript:void(0)'>
+            <a target='_blank'>
               <svg className='svg-icon__nav' dangerouslySetInnerHTML={{ __html: myGFWSvg }}/>
               {text[language][keys.NAV_MY_GFW]}
             </a>
