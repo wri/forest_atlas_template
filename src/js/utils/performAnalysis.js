@@ -6,33 +6,33 @@ import all from 'dojo/promise/all';
 
 /**
 * @param {string} analysisType - Value from Analysis Select, also key to options in config
-* @param {Graphic} feature - Esri feature
+* @param {Polygon} geometry - Esri Polygon
 * @param {number} canopyDensity - Tree Cover Canopy density setting
 * @param {object} settings - Application settings from resources.js
 * @return {promise}
 */
-export default function performAnalysis (analysisType, feature, canopyDensity, settings) {
-  const url = settings.restorationImageServer;
+export default function performAnalysis (analysisType, geometry, canopyDensity, settings) {
+  const restorationUrl = settings.restorationImageServer;
   const config = analysisConfig[analysisType];
   let promise = new Deferred();
 
   switch (analysisType) {
     case analysisKeys.FIRES:
-      analysisUtils.getFireCount(config.url, feature).then(promise.resolve);
+      analysisUtils.getFireCount(config.url, geometry).then(promise.resolve);
     break;
     case analysisKeys.LCC:
-      analysisUtils.getMosaic(config.lockRaster, feature).then(promise.resolve);
+      analysisUtils.getMosaic(config.lockRaster, geometry).then(promise.resolve);
     break;
     case analysisKeys.TC_LOSS:
-      analysisUtils.getCountsWithDensity(config.raster, feature, canopyDensity).then(promise.resolve);
+      analysisUtils.getCountsWithDensity(config.id, geometry, canopyDensity).then(promise.resolve);
     break;
     case analysisKeys.SLOPE:
-      analysisUtils.getSlope(url, 1, config.id, config.restoration, feature).then(promise.resolve);
+      analysisUtils.getSlope(restorationUrl, 1, config.id, config.restoration, geometry).then(promise.resolve);
     break;
     case analysisKeys.TC_LOSS_GAIN:
       all([
-        analysisUtils.getCountsWithDensity(config.lossRaster, feature, canopyDensity),
-        analysisUtils.getCountsWithDensity(config.gainRaster, feature, canopyDensity)
+        analysisUtils.getCountsWithDensity(config.lossRaster, geometry, canopyDensity),
+        analysisUtils.getCountsWithDensity(config.gainRaster, geometry, canopyDensity)
       ]).then((response) => {
         promise.resolve({
           lossCounts: response[0].counts,
@@ -42,12 +42,19 @@ export default function performAnalysis (analysisType, feature, canopyDensity, s
     break;
     case analysisKeys.LC_LOSS:
     case analysisKeys.BIO_LOSS:
+      analysisUtils.getCrossedWithLoss(config, analysisConfig[analysisKeys.TC_LOSS], geometry, {
+        canopyDensity: canopyDensity
+      }).then(promise.resolve);
+    break;
     case analysisKeys.INTACT_LOSS:
-      promise.resolve(true);
+      analysisUtils.getCrossedWithLoss(config, analysisConfig[analysisKeys.TC_LOSS], geometry, {
+        canopyDensity: canopyDensity,
+        simple: true
+      }).then(promise.resolve);
     break;
     default:
       //- This should only be the restoration analysis, since analysisType is a rasterId
-      analysisUtils.getRestoration(url, analysisType, feature).then(promise.resolve);
+      analysisUtils.getRestoration(restorationUrl, analysisType, geometry).then(promise.resolve);
     break;
   }
 

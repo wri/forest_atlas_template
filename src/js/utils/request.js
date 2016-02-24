@@ -141,6 +141,16 @@ const request = {
       content: content,
       handleAs: 'json'
     });
+  },
+
+  queryTaskById (url, objectId) {
+    const task = new QueryTask(url);
+    const query = new Query();
+    query.objectIds = [objectId];
+    query.outFields = [''];
+    query.returnGeometry = true;
+    query.maxAllowableOffset = 0;
+    return task.execute(query);
   }
 
 };

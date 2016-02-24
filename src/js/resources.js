@@ -3,8 +3,8 @@
 export default {
 
   defaultTitle: 'Forest Atlas of Cameroon',
-  webmap: 'fa499ab4cc9e4a308411b64c9ab2b749',
-  // webmap: '49092330b20d425790b367ade0f8ef06',
+  // webmap: 'fa499ab4cc9e4a308411b64c9ab2b749',
+  webmap: '49092330b20d425790b367ade0f8ef06',
   country: 'CMR',
   englishTitle: 'Forest Atlas of Cameroon',
   languageTitle: 'Atlas Forestier du Cameroun',
@@ -36,7 +36,7 @@ export default {
   biomassIncluded: true,
   landCoverIncluded: true,
   activeFiresIncluded: true,
-  restorationModule: true,
+  restorationModule: false,
   restorationImageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/country_data/ETH_Restoration/ImageServer',
   restorationModuleOptions: [
     {

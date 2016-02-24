@@ -1,6 +1,7 @@
 import AnalysisTypeSelect from 'components/AnalysisPanel/AnalysisTypeSelect';
 import CompositionPieChart from 'components/AnalysisPanel/CompositionPieChart';
 import RestorationCharts from 'components/AnalysisPanel/RestorationCharts';
+import TotalLossChart from 'components/AnalysisPanel/TotalLossChart';
 import LossGainBadge from 'components/AnalysisPanel/LossGainBadge';
 import SlopeBarChart from 'components/AnalysisPanel/SlopeBarChart';
 import FiresBadge from 'components/AnalysisPanel/FiresBadge';
@@ -11,17 +12,38 @@ import tabKeys from 'constants/TabViewConstants';
 import {analysisConfig} from 'js/config';
 import keys from 'constants/StringKeys';
 import Loader from 'components/Loader';
+import Deferred from 'dojo/Deferred';
+import request from 'utils/request';
 import text from 'js/languages';
 import React, {
   Component,
   PropTypes
 } from 'react';
 
-const getDefaultState = () => {
+const getDefaultState = function () {
   return {
     isLoading: true,
     results: undefined
   };
+};
+
+//- If we cant get the raw geometry, just use the generalized geometry for now
+const getRawGeometry = function (feature) {
+  let promise = new Deferred();
+  let layer = feature._layer;
+  let url = layer && layer._url && layer._url.path;
+  if (url) {
+    request.queryTaskById(url, feature.attributes.OBJECTID).then((results) => {
+      if (results.features.length) {
+        promise.resolve(results.features[0].geometry);
+      } else {
+        promise.resolve(feature.geometry);
+      }
+    }, () => { promise.resolve(feature.geometry); });
+  } else {
+    promise.resolve(feature.geometry);
+  }
+  return promise;
 };
 
 export default class Analysis extends Component {
@@ -42,8 +64,10 @@ export default class Analysis extends Component {
 
     if (selectedFeature && activeTab === tabKeys.ANALYSIS) {
       const {settings} = this.context;
-      performAnalysis(activeAnalysisType, selectedFeature, 30, settings).then((results) => {
-        this.setState({ results: results, isLoading: false });
+      getRawGeometry(selectedFeature).then((geometry) => {
+        performAnalysis(activeAnalysisType, geometry, 30, settings).then((results) => {
+          this.setState({ results: results, isLoading: false });
+        });
       });
     }
   }
@@ -65,14 +89,18 @@ export default class Analysis extends Component {
     ) {
       this.setState(getDefaultState());
       const {settings} = this.context;
-      performAnalysis(activeAnalysisType, selectedFeature, 30, settings).then((results) => {
-        this.setState({ results: results, isLoading: false });
+      getRawGeometry(selectedFeature).then((geometry) => {
+        performAnalysis(activeAnalysisType, geometry, 30, settings).then((results) => {
+          this.setState({ results: results, isLoading: false });
+        });
       });
     }
   }
 
   renderResults = (type, results, language) => {
     const {settings} = this.context;
+    const lossLabels = analysisConfig[analysisKeys.TC_LOSS].labels;
+    let labels;
     switch (type) {
       case analysisKeys.FIRES:
         return <FiresBadge count={results.fireCount} />;
@@ -82,19 +110,27 @@ export default class Analysis extends Component {
         return <CompositionPieChart
           counts={results.counts}
           colors={analysisConfig[type].colors}
-          labels={text[language][keys.ANALYSIS_LCC_LABELS]} />;
+          labels={text[language][keys.ANALYSIS_LC_LABELS]} />;
       case analysisKeys.TC_LOSS:
         return <BarChart
           counts={results.counts}
           colors={analysisConfig[type].colors}
-          labels={analysisConfig[type].labels} />;
+          labels={lossLabels} />;
       case analysisKeys.LC_LOSS:
       case analysisKeys.BIO_LOSS:
       case analysisKeys.INTACT_LOSS:
-      return null;
+        labels = (type === analysisKeys.LC_LOSS ? text[language][keys.ANALYSIS_LC_LABELS] :
+          (type === analysisKeys.INTACT_LOSS ? text[language][keys.ANALYSIS_IFL_LABELS] : analysisConfig[type].labels));
+        return <TotalLossChart
+          counts={results.counts}
+          encoder={results.encoder}
+          options={results.options}
+          labels={labels}
+          lossLabels={lossLabels}
+          colors={analysisConfig[type].colors} />;
       case analysisKeys.SLOPE:
         const {counts} = results;
-        const labels = counts.map((v, index) => text[language][keys.ANALYSIS_SLOPE_OPTION] + (index + 1));
+        labels = counts.map((v, index) => text[language][keys.ANALYSIS_SLOPE_OPTION] + (index + 1));
         const colors = settings.slopeAnalysisRestorationColors;
         const tooltips = settings.slopeAnalysisRestorationOptions;
         //- Need a new chart to handle these values correctly

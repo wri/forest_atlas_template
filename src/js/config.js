@@ -1,6 +1,6 @@
 import analysisKeys from 'constants/AnalysisConstants';
-import layerKeys from 'constants/LayerConstants';
-import stringKeys from 'constants/StringKeys';
+// import layerKeys from 'constants/LayerConstants';
+// import stringKeys from 'constants/StringKeys';
 
 const analysisImageService = 'http://gis-gfw.wri.org/arcgis/rest/services/GFW/analysis/ImageServer';
 
@@ -223,9 +223,33 @@ const config = {
 };
 
 //- Configure Analysis here
-config.analysis[analysisKeys.INTACT_LOSS] = {};
-config.analysis[analysisKeys.BIO_LOSS] = {};
-config.analysis[analysisKeys.LC_LOSS] = {};
+config.analysis[analysisKeys.INTACT_LOSS] = {
+  id: '$9',
+  bounds: [0, 1],
+  colors: ['#186513']
+};
+
+config.analysis[analysisKeys.BIO_LOSS] = {
+  id: '$524',
+  bounds: [0, 2],
+  labels: ['1 - 19', '20 - 79', '>= 80'],
+  colors: ['#fdffcc', '#f1bc8b', '#d56f4a'],
+  remap: {
+    'rasterFunction': 'Remap',
+    'rasterFunctionArguments': {
+      'InputRanges': [0, 20, 20, 80, 80, 1000],
+      'OutputValues': [0, 1, 2],
+      'Raster': '$524',
+      'AllowUnmatched': false
+    }
+  }
+};
+
+config.analysis[analysisKeys.LC_LOSS] = {
+  id: '$523',
+  bounds: [1, 20],
+  colors: ['#3B823D', '#7CA079', '#AAB785', '#355936', '#5BBCF8', '#8BB94B', '#F0F979', '#7B8840', '#CABA4F', '#D3A162', '#FDCA76', '#C1E5DC', '#7AD3AB', '#F3F3AF', '#F6988F', '#FFFFF0', '#FFFFF0', '#A7A7A7', '#F83D48', '#353C92']
+};
 
 config.analysis[analysisKeys.SLOPE] = {
   id: '$3',
@@ -243,9 +267,10 @@ config.analysis[analysisKeys.TC_LOSS_GAIN] = {
 };
 
 config.analysis[analysisKeys.TC_LOSS] = {
-  raster: '$530',
+  id: '$530',
   colors: ['#cf5188'],
   // TODO: Generate these dynamically
+  bounds: [1, 14],
   labels: [2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014]
 };
 

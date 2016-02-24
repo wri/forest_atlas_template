@@ -8,6 +8,7 @@ import all from 'dojo/promise/all';
 
 const INVALID_IMAGE_SIZE = 'The requested image exceeds the size limit.';
 const OP_MULTIPLY = 3;
+const OP_PLUS = 1;
 
 /**
 * check if the error is for an invalid image size so we can retry the request with a
@@ -42,12 +43,14 @@ const formatters = {
       fireCount: response.features ? response.features.length : 0
     };
   },
-  getCounts: (response, pixelSize) => {
+  //TODO: Cleanup and remove noSlice, make it an explicit option so using this function does not pass in an anonymous boolean
+  getCounts: (response, pixelSize, noSlice) => {
     let {histograms} = response;
     let counts = histograms && histograms.length === 1 ? histograms[0].counts : [];
+    counts = counts.map((value) => ((value * Math.pow(pixelSize, 2) / 10000)));
     //- Normalize the results based on the pixelSize, then remove the first count as it is nulls
     return {
-      counts: counts.map((value) => ((value * Math.pow(pixelSize, 2) / 10000))).slice(1)
+      counts: noSlice ? counts : counts.slice(1)
     };
   }
 };
@@ -116,15 +119,82 @@ const computeHistogram = (url, content, success, fail) => {
   }
 };
 
+/**
+* Encoder class to help with complex raster
+*/
+/**
+* Encoder class to help with complex raster functions
+*/
+class Encoder {
+
+  constructor (rasterBoundsA, rasterBoundsB) {
+    this.A = this.fromBounds(rasterBoundsA);
+    this.B = this.fromBounds(rasterBoundsB);
+  }
+
+  /* Helper function */
+  fromBounds = (bounds) => {
+    let result = [], current = bounds[0], end = bounds[1];
+    for (;current <= end; current++) {
+      result.push(current);
+    }
+    return result;
+  };
+
+  /* Main Functions */
+  //- Get a unique value for two inputs
+  encode (a, b) {
+    return this.B.length * a + b;
+  }
+  //- Get values back from a known input value
+  decode (value) {
+    const b = value % this.B.length;
+    const a = (value - b) / this.B.length;
+    return [a, b];
+  }
+
+  getSimpleRule (rasterA, rasterB, canopyDensity) {
+    const tcd = analysisConfig.tcd;
+    const tcdRemap = rules.remap(tcd.id, tcd.inputRanges(canopyDensity), tcd.outputValues);
+    let outputRule = rules.arithmetic(
+      tcdRemap,
+      rules.arithmetic(rasterA, rasterB, OP_MULTIPLY),
+      OP_MULTIPLY
+    );
+    //- We need to add an output pixel type to Raster2, need to make sure we need this as I cant remember why it's needed
+    outputRule.rasterFunctionArguments.Raster2.outputPixelType = 'U8';
+    return outputRule;
+  }
+
+  getRule (rasterA, rasterB, canopyDensity) {
+    const tcd = analysisConfig.tcd;
+    const remapRule = rules.remap(rasterA, [this.A[0], (this.A[this.A.length - 1]) + 1], [this.B.length]);
+    const tcdRemap = rules.remap(tcd.id, tcd.inputRanges(canopyDensity), tcd.outputValues);
+    let outputRule = rules.arithmetic(
+      tcdRemap,
+      rules.arithmetic(
+        rules.arithmetic(remapRule, rasterA, OP_MULTIPLY),
+        rasterB,
+        OP_PLUS
+      ),
+      OP_MULTIPLY
+    );
+    //- We need to add an output pixel type to Raster2, need to make sure we need this as I cant remember why it's needed
+    outputRule.rasterFunctionArguments.Raster2.outputPixelType = 'U8';
+    return outputRule;
+  }
+
+}
+
 export default {
   /**
   * Fetch and format fire results
   */
-  getFireCount: (url, feature) => {
+  getFireCount: (url, geometry) => {
     const queryTask = new QueryTask(url);
     const promise = new Deferred();
     let query = new Query();
-    query.geometry = feature.geometry;
+    query.geometry = geometry;
     query.returnGeometry = false;
     query.outFields = [''];
     query.where = '1 = 1';
@@ -136,7 +206,7 @@ export default {
     return promise;
   },
 
-  getCountsWithDensity: (rasterId, feature, canopyDensity) => {
+  getCountsWithDensity: (rasterId, geometry, canopyDensity) => {
     const promise = new Deferred();
     const tcd = analysisConfig.tcd;
     const densityRule = rules.remap(tcd.id, tcd.inputRanges(canopyDensity), tcd.outputValues);
@@ -144,7 +214,7 @@ export default {
 
     let content = {
       pixelSize: pixelSize,
-      geometry: feature.geometry,
+      geometry: geometry,
       renderingRule: rules.arithmetic(densityRule, rasterId, OP_MULTIPLY)
     };
 
@@ -165,12 +235,12 @@ export default {
     return promise;
   },
 
-  getMosaic: (lockRaster, feature) => {
+  getMosaic: (lockRaster, geometry) => {
     const promise = new Deferred();
     const {imageService, pixelSize} = analysisConfig;
     let content = {
       pixelSize: pixelSize,
-      geometry: feature.geometry,
+      geometry: geometry,
       mosaicRule: rules.mosaicRule(lockRaster)
     };
 
@@ -191,11 +261,43 @@ export default {
     return promise;
   },
 
-  getCrossedWithLoss: () => {
+  getCrossedWithLoss: (config, lossConfig, geometry, options) => {
+    const promise = new Deferred();
+    const {imageService, pixelSize} = analysisConfig;
+    const encoder = new Encoder(lossConfig.bounds, config.bounds);
+    const rasterId = config.remap ? config.remap : config.id;
+    const renderingRule = options.simple ?
+                          encoder.getSimpleRule(lossConfig.id, rasterId, options.canopyDensity) :
+                          encoder.getRule(lossConfig.id, rasterId, options.canopyDensity);
 
+    let content = {
+      geometry: geometry,
+      pixelSize: pixelSize,
+      renderingRule: renderingRule
+    };
+
+    const success = (response) => {
+      promise.resolve({
+        counts: formatters.getCounts(response, content.pixelSize, true).counts,
+        encoder: encoder,
+        options: options
+      });
+    };
+
+    const failure = (error) => {
+      if (errorIsInvalidImageSize(error) && content.pixelSize !== 500) {
+        content.pixelSize = 500;
+        computeHistogram(imageService, content, success, failure);
+      } else {
+        promise.resolve(error);
+      }
+    };
+
+    computeHistogram(imageService, content, success, failure);
+    return promise;
   },
 
-  getSlope: (url, slopeValue, raster, restorationId, feature) => {
+  getSlope: (url, slopeValue, raster, restorationId, geometry) => {
     const values = getSlopeInputOutputValues(slopeValue);
     const {pixelSize} = analysisConfig;
     const promise = new Deferred();
@@ -208,7 +310,7 @@ export default {
 
     let content = {
       pixelSize: pixelSize,
-      geometry: feature.geometry,
+      geometry: geometry,
       renderingRule: renderingRule
     };
 
@@ -233,10 +335,10 @@ export default {
     return promise;
   },
 
-  getRestoration: (url, rasterId, feature) => {
+  getRestoration: (url, rasterId, geometry) => {
     const promise = new Deferred();
     const {pixelSize, restoration} = analysisConfig;
-    const content = { pixelSize: pixelSize, geometry: feature.geometry };
+    const content = { pixelSize: pixelSize, geometry: geometry };
     //- Generate rendering rules for all the options
     const lcContent = lang.delegate(content, {renderingRule: rules.arithmetic(restoration.landCoverId, rasterId, OP_MULTIPLY)});
     const tcContent = lang.delegate(content, {renderingRule: rules.arithmetic(restoration.treeCoverId, rasterId, OP_MULTIPLY)});
