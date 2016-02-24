@@ -45,12 +45,9 @@ export default function performAnalysis (analysisType, feature, canopyDensity, s
     case analysisKeys.INTACT_LOSS:
       promise.resolve(true);
     break;
-    //- This should only be the restoration analysis, since analysisType is a rasterId
     default:
-      analysisUtils.getRestoration(url, analysisType, feature).then((results) => {
-        console.log(results);
-      });
-      promise.resolve(true);
+      //- This should only be the restoration analysis, since analysisType is a rasterId
+      analysisUtils.getRestoration(url, analysisType, feature).then(promise.resolve);
     break;
   }
 

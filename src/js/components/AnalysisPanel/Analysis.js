@@ -1,5 +1,6 @@
 import AnalysisTypeSelect from 'components/AnalysisPanel/AnalysisTypeSelect';
 import CompositionPieChart from 'components/AnalysisPanel/CompositionPieChart';
+import RestorationCharts from 'components/AnalysisPanel/RestorationCharts';
 import LossGainBadge from 'components/AnalysisPanel/LossGainBadge';
 import SlopeBarChart from 'components/AnalysisPanel/SlopeBarChart';
 import FiresBadge from 'components/AnalysisPanel/FiresBadge';
@@ -100,7 +101,7 @@ export default class Analysis extends Component {
         return <SlopeBarChart counts={counts} colors={colors} labels={labels} tooltips={tooltips} />;
       default:
       //- This should only be the restoration analysis, since its value is a plain rasterId
-      return null;
+        return <RestorationCharts results={results} config={analysisConfig.restoration} />;
     }
   };
 
