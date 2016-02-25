@@ -108,11 +108,13 @@ export default class Analysis extends Component {
         return <LossGainBadge lossCounts={results.lossCounts} gainCounts={results.gainCounts} />;
       case analysisKeys.LCC:
         return <CompositionPieChart
+          name={text[language][keys.ANALYSIS_LCC_CHART_NAME]}
           counts={results.counts}
           colors={analysisConfig[type].colors}
           labels={text[language][keys.ANALYSIS_LC_LABELS]} />;
       case analysisKeys.TC_LOSS:
         return <BarChart
+          name={text[language][keys.ANALYSIS_TC_CHART_NAME]}
           counts={results.counts}
           colors={analysisConfig[type].colors}
           labels={lossLabels} />;
