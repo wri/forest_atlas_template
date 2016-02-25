@@ -44,7 +44,12 @@ export default {
           cursor: 'pointer'
         }
       },
-      legend: { enabled: true, verticalAlign: 'bottom', width: legendWidth },
+      legend: {
+        enabled: true,
+        verticalAlign: 'bottom',
+        // Subtract a decent amount for padding
+        itemStyle: { width: `${legendWidth - 20}px` }
+      },
       series: series,
       credits: { enabled: false }
     });
@@ -141,7 +146,12 @@ export default {
         stackLabels: { enabled: true },
         title: { text: null }
       },
-      legend: { enabled: true, verticalAlign: 'bottom', width: legendWidth },
+      legend: {
+        enabled: true,
+        verticalAlign: 'bottom',
+        // Subtract a decent amount for padding
+        itemStyle: { width: `${legendWidth - 20}px` }
+      },
       plotOptions: { series: { stacking: 'normal' }},
       credits: { enabled: false },
       series: series,

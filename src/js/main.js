@@ -41,8 +41,8 @@ let lazyloadAssets = () => {
   // loadJS(assetUrls.jQuery);
   loadJS(assetUrls.highcharts).then(() => {
     Highcharts.setOptions({ chart: { style: { fontFamily: '"Fira Sans", Georgia, sans-serif' }} });
-    loadJS(assetUrls.highchartsMore);
   });
+  loadJS(assetUrls.highchartsMore);
 };
 
 let initializeApp = () => {

@@ -22,15 +22,15 @@ html
         async: true,
         cacheBust: '#{version}',
         packages: [
-          { name: 'js', location: base + 'js' },
+          { name: 'js', location: base + '/js' },
           //- { name: 'i18n', location: base + '/i18n' },
-          { name: 'vendor', location: base + 'vendor' },
-          { name: 'utils', location: base + 'js/utils' },
-          { name: 'stores', location: base + 'js/stores' },
-          { name: 'actions', location: base + 'js/actions' },
-          { name: 'constants', location: base + 'js/constants' },
-          { name: 'components', location: base + 'js/components' },
-          { name: 'helpers', location: base + 'js/helpers' }
+          { name: 'vendor', location: base + '/vendor' },
+          { name: 'utils', location: base + '/js/utils' },
+          { name: 'stores', location: base + '/js/stores' },
+          { name: 'actions', location: base + '/js/actions' },
+          { name: 'constants', location: base + '/js/constants' },
+          { name: 'components', location: base + '/js/components' },
+          { name: 'helpers', location: base + '/js/helpers' }
         ],
         aliases: [
           ['resources', 'js/resources'],

@@ -9,12 +9,12 @@ export default {
 
   /**
   * Fetch application information from arcgis online and merge it in to our local resources
+  * @param {string=} id - optional app id, if you dont provide it, it will attempt to get it from url
   * @return {promise} promise
   */
-  getAppInfo: () => {
+  getAppInfo: (id) => {
     let promise = new Deferred();
-    const urlParams = getUrlParams(location.href);
-    const appid = urlParams.appid;
+    const appid = id ? id : getUrlParams(location.href).appid;
 
     if (!appid) {
       promise.resolve(resources);

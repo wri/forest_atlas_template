@@ -1,13 +1,13 @@
-import {layerConfig, errors} from 'js/config';
-import SpatialReference from 'esri/SpatialReference';
-import GraphicsHelper from 'helpers/GraphicsHelper';
-import GeoProcessor from 'esri/tasks/Geoprocessor';
-import FeatureSet from 'esri/tasks/FeatureSet';
+// import {layerConfig, errors} from 'js/config';
+// import SpatialReference from 'esri/SpatialReference';
+// import GraphicsHelper from 'helpers/GraphicsHelper';
+// import GeoProcessor from 'esri/tasks/Geoprocessor';
+// import FeatureSet from 'esri/tasks/FeatureSet';
 import QueryTask from 'esri/tasks/QueryTask';
 import esriRequest from 'esri/request';
 import Query from 'esri/tasks/query';
 import Deferred from 'dojo/Deferred';
-import utils from 'utils/AppUtils';
+// import utils from 'utils/AppUtils';
 // import KEYS from 'js/constants';
 
 const request = {
