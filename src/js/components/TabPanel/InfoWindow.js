@@ -50,16 +50,20 @@ export default class InfoWindow extends Component {
     }
     return (
       <div className='infoWindow'>
+        <div className={`feature-controls ${selectedFeature ? '' : 'hidden'}`}>
+          <span>{count} features selected.</span>
+          <span className={`arrow right ${selectedIndex < count-1 ? '' : 'disabled'}`} onClick={this.next.bind(this)}>Next</span>
+          <span className={`arrow left ${selectedIndex > 0 ? '' : 'disabled'}`} onClick={this.previous.bind(this)}>Prev</span>
+        </div>
         <div className={`layer-name ${selectedFeature ? '' : 'hidden'}`}>
           Layer:  {layerName}
         </div>
         <div className='attribute-display custom-scroll'>
           {attributes.map(this.attribute)}
         </div>
-        <div className={`feature-controls ${selectedFeature ? '' : 'hidden'}`}>
-          <span>{count} features selected.</span>
-          <span className={`arrow right ${selectedIndex < count-1 ? '' : 'disabled'}`} onClick={this.next.bind(this)}>Next</span>
-          <span className={`arrow left ${selectedIndex > 0 ? '' : 'disabled'}`} onClick={this.previous.bind(this)}>Prev</span>
+        <div className={`actions flex ${selectedFeature ? '' : 'hidden'}`}>
+          <button class='actionButton'>Print Report</button>
+          <button class='actionButton'>Subscribe</button>
         </div>
       </div>
     );
