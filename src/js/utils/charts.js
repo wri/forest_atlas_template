@@ -28,8 +28,11 @@ export default {
   * Generate pie chart for composition analysis
   * @param {HTML Element} el
   * @param {array[ { y: number, name: string, color: string(Hex or RGB) } ]} series - data for the chart
+  * @param {number=} width - Width of the legend, the labels for this are huge and may need to be forced into
+  * a specific width, it will use element.clientWidth || 290 (Analysis Panel Width) if nothing is provided
   */
-  makeCompositionPieChart: (el, series) => {
+  makeCompositionPieChart: (el, series, width) => {
+    const legendWidth = width = width || el.clientWidth || 290;
     const chart = new Highcharts.Chart({
       chart: { renderTo: el, type: 'pie' },
       title: { text: null },
@@ -41,7 +44,7 @@ export default {
           cursor: 'pointer'
         }
       },
-      legend: { enabled: true, verticalAlign: 'bottom' },
+      legend: { enabled: true, verticalAlign: 'bottom', width: legendWidth },
       series: series,
       credits: { enabled: false }
     });
@@ -120,8 +123,11 @@ export default {
   * @param {array[string]} labels
   * @param {array[string(Hex or RGB)]} colors - color value for the data
   * @param {array[ {name: string, data: [numbers]} ]} series - data for the chart
+  * @param {number=} width - Width of the legend, the labels for this are huge and may need to be forced into
+  * a specific width, it will use element.clientWidth || 290 (Analysis Panel Width) if nothing is provided
   */
-  makeTotalLossBarChart: (el, labels, colors, series) => {
+  makeTotalLossBarChart: (el, labels, colors, series, width) => {
+    const legendWidth = width = width || el.clientWidth || 290;
     const chart = new Highcharts.Chart({
       chart: { renderTo: el, type: 'bar' },
       title: { text: null },
@@ -135,7 +141,7 @@ export default {
         stackLabels: { enabled: true },
         title: { text: null }
       },
-      legend: { enabled: true, verticalAlign: 'bottom' },
+      legend: { enabled: true, verticalAlign: 'bottom', width: legendWidth },
       plotOptions: { series: { stacking: 'normal' }},
       credits: { enabled: false },
       series: series,

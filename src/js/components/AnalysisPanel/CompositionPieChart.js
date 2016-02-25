@@ -30,7 +30,7 @@ export default class CompositionPieChart extends Component {
 
   render () {
     return (
-      <div ref='chart' className='results__chart-container'></div>
+      <div ref='chart'></div>
     );
   }
 }
