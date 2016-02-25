@@ -23,7 +23,8 @@ define(
                     },
 
                     corsEnabledServers: [
-                        'http://gis-potico.wri.org'
+                        'http://gis-potico.wri.org',
+                        'http://gis-gfw.wri.org'
                     ],
 
                     webMapID: webMapID,
