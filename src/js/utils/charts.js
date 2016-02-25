@@ -41,6 +41,7 @@ export default {
           cursor: 'pointer'
         }
       },
+      legend: { enabled: true, verticalAlign: 'bottom' },
       series: series,
       credits: { enabled: false }
     });

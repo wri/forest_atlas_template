@@ -4,9 +4,9 @@ import charts from 'utils/charts';
 
 export default class BarChart extends Component {
   componentDidMount() {
-    const {labels, colors, counts} = this.props;
+    const {labels, colors, counts, name} = this.props;
     let series = [{
-      name: 'Get from Callee',
+      name: name,
       data: counts
     }];
 
@@ -23,5 +23,6 @@ export default class BarChart extends Component {
 BarChart.propTypes = {
   counts: PropTypes.array.isRequried,
   labels: PropTypes.array.isRequried,
-  colors: PropTypes.array.isRequried
+  colors: PropTypes.array.isRequried,
+  name: PropTypes.string.isRequried
 };

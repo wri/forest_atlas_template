@@ -4,7 +4,7 @@ import charts from 'utils/charts';
 
 export default class CompositionPieChart extends Component {
   componentDidMount() {
-    const {labels, colors, counts} = this.props;
+    const {labels, colors, counts, name} = this.props;
     let data = [];
     let series;
 
@@ -21,7 +21,7 @@ export default class CompositionPieChart extends Component {
 
     series = [{
       type: 'pie',
-      name: 'Get from Callee',
+      name: name,
       data: data
     }];
 
@@ -30,7 +30,7 @@ export default class CompositionPieChart extends Component {
 
   render () {
     return (
-      <div ref='chart'></div>
+      <div ref='chart' className='results__chart-container'></div>
     );
   }
 }
@@ -38,5 +38,6 @@ export default class CompositionPieChart extends Component {
 CompositionPieChart.propTypes = {
   counts: PropTypes.array.isRequried,
   labels: PropTypes.array.isRequried,
-  colors: PropTypes.array.isRequried
+  colors: PropTypes.array.isRequried,
+  name: PropTypes.string.isRequried
 };
