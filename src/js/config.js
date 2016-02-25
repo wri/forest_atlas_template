@@ -17,7 +17,9 @@ const config = {
     }
   },
 
-  corsServers: [analysisImageService],
+  corsServers: [
+    'http://gis-gfw.wri.org'
+  ],
 
   // Note these will need to be copied in with the bulid script since they are not part of the main bundle
   assets: {

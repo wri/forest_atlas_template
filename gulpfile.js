@@ -27,13 +27,13 @@ var config = {
   },
   jade: {
     watch: ['src/**/*.jade', 'build/css/critical.css'],
-    src: ['src/index.jade'],
+    src: ['src/index.jade', 'src/report.jade'],
     build: 'build',
     dist: 'dist'
   },
   stylus: {
     watch: 'src/css/**/*.styl',
-    src: ['src/css/critical.styl', 'src/css/app.styl'],
+    src: ['src/css/critical.styl', 'src/css/app.styl', 'src/css/report.styl'],
     build: 'build/css',
     dist: 'dist/css'
   },

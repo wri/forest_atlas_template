@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: 0 */
 import App from 'components/App';
 import LayerModal from 'components/modals/LayerModal';
 // import ShareModal from 'components/modals/ShareModal';

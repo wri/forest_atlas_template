@@ -1,23 +1,6 @@
 //- These charts have a dependency of highcharts
 import React, {PropTypes, Component} from 'react';
-
-let chart;
-const generateLossChart = (el, series, colors, labels) => {
-
-  if (chart) { chart.destroy(); }
-
-  chart = new Highcharts.Chart({
-    chart: { renderTo: el, type: 'bar' },
-    title: { text: null },
-    xAxis: { categories: labels, maxPadding: 0.5, title: { text: null }},
-    yAxis: { stackLabels: { enabled: true }, title: { text: null }},
-    legend: { enabled: true, verticalAlign: 'bottom' },
-    plotOptions: { series: { stacking: 'normal' }},
-    credits: { enabled: false },
-    series: series,
-    colors: colors
-  });
-};
+import charts from 'utils/charts';
 
 export default class TotalLossChart extends Component {
   componentDidMount() {
@@ -51,7 +34,7 @@ export default class TotalLossChart extends Component {
       }
     }
 
-    generateLossChart(element, series, colorsUsed, lossLabels);
+    charts.makeTotalLossBarChart(element, lossLabels, colorsUsed, series);
   }
 
   render () {

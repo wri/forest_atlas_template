@@ -3,19 +3,7 @@
 import text from 'js/languages';
 import keys from 'constants/StringKeys';
 import React, {PropTypes, Component} from 'react';
-
-const generateRestorationChart = (el, name, series) => {
-  const chart = new Highcharts.Chart({
-    chart: { renderTo: el, type: 'bar' },
-    title: { text: null },
-    xAxis: { categories: [name] },
-    yAxis: { reversedStacks: false, title: { enabled: false }},
-    plotOptions: { series: { stacking: 'normal'}},
-    tooltip: { valueSuffix: ' (Ha)'},
-    series: series,
-    credits: { enabled: false }
-  });
-};
+import charts from 'utils/charts';
 
 const formatData = (counts, labels, colors) => {
   return labels.map((label, index) => {
@@ -45,10 +33,10 @@ export default class RestorationCharts extends Component {
     const popData = formatData(results.population, config.populationClasses, config.populationColors);
     const tcData = formatData(results.treeCover, config.treeCoverClasses, config.treeCoverColors);
     //- Generate Charts
-    generateRestorationChart(slopeChart, 'Slope', slopeData);
-    generateRestorationChart(landCoverChart, 'Land Cover', lcData);
-    generateRestorationChart(populationChart, 'Population Density', popData);
-    generateRestorationChart(treeCoverChart, '% Tree cover', tcData);
+    charts.makeRestorationBarChart(slopeChart, 'Slope', slopeData);
+    charts.makeRestorationBarChart(landCoverChart, 'Land Cover', lcData);
+    charts.makeRestorationBarChart(populationChart, 'Population Density', popData);
+    charts.makeRestorationBarChart(treeCoverChart, '% Tree cover', tcData);
   }
 
   render () {
