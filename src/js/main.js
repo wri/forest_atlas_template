@@ -1,7 +1,7 @@
 /* eslint no-unused-vars: 0 */
 import App from 'components/App';
-import LayerModal from 'components/modals/LayerModal';
-// import ShareModal from 'components/modals/ShareModal';
+import LayerModal from 'components/Modals/LayerModal';
+// import ShareModal from 'components/Modals/ShareModal';
 import IdentityManager from 'esri/IdentityManager';
 import {corsServers, assetUrls} from 'js/config';
 import {loadJS} from 'utils/loaders';
