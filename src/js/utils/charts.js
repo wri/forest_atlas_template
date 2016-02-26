@@ -1,4 +1,8 @@
 /* eslint no-unused-vars: 0 */
+/**
+* Module to help in generating charts and also in formatting data for the charts
+* Formatting functions should start with formatXXXX and return series and optionally colors
+*/
 export default {
 
   /**
@@ -157,6 +161,82 @@ export default {
       series: series,
       colors: colors
     });
+  },
+
+  /**
+  * Takes Xs, Ys, Encoder, Labels, Counts and Colors, and returns series and colors for the chart
+  * @param {object} options
+  * @property {array[number]} options.Xs
+  * @property {array[number]} options.Ys
+  * @property {Encoder} options.encoder - Defined in analysisUtils
+  * @property {array[number]} options.counts
+  * @property {array[string]} options.labels
+  * @property {array[string]} options.colors
+  * @property {boolean} options.isSimple
+  * @return {object{ series: array[{name: string, data: [number]}], colors: array[string]}}
+  */
+  formatSeriesWithEncoder: (options) => {
+    const {Xs, Ys, encoder, labels, counts, colors, isSimple} = options;
+    let data, index, series = [], outputColors = [];
+    //- Simple means that the layer does not have many classes and is a binary raster,
+    //- it used a simplified rendering rule to fetch the data and does not need the encoder
+    if (isSimple) {
+      series.push({
+        'name': labels[0],
+        'data': counts.slice(1)
+      });
+      outputColors.push(colors[0]);
+    } else {
+      for (let i = 0; i < Ys.length; i++) {
+        data = [];
+        for (let j = 0; j < Xs.length; j++) {
+          index = encoder.encode(Xs[j], Ys[i]);
+          data.push(counts[index] || 0);
+        }
+        if (data.some((value) => value !== 0)) {
+          series.push({
+            'name': labels[i],
+            'data': data
+          });
+          outputColors.push(colors[i]);
+        }
+      }
+    }
+
+    return {
+      series: series,
+      colors: outputColors
+    };
+  },
+
+  /**
+  * Formats data for a composition pie chart
+  * @param {object} options
+  * @property {string} options.name
+  * @property {array[number]} options.counts
+  * @property {array[string]} options.labels
+  * @property {array[string]} options.colors
+  * @return {array[{type: 'pie', name: string, data: array[number]}]} series
+  */
+  formatCompositionAnalysis: (options) => {
+    const {name, counts, labels, colors} = options;
+    let data = [];
+    //- Ignore counts with a 0 value
+    counts.forEach((count, index) => {
+      if (count) {
+        data.push({
+          color: colors[index],
+          name: labels[index],
+          y: count
+        });
+      }
+    });
+
+    return [{
+      type: 'pie',
+      name: name,
+      data: data
+    }];
   }
 
 };

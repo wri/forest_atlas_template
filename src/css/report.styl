@@ -1,6 +1,4 @@
 @require 'config'
-@require 'grid'
-@require 'base'
 
 html
 body
@@ -9,6 +7,15 @@ body
   width 100%
   padding 0
   margin 0
+
+@require 'grid'
+@require 'base'
+@require 'results'
+
+//- Since this CSS is inlined, this will prevent the map from snapping down when
+//- the title gets injected
+.feature-title
+  min-height 30px
 
 .map
   margin 10px auto

@@ -13,7 +13,8 @@ let configureApp = () => {
 };
 
 let lazyloadAssets = () => {
-  loadJS(assetUrls.highcharts).then(() => {
+  window.highchartsPromise = loadJS(assetUrls.highcharts);
+  window.highchartsPromise.then(() => {
     Highcharts.setOptions({ chart: { style: { fontFamily: '"Fira Sans", Georgia, sans-serif' }} });
   });
   loadJS(assetUrls.highchartsMore);

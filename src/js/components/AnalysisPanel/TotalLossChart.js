@@ -8,33 +8,18 @@ export default class TotalLossChart extends Component {
     const element = this.refs.chart;
     let Xs = encoder.A; // Loss Bounds
     let Ys = encoder.B; // Raster were crossing with
-    let series = [], colorsUsed = [];
-    let index, data;
 
-    if (options.simple) {
-      series.push({
-        'name': labels[0],
-        'data': counts.slice(1)
-      });
-      colorsUsed.push(colors[0]);
-    } else {
-      for (let i = 0; i < Ys.length; i++) {
-        data = [];
-        for (let j = 0; j < Xs.length; j++) {
-          index = encoder.encode(Xs[j], Ys[i]);
-          data.push(counts[index] || 0);
-        }
-        if (data.some((value) => value !== 0)) {
-          series.push({
-            'name': labels[i],
-            'data': data
-          });
-          colorsUsed.push(colors[i]);
-        }
-      }
-    }
+    const chartInfo = charts.formatSeriesWithEncoder({
+      isSimple: options.simple,
+      encoder: encoder,
+      counts: counts,
+      labels: labels,
+      colors: colors,
+      Xs: Xs,
+      Ys: Ys
+    });
 
-    charts.makeTotalLossBarChart(element, lossLabels, colorsUsed, series);
+    charts.makeTotalLossBarChart(element, lossLabels, chartInfo.colors, chartInfo.series);
   }
 
   render () {

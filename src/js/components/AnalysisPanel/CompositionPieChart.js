@@ -5,25 +5,12 @@ import charts from 'utils/charts';
 export default class CompositionPieChart extends Component {
   componentDidMount() {
     const {labels, colors, counts, name} = this.props;
-    let data = [];
-    let series;
-
-    counts.forEach((count, index) => {
-      //- If its not zero, add in value, label, and color
-      if (count) {
-        data.push({
-          color: colors[index],
-          name: labels[index],
-          y: count
-        });
-      }
+    const series = charts.formatCompositionAnalysis({
+      labels: labels,
+      colors: colors,
+      counts: counts,
+      name: name
     });
-
-    series = [{
-      type: 'pie',
-      name: name,
-      data: data
-    }];
 
     charts.makeCompositionPieChart(this.refs.chart, series);
   }
