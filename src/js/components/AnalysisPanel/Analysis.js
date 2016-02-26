@@ -56,6 +56,7 @@ export default class Analysis extends Component {
   state = getDefaultState();
 
   componentDidMount() {
+    const {settings} = this.context;
     const {
       selectedFeature,
       activeTab,
@@ -63,7 +64,6 @@ export default class Analysis extends Component {
     } = this.props;
 
     if (selectedFeature && activeTab === tabKeys.ANALYSIS) {
-      const {settings} = this.context;
       getRawGeometry(selectedFeature).then((geometry) => {
         performAnalysis(activeAnalysisType, geometry, 30, settings).then((results) => {
           this.setState({ results: results, isLoading: false });

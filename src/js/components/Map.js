@@ -1,9 +1,12 @@
+import AnalysisModal from 'components/Modals/AnalysisModal';
 import Controls from 'components/MapControls/ControlPanel';
-import TabButtons from 'components/TabPanel/TabButtons';
-import TabView from 'components/TabPanel/TabView';
 import Legend from 'components/LegendPanel/LegendPanel';
+import TabButtons from 'components/TabPanel/TabButtons';
+import {applyStateFromUrl} from 'utils/shareUtils';
+import TabView from 'components/TabPanel/TabView';
 import arcgisUtils from 'esri/arcgis/utils';
 import mapActions from 'actions/MapActions';
+import {getUrlParams} from 'utils/params';
 import MapStore from 'stores/MapStore';
 import {mapConfig} from 'js/config';
 import React, {
@@ -64,6 +67,8 @@ export default class Map extends Component {
         evt.stopPropagation();
         this.map.infoWindow.setFeatures([evt.graphic]);
       });
+      //- Load any shared state if available
+      applyStateFromUrl(this.map, getUrlParams(location.search));
       //- Make the map a global in debug mode for easier debugging
       if (brApp.debug) { brApp.map = this.map; }
 
@@ -76,13 +81,18 @@ export default class Map extends Component {
   };
 
   render () {
+    const {activeTab, analysisModalVisible} = this.state;
+
     return (
       <div className='map-container'>
         <div ref='map' className='map'>
           <Controls />
-          <TabButtons activeTab={this.state.activeTab} />
-          <TabView activeTab={this.state.activeTab} {...this.state} />
+          <TabButtons activeTab={activeTab} />
+          <TabView activeTab={activeTab} {...this.state} />
           <Legend />
+        </div>
+        <div className={`modal-wrapper ${analysisModalVisible ? '' : 'hidden'}`}>
+          <AnalysisModal />
         </div>
       </div>
     );

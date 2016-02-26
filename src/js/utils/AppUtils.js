@@ -1,3 +1,5 @@
+import {toQuery} from 'utils/params';
+
 const utils = {
   /**
   * Retrieve the object from a given array based on id and value
@@ -58,6 +60,56 @@ const utils = {
 
   clone: (sourceObject) => {
     return JSON.parse(JSON.stringify(sourceObject));
+  },
+
+  /**
+  * @param {object} options
+  * @property {object} options.selectedFeature - Selected feature should come from infoWindow.getSelectedFeature()
+  * @property {string} options.webmap - webmap id
+  * @property {string} options.appid - app id
+  * @property {string} options.lang - two digit iso code representing current language, en || es || fr || pt
+  * @property {number} options.canopyDensity - Current tree cover density settings
+  */
+  generateReport: (options) => {
+    /** webmap or appid
+    * Other Params needed
+    DONE** layerid - layer number in dynamic service
+    DONE** service - map service of selected feature
+    DONE** idvalue - objectid of the selected feature
+    DONE** layerName - id of the layer from AGOL, I need this to add attributes
+    ** basemap - basemap to use, default is topo
+    ** visibleLayers - visible layers of dynamic layer selected feature belongs too, default is all
+    DONE** tcd - tree cover density
+    DONE** lang - current app language
+    */
+    const { selectedFeature, webmap, appid, lang, canopyDensity } = options;
+
+    //- Is this a custom feature or a feature from the webmap
+    const layer = selectedFeature._layer;
+    //- from service
+    if (layer._url) {
+      const objectIdField = layer.objectIdField;
+      const idvalue = selectedFeature.attributes[objectIdField];
+      const layerid = selectedFeature._layer.layerId;
+      const layerName = selectedFeature._layer.id;
+      const service = layer.url.split(`/${layerid}`)[0];
+
+      const path = toQuery({
+        webmap: webmap,
+        idvalue: idvalue,
+        service: service,
+        layerid: layerid,
+        layerName: layerName,
+        tcd: canopyDensity,
+        lang: lang
+      });
+
+      window.open(`report.html?${path}`);
+
+    } else { //- custom
+
+    }
+
   }
 
 };

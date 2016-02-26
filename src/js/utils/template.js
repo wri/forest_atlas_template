@@ -32,6 +32,9 @@ export default {
         //- This will merge all the settings in, but some things need a little massaging
         lang.mixin(resources, agolValues);
 
+        //- Put the appid in settings so its easy to get to elsewhere in the app without rereading the url
+        resources.appid = appid;
+
         //- LANGUAGE SETTINGS START
         resources.labels = {};
         resources.labels[resources.defaultLanguage] = {

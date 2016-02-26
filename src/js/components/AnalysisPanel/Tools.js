@@ -1,6 +1,7 @@
 import scaleUtils from 'esri/geometry/scaleUtils';
 import geometryUtils from 'utils/geometryUtils';
 import graphicsUtils from 'esri/graphicsUtils';
+import mapActions from 'actions/MapActions';
 import keys from 'constants/StringKeys';
 import {uploadConfig} from 'js/config';
 import Loader from 'components/Loader';
@@ -55,6 +56,8 @@ export default class Tools extends Component {
   draw = () => {
     toolbar.activate(Draw.FREEHAND_POLYGON);
     this.setState({ drawButtonActive: true });
+    //- If the analysis modal is visible, hide it
+    mapActions.toggleAnalysisModal({ visible: false });
   };
 
   //- DnD Functions
@@ -89,6 +92,9 @@ export default class Tools extends Component {
       dndActive: false,
       isUploading: true
     });
+
+    //- If the analysis modal is visible, hide it
+    mapActions.toggleAnalysisModal({ visible: false });
 
     const extent = scaleUtils.getExtentForScale(map, 40000);
     const type = file.type === TYPE.ZIP ? TYPE.SHAPEFILE : TYPE.GEOJSON;

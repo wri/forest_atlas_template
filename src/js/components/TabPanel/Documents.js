@@ -137,7 +137,7 @@ class DocumentResults extends Component {
 export default class Documents extends Component {
 
   static contextTypes = {
-    settings: PropTypes.object.isRequried,
+    settings: PropTypes.object.isRequired,
     language: PropTypes.string.isRequired,
     map: PropTypes.object.isRequired
   };

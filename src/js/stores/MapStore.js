@@ -12,19 +12,19 @@ class MapStore {
     this.activeTab = tabKeys.LAYERS;
     this.activeLayers = [];
     this.allLayers = [];
-    // this.selectedFeature = undefined;
-    this.selectedFeatures = [];
+    // this.selectedFeatures = [];
     this.activeAnalysisType = analysisKeys.TC_LOSS;
     this.lossFromSelectIndex = 0;
     this.lossToSelectIndex = layerPanelText.lossOptions.length - 1;
     this.firesSelectIndex = layerPanelText.firesOptions.length - 1;
+    this.analysisModalVisible = false;
 
     this.bindListeners({
       mapUpdated: mapActions.mapUpdated,
       createLayers: mapActions.createLayers,
       changeActiveTab: mapActions.changeActiveTab,
       setAnalysisType: mapActions.setAnalysisType,
-      // setSelectedFeature: mapActions.setSelectedFeature,
+      toggleAnalysisModal: mapActions.toggleAnalysisModal,
       addActiveLayer: layerActions.addActiveLayer,
       removeActiveLayer: layerActions.removeActiveLayer,
       changeOpacity: layerActions.changeOpacity
@@ -51,9 +51,9 @@ class MapStore {
     }
   }
 
-  mapUpdated (e) {
-    console.log('MapStore::mapUpdated', e);
-    this.selectedFeatures = e.target.features || [];
+  mapUpdated () {
+    // console.log('MapStore::mapUpdated', e);
+    // this.selectedFeatures = e.target.features || [];
   }
 
   createLayers (layers) {
@@ -69,9 +69,9 @@ class MapStore {
     this.activeAnalysisType = payload.type;
   }
 
-  // setSelectedFeature (payload) {
-  //   this.selectedFeature = payload.feature;
-  // }
+  toggleAnalysisModal (payload) {
+    this.analysisModalVisible = payload.visible;
+  }
 
   changeOpacity (parameters) {
     let layer = this.allLayers.filter(l => l.id === parameters.layerId);

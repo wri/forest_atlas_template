@@ -61,7 +61,7 @@ const getFeature = function getFeature (params) {
   const promise = new Deferred();
   if (idvalue && service && layerid) {
     //- This assumes id field is object id, if thats not the case, will need a different request method
-    request.queryTaskById(`${service}\\${layerid}`, idvalue).then((results) => {
+    request.queryTaskById(`${service}//${layerid}`, idvalue).then((results) => {
       let feature = results.features[0];
       if (feature) {
         promise.resolve({
@@ -132,8 +132,10 @@ const setupMap = function setupMap (params, feature) {
   //- Update the layer factory to be more flexible
   if (service) {
     const imageParameters = new ImageParameters();
-    imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
-    imageParameters.layerIds = [visibleLayers];
+    if (visibleLayers) {
+      imageParameters.layerOption = ImageParameters.LAYER_OPTION_SHOW;
+      imageParameters.layerIds = [visibleLayers];
+    }
     imageParameters.format = 'png32';
 
     const currentLayer = new DynamicLayer(service, {
@@ -153,7 +155,7 @@ const addTitleAndAttributes = function addTitleAndAttributes (params, feature, w
   if (feature.isCustom) {
     document.getElementById('feature-title').innerHTML = feature.title;
   } else {
-    const operationalLayer = operationalLayers.filter((layer) => layer.id === layerName)[0];
+    const operationalLayer = operationalLayers.filter((layer) => layerName.search(layer.id) > -1)[0];
     //- layerid is a string but layer.id is a number, convert layerid to int
     const activeLayer = operationalLayer.layers.filter((layer) => layer.id === +layerid)[0];
     if (activeLayer) {
@@ -298,10 +300,21 @@ export default {
   ** idvalue - objectid of the selected feature
   ** layerName - id of the layer from AGOL, I need this to add attributes
   ** basemap - basemap to use, default is topo
-  ** visibleLayers - visible layers of dynamic layer selected feature belongs too
+  ** visibleLayers - visible layers of dynamic layer selected feature belongs too, default is all
   ** tcd - tree cover density
+  ** lang - current app language
   * Params in local storage
   ** custom-feature - { geometry: esriGeometry, attributes: object, title: string }
+  */
+
+  /**
+  * Example call from the app
+  appUtils.generateReport({
+    selectedFeature: selectedFeature,
+    webmap: settings.webmap,
+    canopyDensity: 30,
+    lang: language
+  });
   */
 
   run () {

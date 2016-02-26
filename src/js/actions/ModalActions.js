@@ -20,8 +20,8 @@ class ModalActions {
     brApp.debug('ModalActions >>> showShareModal');
     //TODO: Generate a url from bitly that includes Map Store state, this way we can share params
     let url = document.location.href.split('?')[0];
-    this.dispatch(`${url}?${params}`);
     domClass.remove('share-modal', 'hidden');
+    return `${url}?${params}`;
   }
 
   showAlertsModal () {

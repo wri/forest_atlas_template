@@ -1,5 +1,5 @@
 import ModalWrapper from 'components/Modals/ModalWrapper';
-import {modalStore} from 'stores/ModalStore';
+import modalStore from 'stores/ModalStore';
 import {modalText} from 'js/config';
 import utils from 'utils/AppUtils';
 import React from 'react';
