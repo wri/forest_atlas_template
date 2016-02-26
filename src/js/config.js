@@ -18,7 +18,8 @@ const config = {
   },
 
   corsServers: [
-    'http://gis-gfw.wri.org'
+    'gis-gfw.wri.org',
+    'gis-potico.wri.org'
   ],
 
   // Note these will need to be copied in with the bulid script since they are not part of the main bundle

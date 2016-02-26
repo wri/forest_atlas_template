@@ -12,7 +12,7 @@ import all from 'dojo/promise/all';
 * @return {promise}
 */
 export default function performAnalysis (analysisType, geometry, canopyDensity, settings) {
-  const restorationUrl = settings.restorationImageServer;
+  const restorationUrl = settings && settings.restorationImageServer;
   const config = analysisConfig[analysisType];
   let promise = new Deferred();
 

@@ -3,7 +3,13 @@ extends jade/layout.jade
 block append styles
   link(rel='stylesheet', href='css/report.css?#{version}')
   link(rel='stylesheet', href='http://js.arcgis.com/#{esriVersion}/esri/css/esri.css')
-    
+
+block append content
+  div.report.inner
+    header.report-header
+    h3#feature-title
+    div#map.map
+    div#popup-content.popup-content
 block append esri-script
   script.
     var base = location.href.replace(/\/[^/]+$/, '');

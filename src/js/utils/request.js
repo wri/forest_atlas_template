@@ -147,7 +147,7 @@ const request = {
     const task = new QueryTask(url);
     const query = new Query();
     query.objectIds = [objectId];
-    query.outFields = [''];
+    query.outFields = ['*'];
     query.returnGeometry = true;
     query.maxAllowableOffset = 0;
     return task.execute(query);
