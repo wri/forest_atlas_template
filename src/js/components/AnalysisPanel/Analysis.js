@@ -2,6 +2,7 @@ import AnalysisTypeSelect from 'components/AnalysisPanel/AnalysisTypeSelect';
 import CompositionPieChart from 'components/AnalysisPanel/CompositionPieChart';
 import RestorationCharts from 'components/AnalysisPanel/RestorationCharts';
 import TotalLossChart from 'components/AnalysisPanel/TotalLossChart';
+import ReportSubscribeButtons from 'components/Shared/ReportSubscribe';
 import LossGainBadge from 'components/AnalysisPanel/LossGainBadge';
 import SlopeBarChart from 'components/AnalysisPanel/SlopeBarChart';
 import FiresBadge from 'components/AnalysisPanel/FiresBadge';
@@ -164,6 +165,7 @@ export default class Analysis extends Component {
         </div>
         <AnalysisTypeSelect {...this.props} />
         {chart}
+        <ReportSubscribeButtons />
       </div>
     );
   }

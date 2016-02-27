@@ -1,11 +1,5 @@
 import React, { PropTypes } from 'react';
-/**
-* Requies an svg symbol on the page with id shape-close, jade syntax
-* svg.hidden
-*   symbol#shape-close(viewbox='0 0 25 25')
-*     title Close
-*     path(d='M 5 19 L 19 5 L 21 7 L 7 21 L 5 19 ZM 7 5 L 21 19 L 19 21 L 5 7 L 7 5 Z')
-*/
+
 const closeSvg = '<use xlink:href="#shape-close" />';
 
 /**

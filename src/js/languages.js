@@ -97,7 +97,8 @@ strings.en[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
 
 //- Miscellaneous
 strings.en[keys.PRINT_BUTTON_LABEL] = 'Choose a print template';
-
+strings.en[keys.PRINT_REPORT] = 'Print Report';
+strings.en[keys.SUBSCRIBE] = 'Subscribe';
 
 
 //- NOTE: French
@@ -194,6 +195,8 @@ strings.fr[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
 
 //- Miscellaneous
 strings.fr[keys.PRINT_BUTTON_LABEL] = 'Choose a print template';
+strings.fr[keys.PRINT_REPORT] = 'Print Report';
+strings.fr[keys.SUBSCRIBE] = 'Subscribe';
 
 
 //- NOTE: Spanish
@@ -290,7 +293,8 @@ strings.es[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
 
 //- Miscellaneous
 strings.es[keys.PRINT_BUTTON_LABEL] = 'Choose a print template';
-
+strings.es[keys.PRINT_REPORT] = 'Print Report';
+strings.es[keys.SUBSCRIBE] = 'Subscribe';
 
 //- NOTE: Portugese
 strings.pt[keys.LAND_COVER_LABEL] = 'Land cover';
@@ -387,6 +391,7 @@ strings.pt[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
 
 //- Miscellaneous
 strings.pt[keys.PRINT_BUTTON_LABEL] = 'Choose a print template';
-
+strings.pt[keys.PRINT_REPORT] = 'Print Report';
+strings.pt[keys.SUBSCRIBE] = 'Subscribe';
 
 export { strings as default };
