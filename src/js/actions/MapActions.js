@@ -28,6 +28,12 @@ class MapActions {
     };
   }
 
+  togglePrintModal (data) {
+    return {
+      visible: data.visible
+    };
+  }
+
   // setSelectedFeature (evt) {
   //   let {target} = evt;
   //   return {

@@ -1,6 +1,7 @@
 //- General modal styling
 .modal-wrapper
-  position absolute
+  position fixed
+  z-index 100
   bottom 0
   right 0
   left 0
@@ -8,7 +9,6 @@
 
 .modal-container
   position absolute
-  z-index 1000
   height 100%
   width 100%
   left 0
@@ -62,9 +62,9 @@
   height 40px
 
 //- Analysis Modal
-.analysis-modal
+.analysis-modal-container .modal
   overflow hidden
-  width 300px
+  width 320px
 
 //- Share Modal
 #share-modal

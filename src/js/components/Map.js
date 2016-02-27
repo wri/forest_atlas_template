@@ -2,6 +2,7 @@ import AnalysisModal from 'components/Modals/AnalysisModal';
 import Controls from 'components/MapControls/ControlPanel';
 import Legend from 'components/LegendPanel/LegendPanel';
 import TabButtons from 'components/TabPanel/TabButtons';
+import PrintModal from 'components/Modals/PrintModal';
 import {applyStateFromUrl} from 'utils/shareUtils';
 import TabView from 'components/TabPanel/TabView';
 import arcgisUtils from 'esri/arcgis/utils';
@@ -81,7 +82,7 @@ export default class Map extends Component {
   };
 
   render () {
-    const {activeTab, analysisModalVisible} = this.state;
+    const {activeTab, printModalVisible, analysisModalVisible} = this.state;
 
     return (
       <div className='map-container'>
@@ -91,8 +92,11 @@ export default class Map extends Component {
           <TabView activeTab={activeTab} {...this.state} />
           <Legend />
         </div>
-        <div className={`modal-wrapper ${analysisModalVisible ? '' : 'hidden'}`}>
+        <div className={`analysis-modal-container modal-wrapper ${analysisModalVisible ? '' : 'hidden'}`}>
           <AnalysisModal />
+        </div>
+        <div className={`print-modal-container modal-wrapper ${printModalVisible ? '' : 'hidden'}`}>
+          <PrintModal />
         </div>
       </div>
     );

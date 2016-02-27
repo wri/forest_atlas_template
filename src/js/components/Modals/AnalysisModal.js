@@ -1,9 +1,8 @@
+import ControlledModalWrapper from 'components/Modals/ControlledModalWrapper';
 import Instructions from 'components/AnalysisPanel/Instructions';
 import Tools from 'components/AnalysisPanel/Tools';
 import mapActions from 'actions/MapActions';
 import React, { Component } from 'react';
-
-let closeSvg = '<use xlink:href="#shape-close" />';
 
 export default class AnalysisModal extends Component {
 
@@ -13,18 +12,10 @@ export default class AnalysisModal extends Component {
 
   render () {
     return (
-      <div className='modal-container'>
-        <div className='modal-background' onClick={this.close} />
-        <article className='analysis-modal modal shadow'>
-          <div title='close' className='close-icon pointer' onClick={this.close} >
-            <svg dangerouslySetInnerHTML={{ __html: closeSvg }}/>
-          </div>
-            <div className='modal-content custom-scroll'>
-              <Instructions />
-              <Tools />
-            </div>
-        </article>
-      </div>
+      <ControlledModalWrapper onClose={this.close}>
+        <Instructions />
+        <Tools />
+      </ControlledModalWrapper>
     );
   }
 

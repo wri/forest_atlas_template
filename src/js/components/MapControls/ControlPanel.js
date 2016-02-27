@@ -13,7 +13,7 @@ const zoomInSvg = '<use xlink:href="#icon-plus" />';
 const zoomOutSvg = '<use xlink:href="#icon-minus" />';
 const shareSvg = '<use xlink:href="#icon-share" />';
 const drawSvg = '<use xlink:href="#icon-draw-upload" />';
-const homeSvg = '<use xlink:href="#icon-home" />';
+const printSvg = '<use xlink:href="#icon-download" />';
 const searchSvg = '<use xlink:href="#icon-control-search" />';
 
 export default class ControlPanel extends Component {
@@ -34,11 +34,6 @@ export default class ControlPanel extends Component {
     map.setZoom(map.getZoom() - 1);
   };
 
-  goHome = () => {
-    const {map} = this.context;
-    map.setExtent(map._params.extent);
-  };
-
   search = () => {
 
   };
@@ -57,6 +52,10 @@ export default class ControlPanel extends Component {
     mapActions.toggleAnalysisModal({ visible: true });
   };
 
+  showPrintTools = () => {
+    mapActions.togglePrintModal({ visible: true });
+  };
+
   render () {
     return (
       <div className='control-panel map-component shadow'>
@@ -70,8 +69,8 @@ export default class ControlPanel extends Component {
           <li className='control-panel__share-map pointer' title='Share' onClick={this.share}>
             <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: shareSvg }}/>
           </li>
-          <li className='control-panel__home pointer' title='Home' onClick={this.goHome}>
-            <svg className='svg-icon control-panel__svg-icon--home' dangerouslySetInnerHTML={{ __html: homeSvg }}/>
+          <li className='control-panel__print pointer' title='Home' onClick={this.showPrintTools}>
+            <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: printSvg }}/>
           </li>
           <li className='control-panel__draw-upload pointer' title='Analysis' onClick={this.showAnalysisTools}>
             <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: drawSvg }}/>
