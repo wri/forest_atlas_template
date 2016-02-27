@@ -2,6 +2,8 @@ import ControlledModalWrapper from 'components/Modals/ControlledModalWrapper';
 import PrintTemplate from 'esri/tasks/PrintTemplate';
 import mapActions from 'actions/MapActions';
 import PrintDijit from 'esri/dijit/Print';
+import keys from 'constants/StringKeys';
+import text from 'js/languages';
 import React, { Component, PropTypes } from 'react';
 
 let print;
@@ -15,6 +17,16 @@ const createPrintWidget = function createPrintWidget (settings, map, node) {
     format: 'jpg',
     options: options
   }];
+
+  //- Add in any layouts passed in from arcgis online
+  if (settings.country) {
+    layouts.push({
+      name: `${settings.country}_Landscape`,
+      label: 'Landscape (pdf)',
+      format: 'pdf',
+      options: options
+    });
+  }
 
   const templates = layouts.map((layout) => {
     let template = new PrintTemplate();
@@ -38,6 +50,7 @@ export default class PrintModal extends Component {
 
   static contextTypes = {
     settings: PropTypes.object.isRequired,
+    language: PropTypes.string.isRequired,
     map: PropTypes.object.isRequired
   };
 
@@ -54,9 +67,14 @@ export default class PrintModal extends Component {
   };
 
   render () {
+    const { language } = this.context;
+
     return (
       <ControlledModalWrapper onClose={this.close}>
-        <div ref='print' />
+        <div className='print-dijit-label'>
+          {text[language][keys.PRINT_BUTTON_LABEL]}
+        </div>
+        <div ref='print' className='print-dijit' />
       </ControlledModalWrapper>
     );
   }

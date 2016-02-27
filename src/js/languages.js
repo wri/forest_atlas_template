@@ -95,6 +95,9 @@ strings.en[keys.ANALYSIS_GROUP_RESTORATION] = 'Restoration potential for';
 strings.en[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to slope';
 strings.en[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
 
+//- Miscellaneous
+strings.en[keys.PRINT_BUTTON_LABEL] = 'Choose a print template';
+
 
 
 //- NOTE: French
@@ -189,6 +192,9 @@ strings.fr[keys.ANALYSIS_GROUP_RESTORATION] = 'Restoration potential for';
 strings.fr[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to slope';
 strings.fr[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
 
+//- Miscellaneous
+strings.fr[keys.PRINT_BUTTON_LABEL] = 'Choose a print template';
+
 
 //- NOTE: Spanish
 strings.es[keys.LAND_COVER_LABEL] = 'Land cover';
@@ -281,6 +287,9 @@ strings.es[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
 strings.es[keys.ANALYSIS_GROUP_RESTORATION] = 'Restoration potential for';
 strings.es[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to slope';
 strings.es[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
+
+//- Miscellaneous
+strings.es[keys.PRINT_BUTTON_LABEL] = 'Choose a print template';
 
 
 //- NOTE: Portugese
@@ -375,6 +384,9 @@ strings.pt[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
 strings.pt[keys.ANALYSIS_GROUP_RESTORATION] = 'Restoration potential for';
 strings.pt[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to slope';
 strings.pt[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
+
+//- Miscellaneous
+strings.pt[keys.PRINT_BUTTON_LABEL] = 'Choose a print template';
 
 
 export { strings as default };
