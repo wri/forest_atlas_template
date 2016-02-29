@@ -7,6 +7,8 @@ import LayerCheckbox from 'components/LayerPanel/LayerCheckbox';
 import FiresControls from 'components/LayerPanel/FiresControls';
 import LossControls from 'components/LayerPanel/LossControls';
 import LayerGroup from 'components/LayerPanel/LayerGroup';
+import BasemapGroup from 'components/LayerPanel/BasemapGroup';
+import BasemapLayer from 'components/LayerPanel/BasemapLayer';
 // import DamsLegend from 'components/LayerPanel/DamsLegend';
 import mapStore from 'stores/MapStore';
 // import layersHelper from 'js/helpers/LayersHelper';
@@ -37,9 +39,23 @@ export default class LayerPanel extends React.Component {
     );
   };
 
+  renderBasemapGroup = (basemaps) => {
+    const basemapLayers = basemaps.map((bm) => {
+      return (
+        <BasemapLayer icon={bm.icon} label={bm.label} />
+      )
+    })
+    return (
+      <BasemapGroup label='Basemap'>
+        {basemapLayers}
+      </BasemapGroup>
+    );
+  };
+
   render() {
     const {settings, language} = this.context;
     const layers = settings.layers && settings.layers[language] || [];
+    const basemaps = settings.basemaps && settings.basemaps[language] || [];
     let groups = [];
     //- Get a unique list of groups
     layers.forEach((layer) => {
@@ -51,6 +67,7 @@ export default class LayerPanel extends React.Component {
     let layerGroups = groups.map((group) => {
       return this.renderLayerGroup(group, layers);
     });
+    layerGroups.push(this.renderBasemapGroup(basemaps));
 
     return (
       <div className={`layer-panel custom-scroll`}>

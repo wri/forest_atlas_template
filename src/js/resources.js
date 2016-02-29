@@ -361,6 +361,29 @@ export default {
       label: 'Land cover',
       layerIds: [0]
     }]
+  },
+  basemaps: {
+    en: [{
+      id: 'TERRAIN',
+      group: 'basemap',
+      label: 'Terrain',
+      url: ''
+    }, {
+      id: 'SATELLITE',
+      group: 'basemap',
+      label: 'Satellite',
+      url: ''
+    }, {
+      id: 'ROADS',
+      group: 'basemap',
+      label: 'Roads',
+      url: ''
+    }, {
+      id: 'LANDSAT',
+      group: 'basemap',
+      label: 'Landsat',
+      url: ''
+    }]
   }
 
 };
