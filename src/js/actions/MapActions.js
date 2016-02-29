@@ -1,5 +1,6 @@
 import dispatcher from 'js/dispatcher';
 import layerFactory from 'helpers/LayerFactory';
+import legendHelper from 'helpers/LegendHelper';
 
 class MapActions {
   //- Action to notify the store the map has changed so we can rerender UI changes
@@ -46,6 +47,12 @@ class MapActions {
     });
     //- Return the layers through the dispatcher so the mapstore can update visible layers
     return layers;
+  }
+
+  createLegend(map, layers) {
+      legendHelper({
+        map: map
+      }, 'legend')
   }
 
 }
