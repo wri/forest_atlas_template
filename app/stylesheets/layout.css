@@ -528,6 +528,12 @@ top:0px;
 	transform: translate(365px, 0px) !important;
 }
 
+.highcharts-tooltip span {
+	white-space: normal !important;
+	width: 240px;
+	height: auto;
+}
+
 .result-badge {
 	position: relative;
 	text-align: center;

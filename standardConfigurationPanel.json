@@ -189,6 +189,30 @@
           "fieldName": "slopeAnalysisRestorationOptions",
           "label": "Please enter the names of the options in your slope analysis in the order of the values in the data as a semi-colon separated list:",
           "tooltip": "Please enter the names of the options in your slope analysis in the order of the values in the data as a semi-colon separated list:"
+        },
+        {
+          "type": "string",
+          "fieldName": "slopeClassNames",
+          "label": "Enter the names of your slope classes separated by semi-colons",
+          "tooltip": "Ex. <= 12%; 12 - 20%; 20 - 35%"
+        },
+        {
+          "type": "string",
+          "fieldName": "slopeClassColors",
+          "label": "Enter the colors of your slope classes separated by semi-colons in hex values",
+          "tooltip": "Ex. #EAC7FD;#FDB22E;#587E0F;"
+        },
+        {
+          "type": "string",
+          "fieldName": "treeCoverClassNames",
+          "label": "Enter the names of your slope classes separated by semi-colons",
+          "tooltip": "Ex. <= 12%; 12 - 20%; 20 - 35%"
+        },
+        {
+          "type": "string",
+          "fieldName": "treeCoverClassColors",
+          "label": "Enter the colors of your slope classes separated by semi-colons in hex values",
+          "tooltip": "Ex. #EAC7FD;#FDB22E;#587E0F;"
         }
       ]
     }

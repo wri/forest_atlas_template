@@ -72,6 +72,7 @@ define([
       var tcData;
 
       //- If the rasterId is for the slope analysis breakdown, call other analysis function
+      console.log(rasterId, slopeConfig.id);
       if (rasterId === slopeConfig.id) {
         var slopeSelectNode = document.querySelector('.analysis-selection-types .slope-select');
   			domClass.remove(slopeSelectNode, 'hidden');
@@ -98,10 +99,13 @@ define([
         popData = padResults(getCounts(results[KEYS.POPULATION].histograms), popConfig.classes.length);
         tcData = padResults(getCounts(results[KEYS.TREE_COVER].histograms), tcConfig.classes.length);
         // Format the results into highcharts expected format { name, data, color }
-        slopeData = formatData(slopeData, slopeConfig.classes, slopeConfig.colors);
+        //- SLOPE and TREE COVER CONFIG comes from resources, which plugs in to app.config
+        var slopeNames = app.config.slopeOptionNames.map(function (item) { return item.label });
+        var treeCoverNames = app.config.treeCoverOptionNames.map(function (item) { return item.label });
+        slopeData = formatData(slopeData, slopeNames, app.config.slopeColors);
         lcData = formatData(lcData, lcConfig.classes, lcConfig.colors);
         popData = formatData(popData, popConfig.classes, popConfig.colors);
-        tcData = formatData(tcData, tcConfig.classes, tcConfig.colors);
+        tcData = formatData(tcData, treeCoverNames, app.config.treeCoverColors);
 
         if ((results.code && results.message) ||
           slopeData.length === 0 ||
@@ -147,7 +151,7 @@ define([
           data: slopeOptionData
         }];
 
-        charts.makeBarChart(KEYS.CHART_ID, data, labels, slopeColors);
+        charts.makeBarChart(KEYS.CHART_ID, data, labels, slopeColors, slopeOptions);
         //- Generate Tooltips for the xAxis labels
         $('.highcharts-xaxis-labels text').each(function (index, element) {
           var tooltip = slopeOptions[index];

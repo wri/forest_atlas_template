@@ -1,4 +1,4 @@
-define(['root/analysis/constants'], function (KEYS) {
+define(['root/analysis/constants', 'dojo/number'], function (KEYS, number) {
 
   var generateNoDataMarkup = function generateNoDataMarkup (label) {
     return (
@@ -62,7 +62,7 @@ define(['root/analysis/constants'], function (KEYS) {
     /**
     * labels is an array of labels for the y axis, although highcharts thinks its the X-axis (???)
     */
-    makeBarChart: function (chartId, data, labels, colors) {
+    makeBarChart: function (chartId, data, labels, colors, tooltips) {
       // Only render the chart if data is present, otherwise remove the container
       if (data.length > 0) {
         $('#' + chartId).highcharts({
@@ -70,10 +70,18 @@ define(['root/analysis/constants'], function (KEYS) {
           title: { text: null },
           credits: { enabled: false },
           exporting: { enabled: true },
-          tooltip: { valueSuffix: ' (HA)' },
+          tooltip: {
+            useHTML: true,
+            formatter: function () {
+              var content = tooltips[this.point.index];
+              content += '<br>Slope: <b>' + number.format(this.y) + ' (Ha)</b>'
+              return content;
+            }
+          },
           xAxis: { categories: labels, maxPadding: 0.5, useHTML: true },
           yAxis: { title: { text: 'Hectares' } },
           plotOptions: { bar: { colorByPoint: true, colors: colors } },
+          legend: { enabled: false },
           // Array of objects [ { name: '', data: [oneValue] } ]
           series: data,
           analysis: 'SLOPE_POTENTIAL'

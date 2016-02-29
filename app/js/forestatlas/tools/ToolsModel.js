@@ -81,14 +81,15 @@ define(
 
                         // Enable/Disable Restoration Module for Ethiopia Atlas
                         o._vm.restorationModuleType = ko.observable('restoration');
-                        o._vm.slopeAmountOptions = ko.observableArray(analysisConfig[KEYS.SLOPE_BREAKDOWN].slopeOptions);
                         o._vm.slopeSelectDescription = ko.observable('Choose slope percent:');
                         o._vm.restorationModuleChartTitlePrefix = ko.observable('Potential for ');
                         o._vm.slopeAnalysisRestorationOptionPrefix = ko.observable('Option ');
-                        o._vm.slopeActiveOption = ko.observable(analysisConfig[KEYS.SLOPE_BREAKDOWN].slopeOptions[0]);
                         // These come from the resource file
                         o._vm.restorationModule = ko.observable(app.config.restorationModule);
                         o._vm.restorationModuleOptions = ko.observableArray(app.config.restorationModuleOptions);
+                        //- First configured value is NO DATA, we dont want this available in the UI
+                        o._vm.slopeAmountOptions = ko.observableArray(app.config.slopeOptionNames.slice(1));
+                        o._vm.slopeActiveOption = ko.observable(app.config.slopeOptionNames[1]);
 
 
                         // Items for Year Dropdown for forest cover loss layer
@@ -246,7 +247,7 @@ define(
                             var target = document.querySelector('.analysis-options-select');
                             var activeOption = target.options[target.selectedIndex];
                             var options = {
-                              index: +activeOption.getAttribute('data-option')
+                              rasterId: activeOption.getAttribute('data-id')
                             };
 
                             Results.getResultsForType(model.currentAnalysisType(), activeFeature, options);
