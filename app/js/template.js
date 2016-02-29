@@ -112,6 +112,51 @@ define([
 					commonConfig.restorationModule = values.restorationModule || false;
 					commonConfig.restorationImageServer = values.restorationImageServer;
 
+					// Slope and Tree Cover Classes for Restoration Analysis
+					if (values.slopeOptionNames && values.slopeColors) {
+						// There should be a no data by default, and black as the default color
+						commonConfig.slopeOptionNames = [{
+							label: 'No Data',
+							value: 0
+						}];
+
+						commonConfig.slopeColors = ['#000'];
+
+						commonConfig.slopeOptionNames.concat(
+							values.slopeOptionNames.split(';').map(function (name, index) {
+								return {
+									label: name,
+									value: index + 1
+								}
+							})
+						);
+
+						commonConfig.slopeColors.concat(values.slopeColors.split(';'));
+
+					}
+
+					if (values.treeCoverNames && values.treeCoverColors) {
+						// There should be a no data by default, and black as the default color
+						commonConfig.treeCoverOptionNames = [{
+							label: 'No Data',
+							value: 0
+						}];
+
+						commonConfig.treeCoverColors = ['#000'];
+
+						commonConfig.treeCoverOptionNames.concat(
+							values.treeCoverOptionNames.split(';').map(function (name, index) {
+								return {
+									label: name,
+									value: index + 1
+								}
+							})
+						);
+
+						commonConfig.treeCoverColors.concat(values.treeCoverColors.split(';'));
+
+					}
+
 					// Create an easy to read array for the app from the configured values
 					if (checkRestorationOptions(values.restorationModuleOption1)) {
 						commonConfig.restorationModuleOptions = [];

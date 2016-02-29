@@ -56,8 +56,8 @@ define([], function () {
           }
         ],
 
-        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/country_masks/eth_country_mask/MapServer",
-        // maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer",
+        // maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/country_masks/eth_country_mask/MapServer",
+        maskMapUrl: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer",
 
         printURL: "http://gis.forest-atlas.org/arcgis/rest/services/GAB/GABExportWebMap/GPServer/Export%20Web%20Map",
 
@@ -69,8 +69,8 @@ define([], function () {
 
         useAdditionalLanguage: true,
 
-        webMapID: "fa499ab4cc9e4a308411b64c9ab2b749",
-        // webMapID: "10db57b5316749478d5287155760fd14",
+        // webMapID: "fa499ab4cc9e4a308411b64c9ab2b749",
+        webMapID: "10db57b5316749478d5287155760fd14",
 
         // NOW FOR THE LAYER SETTINGS
         // These are placeholders, they currently do nothing but they will soon control which layers/analysis types are visible
@@ -94,7 +94,7 @@ define([], function () {
         mangroveIncluded: false,
 
         // Restoration Options
-        restorationModule: true,
+        restorationModule: false,
 
         restorationImageServer: 'http://gis-gfw.wri.org/arcgis/rest/services/country_data/ETH_Restoration/ImageServer',
 

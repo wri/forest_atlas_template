@@ -50,7 +50,7 @@ define(['root/analysis/constants', 'dojo/number'], function (KEYS, number) {
           credits: { enabled: false },
           exporting: { enabled: false },
           xAxis: { categories: [name] },
-          yAxis: { title: { enabled: false } },
+          yAxis: { title: { enabled: false }, reversedStacks: false },
           plotOptions: { series: { stacking: 'normal' } },
           tooltip: { valueSuffix: ' (HA)' },
           // Array of objects [ { name: '', data: [oneValue] } ]
@@ -74,12 +74,12 @@ define(['root/analysis/constants', 'dojo/number'], function (KEYS, number) {
             useHTML: true,
             formatter: function () {
               var content = tooltips[this.point.index];
-              content += '<br>Slope: <b>' + number.format(this.y) + ' (Ha)</b>'
+              content += '<br>Slope: <strong>' + number.format(this.y) + ' (Ha)</strong>'
               return content;
             }
           },
           xAxis: { categories: labels, maxPadding: 0.5, useHTML: true },
-          yAxis: { title: { text: 'Hectares' } },
+          yAxis: { title: { text: 'Hectares' }},
           plotOptions: { bar: { colorByPoint: true, colors: colors } },
           legend: { enabled: false },
           // Array of objects [ { name: '', data: [oneValue] } ]

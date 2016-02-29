@@ -36,16 +36,16 @@ define(['root/analysis/constants'], function (KEYS) {
 
   config[KEYS.SLOPE] = {
     id: '$3',
-    name: 'Slope',
-    classes: slopeClasses,
-    colors: slopeColors
+    name: 'Slope'
+    // classes: slopeClasses,
+    // colors: slopeColors
   };
 
   config[KEYS.TREE_COVER] = {
     id: '$4',
-    name: '% Tree Cover',
-    classes: treeCoverClasses,
-    colors: treeCoverColors
+    name: '% Tree Cover'
+    // classes: treeCoverClasses,
+    // colors: treeCoverColors
   };
 
   config[KEYS.SLOPE_BREAKDOWN] = {

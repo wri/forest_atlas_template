@@ -72,7 +72,6 @@ define([
       var tcData;
 
       //- If the rasterId is for the slope analysis breakdown, call other analysis function
-      console.log(rasterId, slopeConfig.id);
       if (rasterId === slopeConfig.id) {
         var slopeSelectNode = document.querySelector('.analysis-selection-types .slope-select');
   			domClass.remove(slopeSelectNode, 'hidden');
@@ -93,15 +92,16 @@ define([
         domClass.add('analysis-loader', 'hidden');
         charts.prepareContainer(viewModel.restorationModuleChartTitlePrefix() + config.label);
 
-        // Get an array of data with the same length as the classes by parsing counts and padding the array with 0's
-        slopeData = padResults(getCounts(results[KEYS.SLOPE].histograms), slopeConfig.classes.length);
-        lcData = padResults(getCounts(results[KEYS.LAND_COVER].histograms), lcConfig.classes.length);
-        popData = padResults(getCounts(results[KEYS.POPULATION].histograms), popConfig.classes.length);
-        tcData = padResults(getCounts(results[KEYS.TREE_COVER].histograms), tcConfig.classes.length);
-        // Format the results into highcharts expected format { name, data, color }
         //- SLOPE and TREE COVER CONFIG comes from resources, which plugs in to app.config
         var slopeNames = app.config.slopeOptionNames.map(function (item) { return item.label });
         var treeCoverNames = app.config.treeCoverOptionNames.map(function (item) { return item.label });
+
+        // Get an array of data with the same length as the classes by parsing counts and padding the array with 0's
+        slopeData = padResults(getCounts(results[KEYS.SLOPE].histograms), slopeNames.length);
+        lcData = padResults(getCounts(results[KEYS.LAND_COVER].histograms), lcConfig.classes.length);
+        popData = padResults(getCounts(results[KEYS.POPULATION].histograms), popConfig.classes.length);
+        tcData = padResults(getCounts(results[KEYS.TREE_COVER].histograms), treeCoverNames.length);
+        // Format the results into highcharts expected format { name, data, color }
         slopeData = formatData(slopeData, slopeNames, app.config.slopeColors);
         lcData = formatData(lcData, lcConfig.classes, lcConfig.colors);
         popData = formatData(popData, popConfig.classes, popConfig.colors);
