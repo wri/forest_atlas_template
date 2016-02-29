@@ -88,8 +88,8 @@ define(
                         o._vm.restorationModule = ko.observable(app.config.restorationModule);
                         o._vm.restorationModuleOptions = ko.observableArray(app.config.restorationModuleOptions);
                         //- First configured value is NO DATA, we dont want this available in the UI
-                        o._vm.slopeAmountOptions = ko.observableArray(app.config.slopeOptionNames.slice(1));
-                        o._vm.slopeActiveOption = ko.observable(app.config.slopeOptionNames[1]);
+                        o._vm.slopeAmountOptions = ko.observableArray(app.config.slopeOptionNames ? app.config.slopeOptionNames.slice(1) : []);
+                        o._vm.slopeActiveOption = ko.observable(app.config.slopeOptionNames ? app.config.slopeOptionNames[1] : undefined);
 
 
                         // Items for Year Dropdown for forest cover loss layer

@@ -133,6 +133,9 @@ define([
 
 						commonConfig.slopeColors.concat(values.slopeColors.split(';'));
 
+					} else {
+						commonConfig.slopeOptionNames = Resources.slopeOptionNames;
+						commonConfig.slopeColors = Resources.slopeColors;
 					}
 
 					if (values.treeCoverNames && values.treeCoverColors) {
@@ -155,6 +158,9 @@ define([
 
 						commonConfig.treeCoverColors.concat(values.treeCoverColors.split(';'));
 
+					} else {
+						commonConfig.treeCoverOptionNames = Resources.treeCoverOptionNames;
+						commonConfig.treeCoverColors = Resources.treeCoverColors;
 					}
 
 					// Create an easy to read array for the app from the configured values
