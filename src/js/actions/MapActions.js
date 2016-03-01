@@ -1,5 +1,6 @@
 import dispatcher from 'js/dispatcher';
 import layerFactory from 'helpers/LayerFactory';
+import legendHelper from 'helpers/LegendHelper';
 
 class MapActions {
   //- Action to notify the store the map has changed so we can rerender UI changes
@@ -59,6 +60,22 @@ class MapActions {
     });
     //- Return the layers through the dispatcher so the mapstore can update visible layers
     return layers;
+  }
+
+  changeBasemap (map, basemap) {
+    basemap = basemap.toLowerCase();
+    map.setBasemap(basemap.toLowerCase())
+    return map;
+  }
+
+  toggleLandsat () {
+    // Turn the layer off or on.
+  }
+
+  createLegend(map, layers) {
+    legendHelper({
+      map: map
+    }, 'legend')
   }
 
 }

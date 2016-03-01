@@ -55,7 +55,28 @@ export default class Map extends Component {
   createMap = (settings) => {
     const {language} = this.context;
     arcgisUtils.createMap(settings.webmap, this.refs.map, { mapOptions: mapConfig.options }).then(response => {
+      // Add operational layers from the webmap to the array of layers from the config file.
+      let {itemData} = response.itemInfo;
+      itemData.operationalLayers.forEach((ol) => {
+        // TODO:  filter out layers specific to selected language.
+        settings.layers[language].push({
+          id: ol.id,
+          group: settings.webmapMenuName,
+          label: ol.title,
+          opacity: ol.opacity,
+          visible: ol.visibility,
+          esriLayer: ol.layerObject
+        });
+      });
       this.map = response.map;
+      // Remove any basemap or reference layers so they don't interfere with the
+      // basemap switcher in the layer panel works.
+      let basemap = itemData && itemData.baseMap;
+      if (basemap.baseMapLayers.length) {
+        basemap.baseMapLayers.forEach(bm => this.map.removeLayer(bm.layerObject));
+        // TODO:  figure out how to go from webmap basemap to string expected by setBasemap().
+        this.map.setBasemap('topo');
+      }
       this.map.graphics.clear();
       mapActions.mapUpdated();
       this.map.infoWindow.set('popupWindow', false);
@@ -78,6 +99,7 @@ export default class Map extends Component {
       * It could create layer config from the webmap layers and push it into settings.layers
       */
       mapActions.createLayers(this.map, settings.layers[language]);
+      mapActions.createLegend(this.map, settings.layers[language]);
     });
   };
 

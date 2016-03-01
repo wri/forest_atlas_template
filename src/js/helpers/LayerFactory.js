@@ -17,7 +17,10 @@ import {errors} from 'js/config';
 *   - FeatureLayer
 */
 export default (layer) => {
+  if (layer.hasOwnProperty('esriLayer')) { return layer.esriLayer; }
+
   if ((!layer.url && layer.type !== 'graphic') || !layer.type) { throw new Error(errors.missingLayerConfig); }
+
 
   let esriLayer, options = {};
 
