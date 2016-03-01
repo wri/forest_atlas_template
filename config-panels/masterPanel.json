@@ -105,13 +105,60 @@
       "tooltip": "Same subtitle you configured earlier but in your alternative language",
       "label": "Subtitle for your application in the alternative language",
       "placeholder": "e.g. Ministry of ..."
+    }, {
+      "type": "string",
+      "fieldName": "alternativeMapThemes",
+      "label": "Enter a semi-colon separated list of names for the app ID's(Map Themes) in the alternative language.",
+      "tooltip": "Same Map Themes configured above but in your alternative language.",
+      "placeholder": "Forest Atlas of Cameroon;Forest Atlas of Equatorial Guinea"
     }]
   }, {
     "category": "Document Settings",
-    "fields": [{}]
+    "fields": [{
+      "type": "boolean",
+      "fieldName": "includeDocumentsTab",
+      "tooltip": "This adds a documents tab to the main tab panel in the app",
+      "label": "Would you like include an the documents tab"
+    }, {
+      "type": "string",
+      "fieldName": "documentsDirectory",
+      "tooltip": "The url to the root directory to where the documents are stored",
+      "label": "Enter the url to the directory where documents are stored",
+      "placeholder": "https://wri-public-data.s3.amazonaws.com/forest_atlas/cmr/doc_pdf/"
+    }, {
+      "type": "string",
+      "fieldName": "documentsMapserver",
+      "tooltip": "This service will use the filename + the directory from above to link the documents",
+      "label": "Enter the url to the Map Service that contains filenames relative to the document directory(above)",
+      "placeholder": "http://54.88.79.102/arcgis/rest/services/CMR/documents_administratifs/MapServer"
+    }]
   }, {
     "category": "Layers/Analysis Settings",
-    "fields": [{}]
+    "fields": [{
+      "type": "boolean",
+      "fieldName": "activeFires",
+      "tooltip": "This will include/exclude this layer from the report, analysis, and layer list",
+      "label": "Include Active Fires in your application",
+      "value": true
+    }, {
+      "type": "boolean",
+      "fieldName": "intactForests",
+      "tooltip": "This will include/exclude this layer from the report, analysis, and layer list",
+      "label": "Include Intact Forests in your application",
+      "value": true
+    }, {
+      "type": "boolean",
+      "fieldName": "aboveGroundBiomass",
+      "tooltip": "This will include/exclude this layer from the report, analysis, and layer list",
+      "label": "Include Above Ground Biomass in your application",
+      "value": true
+    }, {
+      "type": "boolean",
+      "fieldName": "landCover",
+      "tooltip": "This will include/exclude this layer from the report, analysis, and layer list",
+      "label": "Include Land Cover in your application",
+      "value": true
+    }]
   }, {
     "category": "Restoration Module Settings",
     "fields": [{}]
@@ -134,6 +181,16 @@
     "useAlternativeLanguage": "true",
     "alternativeLanguage": "fr",
     "alternativeLanguageTitle": "Forest Atlas",
-    "alternativeLanguageSubtitle": "Application subtitle"
+    "alternativeLanguageSubtitle": "Application subtitle",
+    "alternativeMapThemes": "Forest Atlas of Cameroon;Forest Atlas of Equatorial Guinea",
+
+    "includeDocumentsTab": false,
+    "documentsDirectory": "https://wri-public-data.s3.amazonaws.com/forest_atlas/cmr/doc_pdf/",
+    "documentsMapserver": "http://54.88.79.102/arcgis/rest/services/CMR/documents_administratifs/MapServer",
+
+    "activeFires": true,
+    "intactForests": true,
+    "aboveGroundBiomass": true,
+    "landCover": true
   }
 }
