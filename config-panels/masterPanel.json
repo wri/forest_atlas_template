@@ -1,0 +1,139 @@
+{
+  "configurationSettings": [{
+    "category": "General Settings",
+    "fields": [{
+      "type": "webmap"
+    }, {
+      "type": "string",
+      "fieldName": "title",
+      "label": "Title for your application",
+      "tooltip": "Please enter the title in your primary language",
+      "placeholder": "e.g. Forest Atlas of ..."
+    }, {
+      "type": "string",
+      "fieldName": "subtitle",
+      "label": "Subtitle for your application",
+      "tooltip": "Please enter the subtitle in your primary language",
+      "placeholder": "e.g. Ministry of ..."
+    }, {
+      "type": "string",
+      "fieldName": "logoUrl",
+      "label": "Enter the url to your application logo",
+      "tooltip": "Make sure this is a publicly available url",
+      "placeholder": "https://www.company.com/logo.png"
+    }, {
+      "type": "string",
+      "fieldName": "logoLinkUrl",
+      "label": "Enter the url you would like to direct users to when they click your logo",
+      "tooltip": "Make sure this is a publicly available url and is the full url",
+      "placeholder": "https://www.company.com/"
+    }, {
+      "type": "string",
+      "fieldName": "aboutLinkUrl",
+      "label": "Enter the url you would like to direct users to when they click About",
+      "tooltip": "Make sure this is a publicly available url and is the full url",
+      "placeholder": "https://www.company.com/"
+    }, {
+      "type": "string",
+      "fieldName": "downloadLinkUrl",
+      "label": "Enter the url you would like to direct users to when they click Download",
+      "tooltip": "Make sure this is a publicly available url and is the full url",
+      "placeholder": "http://data.globalforestwatch.org/"
+    }, {
+      "type": "string",
+      "fieldName": "printServiceUrl",
+      "label": "Enter a url to a valid Esri print service.",
+      "tooltip": "",
+      "placeholder": "http://gis-forest-atlas.wri.org/arcgis/rest/services/CMR/CMRExportWebMap/GPServer/Export%20Web%20Map"
+    }, {
+      "type": "string",
+      "fieldName": "maskServiceUrl",
+      "label": "Enter a url to a map service to be used as a mask layer",
+      "tooltip": "This should cover all areas other then the area of interest",
+      "placeholder": "http://gis-forest-atlas.wri.org/arcgis/rest/services/CMR/CMR_00_Africa/MapServer"
+    }, {
+      "type": "string",
+      "fieldName": "mapThemeIds",
+      "label": "Enter a semi-colon separated list of web app ID's(Map Themes) for other Forest Atlas applications.",
+      "tooltip": "These will be linked to from within your application under the Map Themes header.",
+      "placeholder": "1c38ba1095fe49e3ba234bf9105c1077;c76d788b7487476bae4d09a4e933be19"
+    }, {
+      "type": "string",
+      "fieldName": "mapThemes",
+      "label": "Enter a semi-colon separated list of names for the app ID's configured above(Map Themes).",
+      "tooltip": "These will be visible when you hover over map themes and take you to the app added above.",
+      "placeholder": "Forest Atlas of Cameroon;Forest Atlas of Equatorial Guinea"
+    }]
+  }, {
+    "category": "Language Settings",
+    "fields": [{
+      "type": "options",
+      "fieldName": "language",
+      "tooltip": "Should be the language of the title/subtitle provided",
+      "label": "Choose a default language:",
+      "value": "en",
+      "options": [
+        { "value": "en", "label": "English" },
+        { "value": "fr", "label": "French" },
+        { "value": "es", "label": "Spanish" }
+      ]
+    }, {
+      "type": "boolean",
+      "fieldName": "useAlternativeLanguage",
+      "tooltip": "This will allow the application to toggle to an alternative language",
+      "label": "Would you like include an additional language"
+    }, {
+      "type": "options",
+      "fieldName": "alternativeLanguage",
+      "tooltip": "The alternative language to use in your application",
+      "label": "Choose a second language:",
+      "value": "fr",
+      "options": [
+        { "value": "fr", "label": "French" },
+        { "value": "en", "label": "English" },
+        { "value": "es", "label": "Spanish" }
+      ]
+    }, {
+      "type": "string",
+      "fieldName": "alternativeLanguageTitle",
+      "tooltip": "Same title you configured earlier but in your alternative language",
+      "label": "Title for your application in the alternative language",
+      "placeholder": "e.g. Forest Atlas of ..."
+    }, {
+      "type": "string",
+      "fieldName": "alternativeLanguageSubtitle",
+      "tooltip": "Same subtitle you configured earlier but in your alternative language",
+      "label": "Subtitle for your application in the alternative language",
+      "placeholder": "e.g. Ministry of ..."
+    }]
+  }, {
+    "category": "Document Settings",
+    "fields": [{}]
+  }, {
+    "category": "Layers/Analysis Settings",
+    "fields": [{}]
+  }, {
+    "category": "Restoration Module Settings",
+    "fields": [{}]
+  }],
+
+  "values": {
+    "webmap": "e148ac47cd374d9da4d208aacfe690cf",
+    "title": "Forest Atlas",
+    "subtitle": "Application subtitle",
+    "logoUrl": "",
+    "logoLinkUrl": "",
+    "aboutLinkUrl": "http://www.wri.org/our-work/project/",
+    "downloadLinkUrl": "http://data.globalforestwatch.org/",
+    "printServiceUrl": "http://gis-forest-atlas.wri.org/arcgis/rest/services/CMR/CMRExportWebMap/GPServer/Export%20Web%20Map",
+    "maskServiceUrl": "http://gis-forest-atlas.wri.org/arcgis/rest/services/CMR/CMR_00_Africa/MapServer",
+    "mapThemeIds": "1c38ba1095fe49e3ba234bf9105c1077;c76d788b7487476bae4d09a4e933be19",
+    "mapThemes": "Forest Atlas of Cameroon;Forest Atlas of Equatorial Guinea",
+
+    "language": "en",
+    "useAlternativeLanguage": "true",
+    "alternativeLanguage": "fr",
+    "alternativeLanguageTitle": "Forest Atlas",
+    "alternativeLanguageSubtitle": "Application subtitle"
+  }
+}
