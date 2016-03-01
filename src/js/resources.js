@@ -23,7 +23,7 @@ export default {
   alternativeLanguageSubtitle: 'Application subtitle',
   alternativeMapThemes: 'Forest Atlas of Cameroon;Forest Atlas of Equatorial Guinea',
   //- Documents Settings
-  includeDocumentsTab: true,
+  includeDocumentsTab: false,
   documentsDirectory: 'https://wri-public-data.s3.amazonaws.com/forest_atlas/cmr/doc_pdf/',
   documentsMapserver: 'http://54.88.79.102/arcgis/rest/services/CMR/documents_administratifs/MapServer',
   //- Layers/Analysis Settings
