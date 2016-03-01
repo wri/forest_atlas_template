@@ -386,6 +386,6 @@ export default {
         '2014'
       ]
     }]
-  }
-
+  },
+  webmapMenuName: 'Land Use'
 };
