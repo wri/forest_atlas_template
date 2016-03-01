@@ -61,6 +61,16 @@ class MapActions {
     return layers;
   }
 
+  changeBasemap (map, basemap) {
+    basemap = basemap.toLowerCase();
+    map.setBasemap(basemap.toLowerCase())
+    return map;
+  }
+
+  toggleLandsat () {
+    // Turn the layer off or on.
+  }
+
 }
 
 export default dispatcher.createActions(MapActions);

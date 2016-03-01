@@ -364,25 +364,27 @@ export default {
   },
   basemaps: {
     en: [{
-      id: 'TERRAIN',
-      group: 'basemap',
-      label: 'Terrain',
-      url: ''
-    }, {
-      id: 'SATELLITE',
-      group: 'basemap',
-      label: 'Satellite',
-      url: ''
-    }, {
-      id: 'ROADS',
-      group: 'basemap',
-      label: 'Roads',
-      url: ''
-    }, {
-      id: 'LANDSAT',
-      group: 'basemap',
-      label: 'Landsat',
-      url: ''
+      title: 'Landsat',
+      thumbnailUrl: 'http://www.globalforestwatch.org/assets/basemaps-s84b6feb159-b5c7519937c9732128e8b42b5865e7c2.png',
+      templateUrl: 'http://api.globalforestwatch.org//gee/landsat_composites/${z}/${x}/${y}.png',
+      years: [
+        '1999',
+        '2000',
+        '2001',
+        '2002',
+        '2003',
+        '2004',
+        '2005',
+        '2006',
+        '2007',
+        '2008',
+        '2009',
+        '2010',
+        '2011',
+        '2012',
+        '2013',
+        '2014'
+      ]
     }]
   }
 

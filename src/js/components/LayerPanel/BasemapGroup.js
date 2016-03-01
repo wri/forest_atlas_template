@@ -1,13 +1,18 @@
-import React from 'react';
+import React, {
+  Component,
+  PropTypes
+} from 'react';
 
 let closeSymbolCode = 9660,
     openSymbolCode = 9650;
 
-export default class BasemapGroup extends React.Component {
+export default class BasemapGroup extends Component {
 
   constructor (props) {
     super(props);
-    this.state = { open: false };
+    this.state = {
+      open: false
+    };
   }
 
   render() {
@@ -30,5 +35,5 @@ export default class BasemapGroup extends React.Component {
 }
 
 BasemapGroup.propTypes = {
-  label: React.PropTypes.string.isRequired
+  label: PropTypes.string.isRequired
 };

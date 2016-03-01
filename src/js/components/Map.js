@@ -56,6 +56,14 @@ export default class Map extends Component {
     const {language} = this.context;
     arcgisUtils.createMap(settings.webmap, this.refs.map, { mapOptions: mapConfig.options }).then(response => {
       this.map = response.map;
+      // Remove any basemap or reference layers so they don't interfere with the
+      // basemap switcher in the layer panel works.
+      let basemap = this.map.layerIds.filter(lyr => lyr.toLowerCase().indexOf('basemap') > -1 );
+      let reference = this.map.layerIds.filter(lyr => lyr.toLowerCase().indexOf('reference') > -1 );
+      basemap = basemap.concat(reference);
+      if ( basemap ) {
+        basemap.forEach(id => this.map.removeLayer(this.map.getLayer(id)));
+      }
       this.map.graphics.clear();
       mapActions.mapUpdated();
       this.map.infoWindow.set('popupWindow', false);

@@ -8,13 +8,19 @@ import FiresControls from 'components/LayerPanel/FiresControls';
 import LossControls from 'components/LayerPanel/LossControls';
 import LayerGroup from 'components/LayerPanel/LayerGroup';
 import BasemapGroup from 'components/LayerPanel/BasemapGroup';
+import LandsatLayer from 'components/LayerPanel/LandsatLayer';
 import BasemapLayer from 'components/LayerPanel/BasemapLayer';
+import basemaps from 'esri/basemaps';
+import resources from 'resources';
 // import DamsLegend from 'components/LayerPanel/DamsLegend';
 import mapStore from 'stores/MapStore';
 // import layersHelper from 'js/helpers/LayersHelper';
-import React, { PropTypes } from 'react';
+import React, {
+  Component,
+  PropTypes
+} from 'react';
 
-export default class LayerPanel extends React.Component {
+export default class LayerPanel extends Component {
 
   static contextTypes = {
     language: PropTypes.string.isRequired,
@@ -39,12 +45,17 @@ export default class LayerPanel extends React.Component {
     );
   };
 
-  renderBasemapGroup = (basemaps) => {
-    const basemapLayers = basemaps.map((bm) => {
+  renderBasemapGroup = () => {
+    let basemapNames = Object.keys(basemaps);
+    const basemapLayers = basemapNames.map((bm) => {
       return (
-        <BasemapLayer icon={bm.icon} label={bm.label} />
+        <BasemapLayer icon={basemaps[bm].thumbnailUrl} label={basemaps[bm].title} basemap={bm} />
       )
     })
+    let landsat = resources.basemaps[this.context.language][0];
+    basemapLayers.unshift(
+      <LandsatLayer icon={landsat.thumbnailUrl} label={landsat.title} years={landsat.years} />
+    )
     return (
       <BasemapGroup label='Basemap'>
         {basemapLayers}
