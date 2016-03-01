@@ -25,15 +25,15 @@ export default class AnalysisTypeSelect extends Component {
         case analysisKeys.SLOPE:
           return settings.restorationModule;
         case analysisKeys.INTACT_LOSS:
-          return settings.iflIncluded;
+          return settings.intactForests;
         case analysisKeys.BIO_LOSS:
-          return settings.biomassIncluded;
+          return settings.aboveGroundBiomass;
         case analysisKeys.LC_LOSS:
-          return settings.landCoverIncluded;
+          return settings.landCover;
         case analysisKeys.LCC:
-          return settings.landCoverIncluded;
+          return settings.landCover;
         case analysisKeys.FIRES:
-          return settings.activeFiresIncluded;
+          return settings.activeFires;
         default:
           return true;
       }

@@ -5,6 +5,18 @@ import lang from 'dojo/_base/lang';
 import resources from 'resources';
 import {urls} from 'js/config';
 
+const SEPARATOR = ';';
+
+/**
+* Takes a string and parse it into an array based on separator, e.g hey;you; => ['hey', 'you', '']
+* This will remove any blanks from the array as well, e.g. ['hey', 'you', ''] => ['hey', 'you']
+*/
+const parseIntoArray = (resourceString) => {
+  return resourceString.split(SEPARATOR).filter((value) => {
+    return value !== undefined && value !== '';
+  });
+};
+
 export default {
 
   /**
@@ -37,36 +49,36 @@ export default {
 
         //- LANGUAGE SETTINGS START
         resources.labels = {};
-        resources.labels[resources.defaultLanguage] = {
-          title: resources.defaultTitle,
-          subtitle: resources.subtitle,
-          flagTitle: resources.flagTitle
+        resources.labels[resources.language] = {
+          title: resources.title,
+          subtitle: resources.subtitle
+          // flagTitle: resources.flagTitle
         };
         //- parse map themes for default laguage if present
-        let names = resources.mapThemes ? resources.mapThemes.split(',') : [];
-        let appids = resources.mapThemeIds ? resources.mapThemeIds.split(',') : [];
+        let names = resources.mapThemes ? parseIntoArray(resources.mapThemes) : [];
+        let appids = resources.mapThemeIds ? parseIntoArray(resources.mapThemeIds) : [];
         if (names.length === appids.length && names.length > 0) {
-          resources.labels[resources.defaultLanguage].themes = [];
+          resources.labels[resources.language].themes = [];
           names.forEach((name, i) => {
-            resources.labels[resources.defaultLanguage].themes.push({
+            resources.labels[resources.language].themes.push({
               label: name.trim(),
               url: `${urls.liveSite}?appid=${appids[i].trim()}`
             });
           });
         }
         //- Add content for second language if configured
-        if (resources.useAdditionalLanguage) {
-          resources.labels[resources.secondLanguage] = {
-            title: resources.secondLanguageTitle,
-            subtitle: resources.alternativeLanguageSubtitle,
-            flagTitle: resources.secondLanguageFlagTitle
+        if (resources.useAlternativeLanguage) {
+          resources.labels[resources.alternativeLanguage] = {
+            title: resources.alternativeLanguageTitle,
+            subtitle: resources.alternativeLanguageSubtitle
+            // flagTitle: resources.secondLanguageFlagTitle
           };
           //- parse map themes for second laguage if present
-          let secondNames = resources.mapThemesAlternate ? resources.mapThemesAlternate.split(',') : [];
+          let secondNames = resources.alternativeMapThemes ? parseIntoArray(resources.alternativeMapThemes) : [];
           if (secondNames.length === appids.length && names.length > 0) {
-            resources.labels[resources.secondLanguage].themes = [];
+            resources.labels[resources.alternativeLanguage].themes = [];
             secondNames.forEach((name, i) => {
-              resources.labels[resources.secondLanguage].themes.push({
+              resources.labels[resources.alternativeLanguage].themes.push({
                 label: name.trim(),
                 url: `${urls.liveSite}?appid=${appids[i].trim()}`
               });

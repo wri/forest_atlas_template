@@ -21,7 +21,7 @@ const createPrintWidget = function createPrintWidget (settings, map, node) {
   //- Add in any layouts passed in from arcgis online
   if (settings.country) {
     layouts.push({
-      name: `${settings.country}_Landscape`,
+      name: `${settings.country || 'CMR'}_Landscape`,
       label: 'Landscape (pdf)',
       format: 'pdf',
       options: options
@@ -38,7 +38,7 @@ const createPrintWidget = function createPrintWidget (settings, map, node) {
   });
 
   print = new PrintDijit({
-    url: settings.printURL,
+    url: settings.printServiceUrl,
     templates: templates,
     map: map
   }, node);

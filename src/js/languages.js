@@ -58,7 +58,7 @@ strings.en[keys.ANALYSIS_RESTORATION_LC_LABELS] = [
 ];
 //- Group and value should not be modified, Group labels are configured below
 strings.en[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
-  { label: 'Potential according to slope',
+  { label: 'Slope',
     value: analysisKeys.SLOPE,
     group: keys.ANALYSIS_GROUP_SLOPE
   },
@@ -92,7 +92,7 @@ strings.en[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
   }
 ];
 strings.en[keys.ANALYSIS_GROUP_RESTORATION] = 'Restoration potential for';
-strings.en[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to slope';
+strings.en[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to';
 strings.en[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
 
 //- Miscellaneous
@@ -156,7 +156,7 @@ strings.fr[keys.ANALYSIS_RESTORATION_LC_LABELS] = [
 ];
 //- Group and value should not be modified, Group labels are configured below
 strings.fr[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
-  { label: 'Potential according to slope',
+  { label: 'Slope',
     value: analysisKeys.SLOPE,
     group: keys.ANALYSIS_GROUP_SLOPE
   },
@@ -190,7 +190,7 @@ strings.fr[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
   }
 ];
 strings.fr[keys.ANALYSIS_GROUP_RESTORATION] = 'Restoration potential for';
-strings.fr[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to slope';
+strings.fr[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to';
 strings.fr[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
 
 //- Miscellaneous
@@ -254,7 +254,7 @@ strings.es[keys.ANALYSIS_RESTORATION_LC_LABELS] = [
 ];
 //- Group and value should not be modified, Group labels are configured below
 strings.es[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
-  { label: 'Potential according to slope',
+  { label: 'Slope',
     value: analysisKeys.SLOPE,
     group: keys.ANALYSIS_GROUP_SLOPE
   },
@@ -288,7 +288,7 @@ strings.es[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
   }
 ];
 strings.es[keys.ANALYSIS_GROUP_RESTORATION] = 'Restoration potential for';
-strings.es[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to slope';
+strings.es[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to';
 strings.es[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
 
 //- Miscellaneous
@@ -352,7 +352,7 @@ strings.pt[keys.ANALYSIS_RESTORATION_LC_LABELS] = [
 
 //- Group and value should not be modified, Group labels are configured below
 strings.pt[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
-  { label: 'Potential according to slope',
+  { label: 'Slope',
     value: analysisKeys.SLOPE,
     group: keys.ANALYSIS_GROUP_SLOPE
   },
@@ -386,7 +386,7 @@ strings.pt[keys.ANALYSIS_SELECT_TYPE_OPTIONS] = [
   }
 ];
 strings.pt[keys.ANALYSIS_GROUP_RESTORATION] = 'Restoration potential for';
-strings.pt[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to slope';
+strings.pt[keys.ANALYSIS_GROUP_SLOPE] = 'Potential according to';
 strings.pt[keys.ANALYSIS_GROUP_OTHER] = 'Other analysis';
 
 //- Miscellaneous

@@ -41,6 +41,7 @@ const getApplicationInfo = function getApplicationInfo (params) {
   if (webmap) {
     getWebmapInfo(webmap).then((results) => {
       promise.resolve({ webmap: results });
+      if (brApp.debug) { console.log('getApplicationInfo.webmap: ', results); }
     });
   } else {
     promise.reject({
@@ -72,6 +73,7 @@ const getFeature = function getFeature (params) {
       } else {
         promise.reject({ error: new Error('Unable to query for feature. Check the configuration.') });
       }
+      if (brApp.debug) { console.log('getFeature: ', results); }
     });
   } else if (localFeature) {
     promise.resolve({
@@ -148,18 +150,18 @@ const setupMap = function setupMap (params, feature) {
 
 };
 
-const addTitleAndAttributes = function addTitleAndAttributes (params, feature, webmap) {
+const addTitleAndAttributes = function addTitleAndAttributes (params, featureInfo, webmap) {
   const { layerName, layerid } = params;
   const { operationalLayers } = webmap;
   //- Generate the attributes listing and set page title
-  if (feature.isCustom) {
-    document.getElementById('feature-title').innerHTML = feature.title;
+  if (featureInfo.isCustom) {
+    document.getElementById('feature-title').innerHTML = featureInfo.title;
   } else {
     const operationalLayer = operationalLayers.filter((layer) => layerName.search(layer.id) > -1)[0];
     //- layerid is a string but layer.id is a number, convert layerid to int
     const activeLayer = operationalLayer.layers.filter((layer) => layer.id === +layerid)[0];
     if (activeLayer) {
-      const title = activeLayer.popupInfo.title.replace(/{.*}/, feature.title);
+      const title = activeLayer.popupInfo.title.replace(/{.*}/, featureInfo.title || 'N/A');
       //- generate rows for each field that is visible in popup for the configured layer
       const fragment = document.createDocumentFragment();
       activeLayer.popupInfo.fieldInfos.filter((fieldInfo) => {
@@ -167,9 +169,10 @@ const addTitleAndAttributes = function addTitleAndAttributes (params, feature, w
       }).forEach((fieldInfo) => {
         fragment.appendChild(generateRow(
           fieldInfo.label,
-          feature.attributes[fieldInfo.fieldName]
+          featureInfo.attributes[fieldInfo.fieldName]
         ));
       });
+      if (brApp.debug) { console.log('Popup info: ', activeLayer.popupInfo); }
       //- Add title to the page
       document.getElementById('feature-title').innerHTML = title;
       //- Add the rows to the DOM

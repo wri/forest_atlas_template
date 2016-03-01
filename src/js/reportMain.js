@@ -8,6 +8,10 @@ import 'babel-polyfill';
 
 if (!_babelPolyfill) { console.log('Missing Babel Polyfill.  May experience some weirdness in IE < 9.'); }
 
+window.brApp = {
+  debug: location.search.slice(1).search('debug=true') > -1
+};
+
 let configureApp = () => {
   corsServers.forEach((server) => { esriConfig.defaults.io.corsEnabledServers.push(server); });
 };

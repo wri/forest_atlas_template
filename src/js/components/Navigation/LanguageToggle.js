@@ -55,8 +55,8 @@ export default class LanguageToggle extends Component {
     } = this.context;
 
     let languageButtons = [];
-    for (let iso in settings.labels) {
-      languageButtons.push(this.createListButton(language, iso));
+    for (let lang in settings.labels) {
+      languageButtons.push(this.createListButton(language, lang));
     }
 
     return (

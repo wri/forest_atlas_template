@@ -107,7 +107,7 @@ const utils = {
       window.open(`report.html?${path}`);
 
     } else { //- custom
-
+      console.log(selectedFeature);
     }
 
   }

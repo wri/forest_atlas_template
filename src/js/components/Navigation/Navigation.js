@@ -32,7 +32,7 @@ export default class Navigation extends Component {
       settings
     } = this.context;
 
-    const LanguageComponent = settings.useAdditionalLanguage ? <LanguageToggle /> : undefined;
+    const LanguageComponent = settings.useAlternativeLanguage ? <LanguageToggle /> : undefined;
     const ThemeComponent = this.renderMapThemes(language, settings);
 
     return (

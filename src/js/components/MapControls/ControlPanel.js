@@ -69,7 +69,7 @@ export default class ControlPanel extends Component {
           <li className='control-panel__share-map pointer' title='Share' onClick={this.share}>
             <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: shareSvg }}/>
           </li>
-          <li className='control-panel__print pointer' title='Home' onClick={this.showPrintTools}>
+          <li className='control-panel__print pointer' title='Print' onClick={this.showPrintTools}>
             <svg className='svg-icon' dangerouslySetInnerHTML={{ __html: printSvg }}/>
           </li>
           <li className='control-panel__draw-upload pointer' title='Analysis' onClick={this.showAnalysisTools}>
