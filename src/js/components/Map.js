@@ -99,6 +99,7 @@ export default class Map extends Component {
       * It could create layer config from the webmap layers and push it into settings.layers
       */
       mapActions.createLayers(this.map, settings.layers[language]);
+      mapActions.createLegend(this.map, settings.layers[language]);
     });
   };
 
