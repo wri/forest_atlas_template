@@ -86,6 +86,13 @@
       "category": "Layer and Analysis Settings",
       "fields": [
         {
+            "type": "string",
+            "fieldName": "maskMapUrl",
+            "label": "URL to the Mask Layer:",
+            "tooltip": "This is a url for a mask layer to hide the other countries but show the country of interest.",
+            "placeholder": "Ex. http://gis-forest-atlas.wri.org/arcgis/rest/services/GAB/GAB_00_africa/MapServer"
+        },
+        {
           "type": "paragraph",
           "value": "Choose the following layers/analysis you would like to be included in your application:"
         },
