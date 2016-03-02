@@ -23,7 +23,10 @@ export default class TabButtons extends Component {
 
   changeTab = (evt) => {
     const {currentTarget} = evt;
-    const id = currentTarget.getAttribute('data-value');
+    const {activeTab} = this.props;
+    let id = currentTarget.getAttribute('data-value');
+    //- If they clicked the already active tab, set activeTab to '' which will hide the contents
+    if (id === activeTab) { id = ''; }
     mapActions.changeActiveTab(id);
   };
 

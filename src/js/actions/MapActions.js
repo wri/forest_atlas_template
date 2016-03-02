@@ -35,6 +35,12 @@ class MapActions {
     };
   }
 
+  toggleSearchModal (data) {
+    return {
+      visible: data.visible
+    };
+  }
+
   // setSelectedFeature (evt) {
   //   let {target} = evt;
   //   return {

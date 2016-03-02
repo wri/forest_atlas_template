@@ -2,6 +2,7 @@ import AnalysisModal from 'components/Modals/AnalysisModal';
 import Controls from 'components/MapControls/ControlPanel';
 import Legend from 'components/LegendPanel/LegendPanel';
 import TabButtons from 'components/TabPanel/TabButtons';
+import SearchModal from 'components/Modals/SearchModal';
 import PrintModal from 'components/Modals/PrintModal';
 import {applyStateFromUrl} from 'utils/shareUtils';
 import TabView from 'components/TabPanel/TabView';
@@ -22,11 +23,13 @@ export default class Map extends Component {
   };
 
   static childContextTypes = {
+    webmapInfo: PropTypes.object,
     map: PropTypes.object
   };
 
   getChildContext = () => {
     return {
+      webmapInfo: this.webmapInfo,
       map: this.map
     };
   };
@@ -34,6 +37,7 @@ export default class Map extends Component {
   constructor (props) {
     super(props);
     this.map = {};
+    this.webmapInfo = {};
     this.state = MapStore.getState();
   }
 
@@ -55,6 +59,7 @@ export default class Map extends Component {
   createMap = (settings) => {
     const {language} = this.context;
     arcgisUtils.createMap(settings.webmap, this.refs.map, { mapOptions: mapConfig.options }).then(response => {
+      this.webmapInfo = response.itemInfo.itemData;
       // Add operational layers from the webmap to the array of layers from the config file.
       let {itemData} = response.itemInfo;
       itemData.operationalLayers.forEach((ol) => {
@@ -104,7 +109,7 @@ export default class Map extends Component {
   };
 
   render () {
-    const {activeTab, printModalVisible, analysisModalVisible} = this.state;
+    const {activeTab, printModalVisible, analysisModalVisible, searchModalVisible} = this.state;
 
     return (
       <div className='map-container'>
@@ -119,6 +124,9 @@ export default class Map extends Component {
         </div>
         <div className={`print-modal-container modal-wrapper ${printModalVisible ? '' : 'hidden'}`}>
           <PrintModal />
+        </div>
+        <div className={`search-modal-container modal-wrapper ${searchModalVisible ? '' : 'hidden'}`}>
+          <SearchModal />
         </div>
       </div>
     );

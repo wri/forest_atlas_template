@@ -150,6 +150,16 @@ const setupMap = function setupMap (params, feature) {
 
 };
 
+const addHeaderContent = function addHeaderContent (params) {
+  const {title, subtitle, logoUrl, logoLinkUrl} = params;
+
+  document.getElementById('report-title').innerHTML = title;
+  document.getElementById('report-subtitle').innerHTML = subtitle;
+  //- TODO: This should be modified, logoUrl should come from querying the appid instead of the url since that is safer
+  document.getElementById('logo').setAttribute('src', logoUrl);
+  document.getElementById('logo-anchor').setAttribute('href', logoLinkUrl);
+};
+
 const addTitleAndAttributes = function addTitleAndAttributes (params, featureInfo, webmap) {
   const { layerName, layerid } = params;
   const { operationalLayers } = webmap;
@@ -314,7 +324,7 @@ export default {
   * Example call from the app
   appUtils.generateReport({
     selectedFeature: selectedFeature,
-    webmap: settings.webmap,
+    settings: settings,
     canopyDensity: 30,
     lang: language
   });
@@ -323,6 +333,8 @@ export default {
   run () {
     //- Get params necessary for the report
     const params = getUrlParams(location.href);
+    //- Add Title, Subtitle, and logo right away
+    addHeaderContent(params);
     //- Create the map as soon as possible
     createMap(params);
     //- Get all the necessary info

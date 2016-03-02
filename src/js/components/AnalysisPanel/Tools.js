@@ -129,9 +129,9 @@ export default class Tools extends Component {
 
     return (
       <div className='analysis-instructions__draw'>
-        <h3 className='analysis-instructions__header'>
+        <h4 className='analysis-instructions__header--draw'>
           {text[language][keys.ANALYSIS_DRAW_INSTRUCTIONS]}
-        </h3>
+        </h4>
         <div className='analysis-instructions__draw-icon-container'>
           <svg className='analysis-instructions__draw-icon' dangerouslySetInnerHTML={{ __html: drawSvg }} />
         </div>

@@ -6,8 +6,13 @@
   color $grayFont
 
 .analysis-instructions__header
+.analysis-instructions__header--draw
   font-weight normal
   margin 5px 0
+
+.analysis-instructions__header--draw
+  text-align center
+  padding 0 45px
 
 .analysis-instructions__olist
   list-style-type decimal
@@ -17,17 +22,22 @@
 .analysis-instructions__separator
   margin 10px 0 5px
   text-align center
-  font-size 22px
+  font-size 18px
 
 .analysis-instructions__draw-icon-container
   margin 10px 0
 
 .analysis-instructions__draw-icon
-  fill $goldTheme
   display block
   margin auto
-  height 100px
-  width 135px
+  height 75px
+  width 100px
+  &.cls-3
+    fill $goldTheme
+  &.cls-8
+    fill white
+  &.cls-17
+    fill $darkGray
 
 .analysis-instructions__draw-button
   text-transform uppercase

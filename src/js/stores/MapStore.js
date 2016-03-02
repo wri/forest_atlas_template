@@ -19,6 +19,7 @@ class MapStore {
     this.firesSelectIndex = layerPanelText.firesOptions.length - 1;
     this.analysisModalVisible = false;
     this.printModalVisible = false;
+    this.searchModalVisible = false;
 
     this.bindListeners({
       mapUpdated: mapActions.mapUpdated,
@@ -26,6 +27,7 @@ class MapStore {
       changeActiveTab: mapActions.changeActiveTab,
       setAnalysisType: mapActions.setAnalysisType,
       togglePrintModal: mapActions.togglePrintModal,
+      toggleSearchModal: mapActions.toggleSearchModal,
       toggleAnalysisModal: mapActions.toggleAnalysisModal,
       addActiveLayer: layerActions.addActiveLayer,
       removeActiveLayer: layerActions.removeActiveLayer,
@@ -77,6 +79,10 @@ class MapStore {
 
   togglePrintModal (payload) {
     this.printModalVisible = payload.visible;
+  }
+
+  toggleSearchModal (payload) {
+    this.searchModalVisible = payload.visible;
   }
 
   changeOpacity (parameters) {

@@ -18,7 +18,7 @@ export default class ReportSubscribeButtons extends Component {
     if (selectedFeature) {
       appUtils.generateReport({
         selectedFeature: selectedFeature,
-        webmap: settings.webmap,
+        settings: settings,
         canopyDensity: 30,
         lang: language
       });

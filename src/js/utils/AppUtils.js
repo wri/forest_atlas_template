@@ -73,6 +73,8 @@ const utils = {
   generateReport: (options) => {
     /** webmap or appid
     * Other Params needed
+    DONE** title
+    DONE** subtitle
     DONE** layerid - layer number in dynamic service
     DONE** service - map service of selected feature
     DONE** idvalue - objectid of the selected feature
@@ -82,7 +84,7 @@ const utils = {
     DONE** tcd - tree cover density
     DONE** lang - current app language
     */
-    const { selectedFeature, webmap, appid, lang, canopyDensity } = options;
+    const { selectedFeature, settings, lang, canopyDensity } = options;
 
     //- Is this a custom feature or a feature from the webmap
     const layer = selectedFeature._layer;
@@ -93,9 +95,15 @@ const utils = {
       const layerid = selectedFeature._layer.layerId;
       const layerName = selectedFeature._layer.id;
       const service = layer.url.split(`/${layerid}`)[0];
+      const labels = settings.labels[lang];
+
 
       const path = toQuery({
-        webmap: webmap,
+        title: labels.title,
+        subtitle: labels.subtitle,
+        logoUrl: settings.logoUrl,
+        logoLinkUrl: settings.logoLinkUrl,
+        webmap: settings.webmap,
         idvalue: idvalue,
         service: service,
         layerid: layerid,

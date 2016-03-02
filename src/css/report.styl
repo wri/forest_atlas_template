@@ -14,8 +14,32 @@ body
 
 //- Since this CSS is inlined, this will prevent the map from snapping down when
 //- the title gets injected
+.report-header
+  height $headerHeight
+  width 100%
+
+.report-header__logo-container
+  padding 5px 10px 5px 0
+
+.report-header__logo
+  height 40px
+
+.report-header__title-container
+  flex-direction column
+  display flex
+
+.report-header__title
+  text-transform uppercase
+  line-height 30px
+  font-size 20px
+
+.report-header__subtitle
+  line-height 20px
+  font-size 14px
+
 .feature-title
   min-height 30px
+  margin 5px 0
 
 .map
   margin 10px auto

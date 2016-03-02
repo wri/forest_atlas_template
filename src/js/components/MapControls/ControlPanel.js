@@ -13,7 +13,7 @@ const zoomInSvg = '<use xlink:href="#icon-plus" />';
 const zoomOutSvg = '<use xlink:href="#icon-minus" />';
 const shareSvg = '<use xlink:href="#icon-share" />';
 const drawSvg = '<use xlink:href="#icon-draw-upload" />';
-const printSvg = '<use xlink:href="#icon-download" />';
+const printSvg = '<use xlink:href="#icon-print" />';
 const searchSvg = '<use xlink:href="#icon-control-search" />';
 
 export default class ControlPanel extends Component {
@@ -35,7 +35,7 @@ export default class ControlPanel extends Component {
   };
 
   search = () => {
-
+    mapActions.toggleSearchModal({ visible: true });
   };
 
   share = () => {

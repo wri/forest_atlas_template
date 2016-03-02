@@ -3,7 +3,9 @@
 // import GraphicsHelper from 'helpers/GraphicsHelper';
 // import GeoProcessor from 'esri/tasks/Geoprocessor';
 // import FeatureSet from 'esri/tasks/FeatureSet';
+import FindParameters from 'esri/tasks/FindParameters';
 import QueryTask from 'esri/tasks/QueryTask';
+import FindTask from 'esri/tasks/FindTask';
 import esriRequest from 'esri/request';
 import Query from 'esri/tasks/query';
 import Deferred from 'dojo/Deferred';
@@ -161,6 +163,17 @@ const request = {
     query.geometry = geometry;
     query.outFields = ['*'];
     return task.execute(query);
+  },
+
+  findTaskByLayer (searchValue, options) {
+    const task = new FindTask(options.url);
+    const params = new FindParameters();
+    params.returnGeometry = false;
+    params.searchText = searchValue;
+    if (options.visibleLayers) {
+      params.layerIds = options.visibleLayers;
+    }
+    return task.execute(params);
   }
 
 };
