@@ -233,7 +233,7 @@ export default {
       order: 3,
       type: 'image',
       group: 'Land Cover',
-      label: 'Tree cover',
+      label: 'Tree cover density',
       sublabel: '(year 2000, 30m global, Hansen/UMD/Google/USGS/NASA)',
       url: 'http://gis-treecover.wri.org/arcgis/rest/services/TreeCover2000/ImageServer',
       colormap: [[1, 174, 203, 107]],
