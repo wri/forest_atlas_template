@@ -420,7 +420,7 @@ export default {
     en: [{
       title: 'Landsat',
       thumbnailUrl: 'http://www.globalforestwatch.org/assets/basemaps-s84b6feb159-b5c7519937c9732128e8b42b5865e7c2.png',
-      templateUrl: 'http://api.globalforestwatch.org//gee/landsat_composites/${z}/${x}/${y}.png',
+      templateUrl: 'http://api.globalforestwatch.org//gee/landsat_composites/${level}/${col}/${row}.png?year=2014',
       years: [
         '1999',
         '2000',
