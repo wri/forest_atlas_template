@@ -31,6 +31,8 @@ class MapStore {
       toggleAnalysisModal: mapActions.toggleAnalysisModal,
       addActiveLayer: layerActions.addActiveLayer,
       removeActiveLayer: layerActions.removeActiveLayer,
+      changeLossToTimeline: layerActions.changeLossToTimeline,
+      changeLossFromTimeline: layerActions.changeLossFromTimeline,
       changeOpacity: layerActions.changeOpacity
     });
   }
@@ -81,8 +83,17 @@ class MapStore {
     this.printModalVisible = payload.visible;
   }
 
+
   toggleSearchModal (payload) {
     this.searchModalVisible = payload.visible;
+  }
+
+  changeLossFromTimeline (activeIndex) {
+    this.lossFromSelectIndex = activeIndex;
+  }
+
+  changeLossToTimeline (activeIndex) {
+    this.lossToSelectIndex = activeIndex;
   }
 
   changeOpacity (parameters) {

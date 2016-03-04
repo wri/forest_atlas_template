@@ -1,6 +1,7 @@
 import dispatcher from 'js/dispatcher';
 import layerFactory from 'helpers/LayerFactory';
 import legendHelper from 'helpers/LegendHelper';
+import landsatHelper from 'helpers/LandsatHelper';
 
 class MapActions {
   //- Action to notify the store the map has changed so we can rerender UI changes
@@ -74,8 +75,12 @@ class MapActions {
     return map;
   }
 
-  toggleLandsat () {
-    // Turn the layer off or on.
+  toggleLandsat (map, lang) {
+    landsatHelper.toggle(map, lang);
+  }
+
+  changeLandsatYear (map, lang, year) {
+    landsatHelper.changeYear(map, lang, year);
   }
 
   createLegend(map, layers) {

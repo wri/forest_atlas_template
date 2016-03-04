@@ -2,10 +2,11 @@
 import {layerPanelText, layerConfig} from 'js/config';
 import GraphicsHelper from 'helpers/GraphicsHelper';
 // import {analysisStore} from 'stores/AnalysisStore';
-// import rasterFuncs from 'utils/rasterFunctions';
+import rasterFuncs from 'utils/rasterFunctions';
 import Symbols from 'helpers/Symbols';
 import Request from 'utils/request';
 import utils from 'utils/AppUtils';
+import resources from 'js/resources';
 // import KEYS from 'js/constants';
 
 let LayersHelper = {
@@ -144,18 +145,14 @@ let LayersHelper = {
   },
 
   /**
-  * @param {number} fromIndex - selected index of first tree cover loss select
-  * @param {number} toIndex - selected index of second tree cover loss select
+  * @param {Layer} layer - tree cover loss layer
+  * @param {string} lang - current language, used to look up layer info
+  * @param {number} fromValue - selected index of first tree cover loss select
+  * @param {number} toValue - selected index of second tree cover loss select
   */
-  updateLossLayerDefinitions (fromIndex, toIndex) {
-    brApp.debug('LayersHelper >>> updateLossLayerDefinitions');
-    return;
-    let fromValue = layerPanelText.lossOptions[fromIndex].value;
-    let toValue = layerPanelText.lossOptions[toIndex].value;
-    let layerConfig = utils.getObject(layersConfig, 'id', KEYS.loss);
-    //- [fromValue, toValue] is inclusive, exclusive, which is why the + 1 is present
+  updateLossLayerDefinitions (layer, lang, fromValue, toValue) {
+    let layerConfig = utils.getObject(resources.layers[lang], 'id', layer.id);
     let rasterFunction = rasterFuncs.getColormapRemap(layerConfig.colormap, [fromValue, (toValue + 1)], layerConfig.outputRange);
-    let layer = brApp.map.getLayer(KEYS.loss);
 
     if (layer) {
       layer.setRenderingRule(rasterFunction);

@@ -12,29 +12,51 @@ export default class LandsatLayer extends Component {
     map: PropTypes.object.isRequired
   };
 
+  constructor (props) {
+    super(props);
+    this.state = {
+      yearSelected: null
+    }
+  }
+
+  componentDidMount () {
+    this.setState({
+      yearSelected: this.props.years[this.props.years.length-1]
+    })
+  }
+
   render () {
     return (
-      <div className='layer-basemap' onClick={this.toggle.bind(this)}>
-        <span className='layer-basemap-icon landsat'></span>
-        <span className='layer-basemap-label'>{this.props.label}</span>
+      <div className='layer-basemap'>
+        <span className='layer-basemap-icon landsat' onClick={this.toggle.bind(this)}></span>
+        <span className='layer-basemap-label' onClick={this.toggle.bind(this)}>{this.props.label}</span>
         <div className='relative'>
-          <select className='pointer'>
-            {this.props.years.map(this.yearOption)}
+          <select className='pointer' onChange={this.changeYear.bind(this)}>
+            {this.props.years.map(this.yearOption.bind(this))}
           </select>
-          <div className='fa-button sml white'>{this.props.years[0]}</div>
+          <div className='fa-button sml white'>{this.state.yearSelected}</div>
         </div>
       </div>
     );
   }
 
-  yearOption (year) {
+  yearOption (year, index) {
+    let selected = (this.props.years.length-1 === index) ? true : false;
     return (
-      <option value={year}>{year}</option>
+      <option value={year} selected={selected}>{year}</option>
     )
   }
 
   toggle () {
-    mapActions.toggleLandsat();
+    let {map, language} = this.context;
+    mapActions.toggleLandsat(map, language);
+  }
+
+  changeYear (evt) {
+    let {map, language} = this.context;
+    let year = this.props.years[evt.target.selectedIndex];
+    this.setState({ yearSelected: year });
+    mapActions.changeLandsatYear(map, language, year);
   }
 }
 

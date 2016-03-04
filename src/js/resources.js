@@ -233,7 +233,7 @@ export default {
       order: 3,
       type: 'image',
       group: 'Land Cover',
-      label: 'Tree cover',
+      label: 'Tree cover density',
       sublabel: '(year 2000, 30m global, Hansen/UMD/Google/USGS/NASA)',
       url: 'http://gis-treecover.wri.org/arcgis/rest/services/TreeCover2000/ImageServer',
       colormap: [[1, 174, 203, 107]],
@@ -420,7 +420,7 @@ export default {
     en: [{
       title: 'Landsat',
       thumbnailUrl: 'http://www.globalforestwatch.org/assets/basemaps-s84b6feb159-b5c7519937c9732128e8b42b5865e7c2.png',
-      templateUrl: 'http://api.globalforestwatch.org//gee/landsat_composites/${z}/${x}/${y}.png',
+      templateUrl: 'http://api.globalforestwatch.org//gee/landsat_composites/${level}/${col}/${row}.png?year=2014',
       years: [
         '1999',
         '2000',
