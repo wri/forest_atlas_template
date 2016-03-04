@@ -2,11 +2,17 @@ import layerActions from 'actions/LayerActions';
 import layerUtils from 'js/utils/layerUtils';
 import LayersHelper from 'helpers/LayersHelper';
 import {layerPanelText} from 'js/config';
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
 let lossOptions = [];
 
-export default class LossControls extends React.Component {
+export default class LossControls extends Component {
+  static contextTypes = {
+    language: PropTypes.string.isRequired,
+    map: PropTypes.object.isRequired,
+    settings: PropTypes.object.isRequired
+  };
+
   constructor (props) {
     super(props);
     this.state = {
@@ -27,29 +33,28 @@ export default class LossControls extends React.Component {
       }
       this.setState({
         loaded: true,
-        lossFromSelectIndex: 0,
+        lossFromSelectIndex: lossOptions.length-2,
         lossToSelectIndex: lossOptions.length-1
       });
     });
   }
 
   componentDidUpdate (prevProps) {
-    console.log('componentDidUpdate', prevProps, this.props);
-    // TODO:  call the layer helper here to update layer def / raster func
-    // with new info from state, not props
-    if (prevProps.lossFromSelectIndex !== this.props.lossFromSelectIndex || prevProps.lossToSelectIndex !== this.props.lossToSelectIndex) {
-      LayersHelper.updateLossLayerDefinitions(this.props.lossFromSelectIndex, this.props.lossToSelectIndex);
+    if (this.state.loaded && this.context.map.loaded) {
+      let {lossFromSelectIndex, lossToSelectIndex} = this.state;
+      let layer = this.context.map.getLayer(this.props.layerId);
+      let {language} = this.context;
+      if (layer) {
+        LayersHelper.updateLossLayerDefinitions(layer, language, lossFromSelectIndex, lossToSelectIndex);
+      }
     }
   }
 
   renderSelects () {
-    console.log('loss controls render', this.props)
     let selects = <div className='timeline-container loss flex'>loading...</div>;
     if ( this.props.loaded ) {
       let fromItem = lossOptions[this.state.lossFromSelectIndex];
       let toItem = lossOptions[this.state.lossToSelectIndex];
-      // let fromItem = lossOptions[this.props.lossFromSelectIndex];
-      // let toItem = lossOptions[this.props.lossToSelectIndex];
       selects = <div className='timeline-container loss flex'>
         <div className='loss-from relative'>
           <select onChange={this.fromChanged.bind(this)} className='pointer' value={fromItem.value}>
@@ -109,3 +114,7 @@ export default class LossControls extends React.Component {
   }
 
 }
+
+LossControls.propTypes = {
+  layerId: PropTypes.string.isRequired
+};

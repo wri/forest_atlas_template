@@ -111,7 +111,7 @@ export default class LayerPanel extends Component {
           childComponent = <FiresControls loaded={this.props.loaded} {...this.state} />;
           break;
         case 'TREE_COVER_LOSS':
-          childComponent = <LossControls loaded={this.props.loaded} {...this.state} />;
+          childComponent = <LossControls layerId={layer.id} loaded={this.props.loaded} {...this.state} />;
           break;
       //   case KEYS.treeCover:
       //     childComponent = <DensityDisplay {...this.state} />;
