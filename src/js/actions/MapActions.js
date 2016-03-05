@@ -65,12 +65,12 @@ class MapActions {
 
   changeBasemap (map, basemap) {
     basemap = basemap.toLowerCase();
-    map.setBasemap(basemap.toLowerCase())
-    return map;
+    map.setBasemap(basemap);
+    return basemap;
   }
 
   toggleLandsat (map, lang) {
-    landsatHelper.toggle(map, lang);
+    return landsatHelper.toggle(map, lang);
   }
 
   changeLandsatYear (map, lang, year) {
