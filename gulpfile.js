@@ -108,3 +108,4 @@ gulp.task('browser-sync', function () {
 
 gulp.task('serve', ['browser-sync']);
 gulp.task('start', ['stylus-build', 'jade-build', 'imagemin-build', 'stylus-watch', 'jade-watch']);
+gulp.task('production', ['stylus-dist', 'jade-dist', 'imagemin-dist']);
