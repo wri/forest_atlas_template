@@ -1,5 +1,6 @@
 var minifyInline = require('gulp-minify-inline');
 var autoprefixer = require('gulp-autoprefixer');
+var prerender = require('react-prerender');
 var gulpPlumber = require('gulp-plumber');
 var browserSync = require('browser-sync');
 var imagemin = require('gulp-imagemin');
@@ -7,6 +8,7 @@ var locals = require('./src/locals');
 var stylus = require('gulp-stylus');
 var jade = require('gulp-jade');
 var gulp = require('gulp');
+var path = require('path');
 
 //- Read the version from the package json
 var version = require('./package.json').version;
@@ -91,6 +93,27 @@ gulp.task('imagemin-dist', function () {
   return gulp.src(config.imagemin.src)
     .pipe(imagemin({ optimizationLevel: 7, progressive: true }))
     .pipe(gulp.dest(config.imagemin.dist));
+});
+
+gulp.task('prerender', function () {
+  var htmlFile = path.join(__dirname, 'dist/index.html'),
+      component = 'js/components/App',
+      dom = '#root',
+      requirejs = {
+        buildProfile: path.join(__dirname, 'rjs.main.js'),
+        map: {
+          ignorePatterns: [/esri\//, /dojo\//, /dijit\//],
+          moduleRoot: path.join(__dirname, 'build/js'),
+          remapModule: 'js/config'
+        }
+      };
+
+  prerender({
+    component: component,
+    target: htmlFile,
+    mount: dom,
+    requirejs: requirejs
+  });
 });
 
 gulp.task('browser-sync', function () {

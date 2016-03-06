@@ -1,12 +1,12 @@
 // import {analysisActions} from 'actions/AnalysisActions';
-import {layerPanelText, layerConfig} from 'js/config';
-import GraphicsHelper from 'helpers/GraphicsHelper';
+// import {layerPanelText, layerConfig} from 'js/config';
+// import GraphicsHelper from 'helpers/GraphicsHelper';
 // import {analysisStore} from 'stores/AnalysisStore';
 import rasterFuncs from 'utils/rasterFunctions';
 import Symbols from 'helpers/Symbols';
 import Request from 'utils/request';
 import utils from 'utils/AppUtils';
-import resources from 'js/resources';
+import resources from 'resources';
 // import KEYS from 'js/constants';
 
 let LayersHelper = {

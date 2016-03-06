@@ -45,17 +45,24 @@ export default class LayerPanel extends Component {
     );
   };
 
-  renderBasemapGroup = () => {
-    let basemapNames = Object.keys(basemaps);
-    const basemapLayers = basemapNames.map((bm) => {
-      return (
-        <BasemapLayer icon={basemaps[bm].thumbnailUrl} label={basemaps[bm].title} basemap={bm} />
-      )
-    })
-    let landsat = resources.basemaps[this.context.language][0];
-    basemapLayers.unshift(
-      <LandsatLayer icon={landsat.thumbnailUrl} label={landsat.title} years={landsat.years} />
-    )
+  renderBasemapGroup = (extraBasemaps) => {
+    let basemapLayers = [];
+    if (basemaps) {
+      let basemapNames = Object.keys(basemaps);
+      basemapLayers = basemapNames.map((bm) => {
+        return (
+          <BasemapLayer icon={basemaps[bm].thumbnailUrl} label={basemaps[bm].title} basemap={bm} />
+        );
+      });
+    }
+
+    let landsat = extraBasemaps[0];
+    if (landsat) {
+      basemapLayers.unshift(
+        <LandsatLayer icon={landsat.thumbnailUrl} label={landsat.title} years={landsat.years} />
+      );
+    }
+
     return (
       <BasemapGroup label='Basemap'>
         {basemapLayers}
@@ -66,7 +73,7 @@ export default class LayerPanel extends Component {
   render() {
     const {settings, language} = this.context;
     const layers = settings.layers && settings.layers[language] || [];
-    const basemaps = settings.basemaps && settings.basemaps[language] || [];
+    const extraBasemaps = settings.basemaps && settings.basemaps[language] || [];
     let groups = [];
     //- Get a unique list of groups
     layers.forEach((layer) => {
@@ -78,7 +85,8 @@ export default class LayerPanel extends Component {
     let layerGroups = groups.map((group) => {
       return this.renderLayerGroup(group, layers);
     });
-    layerGroups.push(this.renderBasemapGroup(basemaps));
+
+    layerGroups.push(this.renderBasemapGroup(extraBasemaps));
 
     return (
       <div className={`layer-panel custom-scroll`}>
