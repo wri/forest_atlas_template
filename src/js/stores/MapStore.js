@@ -12,6 +12,8 @@ class MapStore {
     this.activeTab = tabKeys.LAYERS;
     this.activeLayers = [];
     this.allLayers = [];
+    this.basemap = null;
+    this.landsatVisible = false;
     // this.selectedFeatures = [];
     this.activeAnalysisType = analysisKeys.TC_LOSS;
     this.lossFromSelectIndex = 0;
@@ -27,6 +29,8 @@ class MapStore {
       setAnalysisType: mapActions.setAnalysisType,
       togglePrintModal: mapActions.togglePrintModal,
       toggleAnalysisModal: mapActions.toggleAnalysisModal,
+      changeBasemap: mapActions.changeBasemap,
+      toggleLandsat: mapActions.toggleLandsat,
       addActiveLayer: layerActions.addActiveLayer,
       removeActiveLayer: layerActions.removeActiveLayer,
       changeLossToTimeline: layerActions.changeLossToTimeline,
@@ -95,6 +99,14 @@ class MapStore {
     if ( layer[0] ) {
       layer[0].opacity = parseFloat(parameters.value);
     }
+  }
+
+  changeBasemap (basemap) {
+    this.basemap = basemap;
+  }
+
+  toggleLandsat (visible) {
+    this.landsatVisible = visible;
   }
 
 }
