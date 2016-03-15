@@ -29,6 +29,8 @@ class MapStore {
       toggleAnalysisModal: mapActions.toggleAnalysisModal,
       addActiveLayer: layerActions.addActiveLayer,
       removeActiveLayer: layerActions.removeActiveLayer,
+      addAll: layerActions.addAll,
+      removeAll: layerActions.removeAll,
       changeLossToTimeline: layerActions.changeLossToTimeline,
       changeLossFromTimeline: layerActions.changeLossFromTimeline,
       changeOpacity: layerActions.changeOpacity
@@ -53,6 +55,14 @@ class MapStore {
       layers.splice(index, 1);
       this.activeLayers = layers;
     }
+  }
+
+  addAll () {
+    this.activeLayers = this.allLayers.map(l => l.id);
+  }
+
+  removeAll () {
+    this.activeLayers = [];
   }
 
   mapUpdated () {

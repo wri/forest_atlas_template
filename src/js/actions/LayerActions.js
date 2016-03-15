@@ -35,6 +35,14 @@ class LayerActions {
     return parameters;
   }
 
+  addAll () {
+    return {};
+  }
+
+  removeAll () {
+    return {};
+  }
+
 }
 
 export default dispatcher.createActions(LayerActions);
