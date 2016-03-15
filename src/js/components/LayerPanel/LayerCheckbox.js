@@ -2,12 +2,20 @@ import layerActions from 'actions/LayerActions';
 import modalActions from 'actions/ModalActions';
 import LayersHelper from 'helpers/LayersHelper';
 import LayerTransparency from './LayerTransparency';
-import React from 'react';
+import React, {
+  Component,
+  PropTypes
+} from 'react';
 
 // Info Icon Markup for innerHTML
 let useSvg = '<use xlink:href="#shape-info" />';
 
 export default class LayerCheckbox extends React.Component {
+
+  static contextTypes = {
+    language: PropTypes.string.isRequired,
+    map: PropTypes.object.isRequired
+  };
 
   componentDidUpdate(prevProps) {
     if (prevProps.checked !== this.props.checked) {
@@ -26,9 +34,14 @@ export default class LayerCheckbox extends React.Component {
   render() {
     let {layer} = this.props;
     let {label, sublabel} = layer;
+    let {language} = this.context;
+    let checked = this.props.checked ? 'active' : '';
+    let disabled = layer.disabled ? 'disabled': '';
+    let hidden = LayersHelper.isLayerVisible(layer.id, language) ? '' : 'hidden';
+    console.log('layer hidden?', layer.id, hidden);
 
     return (
-      <div className={`layer-checkbox relative ${layer.className}${this.props.checked ? ' active' : ''}${layer.disabled ? ' disabled' : ''}`} >
+      <div className={`layer-checkbox relative ${layer.className} ${checked} ${disabled} ${hidden}`} >
         <span onClick={this.toggleLayer.bind(this)} className='toggle-switch pointer'><span/></span>
         <span onClick={this.toggleLayer.bind(this)} className='layer-checkbox-label pointer'>{label}</span>
         {!sublabel ? null : <div className='layer-checkbox-sublabel'>{sublabel}</div>}

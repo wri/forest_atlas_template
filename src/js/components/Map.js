@@ -59,6 +59,7 @@ export default class Map extends Component {
       let {itemData} = response.itemInfo;
       itemData.operationalLayers.forEach((ol) => {
         // TODO:  filter out layers specific to selected language.
+        console.log('op layer', ol.title);
         settings.layers[language].push({
           id: ol.id,
           group: settings.webmapMenuName,
@@ -83,6 +84,10 @@ export default class Map extends Component {
       //- Attach events I need for the info window
       this.map.infoWindow.on('show, hide, set-features, selection-change', (evt) => {
         mapActions.mapUpdated(evt);
+      });
+      // this.map.on('update-end, zoom-end', (evt) => {
+      this.map.on('zoom-end', (evt) => {
+        mapActions.mapUpdated();
       });
       //- When custom features are clicked, apply them to the info window, this will trigger above event
       this.map.graphics.on('click', (evt) => {

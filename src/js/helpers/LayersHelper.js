@@ -199,6 +199,24 @@ let LayersHelper = {
       // TODO:  check that value is >= 0 and <= 1.
       layer.setOpacity(parameters.value);
     }
+  },
+
+  isLayerVisible (layerId, lang) {
+    let visible = false;
+    let layer = utils.getObject(resources.layers[lang], 'id', layerId);
+    if (layer.visible) {
+      console.log('\tlayer visible via config');
+      visible = true;
+    }
+    if (brApp.map && !brApp.map.updating)) {
+      layer = brApp.map.getLayer(layerId);
+      if (layer) {
+        visible = layer.visibleAtMapScale;
+        console.log('\tlayer obj', layer);
+        console.log('\tlayer vis from map', layerId, visible);
+      }
+    }
+    return visible;
   }
 
 };
