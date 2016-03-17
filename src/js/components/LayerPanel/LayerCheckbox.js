@@ -20,9 +20,17 @@ export default class LayerCheckbox extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.checked !== this.props.checked) {
       if (this.props.checked) {
-        LayersHelper.showLayer(this.props.layer.id);
+        if (this.props.subLayer) {
+          LayersHelper.showSubLayer(this.props.layer)
+        } else {
+          LayersHelper.showLayer(this.props.layer.id);
+        }
       } else {
-        LayersHelper.hideLayer(this.props.layer.id);
+        if (this.props.subLayer) {
+          LayersHelper.hideSubLayer(this.props.layer)
+        } else {
+          LayersHelper.hideLayer(this.props.layer.id);
+        }
       }
     }
   }
@@ -32,13 +40,13 @@ export default class LayerCheckbox extends React.Component {
   }
 
   render() {
+    // console.log('checkbox render', this.props.layer.id);
     let {layer} = this.props;
     let {label, sublabel} = layer;
     let {language} = this.context;
     let checked = this.props.checked ? 'active' : '';
     let disabled = layer.disabled ? 'disabled': '';
-    let hidden = LayersHelper.isLayerVisible(layer.id, language) ? '' : 'hidden';
-    console.log('layer hidden?', layer.id, hidden);
+    let hidden = LayersHelper.isLayerVisible(layer, language) ? '' : 'hidden';
 
     return (
       <div className={`layer-checkbox relative ${layer.className} ${checked} ${disabled} ${hidden}`} >
@@ -66,12 +74,22 @@ export default class LayerCheckbox extends React.Component {
   }
 
   toggleLayer () {
-    let layer = this.props.layer;
+    let {layer} = this.props;
     if (layer.disabled) { return; }
-    if (this.props.checked) {
-      layerActions.removeActiveLayer(layer.id);
+    if (layer.subId) {
+      // TODO:  Update visible layers.
+      // console.log('sub layer', layer);
+      if (this.props.checked) {
+        layerActions.removeSubLayer(layer);
+      } else {
+        layerActions.addSubLayer(layer);
+      }
     } else {
-      layerActions.addActiveLayer(layer.id);
+      if (this.props.checked) {
+        layerActions.removeActiveLayer(layer.id);
+      } else {
+        layerActions.addActiveLayer(layer.id);
+      }
     }
   }
 

@@ -18,6 +18,14 @@ class LayerActions {
     // }
   }
 
+  addSubLayer (info) {
+    return info;
+  }
+
+  removeSubLayer (info) {
+    return info;
+  }
+
   changeFiresTimeline (selectedIndex) {
     return selectedIndex;
   }

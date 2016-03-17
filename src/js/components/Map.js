@@ -59,16 +59,38 @@ export default class Map extends Component {
       let {itemData} = response.itemInfo;
       itemData.operationalLayers.forEach((ol) => {
         // TODO:  filter out layers specific to selected language.
-        console.log('op layer', ol.title);
-        settings.layers[language].push({
-          id: ol.id,
-          group: settings.webmapMenuName,
-          label: ol.title,
-          opacity: ol.opacity,
-          visible: ol.visibility,
-          esriLayer: ol.layerObject
-        });
+        //
+        // For dynamic layers, create a layer entry for each sublayer.
+        if (ol.layerType === 'ArcGISMapServiceLayer') {
+          ol.resourceInfo.layers.forEach(lyr => {
+            let visible = ol.layerObject.visibleLayers.indexOf(lyr.id) > -1;
+            let scaleDependency = (lyr.minScale > 0 || lyr.maxScale > 0);
+            settings.layers[language].push({
+              id: ol.id,
+              subId: `${ol.id}_${lyr.id}`,
+              subIndex: lyr.id,
+              hasScaleDependency: scaleDependency,
+              maxScale: lyr.maxScale,
+              minScale: lyr.minScale,
+              group: settings.webmapMenuName,
+              label: lyr.name,
+              opacity: 1,
+              visible: visible,
+              esriLayer: ol.layerObject
+            });
+          });
+        } else {
+          settings.layers[language].push({
+            id: ol.id,
+            group: settings.webmapMenuName,
+            label: ol.title,
+            opacity: ol.opacity,
+            visible: ol.visibility,
+            esriLayer: ol.layerObject
+          });
+        }
       });
+      // console.log('all layers', settings.layers[language]);
       this.map = response.map;
       // Remove any basemap or reference layers so they don't interfere with the
       // basemap switcher in the layer panel works.
@@ -79,14 +101,23 @@ export default class Map extends Component {
         this.map.setBasemap('topo');
       }
       this.map.graphics.clear();
-      mapActions.mapUpdated();
       this.map.infoWindow.set('popupWindow', false);
       //- Attach events I need for the info window
       this.map.infoWindow.on('show, hide, set-features, selection-change', (evt) => {
         mapActions.mapUpdated(evt);
       });
-      // this.map.on('update-end, zoom-end', (evt) => {
       this.map.on('zoom-end', (evt) => {
+        mapActions.mapUpdated();
+      });
+      let updateEnd = this.map.on('update-end', (evt) => {
+        updateEnd.remove();
+        /** TODO: Add some kind of transformer here, something like this
+        * someUtil.addWebmapLayers(settings.layers, response.map);
+        * It could create layer config from the webmap layers and push it into settings.layers
+        */
+        mapActions.createLayers(this.map, settings.layers[language]);
+        mapActions.createLegend(this.map, settings.layers[language]);
+
         mapActions.mapUpdated();
       });
       //- When custom features are clicked, apply them to the info window, this will trigger above event
@@ -99,12 +130,6 @@ export default class Map extends Component {
       //- Make the map a global in debug mode for easier debugging
       if (brApp.debug) { brApp.map = this.map; }
 
-      /** TODO: Add some kind of transformer here, something like this
-      * someUtil.addWebmapLayers(settings.layers, response.map);
-      * It could create layer config from the webmap layers and push it into settings.layers
-      */
-      mapActions.createLayers(this.map, settings.layers[language]);
-      mapActions.createLegend(this.map, settings.layers[language]);
     });
   };
 

@@ -75,6 +75,11 @@ let LayersHelper = {
     let layer = brApp.map.getLayer(layerId);
     if (layer) { layer.show(); }
   },
+  showSubLayer (layer) {
+    let {esriLayer} = layer;
+    // console.log('layersHelper, showSubLayer', esriLayer.visibleLayers, layer.subIndex);
+    esriLayer.setVisibleLayers(esriLayer.visibleLayers);
+  },
   /**
   * @param {string} layerId - id of layer to hide
   */
@@ -82,6 +87,11 @@ let LayersHelper = {
     brApp.debug(`LayersHelper >>> hideLayer - ${layerId}`);
     let layer = brApp.map.getLayer(layerId);
     if (layer) { layer.hide(); }
+  },
+  hideSubLayer (layer) {
+    let {esriLayer} = layer;
+    // console.log('layersHelper, hideSubLayer', esriLayer.visibleLayers, layer.subIndex);
+    esriLayer.setVisibleLayers(esriLayer.visibleLayers);
   },
   /**
   * @param {string} layerId - id of layer to show, need to hide other label layer
@@ -201,19 +211,17 @@ let LayersHelper = {
     }
   },
 
-  isLayerVisible (layerId, lang) {
-    let visible = false;
-    let layer = utils.getObject(resources.layers[lang], 'id', layerId);
-    if (layer.visible) {
-      console.log('\tlayer visible via config');
-      visible = true;
-    }
-    if (brApp.map && !brApp.map.updating)) {
-      layer = brApp.map.getLayer(layerId);
-      if (layer) {
-        visible = layer.visibleAtMapScale;
-        console.log('\tlayer obj', layer);
-        console.log('\tlayer vis from map', layerId, visible);
+  isLayerVisible (layerInfo, lang) {
+    let visible = true;
+    if (brApp.map && !brApp.map.updating) {
+      // Regular layers have a visibleAtMapScale property which make this easy.
+      let layer = brApp.map.getLayer(layerInfo.id);
+      if (!layer) { return; }
+      visible = layer.visibleAtMapScale;
+      // Explicitly check scale depencency for sub-layers in a dynamic map service.
+      let scale = brApp.map.getScale();
+      if (layerInfo.hasScaleDependency && (scale > layerInfo.minScale || scale < layerInfo.maxScale)) {
+        visible = false;
       }
     }
     return visible;
