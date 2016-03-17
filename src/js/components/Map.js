@@ -9,6 +9,7 @@ import TabView from 'components/TabPanel/TabView';
 import arcgisUtils from 'esri/arcgis/utils';
 import mapActions from 'actions/MapActions';
 import {getUrlParams} from 'utils/params';
+import layerUtils from 'utils/layerUtils';
 import MapStore from 'stores/MapStore';
 import {mapConfig} from 'js/config';
 import React, {
@@ -78,9 +79,11 @@ export default class Map extends Component {
       // basemap switcher in the layer panel works.
       let basemap = itemData && itemData.baseMap;
       if (basemap.baseMapLayers.length) {
+        console.log('basemap from arcgis.com', basemap.baseMapLayers);
+        let basemapName = layerUtils.getBasemapName(basemap.baseMapLayers);
         basemap.baseMapLayers.forEach(bm => this.map.removeLayer(bm.layerObject));
-        // TODO:  figure out how to go from webmap basemap to string expected by setBasemap().
-        this.map.setBasemap('topo');
+        this.map.setBasemap(basemapName);
+        mapActions.changeBasemap(this.map, basemapName);
       }
       this.map.graphics.clear();
       mapActions.mapUpdated();

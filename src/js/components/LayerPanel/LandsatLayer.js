@@ -15,6 +15,7 @@ export default class LandsatLayer extends Component {
   constructor (props) {
     super(props);
     this.state = {
+      visible: false,
       yearSelected: null
     }
   }
@@ -26,8 +27,9 @@ export default class LandsatLayer extends Component {
   }
 
   render () {
+    let classes = this.state.visible ? 'layer-basemap selected' : 'layer-basemap';
     return (
-      <div className='layer-basemap'>
+      <div className={classes}>
         <span className='layer-basemap-icon landsat' onClick={this.toggle.bind(this)}></span>
         <span className='layer-basemap-label' onClick={this.toggle.bind(this)}>{this.props.label}</span>
         <div className='relative'>
@@ -49,6 +51,7 @@ export default class LandsatLayer extends Component {
 
   toggle () {
     let {map, language} = this.context;
+    this.setState({ visible: !this.state.visible });
     mapActions.toggleLandsat(map, language);
   }
 

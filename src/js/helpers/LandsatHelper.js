@@ -19,7 +19,7 @@ let LandsatHelper = {
       layer = new WebTiled(info.templateUrl, { id: info.title });
       map.addLayer(layer, landsatMapIndex);
     }
-    return layer;
+    return layer && layer.visible;
   },
 
   changeYear (map, lang, year) {
