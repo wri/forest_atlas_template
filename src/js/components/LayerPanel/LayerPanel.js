@@ -97,7 +97,7 @@ export default class LayerPanel extends Component {
 
   checkboxMap (group) {
     return layer => {
-      let activeLayers = this.state.activeLayers;
+      let {activeLayers, dynamicLayers} = this.state;
       // Exclude Layers not part of this group
       if (layer.group !== group) { return null; }
       // TODO: Remove once current layer panel design is approved
@@ -134,9 +134,27 @@ export default class LayerPanel extends Component {
           childComponent = null;
       }
 
-      return <LayerCheckbox key={layer.id} layer={layer} checked={activeLayers.indexOf(layer.id) > -1}>
-        {childComponent}
-      </LayerCheckbox>;
+      if (layer.esriLayer && layer.esriLayer.updating) {
+        console.log('\tlayer still updating', layer.subId, layer);
+        return null;
+      }
+
+      let checkbox;
+      if (layer.subId) {
+        // console.log('dynamicLayers', dynamicLayers);
+        // console.log('LayerPanel::checkbox', layer);
+        let checked = dynamicLayers[layer.id] && dynamicLayers[layer.id].indexOf(layer.subIndex) > -1;
+        // let checked = activeLayers.indexOf(layer.id) > -1;
+        // console.log('checked for', layer.subId, checked);
+        checkbox = <LayerCheckbox key={layer.subId} layer={layer} subLayer={true} checked={checked}>
+          {childComponent}
+        </LayerCheckbox>
+      } else {
+        checkbox = <LayerCheckbox key={layer.id} layer={layer} checked={activeLayers.indexOf(layer.id) > -1}>
+          {childComponent}
+        </LayerCheckbox>;
+      }
+      return checkbox;
       // return <LayerCheckbox key={layer.id} layer={layer} checked={activeLayers.indexOf(layer.id) > -1}>
       // </LayerCheckbox>;
 

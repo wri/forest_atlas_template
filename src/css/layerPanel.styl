@@ -1,7 +1,21 @@
 // Loaded inline in html, image basepath is css/images/*.{jpg|png|svg}
+.layer-toggles
+  border-bottom 1px solid $lightGray
+  height 30px
+  padding 2px 10px
+  span
+    display inline-block
+    font-weight 100
+  .right
+    float right
+    padding 5px 0 0 10px
+  .small
+    cursor pointer
+    font-size 80%
+    text-decoration underline
 .layer-panel
   background white
-  height 100%
+  height calc(100% - 30px)
   overflow-y auto
   /* IE10+ CSS styles go here */
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active)

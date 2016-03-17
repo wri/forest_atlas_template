@@ -14,6 +14,7 @@ class MapStore {
     this.allLayers = [];
     this.basemap = null;
     this.landsatVisible = false;
+    this.dynamicLayers = {};
     // this.selectedFeatures = [];
     this.activeAnalysisType = analysisKeys.TC_LOSS;
     this.lossFromSelectIndex = 0;
@@ -35,6 +36,10 @@ class MapStore {
       toggleLandsat: mapActions.toggleLandsat,
       addActiveLayer: layerActions.addActiveLayer,
       removeActiveLayer: layerActions.removeActiveLayer,
+      addSubLayer: layerActions.addSubLayer,
+      removeSubLayer: layerActions.removeSubLayer,
+      addAll: layerActions.addAll,
+      removeAll: layerActions.removeAll,
       changeLossToTimeline: layerActions.changeLossToTimeline,
       changeLossFromTimeline: layerActions.changeLossFromTimeline,
       changeOpacity: layerActions.changeOpacity
@@ -61,6 +66,25 @@ class MapStore {
     }
   }
 
+  addSubLayer (info) {
+    this.dynamicLayers[info.id].push(info.subIndex);
+  }
+
+  removeSubLayer (info) {
+    let subLayerIndex = this.dynamicLayers[info.id].indexOf(info.subIndex);
+    if (subLayerIndex > -1) {
+      this.dynamicLayers[info.id].splice(subLayerIndex, 1);
+    }
+  }
+
+  addAll () {
+    this.activeLayers = this.allLayers.map(l => l.id);
+  }
+
+  removeAll () {
+    this.activeLayers = [];
+  }
+
   mapUpdated () {
     // console.log('MapStore::mapUpdated', e);
     // this.selectedFeatures = e.target.features || [];
@@ -69,6 +93,16 @@ class MapStore {
   createLayers (layers) {
     this.activeLayers = layers.filter((layer) => layer.visible).map((layer) => layer.id);
     this.allLayers = layers;
+    layers.forEach(layer => {
+      if (layer.type === 'dynamic' || layer.subId) {
+        if (layer.esriLayer && !this.dynamicLayers.hasOwnProperty(layer.id)) {
+          // console.log('dynamic layer, visibleLayers', layer);
+          this.dynamicLayers[layer.id] = layer.esriLayer.visibleLayers;
+        }
+      }
+    });
+    // console.log('create layers, dynamic layers', this.dynamicLayers);
+    // console.log('create layers, active layers', this.activeLayers);
   }
 
   changeActiveTab (payload) {

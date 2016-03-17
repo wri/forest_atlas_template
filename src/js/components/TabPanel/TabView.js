@@ -1,5 +1,6 @@
 import AnalysisPanel from 'components/AnalysisPanel/AnalysisPanel';
 import LayerPanel from 'components/LayerPanel/LayerPanel';
+import LayerToggles from 'components/LayerPanel/LayerToggles';
 import InfoWindow from 'components/TabPanel/InfoWindow';
 import Documents from 'components/TabPanel/Documents';
 import tabKeys from 'constants/TabViewConstants';
@@ -32,6 +33,7 @@ export default class TabView extends Component {
     return (
       <div className='tab-view map-component custom-scroll shadow'>
         <div className={this.getClassName(LAYERS)}>
+          <LayerToggles />
           <LayerPanel loaded={map.loaded} />
         </div>
         <div className={this.getClassName(INFO_WINDOW)}>

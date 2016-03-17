@@ -75,6 +75,11 @@ let LayersHelper = {
     let layer = brApp.map.getLayer(layerId);
     if (layer) { layer.show(); }
   },
+  showSubLayer (layer) {
+    let {esriLayer} = layer;
+    // console.log('layersHelper, showSubLayer', esriLayer.visibleLayers, layer.subIndex);
+    esriLayer.setVisibleLayers(esriLayer.visibleLayers);
+  },
   /**
   * @param {string} layerId - id of layer to hide
   */
@@ -82,6 +87,11 @@ let LayersHelper = {
     brApp.debug(`LayersHelper >>> hideLayer - ${layerId}`);
     let layer = brApp.map.getLayer(layerId);
     if (layer) { layer.hide(); }
+  },
+  hideSubLayer (layer) {
+    let {esriLayer} = layer;
+    // console.log('layersHelper, hideSubLayer', esriLayer.visibleLayers, layer.subIndex);
+    esriLayer.setVisibleLayers(esriLayer.visibleLayers);
   },
   /**
   * @param {string} layerId - id of layer to show, need to hide other label layer
@@ -199,6 +209,27 @@ let LayersHelper = {
       // TODO:  check that value is >= 0 and <= 1.
       layer.setOpacity(parameters.value);
     }
+  },
+
+  isLayerVisible (layerInfo, lang) {
+    let visible = true;
+    // Non-webmap layers, always assume visible.
+    if (layerInfo.group !== resources.webmapMenuName) {
+      return visible;
+    }
+    if (brApp.map && !brApp.map.updating) {
+      // Regular layers have a visibleAtMapScale property which make this easy.
+      let layer = brApp.map.getLayer(layerInfo.id);
+      if (layer) {
+        visible = layer.visibleAtMapScale;
+        // Explicitly check scale depencency for sub-layers in a dynamic map service.
+        let scale = brApp.map.getScale();
+        if (layerInfo.hasScaleDependency && (scale > layerInfo.minScale || scale < layerInfo.maxScale)) {
+          visible = false;
+        }
+      }
+    }
+    return visible;
   }
 
 };
