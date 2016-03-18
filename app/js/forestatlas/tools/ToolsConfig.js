@@ -187,7 +187,8 @@ define(
                     // Analysis Configurations
 
                     analysisConfig: {
-                        totalLossAnalysisUrl: "http://gis-gfw.wri.org/arcgis/rest/services/GFW/analysis/ImageServer",
+                        // totalLossAnalysisUrl: "http://gis-gfw.wri.org/arcgis/rest/services/GFW/analysis/ImageServer",
+                        totalLossAnalysisUrl: "http://gis-gfw.wri.org/arcgis/rest/services/image_services/analysis/ImageServer",
                         clearanceAlertAnalysisUrl: "http://gis-potico.wri.org/arcgis/rest/services/CommoditiesAnalyzer/GFWanalysis_wm/ImageServer",
 
                         treeCoverDensityRule: {
