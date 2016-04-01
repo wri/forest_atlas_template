@@ -123,10 +123,9 @@ define(
                         }
                     },
                     landCover: {
-                        url: 'http://gis-gfw.wri.org/arcgis/rest/services/GFWForestCover/central_africa_land_cover/MapServer',
+                        url: 'http://gis-gfw.wri.org/arcgis/rest/services/forest_cover/MapServer',
                         id: 'landCover',
-                        defaultLayers: [0],
-                        hasLanguageSupport: true
+                        defaultLayers: [10]
                     },
                     forestGainLayer: {
                         url: 'http://50.18.182.188:6080/arcgis/rest/services/ForestGain_2000_2012_map/MapServer',
